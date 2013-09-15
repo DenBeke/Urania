@@ -139,7 +139,7 @@ class Album {
     @return string
     */
     public function __toString() {
-        $output = '<ol>';
+        $output = "<h1>$this->name</h1><ol>";
         foreach ($this->images as $image) {
             $output = $output . "<li>$image</li>";
         }

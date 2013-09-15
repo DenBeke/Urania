@@ -110,6 +110,31 @@ class Urania {
     */
     public function getAllAlbums() {
         
+        //Create query
+        $albums = $this->database->escape($this->db_table_albums);
+    
+        $query = 
+        "
+        SELECT * 
+        FROM  `$albums` 
+        ORDER BY  `Albums`.`date` DESC 
+        ";
+        
+        $result = $this->database->getQuery($query);
+        
+        //Debug           
+        if($this->debug) {
+            echo $query;
+        }
+        
+        $albums = array();
+        
+        foreach ($result as $row => $album) {
+            $albums[] = new Album($album['id'], $album['name'], $album['date']);
+        }
+        
+        return $albums;
+        
     }
     
     
