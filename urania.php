@@ -235,7 +235,34 @@ class Urania {
     @pre image exists
     */
     public function changeImage($image) {
-        //TODO
+        if(!$this->imageExists($image->getId())) {
+            throw new Exception("There is no image with the id $id");
+        }
+        else {
+            //Create query from image
+            $id = $this->database->escape($image->getId());
+            $fileName = $this->database->escape($image->getfileName());
+            $name = $this->database->escape($image->getName());
+            $date = $this->database->escape($image->getDate());
+            $albumId = $this->database->escape($image->getAlbumId());
+            $images = $this->database->escape($this->db_table_images);
+            
+            $query = 
+            "
+            UPDATE  `$images` SET  `fileName` = '$fileName',
+            `name` =  '$name',
+            `date` =  '$date',
+            `albumId` =  '$albumId' WHERE  `$images`.`id` = $id;
+            ";
+            
+            $affectedRows = $this->database->doQuery($query);
+            
+            //Debug
+            if($this->debug) {
+                echo "$affectedRows affected rows with query<br>$query";
+            }
+            
+        }
     }
     
     
@@ -246,7 +273,30 @@ class Urania {
     @pre album exists
     */
     public function changeAlbum($album) {
-        //TODO
+        if(!$this->albumExists($album->getId())) {
+            throw new Exception("There is no album with the id $id");
+        }
+        else {
+            //Create query from image
+            $id = $this->database->escape($album->getId());
+            $name = $this->database->escape($album->getName());
+            $date = $this->database->escape($album->getDate());
+            $albums = $this->database->escape($this->db_table_albums);
+            
+            $query = 
+            "
+            UPDATE  `$albums` SET `name` =  '$name',
+            `date` =  '$date' WHERE  `$albums`.`id` = $id;
+            ";
+            
+            $affectedRows = $this->database->doQuery($query);
+            
+            //Debug
+            if($this->debug) {
+                echo "$affectedRows affected rows with query<br>$query";
+            }
+            //TODO not yet tested
+        }
     }
     
     
@@ -313,6 +363,7 @@ class Urania {
             throw new Exception("There is no album with the id $id");
         }
         else {
+            //TODO
             //Find all images from the album
             //Delete image files
             //Delete images in the database
