@@ -94,8 +94,8 @@ class Album {
     @pre index < number of items
     */
     public function getImage($index) {
-        if(!($index < $this->getNumberOfImages)) {
-            throw new Exception("Image index out of range");
+        if(!($index < $this->getNumberOfImages())) {
+            throw new Exception("Image index $index out of range");
         }
         else {
             return $this->images[$index];

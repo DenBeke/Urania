@@ -1,6 +1,6 @@
 <?php
 /*
-Class containing an album
+Class containing an image
 
 Author: Mathias Beke
 Url: http://denbeke.be
