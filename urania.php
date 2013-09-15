@@ -35,12 +35,47 @@ class Urania {
     
     
     /**
+    Add a new photo album to the database with the given name
+    @param name
+    */
+    public function addAlbum($albumName) {
+        
+    }
+    
+    
+    /**
     Add the given image to the database
     
     @param image
-    @pre image not already in the database
     */
     public function addImage($image) {
+    
+        //Escape strings
+        $fileName = $this->database->escape($image->getFileName());
+        $name = $this->database->escape($image->getName());
+        $date = $this->database->escape($image->getDate());
+        $albumId = $this->database->escape($image->getAlbumId());
+    
+        $query = 
+        "
+        INSERT INTO  `Images` (
+        `id` ,
+        `fileName` ,
+        `name` ,
+        `date` ,
+        `albumId`
+        )
+        VALUES (
+        NULL ,  '$fileName',  '$name',  '$date',  '$albumId'
+        );
+        ";
+        
+        $affectedRows = $this->database->doQuery($query);
+        
+        if($this->debug) {
+            echo "$affectedRows affected rows with query<br>$query";
+        }
+    
     }
     
     
@@ -103,7 +138,41 @@ class Urania {
             throw new Exception("There is no image with the id $id");
         }
         else {
+            //Find image
+            //Create query
+            $images = $this->database->escape($this->db_table_images);
+            $id = $this->database->escape($id);
             
+            $query = 
+            "
+            SELECT * 
+            FROM  `$images` 
+            WHERE  `id` = $id
+            LIMIT 0 , 30
+            ";
+            
+            //DEBUG
+            if($this->debug) {
+                echo $query;
+            }
+            
+            //Fetch query
+            $result = $this->database->getQuery($query);
+            $image = new Image($result[0]['id'], $result[0]['fileName'], $result[0]['name'], $result[0]['date'], $result[0]['albumId']);
+            
+            
+            //Delete image file
+            //TODO!!!
+            
+            //Delete image in the database
+            $query = "DELETE FROM `$images` WHERE `$images`.`id` = $id";
+            $this->database->doQuery($query);
+            
+           
+            //Debug           
+            if($this->debug) {
+                echo $query;
+            }
         }
     }
     
@@ -120,7 +189,10 @@ class Urania {
             throw new Exception("There is no album with the id $id");
         }
         else {
-            
+            //Find all images from the album
+            //Delete image files
+            //Delete images in the database
+            //Delete album in the database
         }
     }
     
@@ -146,7 +218,7 @@ class Urania {
         }
         
         //Fetch query
-        $result = $this->database->query($query);
+        $result = $this->database->getQuery($query);
         
         //Check if there is a result (album)
         if(sizeof($result) > 0) {
@@ -179,7 +251,7 @@ class Urania {
         }
         
         //Fetch query
-        $result = $this->database->query($query);
+        $result = $this->database->getQuery($query);
         
         //Check if there is a result (album)
         if(sizeof($result) > 0) {

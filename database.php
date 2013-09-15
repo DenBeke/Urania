@@ -61,7 +61,7 @@ class Database {
     
     
     /**
-    Execute query in the database
+    Execute query in the database that gets content from the database
     Special cases for the cache expiration:
     - 0: always read from cache
     - -1: never read from cache
@@ -71,7 +71,7 @@ class Database {
     
     @return result
     */
-    public function query($query, $cache_expire = -1) {
+    public function getQuery($query, $cache_expire = -1) {
         
         $result = array();
         
@@ -98,6 +98,24 @@ class Database {
         
         return $result;
 
+    }
+    
+    
+    
+    /**
+    Execute query in the database that changes content in the database
+
+    @param query
+    @return result
+    */
+    public function doQuery($query) {
+        
+        $this->connect();
+        $this->link->query($query);
+        $affectedRows = $this->link->affected_rows;
+        $this->disconnect();
+        return $affectedRows;
+        
     }
     
     
