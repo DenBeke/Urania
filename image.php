@@ -96,6 +96,11 @@ class Image {
     }
     
     
+    /**
+    String function
+    
+    @return string
+    */
     public function __toString() {
         $output = "";
         $output = $output . "<h2>$this->name</h2>";
