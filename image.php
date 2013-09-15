@@ -1,4 +1,12 @@
 <?php
+/*
+Class containing an album
+
+Author: Mathias Beke
+Url: http://denbeke.be
+Date: September 2013
+*/
+
 
 
 /**
@@ -85,6 +93,14 @@ class Image {
     */
     public function getAlbumId() {
         return $this->albumId;
+    }
+    
+    
+    public function __toString() {
+        $output = "";
+        $output = $output . "<h2>$this->name</h2>";
+        $output = $output . "<p>$this->fileName</p>";
+        return $output;
     }
 }
 
