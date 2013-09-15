@@ -39,6 +39,30 @@ class Urania {
     @param name
     */
     public function addAlbum($albumName) {
+    
+        //Create query
+        $albums = $this->database->escape($this->db_table_albums);
+        $albumName = $this->database->escape($albumName);
+        $date = time();
+        
+        $query = 
+        "
+        INSERT INTO  `$albums` (
+        `id` ,
+        `name` ,
+        `date`
+        )
+        VALUES (
+        NULL ,  '$albumName',  '$date'
+        );
+        ";
+        
+        $affectedRows = $this->database->doQuery($query);
+        
+        //Debug
+        if($this->debug) {
+            echo "$affectedRows affected rows with query<br>$query";
+        }
         
     }
     
