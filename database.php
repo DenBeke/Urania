@@ -47,6 +47,20 @@ class Database {
     
     
     /**
+    Escape characters against MySQL injection
+    
+    @param string
+    @return escaped string
+    */
+    public function escape($string) {
+        $this->connect();
+        $out = $this->link->real_escape_string($string);
+        $this->disconnect();
+        return $out;
+    }
+    
+    
+    /**
     Execute query in the database
     Special cases for the cache expiration:
     - 0: always read from cache

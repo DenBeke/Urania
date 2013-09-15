@@ -80,7 +80,7 @@ class Album {
     
     @return number of images
     */
-    public function getNumberOfImages() {
+    public function getNumberOfImages(){
         return sizeof($this->images);
     }
     
