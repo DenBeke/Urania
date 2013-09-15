@@ -153,6 +153,37 @@ class Urania {
         }
         else {
             
+            //Get all images from the album
+            $images = $this->getImagesFromAlbum($id);
+        
+        
+            //Get album information
+            //Create query
+            $albums = $this->database->escape($this->db_table_albums);
+            $id = $this->database->escape($id);
+            
+            $query = 
+            "
+            SELECT * 
+            FROM  `$albums` 
+            WHERE id = $id
+            ";
+            
+            //Debug
+            if($this->debug) {
+                echo $query;
+            }
+            
+            //Fetch query
+            $result = $this->database->getQuery($query);
+            $album = new Album($result[0]['id'], $result[0]['name'], $result[0]['date']);
+            
+            foreach ($images as $image) {
+                $album->addImage($image);
+            }
+            
+            return $album;
+            
         }
     }
     
@@ -171,7 +202,51 @@ class Urania {
         }
         else {
             
+            //Create query
+            $images = $this->database->escape($this->db_table_images);
+            $id = $this->database->escape($id);
+            
+            $query = 
+            "
+            SELECT * 
+            FROM  `$images` 
+            WHERE id = $id
+            ";
+            
+            //Debug
+            if($this->debug) {
+                echo $query;
+            }
+            
+            //Fetch query
+            $result = $this->database->getQuery($query);
+            $image = new Image($result[0]['id'], $result[0]['fileName'], $result[0]['name'], $result[0]['date'], $result[0]['albumId']);
+            
+            return $image;
         }
+    }
+    
+    
+    
+    /**
+    Change update the information of the given image in the database
+    
+    @param image
+    @pre image exists
+    */
+    public function changeImage($image) {
+        //TODO
+    }
+    
+    
+    /**
+    Change update the information of the given album in the database
+    
+    @param album
+    @pre album exists
+    */
+    public function changeAlbum($album) {
+        //TODO
     }
     
     
@@ -310,6 +385,39 @@ class Urania {
             return false;
         }
         
+    }
+    
+    
+    private function getImagesFromAlbum($albumId) {
+        
+        //Create query
+        $images = $this->database->escape($this->db_table_images);
+        $albumId = $this->database->escape($albumId);
+        
+        $query = 
+        "
+        SELECT * 
+        FROM  `$images` 
+        WHERE  `albumId` = $albumId
+        LIMIT 0 , 30
+        ";
+        
+        //DEBUG
+        if($this->debug) {
+            echo $query;
+        }
+        
+        //Fetch query
+        $result = $this->database->getQuery($query);
+        
+        //Create images from result
+        $images = array();
+        
+        foreach ($result as $row => $image) {
+            $images[] = new Image($image['id'], $image['fileName'], $image['name'], $image['date'], $image['albumId']);
+        }
+        
+        return $images;
     }
 }
 
