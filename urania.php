@@ -39,32 +39,44 @@ class Urania {
     /**
     Add a new photo album to the database with the given name
     @param name
+    @pre there is no album with the given name
     */
     public function addAlbum($albumName) {
     
-        //Create query
-        $albums = $this->database->escape($this->db_table_albums);
-        $albumName = $this->database->escape($albumName);
-        $date = time();
-        
-        $query = 
-        "
-        INSERT INTO  `$albums` (
-        `id` ,
-        `name` ,
-        `date`
-        )
-        VALUES (
-        NULL ,  '$albumName',  '$date'
-        );
-        ";
-        
-        $affectedRows = $this->database->doQuery($query);
-        
-        //Debug
-        if($this->debug) {
-            echo "$affectedRows affected rows with query<br>$query";
-        }
+    	//TODO check if name already exists!
+    	if($this->albumNameExists($albumName)) {
+    		throw new Exception("There is already an album with the name '$albumName'");
+    	}
+    	else {
+    
+	        //Create query
+	        $albums = $this->database->escape($this->db_table_albums);
+	        $albumName = $this->database->escape($albumName);
+	        $date = time();
+	        
+	        $query = 
+	        "
+	        INSERT INTO  `$albums` (
+	        `id` ,
+	        `name` ,
+	        `date`
+	        )
+	        VALUES (
+	        NULL ,  '$albumName',  '$date'
+	        );
+	        ";
+	        
+	        $affectedRows = $this->database->doQuery($query);
+	        
+	        //Debug
+	        if($this->debug) {
+	            echo "$affectedRows affected rows with query<br>$query";
+	        }
+	        
+	        //Add new directory to the upload folder
+	        mkdir($this->uploadDir . '/' . $this->simplifyFileName($albumName));
+	        
+	    }
         
     }
     
@@ -429,10 +441,10 @@ class Urania {
     	*/
     	$imageName = $this->removeExtension($imageFile['name']);
     	$imageDate = time();
-    	$albumName = $this->getAlbumName($albumId);
+    	$albumName = $this->simplifyFileName($this->getAlbumName($albumId));
     	
     	//Get the filename of the image
-    	$fileName = $this->simplifyFileName($imageFile['name']);
+    	$fileName = $albumName . '/' . $this->simplifyFileName($imageFile['name']);
 
 		//Check if this file name is unique
 		//If it exists, we add a suffix to it and check again if it's unique    	
@@ -629,6 +641,38 @@ class Urania {
             return false;
         }
         
+    }
+    
+    
+    private function albumNameExists($albumName) {
+    	//Create query
+    	$albums = $this->database->escape($this->db_table_albums);
+    	$albumName = $this->database->escape($albumName);
+    	
+    	$query = 
+    	"
+    	SELECT * 
+    	FROM  `$albums` 
+    	WHERE  `name` = '$albumName'
+    	LIMIT 0 , 30
+    	";
+    	
+    	//DEBUG
+    	if($this->debug) {
+    	    echo $query;
+    	}
+    	
+    	//Fetch query
+    	$result = $this->database->getQuery($query);
+    	
+    	//Check if there is a result (album)
+    	if(sizeof($result) > 0) {
+    	    return true;
+    	}
+    	else {
+    	    return false;
+    	}
+    	
     }
     
     
