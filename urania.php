@@ -19,6 +19,7 @@ class Urania {
     private $database;
     private $db_table_albums;
     private $db_table_images;
+    private $uploadDir;
     
     /**
     Constructor
@@ -30,6 +31,7 @@ class Urania {
         $this->db_table_albums = $db_table_albums;
         $this->db_table_images = $db_table_images;
         $this->database = new Database($db_host, $db_user, $db_password, $db_database);
+        $this->uploadDir = $uploadDir;
     }
     
     
@@ -403,6 +405,167 @@ class Urania {
             return false;
         }
         
+    }
+    
+    
+    
+    
+    /**
+    Upload image to the server and add the info to the database
+    
+    @param uploaded file
+    @param album id
+    
+    @pre Album with given albumId exists
+    */
+    public function uploadImage($imageFile, $albumId) {    	
+    	//move_uploaded_file($image['tmp_name'], $this->uploadDir . $image['name']);
+    	
+    	/* 
+    	Store
+    	- image name (without extension)
+    	- date
+    	- album name
+    	*/
+    	$imageName = $this->removeExtension($imageFile['name']);
+    	$imageDate = time();
+    	$albumName = $this->getAlbumName($albumId);
+    	
+    	//TODO Check if the file is unique
+    	//Get the filename of the image
+    	$fileName = $this->simplifyFileName($imageFile['name']);
+    	
+    	
+    	//Upload the file
+    	move_uploaded_file($imageFile['tmp_name'], $this->uploadDir . $fileName);
+    	
+    	
+    	//Insert the image in the database
+    	$image = new Image(0, $fileName, $imageName, $imageDate, $albumId);
+    	$this->addImage($image);
+    	
+    	
+    }
+    
+    
+    
+    
+    /**
+    Get the name of the album with the given id
+    
+    @param id
+    @return album  name
+    @pre albume exists
+    */
+    public function getAlbumName($id) {
+    	if(!$this->albumExists($id)) {
+    	    throw new Exception("There is no album with the id $id");
+    	}
+    	else {
+    	
+ 
+    	    //Create query
+    	    $albums = $this->database->escape($this->db_table_albums);
+    	    $id = $this->database->escape($id);
+    	    
+    	    $query = 
+    	    "
+    	    SELECT * 
+    	    FROM  `$albums` 
+    	    WHERE id = $id
+    	    ";
+    	    
+    	    //Debug
+    	    if($this->debug) {
+    	        echo $query;
+    	    }
+    	    
+    	    //Fetch query
+    	    $result = $this->database->getQuery($query);
+    	    $album = new Album($result[0]['id'], $result[0]['name'], $result[0]['date']);
+    	    
+    	    return $album->getName();
+    	    
+    	}
+    	
+    }
+    
+    
+    
+    /**
+    Remove the extention from a file name
+    
+    @param file name
+    @return string
+    */
+    private function removeExtension($fileName) {
+		$dotIndex = 0;
+		for ($i = strlen($fileName)-1; $i > 0; $i--) {
+			if($fileName[$i] == '.'){
+				$dotIndex = $i;
+				break;
+			}
+		}
+		return substr($fileName, 0, $dotIndex);
+    }
+    
+    
+    
+    /**
+    Simplify a file name to store the file on the disk
+    
+    @param file name
+    @return string
+    */
+    private function simplifyFileName($fileName) {
+    	$table = array(
+    	    'à' => 'a', 'á' => 'a', 'â' => 'a', 'ã' => 'a', 'ä' => 'a', 'å' => 'a',
+    	    'ă' => 'a', 'ā' => 'a', 'ą' => 'a', 'æ' => 'a', 'ǽ' => 'a', 'þ' => 'b',
+    	    'ç' => 'c', 'č' => 'c', 'ć' => 'c', 'ĉ' => 'c', 'ċ' => 'c', 'ż' => 'z',
+    	    'đ' => 'd', 'ď' => 'd', 'è' => 'e', 'é' => 'e', 'ê' => 'e', 'ë' => 'e',
+    	    'ĕ' => 'e', 'ē' => 'e', 'ę' => 'e', 'ė' => 'e', 'ĝ' => 'g', 'ğ' => 'g',
+    	    'ġ' => 'g', 'ģ' => 'g', 'ĥ' => 'h', 'ħ' => 'h', 'ì' => 'i', 'í' => 'i',
+    	    'î' => 'i', 'ï' => 'i', 'į' => 'i', 'ĩ' => 'i', 'ī' => 'i', 'ĭ' => 'i',
+    	    'ı' => 'i', 'ĵ' => 'j', 'ķ' => 'k', 'ĸ' => 'k', 'ĺ' => 'l', 'ļ' => 'l',
+    	    'ľ' => 'l', 'ŀ' => 'l', 'ł' => 'l', 'ñ' => 'n', 'ń' => 'n', 'ň' => 'n',
+    	    'ņ' => 'n', 'ŋ' => 'n', 'ŉ' => 'n', 'ò' => 'o', 'ó' => 'o', 'ô' => 'o',
+    	    'õ' => 'o', 'ö' => 'o', 'ø' => 'o', 'ō' => 'o', 'ŏ' => 'o', 'ő' => 'o',
+    	    'œ' => 'o', 'ð' => 'o', 'ŕ' => 'r', 'ř' => 'r', 'ŗ' => 'r', 'š' => 's',
+    	    'ŝ' => 's', 'ś' => 's', 'ş' => 's', 'ŧ' => 't', 'ţ' => 't', 'ť' => 't',
+    	    'ù' => 'u', 'ú' => 'u', 'û' => 'u', 'ü' => 'u', 'ũ' => 'u', 'ū' => 'u',
+    	    'ŭ' => 'u', 'ů' => 'u', 'ű' => 'u', 'ų' => 'u', 'ŵ' => 'w', 'ẁ' => 'w',
+    	    'ẃ' => 'w', 'ẅ' => 'w', 'ý' => 'y', 'ÿ' => 'y', 'ŷ' => 'y', 'ž' => 'z',
+    	    'ź' => 'z',
+    	);
+    	
+    	// We don't deal with uppercase characters
+    	$fileName = strtolower($fileName);
+    	
+    	// Strip accents
+    	$fileName = strtr($fileName, $table);
+    	
+    	// Non-alphanumericals characters become spaces
+    	$fileName = preg_replace('/[^a-z0-9.]/', ' ', $fileName);
+    	
+    	// Remove trailing and ending spaces
+    	$fileName = trim($fileName);
+    	
+    	// Spaces become -
+    	$fileName = preg_replace('#\s+#', '-', $fileName);
+    	
+    	return $fileName;
+    }
+    
+    
+    
+    /**
+    Check if the image with the given file name exists in the upload folder
+    
+    @param file name
+    @return true/false
+    */
+    private function fileNameExists($fileName) {
+    	return file_exists($this->uploadDir . $fileName);
     }
     
     

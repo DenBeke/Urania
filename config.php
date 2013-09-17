@@ -12,4 +12,8 @@ $db_table_images = 'Images';
 //User login
 $user_name = 'root';
 $user_password = 'root';
+
+
+//Upload directory with slash!!
+$uploadDir = 'upload/';
 ?>
