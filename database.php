@@ -88,6 +88,10 @@ class Database {
             $this->connect();
             $mysqlResult = $this->link->query($query);
             
+            if(!$mysqlResult) {
+            	throw new Exception('MySQL Error: ' . $this->link->error);
+            }
+            
             while($row = $mysqlResult->fetch_assoc()){
                  $result[] = $row;
             }
@@ -113,6 +117,11 @@ class Database {
         $this->connect();
         $this->link->query($query);
         $affectedRows = $this->link->affected_rows;
+        
+		if($affectedRows == -1) {
+			throw new Exception('MySQL Error: ' . $this->link->error);
+		}        
+     
         $this->disconnect();
         return $affectedRows;
         
