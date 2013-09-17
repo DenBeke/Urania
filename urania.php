@@ -431,10 +431,18 @@ class Urania {
     	$imageDate = time();
     	$albumName = $this->getAlbumName($albumId);
     	
-    	//TODO Check if the file is unique
     	//Get the filename of the image
     	$fileName = $this->simplifyFileName($imageFile['name']);
-    	
+
+		//Check if this file name is unique
+		//If it exists, we add a suffix to it and check again if it's unique    	
+    	if($this->fileNameExists($fileName)) {
+    		$suffix = 2;
+    		while ($this->fileNameExists($this->addSuffix($fileName, "-" . $suffix))) {
+    			$suffix++;
+    		}
+    		$fileName = $this->addSuffix($fileName, "-" . $suffix);
+    	}
     	
     	//Upload the file
     	move_uploaded_file($imageFile['tmp_name'], $this->uploadDir . $fileName);
@@ -457,7 +465,7 @@ class Urania {
     @return album  name
     @pre albume exists
     */
-    public function getAlbumName($id) {
+    private function getAlbumName($id) {
     	if(!$this->albumExists($id)) {
     	    throw new Exception("There is no album with the id $id");
     	}
@@ -567,6 +575,28 @@ class Urania {
     private function fileNameExists($fileName) {
     	return file_exists($this->uploadDir . $fileName);
     }
+    
+    
+    /**
+    Adds a suffix after the file name, but before the extension
+    
+    @param file name
+    @param suffix
+    @return string
+    */
+    private function addSuffix($fileName, $suffix) {
+    	$dotIndex = 0;
+    	for ($i = strlen($fileName)-1; $i > 0; $i--) {
+    		if($fileName[$i] == '.'){
+    			$dotIndex = $i;
+    			break;
+    		}
+    	}
+    	$baseName = substr($fileName, 0, $dotIndex);
+    	$extension = substr($fileName, $dotIndex);
+    	return $baseName . $suffix . $extension;
+    }
+    
     
     
     private function imageExists($id) {
