@@ -10,6 +10,9 @@ img {
 
 <?php 
 
+$imageHeight = 300;
+$imageWidth = 300;
+
 try {
 	$album = $u->getAlbum($id);
 	
@@ -19,7 +22,7 @@ try {
 		
 		<li>
 			<a href="<?php echo $album->getImage($i)->getFileName() ?>">
-				<img src="<?php echo $album->getImage($i)->getFileName() ?>" alt="<?php echo $album->getImage($i)->getName(); ?>" />
+				<img src="./core/timthumb.php?src=<?php echo $album->getImage($i)->getFileName() . "&h=$imageHeight&w=$imageWidth"; ?>" alt="<?php echo $album->getImage($i)->getName(); ?>" />
 			</a>
 		</li>
 		
