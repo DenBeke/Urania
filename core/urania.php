@@ -43,7 +43,6 @@ class Urania {
     */
     public function addAlbum($albumName) {
     
-    	//TODO check if name already exists!
     	if($this->albumNameExists($albumName)) {
     		throw new Exception("There is already an album with the name '$albumName'");
     	}
