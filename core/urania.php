@@ -350,6 +350,7 @@ class Urania {
             
             //Delete image file
             //TODO!!!
+            unlink($this->uploadDir . $image->getFileName());
             
             //Delete image in the database
             $query = "DELETE FROM `$images` WHERE `$images`.`id` = $id";
@@ -377,10 +378,22 @@ class Urania {
         }
         else {
             //TODO
-            //Find all images from the album
-            //Delete image files
-            //Delete images in the database
+            //Get the album
+            $album = $this->getAlbum($id);
+            
+            //Delete all images
+            for ($i = 0; $i < $album->getNumberOfImages(); $i++) {
+            	$this->deleteImage($album->getImage($i)->getId());
+            }
+           
             //Delete album in the database
+            $id = $this->database->escape($id);
+            $albums = $this->database->escape($this->db_table_albums);
+            $query = "DELETE FROM `$albums` WHERE `$albums`.`id` = $id";
+            $this->database->doQuery($query);
+            
+            //Delete album directory
+            rmdir($this->uploadDir . $this->simplifyFileName($album->getName()));
         }
     }
     

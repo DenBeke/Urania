@@ -3,6 +3,6 @@
 
 foreach ($u->getAllAlbums() as $album) {
 	$id = $album->getId();
-	echo "<a href=\"index.php?album=$id\">$album</a>";
+	echo "<a href=\"index.php?page=album&album=$id\">$album</a>";
 }
 ?>
