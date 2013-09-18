@@ -16,6 +16,7 @@ $imageWidth = 300;
 try {
 	$album = $u->getAlbum($id);
 	
+	
 	//Loop through all the images of the album
 	for ($i = 0; $i < $album->getNumberOfImages(); $i++) {
 		?>
@@ -28,6 +29,7 @@ try {
 		
 		<?php
 	}
+	
 	
 }
 catch (exception $exception) {

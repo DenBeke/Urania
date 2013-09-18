@@ -424,12 +424,13 @@ class Urania {
     /**
     Upload image to the server and add the info to the database
     
-    @param uploaded file
+    @param image name (with extension)
+    @param temp file location
     @param album id
     
     @pre Album with given albumId exists
     */
-    public function uploadImage($imageFile, $albumId) {    	
+    public function uploadImage($imageName, $tempFile, $albumId) {    	
     	//move_uploaded_file($image['tmp_name'], $this->uploadDir . $image['name']);
     	
     	/* 
@@ -438,12 +439,12 @@ class Urania {
     	- date
     	- album name
     	*/
-    	$imageName = $this->removeExtension($imageFile['name']);
+    	$imageTitle = $this->removeExtension($imageName);
     	$imageDate = time();
     	$albumName = $this->simplifyFileName($this->getAlbumName($albumId));
     	
     	//Get the filename of the image
-    	$fileName = $albumName . '/' . $this->simplifyFileName($imageFile['name']);
+    	$fileName = $albumName . '/' . $this->simplifyFileName($imageName);
 
 		//Check if this file name is unique
 		//If it exists, we add a suffix to it and check again if it's unique    	
@@ -456,11 +457,11 @@ class Urania {
     	}
     	
     	//Upload the file
-    	move_uploaded_file($imageFile['tmp_name'], $this->uploadDir . $fileName);
+    	move_uploaded_file($tempFile, $this->uploadDir . $fileName);
     	
     	
     	//Insert the image in the database
-    	$image = new Image(0, $fileName, $imageName, $imageDate, $albumId);
+    	$image = new Image(0, $fileName, $imageTitle, $imageDate, $albumId);
     	$this->addImage($image);
     	
     	
@@ -686,7 +687,6 @@ class Urania {
         SELECT * 
         FROM  `$images` 
         WHERE  `albumId` = $albumId
-        LIMIT 0 , 30
         ";
         
         //DEBUG
@@ -701,7 +701,7 @@ class Urania {
         $images = array();
         
         foreach ($result as $row => $image) {
-            $images[] = new Image($image['id'], $this->uploadDir . $result[0]['fileName'], $image['name'], $image['date'], $image['albumId']);
+            $images[] = new Image($image['id'], $this->uploadDir . $image['fileName'], $image['name'], $image['date'], $image['albumId']);
         }
         
         return $images;

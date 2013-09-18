@@ -7,6 +7,8 @@ Url: http://denbeke.be
 Date: September 2013
 */
 
+session_start();
+
 require_once('./core/urania.php');
 
 $u = new Urania('./core/config.php');
@@ -16,10 +18,10 @@ $u = new Urania('./core/config.php');
 $includePage = '';
 $pageName = '';
 $id = 0;
-if(isset($_GET['album'])) {
+if(isset($_GET['page'])) {
 	//Album
-	$includePage = './album.php';
-	$pageName = 'Album';
+	$includePage = $_GET['page'] . '.php';
+	$pageName = $_GET['page'];
 	$id = intval($_GET['album']);
 }
 else {
