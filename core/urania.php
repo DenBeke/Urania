@@ -233,7 +233,7 @@ class Urania {
             
             //Fetch query
             $result = $this->database->getQuery($query);
-            $image = new Image($result[0]['id'], $result[0]['fileName'], $result[0]['name'], $result[0]['date'], $result[0]['albumId']);
+            $image = new Image($result[0]['id'], $this->uploadDir . $result[0]['fileName'], $result[0]['name'], $result[0]['date'], $result[0]['albumId']);
             
             return $image;
         }
@@ -701,7 +701,7 @@ class Urania {
         $images = array();
         
         foreach ($result as $row => $image) {
-            $images[] = new Image($image['id'], $image['fileName'], $image['name'], $image['date'], $image['albumId']);
+            $images[] = new Image($image['id'], $this->uploadDir . $result[0]['fileName'], $image['name'], $image['date'], $image['albumId']);
         }
         
         return $images;
