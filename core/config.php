@@ -16,4 +16,6 @@ $user_password = 'root';
 
 //Upload directory with slash!!
 $uploadDir = 'upload/';
+
+$siteTitle = 'DenBeke Images';
 ?>

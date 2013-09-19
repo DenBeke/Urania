@@ -1,8 +1,30 @@
-<h1>Home</h1>
-<?php
-
-foreach ($u->getAllAlbums() as $album) {
-	$id = $album->getId();
-	echo "<a href=\"index.php?page=album&album=$id\">$album</a>";
-}
-?>
+<div id="home" class="page">
+	<ul>
+		<?php
+		
+		$imageHeight = 250;
+		$imageWidth = 250;
+		
+		
+		foreach ($u->getAllAlbums() as $album) {			
+			?>
+			<li>
+				<div style="background-image: url(./core/timthumb.php?src=<?php echo $album->getImage(0)->getFileName() . "&h=$imageHeight&w=$imageWidth"; ?>);">
+					<a href="index.php?page=album&album=<?php echo $album->getId(); ?>">
+						<h3>
+							<?php echo $album->getName(); ?>
+						</h3>
+					</a>
+				</div>
+				
+			</li>
+			<?php
+			
+		}
+		?>
+		
+		
+		
+		
+	</ul>
+</div>

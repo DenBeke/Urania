@@ -46,6 +46,27 @@ else {
 </head>
 <body>
 
+
+	<header>
+
+		<h1 id="siteTitle"><?php echo $u->getSiteTitle(); ?></h1>
+		<nav id="albumNav">
+			<ul>
+				<?php
+				
+				foreach ($u->getAllAlbums() as $album) {
+					$navId = $album->getId();
+					$name = $album->getName();
+					echo "<li><a href=\"index.php?page=album&album=$navId\">$name</a></li>";
+				}
+				?>
+			</ul>
+		</nav>
+	
+	</header>
+	
+	
+
 	<?php 
 	
 	include($includePage);

@@ -20,6 +20,7 @@ class Urania {
     private $db_table_albums;
     private $db_table_images;
     private $uploadDir;
+    private $siteTitle;
     
     /**
     Constructor
@@ -32,8 +33,18 @@ class Urania {
         $this->db_table_images = $db_table_images;
         $this->database = new Database($db_host, $db_user, $db_password, $db_database);
         $this->uploadDir = $uploadDir;
+        $this->siteTitle = $siteTitle;
     }
     
+    
+    /**
+    Get the title of the site
+    
+    @return site title
+    */
+    public function getSiteTitle() {
+    	return $this->siteTitle;
+    }
     
     
     /**
@@ -119,7 +130,7 @@ class Urania {
     /**
     Get a list of all albums
     
-    @return albums (without images included)
+    @return albums (with only the latest image included)
     */
     public function getAllAlbums() {
         
@@ -144,6 +155,9 @@ class Urania {
         
         foreach ($result as $row => $album) {
             $albums[] = new Album($album['id'], $album['name'], $album['date']);
+        }
+        foreach ($albums as $album) {
+        	$album->addImage($this->getLatestImage($album->getId()));
         }
         
         return $albums;
@@ -304,7 +318,8 @@ class Urania {
             if($this->debug) {
                 echo "$affectedRows affected rows with query<br>$query";
             }
-            //TODO not yet tested
+            //TODO change directory name!
+            
         }
     }
     
@@ -696,6 +711,7 @@ class Urania {
         SELECT * 
         FROM  `$images` 
         WHERE  `albumId` = $albumId
+        ORDER BY  `$images`.`date` DESC
         ";
         
         //DEBUG
@@ -714,6 +730,48 @@ class Urania {
         }
         
         return $images;
+    }
+    
+    
+    
+    /**
+    Get the latest image from the album with the given id
+    
+    @param album id
+    @return image
+    
+    @pre album exists
+    */
+    private function getLatestImage($id) {
+        if(!$this->albumExists($id)) {
+            throw new Exception("There is no album with the id $id");
+        }
+        else {
+            
+            //Create query
+            $images = $this->database->escape($this->db_table_images);
+            $id = $this->database->escape($id);
+            
+            $query = 
+            "
+            SELECT * 
+            FROM  `$images` 
+            WHERE albumId = $id
+            ORDER BY  `$images`.`date` DESC 
+            LIMIT 0,1
+            ";
+            
+            //Debug
+            if($this->debug) {
+                echo $query;
+            }
+            
+            //Fetch query
+            $result = $this->database->getQuery($query);
+            $image = new Image($result[0]['id'], $this->uploadDir . $result[0]['fileName'], $result[0]['name'], $result[0]['date'], $result[0]['albumId']);
+            
+            return $image;
+        }
     }
 }
 

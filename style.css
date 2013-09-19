@@ -1,0 +1,169 @@
+/*
+Style for Urania Image Gallery
+
+Author: Mathias Beke
+Url: http://denbeke.be
+Date: September 2013
+*/
+
+
+@import url(http://fonts.googleapis.com/css?family=Bad+Script);
+
+
+body {
+
+	background: -webkit-radial-gradient(center, ellipse, rgba(247,251,252,1) 0%, rgb(230, 230, 230) 52.7%, rgb(167, 167, 167) 100%) fixed rgb(247,251,252);
+	background: -moz-radial-gradient(center, ellipse, rgba(247,251,252,1) 0%, rgb(230, 230, 230) 52.7%, rgb(167, 167, 167) 100%) fixed rgb(247,251,252);
+	background: -ms-radial-gradient(center, ellipse, rgba(247,251,252,1) 0%, rgb(230, 230, 230) 52.7%, rgb(167, 167, 167) 100%) fixed rgb(247,251,252);
+	background: -o-radial-gradient(center, ellipse, rgba(247,251,252,1) 0%, rgb(230, 230, 230) 52.7%, rgb(167, 167, 167) 100%) fixed rgb(247,251,252);
+	background: radial-gradient(ellipse at center, rgba(247,251,252,1) 0%, rgb(230, 230, 230) 52.7%, rgb(167, 167, 167) 100%) fixed rgb(247,251,252);
+}
+
+
+.page {
+	width: 900px;
+	margin: auto;
+}
+
+
+
+/* Header */
+
+
+header {
+	background-image: -webkit-radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.64) 0%, rgba(255, 255, 255, 0) 71.5%);
+	background-image: -moz-radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.64) 0%, rgba(255, 255, 255, 0) 71.5%);
+	background-image: -ms-radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.64) 0%, rgba(255, 255, 255, 0) 71.5%);
+	background-image: radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.64) 0%, rgba(255, 255, 255, 0) 71.5%);
+	
+	padding-bottom: 30px;
+	max-width: 1200px;
+	margin: auto;
+}
+
+h1#siteTitle {
+	text-align: center;
+	font: normal bold 3.5em 'Bad Script', cursive;
+	color: #6e6e6e;
+	text-shadow: 0 0 5px #fff;
+	margin-bottom: 0;
+	
+}
+
+#albumNav ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+	max-width: 900px;
+	margin: auto;
+}
+
+#albumNav li {
+	display: inline-block;
+	padding: 5px;
+	
+	background-color: #fff;
+	
+	margin: 0 20px;
+	margin-bottom: 20px;
+	border-radius: 5px;
+	box-shadow: 1px 1px 5px #aaa;
+}
+
+#albumNav li:hover a {
+	//color: #4bb6d6;
+	
+	-webkit-transition: all 0.5s;
+	color: #000000;
+}
+
+#albumNav a {
+	color: #6e6e6e;
+	text-decoration: none;
+	font-family: 'Bad Script';
+	font-variant: small-caps;
+	//font-weight: bold;
+}
+
+
+
+/* Home */
+
+#home li div {
+	width: 250px;
+	height: 250px;
+}
+
+#home li a {
+	width: 250px;
+	height: 250px;
+	text-decoration: none;
+	color: #6e6e6e;
+	text-shadow: 0 0 5px #fff;
+	font-size: 1.5em !important;
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+	background-image: -webkit-radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.23) 0%, rgba(255, 255, 255, 0.77) 100%);
+	background-image: -moz-radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.23) 0%, rgba(255, 255, 255, 0.77) 100%);
+	background-image: -ms-radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.23) 0%, rgba(255, 255, 255, 0.77) 100%);
+	background-image: radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.23) 0%, rgba(255, 255, 255, 0.77) 100%);
+}
+
+#home li a:hover {
+	-webkit-transition: all 0.5s;
+	background-image: -webkit-radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.42) 100%);
+	background-image: -moz-radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.42) 100%);
+	background-image: -ms-radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.42) 100%);
+	background-image: radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.42) 100%);
+}
+
+#home li h3 {
+	margin: 0;
+	padding: 0;
+	font-family: 'Bad Script';
+	background-image: -webkit-radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.76) 46.3%, rgba(255, 255, 255, 0) 70.2%);
+	background-image: -moz-radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.76) 46.3%, rgba(255, 255, 255, 0) 70.2%);
+	background-image: -ms-radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.76) 46.3%, rgba(255, 255, 255, 0) 70.2%);
+	background-image: radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.76) 46.3%, rgba(255, 255, 255, 0) 70.2%);
+}
+
+
+
+/* Album */
+
+#album h1 {
+	text-align: center;
+	font: normal bold 3em 'Bad Script', cursive;
+	color: #6e6e6e;
+	text-shadow: 0 0 2px #fff;
+	margin-bottom: 0;
+}
+
+#home ul,
+#album ul {
+	padding: 0;
+	margin: 0;
+	overflow: auto;
+	margin: auto;
+	list-style: none;
+}
+
+#home a,
+#album a {
+	display: block;
+	margin: 0;
+	padding: 0;
+	font-size: 0;
+}
+
+#home ul li,
+#album ul li {
+	float: left;
+	margin: 20px;
+	padding: 5px;
+	background-color: #fff;
+	border-radius: 5px;
+	box-shadow: 1px 1px 7px #777;
+}
