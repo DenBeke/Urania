@@ -1,21 +1,18 @@
-<h1>Album</h1>
+<div class="page" id="album">
 
-<style>
 
-img {
-	max-width: 300px;
-}
-
-</style>
 
 <?php 
 
-$imageHeight = 300;
-$imageWidth = 300;
+$imageHeight = 250;
+$imageWidth = 250;
 
 try {
 	$album = $u->getAlbum($id);
+	$albumName = $album->getName();
 	
+	echo '<ul>';
+	echo "<h1>$albumName</h1>";
 	
 	//Loop through all the images of the album
 	for ($i = 0; $i < $album->getNumberOfImages(); $i++) {
@@ -31,6 +28,9 @@ try {
 	}
 	
 	
+	echo "</ul>";
+	
+	
 }
 catch (exception $exception) {
 	?>
@@ -41,3 +41,5 @@ catch (exception $exception) {
  
 
 ?>
+
+</div>

@@ -15,7 +15,7 @@ require_once(dirname(__FILE__).'/database.php');
 
 class Urania {
     
-    private $debug = true;
+    private $debug = false;
     private $database;
     private $db_table_albums;
     private $db_table_images;
