@@ -28,3 +28,8 @@ else {
 }
 
 ?>
+
+
+<p>
+<a href="index.php?page=logout">Logout</a>
+</p>

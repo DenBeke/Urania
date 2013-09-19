@@ -18,7 +18,7 @@ $u = new Urania('./core/config.php');
 $includePage = '';
 $pageName = '';
 $id = 0;
-if(isset($_GET['page'])) {
+if(isset($_GET['page']) and $_GET['page'] != '') {
 	//Album
 	$includePage = $_GET['page'] . '.php';
 	$pageName = $_GET['page'];

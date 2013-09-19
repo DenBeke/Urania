@@ -1,7 +1,7 @@
 <?php
 
 if(isset($_POST['albumName'])) {
-	$u->addAlbum($_POST['albumName']);
+	$u->addAlbum(stripslashes($_POST['albumName']));
 }
 elseif (isset($_POST['albumId'])) {
 	
@@ -13,20 +13,24 @@ elseif (isset($_POST['albumId'])) {
 	}
 	//print_r($_FILES['file']['tmp_name']);
 	
-	//TODO
-	//Check if there is at least ONE file
 	
 }
 elseif (isset($_POST['deleteAlbum'])) {
 	echo "Deleting album width id " . $_POST['deleteAlbum'];
 	$u->deleteAlbum(intval($_POST['deleteAlbum']));
 }
+elseif (isset($_POST['changeName'])) {
+	//Change the name of the image
+
+	$u->changeAlbumName(intval($_POST['changeAlbumId']), stripslashes($_POST['changeName']));
+}
+
 
 
 
 ?>
 
-<h3>Albums</h3>
+<h3><a href="index.php?page=admin">Albums</a></h3>
 <table>
 
 	<tbody>
@@ -51,6 +55,13 @@ elseif (isset($_POST['deleteAlbum'])) {
 						<input type="submit" value="Delete">
 					</form>
 				</td>
+				<td>
+					<form method="post" action="index.php?page=admin">
+						<input type="hidden" name="changeAlbumId" value="<?php echo $album->getId(); ?>">
+						<input type="text" name="changeName" value="" / required>
+						<input type="submit" value="Change name">
+					</form>
+				</td>
 			</tr>
 			<?php
 			//TODO DELETE ALBUM  button
@@ -65,14 +76,14 @@ elseif (isset($_POST['deleteAlbum'])) {
 
 
 <form name="input" action="index.php?page=admin" method="post">
-New Album: <input type="text" name="albumName">
+New Album: <input type="text" name="albumName" required>
 <input type="submit" value="Add">
 </form>
 
 
 <form enctype="multipart/form-data" name="upload" action="index.php?page=admin" method="post">
 	<p>
-		Upload Photos <input type="file" name="file[]" multiple>
+		Upload Photos <input type="file" name="file[]" multiple required>
 	</p>
 	<p>
 	<select name="albumId">

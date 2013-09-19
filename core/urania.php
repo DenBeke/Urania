@@ -242,30 +242,27 @@ class Urania {
     
     
     /**
-    Change update the information of the given image in the database
+    Change the name of the image in the database
     
-    @param image
+    @param image id
+    @param new image name
     @pre image exists
     */
-    public function changeImage($image) {
-        if(!$this->imageExists($image->getId())) {
+    public function changeImageName($id, $imageName) {
+        if(!$this->imageExists($id)) {
             throw new Exception("There is no image with the id $id");
         }
         else {
             //Create query from image
-            $id = $this->database->escape($image->getId());
-            $fileName = $this->database->escape($image->getfileName());
-            $name = $this->database->escape($image->getName());
-            $date = $this->database->escape($image->getDate());
-            $albumId = $this->database->escape($image->getAlbumId());
+            $id = $this->database->escape($id);
+            $name = $this->database->escape($imageName);
             $images = $this->database->escape($this->db_table_images);
             
             $query = 
             "
-            UPDATE  `$images` SET  `fileName` = '$fileName',
-            `name` =  '$name',
-            `date` =  '$date',
-            `albumId` =  '$albumId' WHERE  `$images`.`id` = $id;
+            UPDATE  `$images` SET
+            `name` =  '$name'
+            WHERE `id` = $id
             ";
             
             $affectedRows = $this->database->doQuery($query);
@@ -285,21 +282,20 @@ class Urania {
     @param album
     @pre album exists
     */
-    public function changeAlbum($album) {
-        if(!$this->albumExists($album->getId())) {
+    public function changeAlbumName($id, $albumName) {
+        if(!$this->albumExists($id)) {
             throw new Exception("There is no album with the id $id");
         }
         else {
             //Create query from image
-            $id = $this->database->escape($album->getId());
-            $name = $this->database->escape($album->getName());
-            $date = $this->database->escape($album->getDate());
+            $id = $this->database->escape($id);
+            $name = $this->database->escape($albumName);
             $albums = $this->database->escape($this->db_table_albums);
             
             $query = 
             "
-            UPDATE  `$albums` SET `name` =  '$name',
-            `date` =  '$date' WHERE  `$albums`.`id` = $id;
+            UPDATE  `$albums` SET `name` =  '$name'
+            WHERE  `$albums`.`id` = $id;
             ";
             
             $affectedRows = $this->database->doQuery($query);
