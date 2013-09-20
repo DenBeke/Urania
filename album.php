@@ -19,7 +19,7 @@ try {
 		?>
 		
 		<li>
-			<a href="<?php echo $album->getImage($i)->getFileName() ?>">
+			<a href="<?php echo $album->getImage($i)->getFileName() ?>" class="lightbox">
 				<img src="./core/timthumb.php?src=<?php echo $album->getImage($i)->getFileName() . "&h=$imageHeight&w=$imageWidth"; ?>" alt="<?php echo $album->getImage($i)->getName(); ?>" />
 			</a>
 		</li>

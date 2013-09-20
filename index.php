@@ -43,10 +43,17 @@ else {
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
+	<script src="jquery.js" type="text/javascript"></script>
+	
+	<script src="lightbox.js" type="text/javascript"></script>
+	
 	<link rel="stylesheet" href="style.css" type="text/css" />
 	
 </head>
 <body>
+
+
+	
 
 
 	<header>
@@ -84,6 +91,13 @@ else {
 		</p>
 	</footer>
 	
+	
+	<!--Lightbox elements-->
+	<div id="overlay">
+		<div id="lightboxImage">
+			<img src="" />
+		</div>
+	</div>
 	
 		
 </body>
