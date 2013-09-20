@@ -50,7 +50,7 @@ $album = $u->getAlbum($albumId);
 					<?php echo $album->getImage($i)->getName(); ?>
 				</td>
 				
-				<td>
+				<td class="date">
 					<?php echo date('d-m-Y',$album->getImage($i)->getDate()); ?>
 				</td>
 				

@@ -46,7 +46,7 @@ elseif (isset($_POST['changeName'])) {
 				<td>
 					<a href="index.php?page=admin&album=<?php echo $id; ?>"><?php echo $album->getName(); ?></a>
 				</td>
-				<td>
+				<td class="date">
 					<?php echo date('d-m-Y', $album->getDate()); ?>
 				</td>
 				<td>

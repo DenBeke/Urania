@@ -295,6 +295,7 @@ class Urania {
     
     @param album
     @pre album exists
+    @pre there is no album with the new name
     */
     public function changeAlbumName($id, $albumName) {
         if(!$this->albumExists($id)) {
@@ -319,7 +320,7 @@ class Urania {
                 echo "$affectedRows affected rows with query<br>$query";
             }
             //TODO change directory name!
-            
+            //TODO check if there is now album with the given new name
         }
     }
     

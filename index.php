@@ -41,6 +41,8 @@ else {
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
 	<link rel="stylesheet" href="style.css" type="text/css" />
 	
 </head>
@@ -49,7 +51,8 @@ else {
 
 	<header>
 
-		<h1 id="siteTitle"><?php echo $u->getSiteTitle(); ?></h1>
+		<h1 id="siteTitle"><a href="index.php?page=home"><?php echo $u->getSiteTitle(); ?></a></h1>
+		
 		<nav id="albumNav">
 			<ul>
 				<?php
@@ -72,6 +75,16 @@ else {
 	include($includePage);
 	
 	?>
+	
+	
+	
+	<footer>
+		<p>
+			&copy; Chris L'hoëst - Website by <a href="http://denbeke.be">Mathias Beke</a>
+		</p>
+	</footer>
+	
+	
 		
 </body>
 </html>

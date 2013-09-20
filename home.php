@@ -2,8 +2,8 @@
 	<ul>
 		<?php
 		
-		$imageHeight = 250;
-		$imageWidth = 250;
+		$imageHeight = 240;
+		$imageWidth = 240;
 		
 		
 		foreach ($u->getAllAlbums() as $album) {			
