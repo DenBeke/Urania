@@ -1,3 +1,5 @@
+<h1 id="loginTitle">Login</h1>
+
 <div id="login" class="page">
 <?php 
 

@@ -1,4 +1,8 @@
+<h1 id="adminTitle">Admin</h1>
+
 <div id="admin" class="page">
+
+	
 	<?php 
 	
 	
@@ -16,8 +20,6 @@
 	
 	
 	?>
-	
-	<h1>Admin</h1>
 	
 	<?php
 	

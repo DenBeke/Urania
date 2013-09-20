@@ -1,4 +1,9 @@
 <div id="home" class="page">
+	
+	
+	<h1 id="homeTitle">Albums</h1>
+	
+	
 	<ul>
 		<?php
 		
