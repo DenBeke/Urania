@@ -169,30 +169,47 @@ h1#siteTitle a:hover {
 	text-shadow: 0 0 5px #fff;
 	font-size: 1.5em !important;
 	display: table-cell;
-	vertical-align: middle;
+	vertical-align: bottom;
 	text-align: center;
-	background-image: -webkit-radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.23) 0%, rgba(255, 255, 255, 0.77) 100%);
-	background-image: -moz-radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.23) 0%, rgba(255, 255, 255, 0.77) 100%);
-	background-image: -ms-radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.23) 0%, rgba(255, 255, 255, 0.77) 100%);
-	background-image: radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.23) 0%, rgba(255, 255, 255, 0.77) 100%);
+	
+	/*
+	background-image: -webkit-radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0) 69.3%, rgba(255, 255, 255, 0.77) 100%);
+	background-image: -moz-radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0) 69.3%, rgba(255, 255, 255, 0.77) 100%);
+	background-image: -ms-radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0) 69.3%, rgba(255, 255, 255, 0.77) 100%);
+	background-image: radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0) 69.3%, rgba(255, 255, 255, 0.77) 100%);
+	*/
 }
 
 #home li a:hover {
 	-webkit-transition: all 0.5s;
+	/*
 	background-image: -webkit-radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.42) 100%);
 	background-image: -moz-radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.42) 100%);
 	background-image: -ms-radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.42) 100%);
 	background-image: radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.42) 100%);
+	*/
+	
+	background: transparent;
+	
 }
 
 #home li h3 {
 	margin: 0;
 	padding: 0;
+	padding-top: 30px;
 	font-family: 'Bad Script';
+	
+	/*
 	background-image: -webkit-radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.76) 46.3%, rgba(255, 255, 255, 0) 70.2%);
 	background-image: -moz-radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.76) 46.3%, rgba(255, 255, 255, 0) 70.2%);
 	background-image: -ms-radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.76) 46.3%, rgba(255, 255, 255, 0) 70.2%);
 	background-image: radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.76) 46.3%, rgba(255, 255, 255, 0) 70.2%);
+	*/
+	
+background-image: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0.83) 0%, rgba(255, 255, 255, 0.66) 60.7%, rgba(255, 255, 255, 0) 100%);
+	background-image: -moz-linear-gradient(bottom, rgba(255, 255, 255, 0.83) 0%, rgba(255, 255, 255, 0.66) 60.7%, rgba(255, 255, 255, 0) 100%);
+	background-image: -ms-linear-gradient(bottom, rgba(255, 255, 255, 0.83) 0%, rgba(255, 255, 255, 0.66) 60.7%, rgba(255, 255, 255, 0) 100%);
+	background-image: linear-gradient(to top, rgba(255, 255, 255, 0.83) 0%, rgba(255, 255, 255, 0.66) 60.7%, rgba(255, 255, 255, 0) 100%);
 }
 
 
