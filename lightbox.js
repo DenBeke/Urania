@@ -38,7 +38,7 @@ $(document).ready(function() {
 		    $('#overlay').fadeIn();
 		    $('#overlay').css('display', 'table-cell');
 		    
-		    $('#overlay img').attr("src", pageurl);
+		    $('#overlay img#image').attr("src", pageurl);
 		    
 		    
 		    
@@ -49,26 +49,37 @@ $(document).ready(function() {
 		    
 		    
 		    //TODO image loader or other stuff
-		    //TODO position fixed
+		    //TODO sometime last images appears when clicken other
+		    //TODO close button
 		  }
 	  });
 	  
 	  
 	$('#overlay').click(function() {
-		$('#overlay').fadeOut();	
+		$('#overlay').fadeOut(0);	
+		$('#overlay img#image').fadeOut(0);
+		$('#overlay #lightboxImage').addClass('loader');
+		$('#overlay #lightboxImage.loader').css('margin-top', -16);
 	}
 	);
 	
 	$('#lightboxImage img').load(function(){
 	    if($(this).height() > 100) {
-	        //Margin image div
+	        //Margin image div     
+	        //$('#overlay img#ajax').fadeOut(0);
+	        
+	        $('#overlay #lightboxImage').removeClass('loader');
+	        
+	        
 	        var height;
 	        var totalHeight = $(window).height();
 	        
 	        height = 610;
-	        height = $('#lightboxImage').outerHeight();
+	        height = $('#lightboxImage img#image').outerHeight() + 10;
 	        
 	        $('#overlay #lightboxImage').css('margin-top', (totalHeight-height)/2);
+	        
+	        $('#overlay img#image').fadeIn();
 	    }
 	});
 

@@ -437,6 +437,7 @@ footer a:hover {
 	display: none;
 	text-align: center;
 	vertical-align: middle;
+	font-size: 0;
 }
 
 #lightboxImage {
@@ -446,7 +447,32 @@ footer a:hover {
 	padding: 5px;
 }
 
+#lightboxImage.loader {
+	position: absolute;
+	display: table-cell;
+	vertical-align: middle;
+	width: 32px;
+	height: 32px;
+	left: 50%;
+	top: 50%;
+	margin-left: -16px;
+	margin-top: -16px;
+}
+
+
+#lightboxImage #ajax {
+	display: none;
+}
+
+#lightboxImage.loader #ajax {
+	display: block;
+}
+
 #lightboxImage img {
 	max-width: 800px;
 	max-height: 600px;
+}
+
+#lightboxImage img#image {
+	display: none;
 }

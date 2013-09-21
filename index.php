@@ -53,8 +53,6 @@ else {
 <body>
 
 
-	
-
 
 	<header>
 
@@ -94,8 +92,9 @@ else {
 	
 	<!--Lightbox elements-->
 	<div id="overlay">
-		<div id="lightboxImage">
-			<img src="" />
+		<div id="lightboxImage" class="loader">
+			<img id="ajax" src="ajax-loader.gif" />
+			<img id="image" src="ajax-loader.gif" />
 		</div>
 	</div>
 	
