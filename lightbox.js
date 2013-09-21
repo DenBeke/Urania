@@ -58,6 +58,7 @@ $(document).ready(function() {
 	$('#overlay').click(function() {
 		$('#overlay').fadeOut(0);	
 		$('#overlay img#image').fadeOut(0);
+		$('#overlay img#image').attr("src", '');
 		$('#overlay #lightboxImage').addClass('loader');
 		$('#overlay #lightboxImage.loader').css('margin-top', -16);
 	}
