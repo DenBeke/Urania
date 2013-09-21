@@ -18,16 +18,32 @@ $u = new Urania('./core/config.php');
 $includePage = '';
 $pageName = '';
 $id = 0;
-if(isset($_GET['page']) and $_GET['page'] != '') {
+if(isset($_GET['page']) and htmlspecialchars($_GET['page']) != '') {
 	//Album
-	$includePage = $_GET['page'] . '.php';
-	$pageName = $_GET['page'];
-	$id = intval($_GET['album']);
+	$includePage = htmlspecialchars($_GET['page']) . '.php';
+	
+	$pageName = htmlspecialchars($_GET['page']);
+	
+	$id = intval(htmlspecialchars($_GET['album']));
+	
+	if($pageName == 'album') {
+		$pageName = $u->getAlbum($id)->getName() . ' - ' . $u->getSiteTitle();
+	}
+	elseif($pageName == 'home') {
+		$pageName = $u->getSiteTitle();
+	}
+	else {
+		$pageName = ucfirst($pageName) . ' - ' . $u->getSiteTitle();
+	}
 }
 else {
 	$includePage = './home.php';
-	$pageName = 'Home';
+	$pageName = $u->getSiteTitle();
 }
+
+
+//Limit include page to everything but letters, numbers and a dot
+$includePage = preg_replace('/[^a-z0-9.]/', '', $includePage);
 
 
 ?>

@@ -17,5 +17,7 @@ $user_password = 'root';
 //Upload directory with slash!!
 $uploadDir = 'upload/';
 
+//General Site Information
 $siteTitle = 'DenBeke Images';
+$siteUrl = 'http://localhost:8888/Urania/'; //With slahs!!
 ?>
