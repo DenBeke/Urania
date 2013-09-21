@@ -47,11 +47,7 @@ $(document).ready(function() {
 		    //stop refreshing to the page given in
 		    return false;
 		    
-		    
-		    //TODO image loader or other stuff
-		    //TODO sometime last images appears when clicken other
-		    //TODO close button
-		  }
+		    }
 	  });
 	  
 	  
@@ -82,6 +78,11 @@ $(document).ready(function() {
 	        
 	        $('#overlay img#image').fadeIn();
 	    }
+	});
+	
+	
+	$('#lightboxImage img#image').click(function(){
+		window.location = $(this).attr('src');
 	});
 
 });

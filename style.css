@@ -18,12 +18,15 @@ html {
 body {
 	margin: 0;
 	padding: 0;
+	background-color: #dbdcdb;
 	background: -webkit-radial-gradient(center, ellipse, rgba(247,251,252,1) 0%, rgb(230, 230, 230) 52.7%, rgb(167, 167, 167) 100%) fixed rgb(247,251,252);
 	background: -moz-radial-gradient(center, ellipse, rgba(247,251,252,1) 0%, rgb(230, 230, 230) 52.7%, rgb(167, 167, 167) 100%) fixed rgb(247,251,252);
 	background: -ms-radial-gradient(center, ellipse, rgba(247,251,252,1) 0%, rgb(230, 230, 230) 52.7%, rgb(167, 167, 167) 100%) fixed rgb(247,251,252);
 	background: -o-radial-gradient(center, ellipse, rgba(247,251,252,1) 0%, rgb(230, 230, 230) 52.7%, rgb(167, 167, 167) 100%) fixed rgb(247,251,252);
 	background: radial-gradient(ellipse at center, rgba(247,251,252,1) 0%, rgb(230, 230, 230) 52.7%, rgb(167, 167, 167) 100%) fixed rgb(247,251,252);
 }
+
+
 
 
 .page {
@@ -247,6 +250,8 @@ background-image: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0.83) 0%, 
 #album ul li {
 	float: left;
 	margin: 25px;
+	width: 240px;
+	height: 240px;
 	padding: 5px;
 	background-color: #fff;
 	border-radius: 5px;
@@ -462,6 +467,7 @@ footer a:hover {
 	background-color: #fff;
 	border-radius: 5px;
 	padding: 5px;
+	position: relative;
 }
 
 #lightboxImage.loader {
@@ -491,5 +497,30 @@ footer a:hover {
 }
 
 #lightboxImage img#image {
+	display: none;
+	cursor: pointer;
+}
+
+#close {
+	color: #fff;
+	width: 25px;
+	height: 25px;
+	position: absolute;
+	background-color: #000;
+	top: -12px;
+	right: -12px;
+	border: 2px solid #fff;
+	box-shadow: 1px 1px 7px #777;
+	border-radius: 50%;
+	padding: 0;
+	font-size: 20px;
+	font-family: Helvetica;
+	cursor: pointer;
+	background-image: url('close.png');
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+#lightboxImage.loader #close {
 	display: none;
 }
