@@ -37,7 +37,7 @@ if(isset($_GET['page']) and htmlspecialchars($_GET['page']) != '') {
 	}
 }
 else {
-	$includePage = './home.php';
+	$includePage = 'home.php';
 	$pageName = $u->getSiteTitle();
 }
 
