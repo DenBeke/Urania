@@ -61,22 +61,16 @@ $includePage = preg_replace('/[^a-z0-9.]/', '', $includePage);
 	
 	<meta http-equiv="X-UA-Compatible" content="IE=8" />
 	
-	<script src="jquery.js" type="text/javascript"></script>
+	<script src="js/jquery.js" type="text/javascript"></script>
 	
-	<script src="lightbox.js" type="text/javascript"></script>
+	<script src="js/lightbox.js" type="text/javascript"></script>
+	
+	<script src="js/browsercheck.js" type="text/javascript"></script>
+	
 	
 	<link rel="stylesheet" href="style.css" type="text/css" />
-	
-	<script type="text/javascript"> 
-	var $buoop = {vs:{i:8,f:15,o:0,s:4,n:9}}
-	$buoop.ol = window.onload; 
-	window.onload=function(){ 
-	 try {if ($buoop.ol) $buoop.ol();}catch (e) {} 
-	 var e = document.createElement("script"); 
-	 e.setAttribute("type", "text/javascript"); 
-	 e.setAttribute("src", "http://browser-update.org/update.js"); 
-	 document.body.appendChild(e); 
-	} 
+	 
+	 
 	</script>
 	
 </head>
@@ -107,7 +101,7 @@ $includePage = preg_replace('/[^a-z0-9.]/', '', $includePage);
 
 	<?php 
 	
-	include($includePage);
+	include('./pages/' . $includePage);
 	
 	?>
 	
