@@ -1,12 +1,9 @@
 <?php
 
 if (isset($_POST['deleteImage'])) {
-	echo "<b>Deleting image width id " . $_POST['deleteImage'] . '</b>';
 	$u->deleteImage(intval($_POST['deleteImage']));
 }
 elseif (isset($_POST['albumId'])) {
-	
-	echo "Upload photos";
 	for ($i = 0; $i <  count($_FILES['file']['name']); $i++) {
 		$u->uploadImage($_FILES['file']['name'][$i], $_FILES['file']['tmp_name'][$i], $_POST['albumId']);
 		echo $_FILES['file']['name'][$i];
@@ -17,7 +14,6 @@ elseif (isset($_POST['albumId'])) {
 }
 elseif (isset($_POST['changeName'])) {
 	//Change the name of the image
-
 	$u->changeImageName(intval($_POST['changeImage']), stripslashes($_POST['changeName']));
 }
 
