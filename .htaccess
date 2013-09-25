@@ -1,0 +1,29 @@
+Allow from All
+RewriteEngine on
+
+SetEnv DEVELOPMENT_ENVIRONMENT true
+
+#Exclude all directories
+RewriteCond %{REQUEST_FILENAME} -f  [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule .*  - [L]
+
+#One url parameter
+RewriteRule ^([a-zA-Z0-9_]*)/$ index.php?page=$1
+RewriteRule ^([a-zA-Z0-9_]*)$ index.php?page=$1
+
+#Two url parameters
+RewriteRule ^([a-zA-Z0-9_]*)/([a-zA-Z0-9_]*)$ index.php?page=$1&album=$2
+RewriteRule ^([a-zA-Z0-9_]*)/([a-zA-Z0-9_]*)/$ index.php?page=$1&album=$2
+
+#Three url parameters
+RewriteRule ^([a-zA-Z0-9_]*)/([a-zA-Z0-9_]*)/([a-zA-Z0-9_]*)$ index.php?page=$1&album=$2
+RewriteRule ^([a-zA-Z0-9_]*)/([a-zA-Z0-9_]*)/([a-zA-Z0-9_]*)/$ index.php?page=$1&album=$2
+
+#Four url parameters
+#RewriteRule ^([a-zA-Z0-9_]*)/([a-zA-Z0-9_]*)/([a-zA-Z0-9_]*)/([a-zA-Z0-9_\-]*)$ index.php?language=$1&page=$2&id=$3
+#RewriteRule ^([a-zA-Z0-9_]*)/([a-zA-Z0-9_]*)/([a-zA-Z0-9_]*)/([a-zA-Z0-9_\-]*)/$ index.php?language=$1&page=$2&id=$3
+
+#Five url parameters
+#RewriteRule ^([a-zA-Z0-9_]*)/([a-zA-Z0-9_]*)/([a-zA-Z0-9_]*)/([a-zA-Z0-9_]*)/([a-zA-Z0-9_]*)$ index.php?language=$1&page=$2&feed=$3&year=$4&month=$5
+#RewriteRule ^([a-zA-Z0-9_]*)/([a-zA-Z0-9_]*)/([a-zA-Z0-9_]*)/([a-zA-Z0-9_]*)/([a-zA-Z0-9_]*)/$ index.php?language=$1&page=$2&feed=$3&year=$4&month=$5
