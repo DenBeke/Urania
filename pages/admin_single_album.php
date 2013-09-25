@@ -27,7 +27,7 @@ $album = $u->getAlbum($albumId);
 
 ?>
 
-<h3><a href="index.php?page=admin">Albums</a> &gt; <a href="index.php?page=admin&album=<?php echo $album->getId(); ?>"><?php echo $album->getName(); ?></a></h3>
+<h3><a href="<?php echo $u->getSiteUrl(); ?>index.php?page=admin">Albums</a> &gt; <a href="<?php echo $u->getSiteUrl(); ?>index.php?page=admin&album=<?php echo $album->getId(); ?>"><?php echo $album->getName(); ?></a></h3>
 
 <table>
 
@@ -44,7 +44,7 @@ $album = $u->getAlbum($albumId);
 			
 			<tr>
 				<td>
-					<img src="./core/timthumb.php?src=<?php echo $album->getImage($i)->getFileName() . "&h=$imageHeight&w=$imageWidth"; ?>" alt="<?php echo $album->getImage($i)->getName(); ?>" />
+					<img src="<?php echo $u->getSiteUrl(); ?>core/timthumb.php?src=<?php echo $album->getImage($i)->getFileName() . "&h=$imageHeight&w=$imageWidth"; ?>" alt="<?php echo $album->getImage($i)->getName(); ?>" />
 				</td>
 				<td>
 					<?php echo $album->getImage($i)->getName(); ?>
@@ -55,14 +55,14 @@ $album = $u->getAlbum($albumId);
 				</td>
 				
 				<td>
-					<form method="post" action="index.php?page=admin&album=<?php echo $album->getId(); ?>">
+					<form method="post" action="<?php echo $u->getSiteUrl(); ?>index.php?page=admin&album=<?php echo $album->getId(); ?>">
 						<input type="hidden" name="deleteImage" value="<?php echo $album->getImage($i)->getId(); ?>">
 						<input type="submit" value="Delete">
 					</form>
 				</td>
 				
 				<td>
-					<form method="post" action="index.php?page=admin&album=<?php echo $album->getId(); ?>">
+					<form method="post" action="<?php echo $u->getSiteUrl(); ?>index.php?page=admin&album=<?php echo $album->getId(); ?>">
 						<input type="hidden" name="changeImage" value="<?php echo $album->getImage($i)->getId(); ?>">
 						<input type="text" name="changeName" value="" required/>
 						<input type="submit" value="Change name">
@@ -86,7 +86,7 @@ $album = $u->getAlbum($albumId);
 
 
 
-<form enctype="multipart/form-data" name="upload" action="index.php?page=admin&album=<?php echo $albumId; ?>" method="post">
+<form enctype="multipart/form-data" name="upload" action="<?php echo $u->getSiteUrl(); ?>index.php?page=admin&album=<?php echo $albumId; ?>" method="post">
 	<p>
 		Upload Photos <input type="file" name="file[]" multiple required>
 	</p>

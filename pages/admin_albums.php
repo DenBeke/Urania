@@ -30,7 +30,7 @@ elseif (isset($_POST['changeName'])) {
 
 ?>
 
-<h3><a href="index.php?page=admin">Albums</a></h3>
+<h3><a href="<?php echo $u->getSiteUrl(); ?>index.php?page=admin">Albums</a></h3>
 <table>
 
 	<tbody>
@@ -44,19 +44,19 @@ elseif (isset($_POST['changeName'])) {
 			?>
 			<tr>
 				<td>
-					<a href="index.php?page=admin&album=<?php echo $id; ?>"><?php echo $album->getName(); ?></a>
+					<a href="<?php echo $u->getSiteUrl(); ?>index.php?page=admin&album=<?php echo $id; ?>"><?php echo $album->getName(); ?></a>
 				</td>
 				<td class="date">
 					<?php echo date('d-m-Y', $album->getDate()); ?>
 				</td>
 				<td>
-					<form method="post" action="index.php?page=admin">
+					<form method="post" action="<?php echo $u->getSiteUrl(); ?>index.php?page=admin">
 						<input type="hidden" name="deleteAlbum" value="<?php echo $id; ?>">
 						<input type="submit" value="Delete">
 					</form>
 				</td>
 				<td>
-					<form method="post" action="index.php?page=admin">
+					<form method="post" action="<?php echo $u->getSiteUrl(); ?>index.php?page=admin">
 						<input type="hidden" name="changeAlbumId" value="<?php echo $album->getId(); ?>">
 						<input type="text" name="changeName" value="" / required>
 						<input type="submit" value="Change name">
@@ -75,13 +75,13 @@ elseif (isset($_POST['changeName'])) {
 </table>
 
 
-<form name="input" action="index.php?page=admin" method="post">
+<form name="input" action="<?php echo $u->getSiteUrl(); ?>index.php?page=admin" method="post">
 New Album: <input type="text" name="albumName" required>
 <input type="submit" value="Add">
 </form>
 
 
-<form enctype="multipart/form-data" name="upload" action="index.php?page=admin" method="post">
+<form enctype="multipart/form-data" name="upload" action="<?php echo $u->getSiteUrl(); ?>index.php?page=admin" method="post">
 	<p>
 		Upload Photos <input type="file" name="file[]" multiple required>
 	</p>

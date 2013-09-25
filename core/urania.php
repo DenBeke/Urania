@@ -21,6 +21,7 @@ class Urania {
     private $db_table_images;
     private $uploadDir;
     private $siteTitle;
+    private $siteUrl;
     
     /**
     Constructor
@@ -34,6 +35,7 @@ class Urania {
         $this->database = new Database($db_host, $db_user, $db_password, $db_database);
         $this->uploadDir = $uploadDir;
         $this->siteTitle = $siteTitle;
+        $this->siteUrl = $siteUrl;
     }
     
     
@@ -44,6 +46,17 @@ class Urania {
     */
     public function getSiteTitle() {
     	return $this->siteTitle;
+    }
+    
+    
+    /**
+    Get the url of the site
+    Site url should end with a slash
+    
+    @return site url
+    */
+    public function getSiteUrl() {
+        return $this->siteUrl;
     }
     
     
@@ -562,7 +575,7 @@ class Urania {
     @param file name
     @return string
     */
-    private function simplifyFileName($fileName) {
+    public function simplifyFileName($fileName) {
     	$table = array(
     	    'à' => 'a', 'á' => 'a', 'â' => 'a', 'ã' => 'a', 'ä' => 'a', 'å' => 'a',
     	    'ă' => 'a', 'ā' => 'a', 'ą' => 'a', 'æ' => 'a', 'ǽ' => 'a', 'þ' => 'b',

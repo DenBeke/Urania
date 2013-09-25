@@ -12,7 +12,7 @@
 	if(!loggedIn()) {
 	
 		echo "<script language=\"javascript\">\n";
-		echo "window.location = \"index.php?page=login\";\n";
+		echo "window.location = \"" . $u->getSiteUrl() ."index.php?page=login\";\n";
 		echo "</script>\n";
 	
 	}
@@ -34,7 +34,7 @@
 	
 	
 	<p>
-	<a href="index.php?page=logout">Logout</a>
+	<a href="<?php echo $u->getSiteUrl(); ?>index.php?page=logout">Logout</a>
 	</p>
 
 </div>

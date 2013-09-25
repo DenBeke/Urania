@@ -61,14 +61,14 @@ $includePage = preg_replace('/[^a-z0-9.]/', '', $includePage);
 	
 	<meta http-equiv="X-UA-Compatible" content="IE=8" />
 	
-	<script src="js/jquery.js" type="text/javascript"></script>
+	<script src="<?php echo $u->getSiteUrl(); ?>js/jquery.js" type="text/javascript"></script>
 	
-	<script src="js/lightbox.js" type="text/javascript"></script>
+	<script src="<?php echo $u->getSiteUrl(); ?>js/lightbox.js" type="text/javascript"></script>
 	
-	<script src="js/browsercheck.js" type="text/javascript"></script>
+	<script src="<?php echo $u->getSiteUrl(); ?>js/browsercheck.js" type="text/javascript"></script>
 	
 	
-	<link rel="stylesheet" href="style.css" type="text/css" />
+	<link rel="stylesheet" href="<?php echo $u->getSiteUrl(); ?>style.css" type="text/css" />
 	 
 	 
 	</script>
@@ -80,16 +80,18 @@ $includePage = preg_replace('/[^a-z0-9.]/', '', $includePage);
 
 	<header>
 
-		<h1 id="siteTitle"><a href="index.php?page=home"><?php echo $u->getSiteTitle(); ?></a></h1>
+		<h1 id="siteTitle"><a href="<?php echo $u->getSiteUrl(); ?>home"><?php echo $u->getSiteTitle(); ?></a></h1>
 		
 		<nav id="albumNav">
 			<ul>
 				<?php
+				$url = $u->getSiteUrl();
 				
 				foreach ($u->getAllAlbums() as $album) {
 					$navId = $album->getId();
 					$name = $album->getName();
-					echo "<li><a href=\"index.php?page=album&album=$navId\">$name</a></li>";
+					$simpleName = $u->simplifyFileName($name);
+					echo "<li><a href=\"$url"."album/$navId/$simpleName\">$name</a></li>";
 				}
 				?>
 			</ul>

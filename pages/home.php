@@ -14,8 +14,8 @@
 		foreach ($u->getAllAlbums() as $album) {			
 			?>
 			<li>
-				<div style="background-image: url(./core/timthumb.php?src=<?php echo $album->getImage(0)->getFileName() . "&h=$imageHeight&w=$imageWidth"; ?>);">
-					<a href="index.php?page=album&album=<?php echo $album->getId(); ?>">
+				<div style="background-image: url(<?php echo $u->getSiteUrl(); ?>core/timthumb.php?src=<?php echo $album->getImage(0)->getFileName() . "&h=$imageHeight&w=$imageWidth"; ?>);">
+					<a href="<?php echo $u->getSiteUrl(); ?>album/<?php echo $album->getId(); ?>/<?php echo $u->simplifyFileName($album->getName()); ?>">
 						<h3>
 							<?php echo $album->getName(); ?>
 						</h3>

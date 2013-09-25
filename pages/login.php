@@ -22,7 +22,7 @@
 			login();
 			
 			echo "<script language=\"javascript\">\n";
-			echo "window.location = \"index.php?page=admin\";\n";
+			echo "window.location = \"" . $u->getSiteurl() . "index.php?page=admin\";\n";
 			echo "</script>\n";
 			
 			
@@ -36,7 +36,7 @@
 	}
 	
 	?>
-	<form name="input" action="index.php?page=login" method="post">
+	<form name="input" action="<?php echo $u->getSiteUrl(); ?>index.php?page=login" method="post">
 	
 		<p>
 			Username

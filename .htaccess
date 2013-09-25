@@ -9,16 +9,16 @@ RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule .*  - [L]
 
 #One url parameter
-RewriteRule ^([a-zA-Z0-9_]*)/$ index.php?page=$1
-RewriteRule ^([a-zA-Z0-9_]*)$ index.php?page=$1
+RewriteRule ^([a-zA-Z0-9_\-]*)/$ index.php?page=$1
+RewriteRule ^([a-zA-Z0-9_\-]*)$ index.php?page=$1
 
 #Two url parameters
-RewriteRule ^([a-zA-Z0-9_]*)/([a-zA-Z0-9_]*)$ index.php?page=$1&album=$2
-RewriteRule ^([a-zA-Z0-9_]*)/([a-zA-Z0-9_]*)/$ index.php?page=$1&album=$2
+RewriteRule ^([a-zA-Z0-9_\-]*)/([a-zA-Z0-9_\-]*)$ index.php?page=$1&album=$2
+RewriteRule ^([a-zA-Z0-9_\-]*)/([a-zA-Z0-9_\-]*)/$ index.php?page=$1&album=$2
 
 #Three url parameters
-RewriteRule ^([a-zA-Z0-9_]*)/([a-zA-Z0-9_]*)/([a-zA-Z0-9_]*)$ index.php?page=$1&album=$2
-RewriteRule ^([a-zA-Z0-9_]*)/([a-zA-Z0-9_]*)/([a-zA-Z0-9_]*)/$ index.php?page=$1&album=$2
+RewriteRule ^([a-zA-Z0-9_\-]*)/([a-zA-Z0-9_\-]*)/([a-zA-Z0-9_\-]*)$ index.php?page=$1&album=$2
+RewriteRule ^([a-zA-Z0-9_\-]*)/([a-zA-Z0-9_\-]*)/([a-zA-Z0-9_\-]*)/$ index.php?page=$1&album=$2
 
 #Four url parameters
 #RewriteRule ^([a-zA-Z0-9_]*)/([a-zA-Z0-9_]*)/([a-zA-Z0-9_]*)/([a-zA-Z0-9_\-]*)$ index.php?language=$1&page=$2&id=$3
