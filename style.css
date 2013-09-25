@@ -79,7 +79,7 @@ h1#siteTitle a:hover {
 }
 
 #albumNav li:hover a {
-	//color: #4bb6d6;
+	/* color: #4bb6d6; */
 	
 	-webkit-transition: all 0.5s;
 	color: #000000;
@@ -90,7 +90,7 @@ h1#siteTitle a:hover {
 	text-decoration: none;
 	font-family: 'Bad Script';
 	font-variant: small-caps;
-	//font-weight: bold;
+	/*font-weight: bold;*/
 }
 
 
@@ -291,7 +291,6 @@ background-image: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0.83) 0%, 
 
 #login form p:nth-child(even) {
 	margin-bottom: 25px;
-	//background-color: red;
 }
 
 
@@ -356,7 +355,7 @@ background-image: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0.83) 0%, 
 }
 
 #admin table tr:nth-child(odd) {
-	//background-color: #fbfbfb;
+	/*background-color: #fbfbfb;*/
 }
 
 #admin table td {
@@ -383,7 +382,7 @@ background-image: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0.83) 0%, 
 
 
 #admin input[type=text] {
-	//width: 100%;
+	/*width: 100%;*/
 	box-sizing: border-box;
 	border-radius: 5px;
 	padding: 5px;
