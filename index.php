@@ -21,12 +21,11 @@ $id = 0;
 if(isset($_GET['page']) and htmlspecialchars($_GET['page']) != '') {
 	//Album
 	$includePage = htmlspecialchars($_GET['page']) . '.php';
-	
 	$pageName = htmlspecialchars($_GET['page']);
 	
-	$id = intval(htmlspecialchars($_GET['album']));
 	
 	if($pageName == 'album') {
+		$id = intval(htmlspecialchars($_GET['album']));
 		$pageName = $u->getAlbum($id)->getName() . ' - ' . $u->getSiteTitle();
 	}
 	elseif($pageName == 'home') {
