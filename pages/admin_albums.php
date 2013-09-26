@@ -7,8 +7,6 @@ elseif (isset($_POST['albumId'])) {
 	
 	for ($i = 0; $i <  count($_FILES['file']['name']); $i++) {
 		$u->uploadImage($_FILES['file']['name'][$i], $_FILES['file']['tmp_name'][$i], $_POST['albumId']);
-		echo $_FILES['file']['name'][$i];
-		echo $_FILES['file']['tmp_name'][$i];
 	}
 	//print_r($_FILES['file']['tmp_name']);
 	

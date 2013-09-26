@@ -260,7 +260,7 @@ class Urania {
             
             //Fetch query
             $result = $this->database->getQuery($query);
-            $image = new Image($result[0]['id'], $this->uploadDir . $result[0]['fileName'], $result[0]['name'], $result[0]['date'], $result[0]['albumId']);
+            $image = new Image($result[0]['id'], $this->uploadDir . $this->simplifyFileName($this->getAlbumName($result[0]['albumId'])) . '/' . $result[0]['fileName'], $result[0]['name'], $result[0]['date'], $result[0]['albumId']);
             
             return $image;
         }
@@ -372,10 +372,7 @@ class Urania {
             $result = $this->database->getQuery($query);
             $image = new Image($result[0]['id'], $result[0]['fileName'], $result[0]['name'], $result[0]['date'], $result[0]['albumId']);
             
-            
-            //Delete image file
-            //TODO!!!
-            unlink($this->uploadDir . $image->getFileName());
+            unlink($this->uploadDir . $this->simplifyFileName($this->getAlbumName($image->getAlbumId())) . '/' . $image->getFileName());
             
             //Delete image in the database
             $query = "DELETE FROM `$images` WHERE `$images`.`id` = $id";
@@ -482,7 +479,7 @@ class Urania {
     	$albumName = $this->simplifyFileName($this->getAlbumName($albumId));
     	
     	//Get the filename of the image
-    	$fileName = $albumName . '/' . $this->simplifyFileName($imageName);
+    	$fileName = $this->simplifyFileName($imageName);
 
 		//Check if this file name is unique
 		//If it exists, we add a suffix to it and check again if it's unique    	
@@ -495,7 +492,7 @@ class Urania {
     	}
     	
     	//Upload the file
-    	move_uploaded_file($tempFile, $this->uploadDir . $fileName);
+    	move_uploaded_file($tempFile, $this->uploadDir . $albumName . '/' . $fileName);
     	
     	
     	//Insert the image in the database
@@ -740,7 +737,7 @@ class Urania {
         $images = array();
         
         foreach ($result as $row => $image) {
-            $images[] = new Image($image['id'], $this->uploadDir . $image['fileName'], $image['name'], $image['date'], $image['albumId']);
+            $images[] = new Image($image['id'], $this->uploadDir . $this->simplifyFileName($this->getAlbumName($albumId)) . '/' . $image['fileName'], $image['name'], $image['date'], $image['albumId']);
         }
         
         return $images;
