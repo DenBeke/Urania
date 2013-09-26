@@ -7,10 +7,12 @@ Url: http://denbeke.be
 Date: September 2013
 */
 
-
+require_once(dirname(__FILE__).'/error_handler.php');
 require_once(dirname(__FILE__).'/album.php');
 require_once(dirname(__FILE__).'/image.php');
 require_once(dirname(__FILE__).'/database.php');
+
+
 
 
 class Urania {
@@ -490,8 +492,8 @@ class Urania {
     	- album name
     	*/
     	$imageTitle = $this->removeExtension($imageName);
-    	$imageDate = time();
     	$albumName = $this->simplifyFileName($this->getAlbumName($albumId));
+    	$imageDate = time();
     	
     	//Get the filename of the image
     	$fileName = $this->simplifyFileName($imageName);
@@ -509,6 +511,20 @@ class Urania {
     	//Upload the file
     	move_uploaded_file($tempFile, $this->uploadDir . $albumName . '/' . $fileName);
     	
+    	//Get image date from efix date
+    	//If it couldn't read the efix date, the current time will be used
+    	try {
+	    	if(function_exists("exif_read_data") && exif_read_data($this->uploadDir . $albumName . '/' . $fileName)){ 
+				$efix = exif_read_data($this->uploadDir . $albumName . '/' . $fileName);
+				$imageDate = strtotime($efix['DateTimeOriginal']);
+				if ($imageDate == 0) {
+					$imageDate = time();
+				}	
+	    	}
+	    }
+	    catch (exception $exception) {
+	    	$imageDate = time();
+	    }
     	
     	//Insert the image in the database
     	$image = new Image(0, $fileName, $imageTitle, $imageDate, $albumId);
