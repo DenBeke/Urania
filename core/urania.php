@@ -782,7 +782,7 @@ class Urania {
             
             //Fetch query
             $result = $this->database->getQuery($query);
-            $image = new Image($result[0]['id'], $this->uploadDir . $result[0]['fileName'], $result[0]['name'], $result[0]['date'], $result[0]['albumId']);
+            $image = new Image($result[0]['id'], $this->uploadDir . $this->simplifyFileName($this->getAlbumName($id)) . '/' . $result[0]['fileName'], $result[0]['name'], $result[0]['date'], $result[0]['albumId']);
             
             return $image;
         }
