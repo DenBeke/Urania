@@ -415,6 +415,9 @@ class Urania {
             $this->database->doQuery($query);
             
             //Delete album directory
+            $dir = opendir($this->uploadDir . $this->simplifyFileName($album->getName()));
+            //do whatever you need
+            closedir($dir);
             rmdir($this->uploadDir . $this->simplifyFileName($album->getName()));
         }
     }
