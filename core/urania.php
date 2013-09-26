@@ -314,8 +314,19 @@ class Urania {
         if(!$this->albumExists($id)) {
             throw new Exception("There is no album with the id $id");
         }
+        elseif($this->albumNameExists($albumName)) {
+        	throw new Exception("There is already an album with the new name '$albumName'");
+        }
         else {
-            //Create query from image
+        	//Get the old album name
+        	$oldAlbum = $this->getAlbumName($id);
+        	
+        	//Check if name is not the same, if so, we can return immediately
+        	if ($oldAlbum == $albumName) {
+        		return;
+        	}
+        
+            //Create query from image to change the info in the database
             $id = $this->database->escape($id);
             $name = $this->database->escape($albumName);
             $albums = $this->database->escape($this->db_table_albums);
@@ -333,7 +344,8 @@ class Urania {
                 echo "$affectedRows affected rows with query<br>$query";
             }
             //TODO change directory name!
-            //TODO check if there is now album with the given new name
+            rename($this->uploadDir . $this->simplifyFileName($oldAlbum), $this->uploadDir . $this->simplifyFileName($albumName));
+            
         }
     }
     
