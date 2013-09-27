@@ -482,8 +482,12 @@ class Urania {
     
     @pre Album with given albumId exists
     */
-    public function uploadImage($imageName, $tempFile, $albumId) {    	
-    	//move_uploaded_file($image['tmp_name'], $this->uploadDir . $image['name']);
+    public function uploadImage($imageName, $tempFile, $albumId) {
+    	//Check if upload file is image
+    	$info = getimagesize($tempFile);
+    	if ($info === FALSE) {
+    	   throw new exception('File is not of type image');
+    	}
     	
     	/* 
     	Store
