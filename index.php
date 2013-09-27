@@ -25,8 +25,13 @@ if(isset($_GET['page']) and htmlspecialchars($_GET['page']) != '') {
 	
 	
 	if($pageName == 'album') {
-		$id = intval(htmlspecialchars($_GET['album']));
-		$pageName = $u->getAlbum($id)->getName() . ' - ' . $u->getSiteTitle();
+		try {
+    		$id = intval(htmlspecialchars($_GET['album']));
+    		$pageName = $u->getAlbum($id)->getName() . ' - ' . $u->getSiteTitle();
+    	}
+    	catch (exception $exception) {
+    	    $pageName = 'Error';
+    	}
 	}
 	elseif($pageName == 'home') {
 		$pageName = $u->getSiteTitle();
