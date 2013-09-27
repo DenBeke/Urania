@@ -20,4 +20,7 @@ $uploadDir = 'upload/';
 //General Site Information
 $siteTitle = 'DenBeke Images';
 $siteUrl = 'http://localhost:8888/Urania/'; //With slahs!!
+
+//Time zone
+date_default_timezone_set('Europe/Brussels');
 ?>
