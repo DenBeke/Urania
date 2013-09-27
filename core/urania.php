@@ -66,11 +66,15 @@ class Urania {
     Add a new photo album to the database with the given name
     @param name
     @pre there is no album with the given name
+    @pre album name cannot be empty
     */
     public function addAlbum($albumName) {
     
     	if($this->albumNameExists($albumName)) {
     		throw new Exception("There is already an album with the name '$albumName'");
+    	}
+    	if($albumName == '') {
+    		throw new Exception("Album name cannot be empty");
     	}
     	else {
     
