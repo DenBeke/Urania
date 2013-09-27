@@ -107,8 +107,14 @@ $includePage = preg_replace('/[^a-z0-9.]/', '', $includePage);
 
 	<?php 
 	
-	include('./pages/' . $includePage);
-	
+	if(file_exists('./pages/' . $includePage)) {
+	    include('./pages/' . $includePage);
+	}
+	else {
+	    ?>
+	    <h2>Sorry, but this page doesn't exist</h2>
+	    <?php
+	}
 	?>
 	
 	
