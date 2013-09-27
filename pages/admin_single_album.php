@@ -1,17 +1,34 @@
 <?php
 
+
 if (isset($_POST['deleteImage'])) {
-	$u->deleteImage(intval($_POST['deleteImage']));
+    try {	
+	    $u->deleteImage(intval($_POST['deleteImage']));
+	}
+	catch (exception $exception) {
+	    echo "<h3>Could not delete image</h3>";
+	}
+
 }
 elseif (isset($_POST['albumId'])) {
-	for ($i = 0; $i <  count($_FILES['file']['name']); $i++) {
-		$u->uploadImage($_FILES['file']['name'][$i], $_FILES['file']['tmp_name'][$i], $_POST['albumId']);
-	}
+    try {
+    	for ($i = 0; $i <  count($_FILES['file']['name']); $i++) {
+    		$u->uploadImage($_FILES['file']['name'][$i], $_FILES['file']['tmp_name'][$i], $_POST['albumId']);
+    	}
+    }
+    catch (exception $exception) {
+        echo '<h3>Could not upload image: ' . $exception->getMessage() . '</h3>';
+    }
 	
 }
 elseif (isset($_POST['changeName'])) {
 	//Change the name of the image
-	$u->changeImageName(intval($_POST['changeImage']), stripslashes($_POST['changeName']));
+	try {
+	    $u->changeImageName(intval($_POST['changeImage']), stripslashes($_POST['changeName']));
+	}
+	catch (exception $exception) {
+	    echo '<h3>Could not change image name: ' . $exception->getMessage() . '</h3>';
+	}
 }
 
 

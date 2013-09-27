@@ -1,23 +1,40 @@
 <?php
 
 if(isset($_POST['albumName'])) {
-	$u->addAlbum(stripslashes($_POST['albumName']));
+	try {
+	    $u->addAlbum(stripslashes($_POST['albumName']));
+	}
+	catch (exception $exception) {
+	    echo '<h3>Could not add album: ' . $exception->getMessage() . '</h3>';
+	}
 }
 elseif (isset($_POST['albumId'])) {
-	
-	for ($i = 0; $i <  count($_FILES['file']['name']); $i++) {
-		$u->uploadImage($_FILES['file']['name'][$i], $_FILES['file']['tmp_name'][$i], $_POST['albumId']);
-	}
-	//print_r($_FILES['file']['tmp_name']);
-	
-	
+	try {
+    	for ($i = 0; $i <  count($_FILES['file']['name']); $i++) {
+    		$u->uploadImage($_FILES['file']['name'][$i], $_FILES['file']['tmp_name'][$i], $_POST['albumId']);
+    	}
+    }
+    catch (exception $exception) {
+        echo '<h3>Could not upload image: ' . $exception->getMessage() . '</h3>';
+    }
+		
 }
 elseif (isset($_POST['deleteAlbum'])) {
-	$u->deleteAlbum(intval($_POST['deleteAlbum']));
+    try {
+	    $u->deleteAlbum(intval($_POST['deleteAlbum']));
+	}
+	catch (exception $exception) {
+	    echo '<h3>Could not delete album: ' . $exception->getMessage() . '</h3>';
+	}
 }
 elseif (isset($_POST['changeName'])) {
 	//Change the name of the image
-	$u->changeAlbumName(intval($_POST['changeAlbumId']), stripslashes($_POST['changeName']));
+	try {
+    	$u->changeAlbumName(intval($_POST['changeAlbumId']), stripslashes($_POST['changeName']));
+    }
+    catch (exception $exception) {
+        echo '<h3>Could not change album name: ' . $exception->getMessage() . '</h3>';
+    }
 }
 
 

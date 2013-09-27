@@ -281,6 +281,9 @@ class Urania {
         if(!$this->imageExists($id)) {
             throw new Exception("There is no image with the id $id");
         }
+        elseif ($imageName == '') {
+            throw new Exception('Image name cannot be empty');
+        }
         else {
             //Create query from image
             $id = $this->database->escape($id);
@@ -318,6 +321,9 @@ class Urania {
         }
         elseif($this->albumNameExists($albumName)) {
         	throw new Exception("There is already an album with the new name '$albumName'");
+        }
+        elseif($albumName == '') {
+        	throw new Exception("Album name cannot be empty");
         }
         else {
         	//Get the old album name
