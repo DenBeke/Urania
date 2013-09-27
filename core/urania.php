@@ -275,7 +275,9 @@ class Urania {
     
     @param image id
     @param new image name
+    
     @pre image exists
+    @pre new image name not empty
     */
     public function changeImageName($id, $imageName) {
         if(!$this->imageExists($id)) {
@@ -312,8 +314,11 @@ class Urania {
     Change update the information of the given album in the database
     
     @param album
+    @param new album name
+    
     @pre album exists
     @pre there is no album with the new name
+    @pre new album name not empty
     */
     public function changeAlbumName($id, $albumName) {
         if(!$this->albumExists($id)) {
@@ -351,7 +356,7 @@ class Urania {
             if($this->debug) {
                 echo "$affectedRows affected rows with query<br>$query";
             }
-            //TODO change directory name!
+
             rename($this->uploadDir . $this->simplifyFileName($oldAlbum), $this->uploadDir . $this->simplifyFileName($albumName));
             
         }
@@ -419,7 +424,6 @@ class Urania {
             throw new Exception("There is no album with the id $id");
         }
         else {
-            //TODO
             //Get the album
             $album = $this->getAlbum($id);
             
@@ -687,6 +691,12 @@ class Urania {
     
     
     
+    /**
+    Check if the image with the given id exists
+    
+    @param id
+    @return exists
+    */
     private function imageExists($id) {
         
         //Create query
@@ -720,6 +730,12 @@ class Urania {
     }
     
     
+    /**
+    Check if the album with the given id exists
+    
+    @param id
+    @return exists
+    */
     private function albumNameExists($albumName) {
     	//Create query
     	$albums = $this->database->escape($this->db_table_albums);

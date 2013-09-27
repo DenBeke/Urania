@@ -76,7 +76,7 @@ elseif (isset($_POST['changeName'])) {
 				</td>
 			</tr>
 			<?php
-			//TODO DELETE ALBUM  button
+
 		}
 		?>
 	
