@@ -14,6 +14,9 @@ function logout() {
 
 function loggedIn() {
 	//session_start();
+	if(!isset($_SESSION['login'])) {
+	    return false;
+	}
 	if($_SESSION['login']) {
 		return true;
 	}
