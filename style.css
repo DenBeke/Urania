@@ -263,6 +263,28 @@ background-image: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0.83) 0%, 
 
 /* Admin */
 
+
+h3.notice {
+	display: block !important;
+	clear: both;
+	padding: 10px;
+	border-radius: 5px;
+	margin-top: 0;
+	text-align: left;
+}
+
+h3.notice.ok {
+	border: 1px solid green;
+	color: green;
+}
+
+h3.notice.error {
+	border: 1px solid red;
+	color: red;
+}
+
+
+
 /* - Login */
 
 .error {
