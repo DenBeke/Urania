@@ -385,6 +385,13 @@ h3.notice.error {
 }
 
 
+#admin table td:first-child {
+	background-image: url('img/list_arrow.png');
+	background-repeat: no-repeat;
+	background-position: left center;
+	padding-left: 15px;
+}
+
 
 #admin table tr td:last-child {
 	text-align: right;
