@@ -40,11 +40,36 @@ $album = $u->getAlbum($albumId);
 
 ?>
 
-<h3><a href="<?php echo $u->getSiteUrl(); ?>index.php?page=admin">Albums</a> &gt; <a href="<?php echo $u->getSiteUrl(); ?>index.php?page=admin&album=<?php echo $album->getId(); ?>"><?php echo $album->getName(); ?></a></h3>
+<h3 class="nav"><a href="<?php echo $u->getSiteUrl(); ?>index.php?page=admin">Albums</a> &gt; <a href="<?php echo $u->getSiteUrl(); ?>index.php?page=admin&album=<?php echo $album->getId(); ?>"><?php echo $album->getName(); ?></a></h3>
 
-<table>
+<table id="adminAlbum">
 
 	<tbody>
+	
+	
+		<tr>
+		
+			<th>
+	
+			</th>
+			
+			<th>
+				Photo
+			</th>
+			
+			<th>
+				Date
+			</th>
+			
+			<th>
+			
+			</th>
+		
+			<th>
+			
+			</th>
+		
+		</tr>
 	
 		<?php
 		
@@ -99,14 +124,16 @@ $album = $u->getAlbum($albumId);
 
 
 
-<form enctype="multipart/form-data" name="upload" action="<?php echo $u->getSiteUrl(); ?>index.php?page=admin&album=<?php echo $albumId; ?>" method="post">
+<form id="uploadImages" enctype="multipart/form-data" name="upload" action="<?php echo $u->getSiteUrl(); ?>index.php?page=admin&album=<?php echo $albumId; ?>" method="post">
 	<p>
-		Upload Photos <input type="file" name="file[]" multiple required>
+		Upload Photos
 	</p>
 	<p>
-	<input type="hidden" name="albumId" value="<?php echo $albumId; ?>">
+		<input type="file" name="file[]" multiple required>
+
+		<input type="hidden" name="albumId" value="<?php echo $albumId; ?>">
 	</p>
-	<p>
+	<p class="submitButton">
 		<input type="submit" value="Upload">
 	</p>
 </form>

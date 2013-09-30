@@ -46,11 +46,29 @@ elseif (isset($_POST['changeName'])) {
 
 ?>
 
-<h3><a href="<?php echo $u->getSiteUrl(); ?>index.php?page=admin">Albums</a></h3>
+<h3 class="nav"><a href="<?php echo $u->getSiteUrl(); ?>index.php?page=admin">Albums</a></h3>
 <table>
 
 	<tbody>
 	
+	
+		<tr>
+		
+			<th>
+			Album
+			</th>
+			<th>
+			Date
+			</th>
+			<th>
+			
+			</th>
+			<th>
+			
+			</th>
+
+		
+		</tr>
 	
 		<?php
 		
@@ -91,15 +109,24 @@ elseif (isset($_POST['changeName'])) {
 </table>
 
 
-<form name="input" action="<?php echo $u->getSiteUrl(); ?>index.php?page=admin" method="post">
-New Album: <input type="text" name="albumName" required>
-<input type="submit" value="Add">
+<form id="addAlbum" name="input" action="<?php echo $u->getSiteUrl(); ?>index.php?page=admin" method="post">
+	<p>Add Album
+	</p>
+	<p>
+		<input type="text" name="albumName" required>
+	</p>
+	<p class="submitButton">
+		<input type="submit" value="Add">
+	</p>
 </form>
 
 
-<form enctype="multipart/form-data" name="upload" action="<?php echo $u->getSiteUrl(); ?>index.php?page=admin" method="post">
+<form id="uploadImages" enctype="multipart/form-data" name="upload" action="<?php echo $u->getSiteUrl(); ?>index.php?page=admin" method="post">
 	<p>
-		Upload Photos <input type="file" name="file[]" multiple required>
+		Upload Photos
+	</p>
+	<p>
+		<input type="file" name="file[]" multiple required>
 	</p>
 	<p>
 	<select name="albumId">
@@ -113,9 +140,9 @@ New Album: <input type="text" name="albumName" required>
 		echo "<option value=\"$id\">$name</option>";
 	}
 	?>
-	
+	</select>
 	</p>
-	<p>
+	<p class="submitButton">
 		<input type="submit" value="Upload">
 	</p>
 </form>

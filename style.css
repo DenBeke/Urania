@@ -258,6 +258,12 @@ background-image: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0.83) 0%, 
 	box-shadow: 1px 1px 7px #777;
 }
 
+th {
+	color: #6d6e6d;
+	font-style: italic;
+	font-weight: normal;
+}
+
 
 
 
@@ -271,6 +277,7 @@ h3.notice {
 	border-radius: 5px;
 	margin-top: 0;
 	text-align: left;
+	font-size: 1em !important;
 }
 
 h3.notice.ok {
@@ -348,24 +355,18 @@ h3.notice.error {
 	margin-left: 10px;
 }
 
-#admin h3 {
-	display: inline;
-	font-size: 1em;
-	font-weight: lighter;
+#admin h3.nav {
+	font-size: 0.8em;
+	color: #8b8b8b;
+	font-style: italic;
+	font-weight: normal;
+	margin: 0;
 }
 
-#admin h3 a {
-	padding: 5px;
-	font-weight: normal;
-	text-decoration: none;
-	color: #6e6e6e;
-	margin: 0 20px;
-	margin-bottom: 0 20px;
-	border-radius: 5px;
-	box-shadow: 1px 1px 5px #aaa;
-	font-family: 'Bad Script';
-	font-variant: small-caps;
-	
+#admin h3.nav a {
+	text-decoration: underline;
+	color: #8b8b8b;
+	font-style: italic;
 }
 
 #admin table {
@@ -420,6 +421,45 @@ h3.notice.error {
 	box-shadow: 0px 0px 5px #777 inset;
 }
 
+form#addAlbum,
+form#uploadImages {
+	float: left;
+	margin: 10px;
+	background-color: #e6e8e7;
+	padding: 10px;
+	border-radius: 10px;
+}
+
+form#addAlbum p,
+form#uploadImages p {
+	margin: 0;
+	margin-bottom: 5px;
+	font-style: italic;
+}
+
+form#addAlbum p:last-child,
+form#uploadImages p:last-child {
+	margin-bottom: 0;
+}
+
+p.submitButton {
+	text-align: right;
+}
+
+
+.clear {
+	clear: both;
+	width: 0;
+	height: 0;
+	overflow: hidden;
+}
+
+
+#adminAlbum img {
+	border-radius: 5px;
+	width: 75px;
+	height: 75px;
+}
 
 
 /* Footer */

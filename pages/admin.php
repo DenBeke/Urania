@@ -32,9 +32,10 @@
 	
 	?>
 	
+	<div class="clear"></div>
 	
-	<p>
+	<h3 class="nav">
 	<a href="<?php echo $u->getSiteUrl(); ?>index.php?page=logout">Logout</a>
-	</p>
+	</h3>
 
 </div>
