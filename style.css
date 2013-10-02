@@ -1,0 +1,588 @@
+/*
+Basic Style for Urania Image Gallery
+
+Author: Mathias Beke
+Url: http://denbeke.be
+Date: September 2013
+*/
+
+
+@font-face {
+    /*
+    'Bad Script' font
+    Fount on Google: @import url(http://fonts.googleapis.com/css?family=Bad+Script);
+    */
+    font-family: 'Bad Script';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Bad Script Regular'), local('BadScript-Regular'), url(bad_script.woff) format('woff');
+}
+
+
+html {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #dbdcdb;
+	background: -webkit-radial-gradient(center, ellipse, rgba(247,251,252,1) 0%, rgb(230, 230, 230) 52.7%, rgb(167, 167, 167) 100%) fixed rgb(247,251,252);
+	background: -moz-radial-gradient(center, ellipse, rgba(247,251,252,1) 0%, rgb(230, 230, 230) 52.7%, rgb(167, 167, 167) 100%) fixed rgb(247,251,252);
+	background: -ms-radial-gradient(center, ellipse, rgba(247,251,252,1) 0%, rgb(230, 230, 230) 52.7%, rgb(167, 167, 167) 100%) fixed rgb(247,251,252);
+	background: -o-radial-gradient(center, ellipse, rgba(247,251,252,1) 0%, rgb(230, 230, 230) 52.7%, rgb(167, 167, 167) 100%) fixed rgb(247,251,252);
+	background: radial-gradient(ellipse at center, rgba(247,251,252,1) 0%, rgb(230, 230, 230) 52.7%, rgb(167, 167, 167) 100%) fixed rgb(247,251,252);
+}
+
+
+
+
+.page {
+	width: 900px;
+	margin: auto;
+}
+
+
+
+/* Header */
+
+
+h1#siteTitle {
+	text-align: center;
+	font: normal bold 3.5em 'Bad Script', cursive;
+	color: #6e6e6e;
+	text-shadow: 0 0 5px #fff;
+	margin-bottom: 0;
+	
+}
+
+h1#siteTitle a {
+	color: #6e6e6e;
+	text-decoration: none;
+}
+
+h1#siteTitle a:hover {
+	color: #595959;
+}
+
+
+#albumNav ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+	max-width: 900px;
+	margin: auto;
+}
+
+#albumNav li {
+	padding: 5px;
+	
+	background-color: #fff;
+	
+	margin: 0 20px;
+	margin-bottom: 20px;
+	border-radius: 5px;
+	box-shadow: 1px 1px 5px #aaa;
+}
+
+#albumNav li:hover a {
+	/* color: #4bb6d6; */
+	
+	-webkit-transition: all 0.5s;
+	color: #000000;
+}
+
+#albumNav a {
+	color: #6e6e6e;
+	text-decoration: none;
+	font-family: 'Bad Script';
+	font-variant: small-caps;
+	/*font-weight: bold;*/
+}
+
+
+
+
+@media screen and (min-width: 1400px) {
+	header {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+	
+	header h1 {
+		font-size: 3em !important;
+		padding-left: 15px;
+	}
+	
+	#albumNav {
+		margin-top: 25px;
+	}
+	
+	#albumNav li {
+		display: block;
+		max-width: 200px;
+	}
+	
+	#loginTitle {
+		text-align: center;
+		font: normal bold 3em 'Bad Script', cursive;
+		color: #6e6e6e;
+		text-shadow: 0 0 2px #fff;
+		margin-bottom: 0;
+	}
+	
+}
+
+
+
+@media screen and (max-width: 1400px) { 
+
+	header {
+		background-image: -webkit-radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.64) 0%, rgba(255, 255, 255, 0) 71.5%);
+		background-image: -moz-radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.64) 0%, rgba(255, 255, 255, 0) 71.5%);
+		background-image: -ms-radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.64) 0%, rgba(255, 255, 255, 0) 71.5%);
+		background-image: radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.64) 0%, rgba(255, 255, 255, 0) 71.5%);
+		
+		padding-bottom: 30px;
+		max-width: 1200px;
+		margin: auto;
+	}
+	#albumNav li {
+		display: inline-block;
+	}
+	
+	#homeTitle,
+	#loginTitle {
+		display: none;
+	}
+	
+}
+	
+	
+}
+
+
+
+/* Home */
+
+#home li div {
+	width: 240px;
+	height: 240px;
+}
+
+#home li a {
+	width: 240px;
+	height: 240px;
+	text-decoration: none;
+	color: #6e6e6e;
+	text-shadow: 0 0 5px #fff;
+	font-size: 1.5em !important;
+	display: table-cell;
+	vertical-align: bottom;
+	text-align: center;
+	
+	/*
+	background-image: -webkit-radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0) 69.3%, rgba(255, 255, 255, 0.77) 100%);
+	background-image: -moz-radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0) 69.3%, rgba(255, 255, 255, 0.77) 100%);
+	background-image: -ms-radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0) 69.3%, rgba(255, 255, 255, 0.77) 100%);
+	background-image: radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0) 69.3%, rgba(255, 255, 255, 0.77) 100%);
+	*/
+}
+
+#home li a:hover {
+	-webkit-transition: all 0.5s;
+	background: transparent;
+}
+
+#home li h3 {
+	margin: 0;
+	padding: 0;
+	padding-top: 30px;
+	font-family: 'Bad Script';
+	
+    background-image: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0.83) 0%, rgba(255, 255, 255, 0.66) 60.7%, rgba(255, 255, 255, 0) 100%);
+	background-image: -moz-linear-gradient(bottom, rgba(255, 255, 255, 0.83) 0%, rgba(255, 255, 255, 0.66) 60.7%, rgba(255, 255, 255, 0) 100%);
+	background-image: -ms-linear-gradient(bottom, rgba(255, 255, 255, 0.83) 0%, rgba(255, 255, 255, 0.66) 60.7%, rgba(255, 255, 255, 0) 100%);
+	background-image: linear-gradient(to top, rgba(255, 255, 255, 0.83) 0%, rgba(255, 255, 255, 0.66) 60.7%, rgba(255, 255, 255, 0) 100%);
+}
+
+
+
+/* Album */
+
+#adminTitle,
+#homeTitle,
+#album h1 {
+	text-align: center;
+	font: normal bold 3em 'Bad Script', cursive;
+	color: #6e6e6e;
+	text-shadow: 0 0 2px #fff;
+	margin-bottom: 0;
+}
+
+#home ul,
+#album ul {
+	padding: 0;
+	margin: 0;
+	overflow: auto;
+	margin: auto;
+	list-style: none;
+}
+
+#home a,
+#album a {
+	display: block;
+	margin: 0;
+	padding: 0;
+	font-size: 0;
+}
+
+#home ul li,
+#album ul li {
+	float: left;
+	margin: 25px;
+	width: 240px;
+	height: 240px;
+	padding: 5px;
+	background-color: #fff;
+	border-radius: 5px;
+	box-shadow: 1px 1px 7px #777;
+}
+
+th {
+	color: #6d6e6d;
+	font-style: italic;
+	font-weight: normal;
+}
+
+
+
+
+/* Admin */
+
+
+h3.notice {
+	display: block !important;
+	clear: both;
+	padding: 10px;
+	border-radius: 5px;
+	margin-top: 0;
+	text-align: left;
+	font-size: 1em !important;
+}
+
+h3.notice.ok {
+	border: 1px solid green;
+	color: green;
+}
+
+h3.notice.error {
+	border: 1px solid red;
+	color: red;
+}
+
+
+
+/* - Login */
+
+.error {
+	text-align: center;
+	color: red;
+	text-shadow: 0 0 3px #fff;
+	font-family: Verdana;
+}
+
+#login form {
+	width: 240px;
+	height: 240px;
+	background-color: #fff;
+	border-radius: 5px;
+	box-shadow: 1px 1px 7px #777;
+	margin: 25px auto;
+	padding: 5px;
+}
+
+#login form p {
+	font: normal bold 1.2em 'Bad Script', cursive;
+	text-align: center;
+	margin: 0;
+	color: #6e6e6e;
+}
+
+#login form p:nth-child(even) {
+	margin-bottom: 25px;
+}
+
+
+#login input[type=text],
+#login input[type=password] {
+	width: 100%;
+	box-sizing: border-box;
+	border-radius: 5px;
+	padding: 10px;
+	border: 0px solid #ccc;
+	outline: none;
+	box-shadow: 0px 0px 5px #777 inset;
+}
+
+/* - General admin */
+
+#admin {
+	background-color: #fff;
+	border-radius: 5px;
+	box-shadow: 1px 1px 7px #777;
+	margin: 25px auto;
+	padding: 5px;
+	font-family: Verdana;
+	min-width: 600px !important;
+}
+
+#admin h1 {
+	text-align: center;
+	margin: 0;
+	color: #6e6e6e;
+	font: normal bold 3em 'Bad Script', cursive;
+	display: inline;
+	margin-left: 10px;
+}
+
+#admin h3.nav {
+	font-size: 0.8em;
+	color: #8b8b8b;
+	font-style: italic;
+	font-weight: normal;
+	margin: 0;
+}
+
+#admin h3.nav a {
+	text-decoration: underline;
+	color: #8b8b8b;
+	font-style: italic;
+}
+
+#admin table {
+	width: 100%;
+	border-spacing:0;
+	border-collapse:collapse;
+	margin-bottom: 50px;
+	
+}
+
+#admin table tr:nth-child(odd) {
+	/*background-color: #fbfbfb;*/
+}
+
+#admin table td {
+	padding: 10px 5px;
+}
+
+
+#admin table td:first-child {
+	background-image: url('img/list_arrow.png');
+	background-repeat: no-repeat;
+	background-position: left center;
+	padding-left: 15px;
+}
+
+
+#admin table tr td:last-child {
+	text-align: right;
+}
+
+
+#admin table td.date {
+	font-size: 0.8em;
+	color: gray;
+	font-style: italic;
+}
+
+#admin table a {
+	color: #000;
+	text-decoration: none;
+}
+
+
+#admin input[type=text] {
+	/*width: 100%;*/
+	box-sizing: border-box;
+	border-radius: 5px;
+	padding: 5px;
+	border: 0px solid #ccc;
+	outline: none;
+	box-shadow: 0px 0px 5px #777 inset;
+}
+
+form#addAlbum,
+form#uploadImages {
+	float: left;
+	margin: 10px;
+	background-color: #e6e8e7;
+	padding: 10px;
+	border-radius: 10px;
+}
+
+form#addAlbum p,
+form#uploadImages p {
+	margin: 0;
+	margin-bottom: 5px;
+	font-style: italic;
+}
+
+form#addAlbum p:last-child,
+form#uploadImages p:last-child {
+	margin-bottom: 0;
+}
+
+p.submitButton {
+	text-align: right;
+}
+
+
+.clear {
+	clear: both;
+	width: 0;
+	height: 0;
+	overflow: hidden;
+}
+
+
+#adminAlbum img {
+	border-radius: 5px;
+	width: 75px;
+	height: 75px;
+}
+
+
+/* Footer */
+
+footer {
+	color: #6e6e6e;
+	text-shadow: 0 0 3px #fff;
+	text-align: center;
+	font-family: 'Bad Script';
+}
+
+footer a {
+	color: #6e6e6e;
+	text-decoration: underline;
+}
+
+footer a:hover {
+	color: #000;
+}
+
+
+
+
+/* Responsive part */
+@media screen and (max-width: 960px) {
+
+	.page {
+		width: 600px !important;
+		max-width: 600px;
+		text-align: center;
+		
+	}
+	h1 {
+		font-size: 2.5em !important;
+	}
+
+}
+
+@media screen and (max-width: 600px) {
+
+	.page {
+		width: 300px !important;
+		max-width: 300px;
+		text-align: center;	
+	}
+	h1 {
+		font-size: 2em !important;
+	}
+
+}
+
+
+
+/* lightbox */
+
+#overlay {
+	position: fixed;
+	padding: 0;
+	margin: 0;
+	top: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.8);
+	width: 100%;
+	height: 100%;
+	display: none;
+	text-align: center;
+	vertical-align: middle;
+	font-size: 0;
+}
+
+#lightboxImage {
+	display: inline-block;
+	background-color: #fff;
+	border-radius: 5px;
+	padding: 5px;
+	position: relative;
+}
+
+#lightboxImage.loader {
+	position: absolute;
+	display: table-cell;
+	vertical-align: middle;
+	width: 32px;
+	height: 32px;
+	left: 50%;
+	top: 50%;
+	margin-left: -16px;
+	margin-top: -16px;
+}
+
+
+#lightboxImage #ajax {
+	display: none;
+}
+
+#lightboxImage.loader #ajax {
+	display: block;
+}
+
+#lightboxImage img {
+	max-width: 800px;
+	max-height: 600px;
+}
+
+#lightboxImage img#image {
+	display: none;
+	cursor: pointer;
+}
+
+#close {
+	color: #fff;
+	width: 25px;
+	height: 25px;
+	position: absolute;
+	background-color: #000;
+	top: -12px;
+	right: -12px;
+	border: 2px solid #fff;
+	box-shadow: 1px 1px 7px #777;
+	border-radius: 50%;
+	padding: 0;
+	font-size: 20px;
+	font-family: Helvetica;
+	cursor: pointer;
+	background-image: url('img/close.png');
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+#lightboxImage.loader #close {
+	display: none;
+}
