@@ -18,12 +18,10 @@ html {
 body {
 	margin: 0;
 	padding: 0;
-	background-color: #dbdcdb;
-	background: -webkit-radial-gradient(center, ellipse, rgba(247,251,252,1) 0%, rgb(230, 230, 230) 52.7%, rgb(167, 167, 167) 100%) fixed rgb(247,251,252);
-	background: -moz-radial-gradient(center, ellipse, rgba(247,251,252,1) 0%, rgb(230, 230, 230) 52.7%, rgb(167, 167, 167) 100%) fixed rgb(247,251,252);
-	background: -ms-radial-gradient(center, ellipse, rgba(247,251,252,1) 0%, rgb(230, 230, 230) 52.7%, rgb(167, 167, 167) 100%) fixed rgb(247,251,252);
-	background: -o-radial-gradient(center, ellipse, rgba(247,251,252,1) 0%, rgb(230, 230, 230) 52.7%, rgb(167, 167, 167) 100%) fixed rgb(247,251,252);
-	background: radial-gradient(ellipse at center, rgba(247,251,252,1) 0%, rgb(230, 230, 230) 52.7%, rgb(167, 167, 167) 100%) fixed rgb(247,251,252);
+    background-image: -webkit-radial-gradient(ellipse farthest-corner, #cde6f9 0%, #6190be 78.5%);
+    background-image: -moz-radial-gradient(ellipse farthest-corner, #cde6f9 0%, #6190be 78.5%);
+    background-image: -ms-radial-gradient(ellipse farthest-corner, #cde6f9 0%, #6190be 78.5%);
+    background-image: radial-gradient(ellipse farthest-corner, #cde6f9 0%, #6190be 78.5%);
 }
 
 
@@ -75,7 +73,7 @@ h1#siteTitle a:hover {
 	margin: 0 20px;
 	margin-bottom: 20px;
 	border-radius: 5px;
-	box-shadow: 1px 1px 5px #aaa;
+	box-shadow: 1px 1px 10px #777;
 }
 
 #albumNav li:hover a {
@@ -132,12 +130,11 @@ h1#siteTitle a:hover {
 @media screen and (max-width: 1400px) { 
 
 	header {
-		background-image: -webkit-radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.64) 0%, rgba(255, 255, 255, 0) 71.5%);
-		background-image: -moz-radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.64) 0%, rgba(255, 255, 255, 0) 71.5%);
-		background-image: -ms-radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.64) 0%, rgba(255, 255, 255, 0) 71.5%);
-		background-image: radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.64) 0%, rgba(255, 255, 255, 0) 71.5%);
-		
-		padding-bottom: 30px;
+		background-image: -webkit-radial-gradient(ellipse farthest-corner, rgba(205, 230, 249, 0.54) 0%, rgba(255, 255, 255, 0) 65.9%);
+        background-image: -moz-radial-gradient(ellipse farthest-corner, rgba(205, 230, 249, 0.54) 0%, rgba(255, 255, 255, 0) 65.9%);
+        background-image: -ms-radial-gradient(ellipse farthest-corner, rgba(205, 230, 249, 0.54) 0%, rgba(255, 255, 255, 0) 65.9%);
+        background-image: radial-gradient(ellipse farthest-corner, rgba(205, 230, 249, 0.54) 0%, rgba(255, 255, 255, 0) 65.9%);
+        padding-bottom: 30px;
 		max-width: 1200px;
 		margin: auto;
 	}
