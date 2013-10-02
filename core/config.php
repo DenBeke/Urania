@@ -23,4 +23,7 @@ $siteUrl = 'http://localhost:8888/Urania/'; //With slahs!!
 
 //Time zone
 date_default_timezone_set('Europe/Brussels');
+
+//Copyright
+$copyright = '&copy; Mathias Beke - <a href="http://denbeke.be">DenBeke.be</a>';
 ?>
