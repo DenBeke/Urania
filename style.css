@@ -1,5 +1,5 @@
 /*
-Style for Urania Image Gallery
+Basic Style for Urania Image Gallery
 
 Author: Mathias Beke
 Url: http://denbeke.be
@@ -194,15 +194,7 @@ h1#siteTitle a:hover {
 
 #home li a:hover {
 	-webkit-transition: all 0.5s;
-	/*
-	background-image: -webkit-radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.42) 100%);
-	background-image: -moz-radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.42) 100%);
-	background-image: -ms-radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.42) 100%);
-	background-image: radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.42) 100%);
-	*/
-	
 	background: transparent;
-	
 }
 
 #home li h3 {
@@ -211,14 +203,7 @@ h1#siteTitle a:hover {
 	padding-top: 30px;
 	font-family: 'Bad Script';
 	
-	/*
-	background-image: -webkit-radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.76) 46.3%, rgba(255, 255, 255, 0) 70.2%);
-	background-image: -moz-radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.76) 46.3%, rgba(255, 255, 255, 0) 70.2%);
-	background-image: -ms-radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.76) 46.3%, rgba(255, 255, 255, 0) 70.2%);
-	background-image: radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.76) 46.3%, rgba(255, 255, 255, 0) 70.2%);
-	*/
-	
-background-image: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0.83) 0%, rgba(255, 255, 255, 0.66) 60.7%, rgba(255, 255, 255, 0) 100%);
+    background-image: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0.83) 0%, rgba(255, 255, 255, 0.66) 60.7%, rgba(255, 255, 255, 0) 100%);
 	background-image: -moz-linear-gradient(bottom, rgba(255, 255, 255, 0.83) 0%, rgba(255, 255, 255, 0.66) 60.7%, rgba(255, 255, 255, 0) 100%);
 	background-image: -ms-linear-gradient(bottom, rgba(255, 255, 255, 0.83) 0%, rgba(255, 255, 255, 0.66) 60.7%, rgba(255, 255, 255, 0) 100%);
 	background-image: linear-gradient(to top, rgba(255, 255, 255, 0.83) 0%, rgba(255, 255, 255, 0.66) 60.7%, rgba(255, 255, 255, 0) 100%);
