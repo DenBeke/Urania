@@ -88,8 +88,6 @@ h1#siteTitle a:hover {
 }
 
 #albumNav li:hover a {
-	/* color: #4bb6d6; */
-	
 	-webkit-transition: all 0.5s;
 	color: #000000;
 }
@@ -99,7 +97,6 @@ h1#siteTitle a:hover {
 	text-decoration: none;
 	font-family: 'Bad Script';
 	font-variant: small-caps;
-	/*font-weight: bold;*/
 }
 
 
@@ -183,13 +180,6 @@ h1#siteTitle a:hover {
 	display: table-cell;
 	vertical-align: bottom;
 	text-align: center;
-	
-	/*
-	background-image: -webkit-radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0) 69.3%, rgba(255, 255, 255, 0.77) 100%);
-	background-image: -moz-radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0) 69.3%, rgba(255, 255, 255, 0.77) 100%);
-	background-image: -ms-radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0) 69.3%, rgba(255, 255, 255, 0.77) 100%);
-	background-image: radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0) 69.3%, rgba(255, 255, 255, 0.77) 100%);
-	*/
 }
 
 #home li a:hover {
