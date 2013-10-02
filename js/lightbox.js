@@ -9,6 +9,7 @@ Toggle a lightbox
        
 $(document).ready(function() {
     
+    //Open lightbox
 	$("a.lightbox").click(function(e){
 	    
 	    //Check if the screen is large enough to display the lightbox, else go directly to the image
@@ -41,6 +42,8 @@ $(document).ready(function() {
 		    $('#overlay img#image').attr("src", pageurl);
 		    
 		    
+		    //Prevent body from scrolling
+		    $('body').css('overflow', 'hidden');
 		    
 		    
 		    
@@ -49,14 +52,19 @@ $(document).ready(function() {
 		    
 		    }
 	  });
+	
 	  
-	  
+	//Close lightbox
 	$('#overlay').click(function() {
+		//Hide overlay and place loader images back
 		$('#overlay').fadeOut(0);	
 		$('#overlay img#image').fadeOut(0);
 		$('#overlay img#image').attr("src", '');
 		$('#overlay #lightboxImage').addClass('loader');
 		$('#overlay #lightboxImage.loader').css('margin-top', -16);
+		
+		//Re enable body scrolling
+		$('body').css('overflow', 'auto');
 	}
 	);
 	
