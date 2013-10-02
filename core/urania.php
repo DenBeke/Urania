@@ -14,7 +14,14 @@ require_once(dirname(__FILE__).'/database.php');
 
 
 
+/**
+@brief Class for the Urania CMS core functions
 
+This class takes care of:
+- database access
+- file management of uploads
+- ...
+*/
 class Urania {
     
     private $debug = false;
