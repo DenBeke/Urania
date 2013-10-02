@@ -14,7 +14,14 @@ require_once(dirname(__FILE__).'/database.php');
 
 
 
+/**
+@brief Class for the Urania CMS core functions
 
+This class takes care of:
+- database access
+- file management of uploads
+- ...
+*/
 class Urania {
     
     private $debug = false;
@@ -602,7 +609,7 @@ class Urania {
     @param file name
     @return string
     */
-    private function removeExtension($fileName) {
+    private static function removeExtension($fileName) {
 		$dotIndex = 0;
 		for ($i = strlen($fileName)-1; $i > 0; $i--) {
 			if($fileName[$i] == '.'){
@@ -621,7 +628,7 @@ class Urania {
     @param file name
     @return string
     */
-    public function simplifyFileName($fileName) {
+    public static function simplifyFileName($fileName) {
     	$table = array(
     	    'à' => 'a', 'á' => 'a', 'â' => 'a', 'ã' => 'a', 'ä' => 'a', 'å' => 'a',
     	    'ă' => 'a', 'ā' => 'a', 'ą' => 'a', 'æ' => 'a', 'ǽ' => 'a', 'þ' => 'b',
@@ -680,7 +687,7 @@ class Urania {
     @param suffix
     @return string
     */
-    private function addSuffix($fileName, $suffix) {
+    private static function addSuffix($fileName, $suffix) {
     	$dotIndex = 0;
     	for ($i = strlen($fileName)-1; $i > 0; $i--) {
     		if($fileName[$i] == '.'){
