@@ -7,7 +7,16 @@ Date: September 2013
 */
 
 
-@import url(http://fonts.googleapis.com/css?family=Bad+Script);
+@font-face {
+    /*
+    'Bad Script' font
+    Fount on Google: @import url(http://fonts.googleapis.com/css?family=Bad+Script);
+    */
+    font-family: 'Bad Script';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Bad Script Regular'), local('BadScript-Regular'), url(bad_script.woff) format('woff');
+}
 
 
 html {
