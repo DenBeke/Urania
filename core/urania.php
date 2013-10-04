@@ -31,6 +31,7 @@ class Urania {
     private $uploadDir;
     private $siteTitle;
     private $siteUrl;
+    private $copyright;
     
     /**
     Constructor
@@ -45,6 +46,7 @@ class Urania {
         $this->uploadDir = $uploadDir;
         $this->siteTitle = $siteTitle;
         $this->siteUrl = $siteUrl;
+        $this->copyright = $copyright;
     }
     
     
@@ -66,6 +68,16 @@ class Urania {
     */
     public function getSiteUrl() {
         return $this->siteUrl;
+    }
+    
+    
+    /**
+    Get the copyright information/text for the footer
+    
+    @return copyright
+    */
+    public function getCopyright() {
+    	return $this->copyright;
     }
     
     

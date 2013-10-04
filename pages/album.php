@@ -11,16 +11,17 @@ try {
 	$album = $u->getAlbum($id);
 	$albumName = $album->getName();
 	
-	echo '<ul>';
 	echo "<h1>$albumName</h1>";
+	
+	echo '<ul>';
 	
 	//Loop through all the images of the album
 	for ($i = 0; $i < $album->getNumberOfImages(); $i++) {
 		?>
 		
 		<li>
-			<a href="<?php echo $u->getSiteUrl() . $album->getImage($i)->getFileName() ?>" class="lightbox">
-				<img src="<?php echo $u->getSiteUrl(); ?>core/timthumb.php?src=<?php echo $album->getImage($i)->getFileName() . "&h=$imageHeight&w=$imageWidth"; ?>" alt="<?php echo $album->getImage($i)->getName(); ?>" />
+			<a href="<?php echo $u->getSiteUrl() . $album->getImage($i)->getFileName() ?>" class="lightbox" title="<?php echo $album->getImage($i)->getName(); ?>">
+				<img src="<?php echo $u->getSiteUrl(); ?>core/timthumb.php?src=<?php echo $album->getImage($i)->getFileName() . "&h=$imageHeight&w=$imageWidth"; ?>" alt="<?php echo $album->getImage($i)->getName(); ?>" title="<?php echo $album->getImage($i)->getName(); ?>" />
 			</a>
 		</li>
 		
