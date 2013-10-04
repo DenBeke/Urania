@@ -11,8 +11,9 @@ try {
 	$album = $u->getAlbum($id);
 	$albumName = $album->getName();
 	
-	echo '<ul>';
 	echo "<h1>$albumName</h1>";
+	
+	echo '<ul>';
 	
 	//Loop through all the images of the album
 	for ($i = 0; $i < $album->getNumberOfImages(); $i++) {
