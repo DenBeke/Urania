@@ -121,7 +121,7 @@ $includePage = preg_replace('/[^a-z0-9.]/', '', $includePage);
 	
 	<footer>
 		<p>
-			&copy; Chris L'hoëst - Website by <a href="http://denbeke.be">Mathias Beke</a>
+			<?php echo $u->getCopyright(); ?>
 		</p>
 	</footer>
 
