@@ -19,8 +19,8 @@ try {
 		?>
 		
 		<li>
-			<a href="<?php echo $u->getSiteUrl() . $album->getImage($i)->getFileName() ?>" class="lightbox">
-				<img src="<?php echo $u->getSiteUrl(); ?>core/timthumb.php?src=<?php echo $album->getImage($i)->getFileName() . "&h=$imageHeight&w=$imageWidth"; ?>" alt="<?php echo $album->getImage($i)->getName(); ?>" />
+			<a href="<?php echo $u->getSiteUrl() . $album->getImage($i)->getFileName() ?>" class="lightbox" title="<?php echo $album->getImage($i)->getName(); ?>">
+				<img src="<?php echo $u->getSiteUrl(); ?>core/timthumb.php?src=<?php echo $album->getImage($i)->getFileName() . "&h=$imageHeight&w=$imageWidth"; ?>" alt="<?php echo $album->getImage($i)->getName(); ?>" title="<?php echo $album->getImage($i)->getName(); ?>" />
 			</a>
 		</li>
 		
