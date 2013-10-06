@@ -20,4 +20,12 @@ Installation
 - Change the database config, table names, and other site info in the './core/config.php' file.
 - Start creating albums!!!
 
+TODO for the next version
+- Add the possibility to show the exif info of an image in the lightbox
+- Make it possible to add a caption the certain images
+- Better user authentication (possibility to have multiple image uploaders)
+- Separate admin part from the index.php
+(- store config information in the database)
+(- make an install script)
+
 Created by Mathias Beke - denbeke.be

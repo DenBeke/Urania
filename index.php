@@ -63,8 +63,6 @@ $includePage = preg_replace('/[^a-z0-9.]/', '', $includePage);
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
-	<meta http-equiv="X-UA-Compatible" content="IE=8" />
-	
 	<script src="<?php echo $u->getSiteUrl(); ?>js/jquery.js" type="text/javascript"></script>
 	
 	<script src="<?php echo $u->getSiteUrl(); ?>js/lightbox.js" type="text/javascript"></script>
@@ -73,9 +71,7 @@ $includePage = preg_replace('/[^a-z0-9.]/', '', $includePage);
 	
 	
 	<link rel="stylesheet" href="<?php echo $u->getSiteUrl(); ?>style.css" type="text/css" />
-	 
-	 
-	</script>
+	
 	
 </head>
 <body>
@@ -129,8 +125,8 @@ $includePage = preg_replace('/[^a-z0-9.]/', '', $includePage);
 	<!--Lightbox elements-->
 	<div id="overlay">
 		<div id="lightboxImage" class="loader">	
-			<img id="ajax" src="<?php echo $u->getSiteUrl(); ?>img/ajax-loader.gif" />
-			<img id="image" src="<?php echo $u->getSiteUrl(); ?>img/ajax-loader.gif" />
+			<img id="ajax" src="<?php echo $u->getSiteUrl(); ?>img/ajax-loader.gif" alt="loader" />
+			<img id="image" src="<?php echo $u->getSiteUrl(); ?>img/ajax-loader.gif" alt="loader"  />
 			<div id="close"></div>
 		</div>
 	</div>
