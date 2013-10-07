@@ -35,7 +35,7 @@ try {
 }
 catch (exception $exception) {
 	?>
-	<h2>Sorry, but this photo album doesn't exist</h2>
+	<h2 class="error">Sorry, but this photo album doesn't exist</h2>
 	<?php
 }
 

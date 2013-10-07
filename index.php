@@ -108,7 +108,9 @@ $includePage = preg_replace('/[^a-z0-9.]/', '', $includePage);
 	}
 	else {
 	    ?>
-	    <h2>Sorry, but this page doesn't exist</h2>
+	    <div class="page" id="home">
+	    	<h2 class="error">Sorry, but this page doesn't exist</h2>
+	    </div>
 	    <?php
 	}
 	?>
