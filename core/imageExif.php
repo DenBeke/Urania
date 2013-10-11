@@ -8,6 +8,8 @@ Date: September 2013
 */
 
 
+require_once(dirname(__FILE__).'/image.php');
+
 /**
 @brief Class containing an image and it's EXIF information
 
@@ -48,11 +50,31 @@ class imageExif extends image {
 	@param name
 	@param date
 	@param album id
+
+	@param basic image
+	
+	@pre number of arguments is 1 or 5
+	@pre if number only one argument given, argument is basic image
 	*/
-    public function __construct($id, $fileName, $name, $date, $albumId) { 
-        parent::__construct($id, $fileName, $name, $date, $albumId); 
+    public function __construct($idOrBasicImage, $fileName = NULL, $name = NULL, $date = NULL, $albumId = NULL) { 
+        
+        if(func_num_args() != 1 or func_num_args() != 5) {
+        	throw new exception('Number of arguments must be 1 or 5');
+        }
+        if(func_num_args() == 1) {
+        	if(get_class($idOrBasicImage) != 'Image') {
+        		throw new exception('When only one argument given, the argument must be of type Image');
+        	}
+        	//Construct basic image from given image
+        	parent::__construct($idOrBasicImage->getId(), $idOrBasicImage->getFileName(), $idOrBasicImage->getName(), $idOrBasicImage->getDate(), $idOrBasicImage->getAlbumId());
+        }
+        else {
+        	//Construct basic images from params
+        	parent::__construct($idOrBasicImage, $fileName, $name, $date, $albumId);
+        }
+         
     }
-    
+  
     
     /**
     Get the aperture of the image
