@@ -1,8 +1,9 @@
-/**
-Toggle a lightbox
+/*
+Simple Lightbox for Urania Image Gallery
 
-@param source of image to be displayed
-@param url for larger image
+Author: Mathias Beke
+Url: http://denbeke.be
+Date: September 2013
 */
 
 
