@@ -30,6 +30,16 @@ And the following information for the EXIF date:
 class imageExif extends image { 
 
 	
+	private $aperture;
+	private $shutterSpeed;
+	private $iso;
+	private $gpsLongitude;
+	private $gpsLatitude;
+	private $focalLength;
+	private $camera;
+	private $lens;
+	
+	
 	/**
 	Constructor
 	
@@ -41,7 +51,87 @@ class imageExif extends image {
 	*/
     public function __construct($id, $fileName, $name, $date, $albumId) { 
         parent::__construct($id, $fileName, $name, $date, $albumId); 
-    } 
+    }
+    
+    
+    /**
+    Get the aperture of the image
+    
+    @return aperture
+    */
+    public function getAperture() {
+    	return $this->aperture;
+    }
+    
+    
+    /**
+    Get the shutterspeed of the shutter speed of the image
+    
+    @return shutter speed
+    */
+    public function getShutterSpeed() {
+    	return $this->shutterSpeed;
+    }
+    
+    
+    /**
+    Get the iso value of the image
+    
+    @return iso
+    */
+    public function getIso() {
+    	return $this->iso;
+    }
+    
+    
+    /**
+    Get the GPS longitude
+    
+    @return longitude
+    */
+    public function getGpsLongitude() {
+    	return $this->gpsLongitude;
+    }
+    
+    
+    /**
+    Get the GPS latitude
+    
+    @return latitude
+    */
+    public function getGpsLatitude() {
+    	return $this->gpsLatitude;
+    }
+    
+    
+    /**
+    Get the focal length of the image
+    
+    @return focal length
+    */
+    public function getFocalLength() {
+    	return $this->focalLength;
+    }
+    
+    
+    /**
+    Get the camera model of the image
+    
+    @return camera
+    */
+    public function getCamera() {
+    	return $this->camera;
+    }
+    
+    
+    /**
+    Get the lens of the camera
+    
+    @return lens
+    */
+    public function getLens() {
+    	return $this->lens;
+    }
  
 } 
 
