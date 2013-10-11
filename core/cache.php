@@ -20,6 +20,7 @@ class Cache {
     
     private $directory;
     private $defaultTime = 500;
+    private $extension = '.cache';
     
     
     /**
@@ -49,7 +50,7 @@ class Cache {
         elseif ($time == -1) {
             return false;
         }
-        $fileName = $this->directory.$this->encrypt($query);
+        $fileName = $this->directory . $this->encrypt($query) . $this->extension;
         $modified = filemtime($fileName);
         $now = time();
         if(($now - $modified)  <= $time) {
@@ -68,7 +69,7 @@ class Cache {
     @return bool
     */
     public function cacheExists($query) {
-        $fileName = $this->directory.$this->encrypt($query);
+        $fileName = $this->directory.$this->encrypt($query) . $this->extension;
         return file_exists($fileName);
     }
     
@@ -80,7 +81,7 @@ class Cache {
     @return string containing file content
     */
     public function readCache($query) {
-        $fileName = $this->directory.$this->encrypt($query);
+        $fileName = $this->directory.$this->encrypt($query) . $this->extension;
         if(!file_exists($fileName)) {
             throw new exception("File does not exists");
         }
@@ -97,7 +98,7 @@ class Cache {
     @param result
     */
     public function writeCache($query, $result) {
-        $fileName = $this->directory.$this->encrypt($query);
+        $fileName = $this->directory.$this->encrypt($query) . $this->extension;
         file_put_contents($fileName, $result);
     }
 
