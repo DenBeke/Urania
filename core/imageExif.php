@@ -74,6 +74,65 @@ class imageExif extends image {
         }
          
     }
+    
+    
+    
+    /**
+    Read the exif data from a file.
+    When no file given, the data will be read from the image file
+    
+    @param input file
+    @return bool true (exif read) / false (no exif read)
+    
+    @pre file exists
+    @post exif data will be added to the image
+    */
+    public function readExifFromFile($fileName = NULL) {
+    	if ($fileName == NULL) {
+    		//If no filename given, we read exif date from the image file
+    		$fileName = $this->getFileName();
+    	}
+    	if(!file_exists($fileName)) {
+    		throw new exception('The given file does not exist');
+    	}
+    	else {
+    		//TODO read exif data and clean it up
+    		//TODO Check for each individual exif info if it can be read
+    		//If it couldn't read the efix date, the NULL will be assigned to the values
+    		try {
+    			if(function_exists("exif_read_data") && exif_read_data($fileName)){ 
+    				
+    				$exif = exif_read_data($fileName);
+    				
+					//Get the camera
+					$this->camera = $exif['Model'];
+					
+					//Get the aperture
+					$this->aperture = $exif['FNumber'];
+					
+					//Get the shutter speed
+					$this->shutterSpeed = $exif['ExposureTime'];
+					
+					//Get the ISO value
+					$this->iso = $exif['ISOSpeedRatings'];
+					
+					//Get the focal length
+					$this->focalLength = $exif['FocalLength'];
+					
+					//TODO GPS
+					return true;
+    			}
+    			else {
+    				echo "Couldn't read exif";
+    			}
+    		}
+    		catch (exception $exception) {
+    			//Set NULL and return false
+    			//TODO
+    			return false;
+    		}
+    	}
+    }
   
     
     /**
