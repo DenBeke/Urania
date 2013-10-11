@@ -58,7 +58,7 @@ class imageExif extends image {
 	*/
     public function __construct($idOrBasicImage, $fileName = NULL, $name = NULL, $date = NULL, $albumId = NULL) { 
         
-        if(func_num_args() != 1 or func_num_args() != 5) {
+        if(func_num_args() != 1 and func_num_args() != 5) {
         	throw new exception('Number of arguments must be 1 or 5');
         }
         if(func_num_args() == 1) {
