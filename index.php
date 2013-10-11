@@ -72,6 +72,8 @@ $includePage = preg_replace('/[^a-z0-9.]/', '', $includePage);
 	
 	<link rel="stylesheet" href="<?php echo $u->getSiteUrl(); ?>style.css" type="text/css" />
 	
+    <link rel="stylesheet" href="<?php echo $u->getSiteUrl(); ?>lightbox.css" type="text/css" />
+	
 	
 </head>
 <body>

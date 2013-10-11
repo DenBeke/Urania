@@ -1,0 +1,87 @@
+/*
+Style for Lightbox of Urania Image Gallery
+
+Author: Mathias Beke
+Url: http://denbeke.be
+Date: September 2013
+*/
+
+#overlay {
+	position: fixed;
+	padding: 0;
+	margin: 0;
+	top: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.8);
+	width: 100%;
+	height: 100%;
+	display: none;
+	text-align: center;
+	vertical-align: middle;
+	font-size: 0;
+}
+
+#lightboxImage {
+	display: inline-block;
+	background-color: #fff;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	padding: 5px;
+	position: relative;
+}
+
+#lightboxImage.loader {
+	position: absolute;
+	display: table-cell;
+	vertical-align: middle;
+	width: 32px;
+	height: 32px;
+	left: 50%;
+	top: 50%;
+	margin-left: -16px;
+	margin-top: -16px;
+}
+
+
+#lightboxImage #ajax {
+	display: none;
+}
+
+#lightboxImage.loader #ajax {
+	display: block;
+}
+
+#lightboxImage img {
+	max-width: 800px;
+	max-height: 600px;
+}
+
+#lightboxImage img#image {
+	display: none;
+	cursor: pointer;
+}
+
+#close {
+	color: #fff;
+	width: 25px;
+	height: 25px;
+	position: absolute;
+	background-color: #000;
+	top: -12px;
+	right: -12px;
+	border: 2px solid #fff;
+	box-shadow: 1px 1px 7px #777;
+	border-radius: 50%;
+	padding: 0;
+	font-size: 20px;
+	font-family: Helvetica;
+	cursor: pointer;
+	background-image: url('img/close.png');
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+#lightboxImage.loader #close {
+	display: none;
+}
