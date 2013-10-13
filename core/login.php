@@ -33,6 +33,22 @@ function checkLoginDetails($userName, $passWord) {
 }
 
 
+/*
+Generate a salt
+*/
+function generateSalt() {
+	return uniqid(rand(0, 1000000));
+}
+
+
+/*
+Encrypt a string with a salt
+*/
+function encrypt($text, $salt) {
+	return hash('sha512', $salt . $text);	
+}
+
+
 
 
 ?>

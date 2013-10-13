@@ -8,6 +8,9 @@ Date: June 2013
 */
 
 
+require_once(dirname(__FILE__).'/login.php');
+
+
 /**
 @brief Class representing a user
 */
@@ -30,7 +33,11 @@ class User {
 	@param encrypted password
 	*/
 	public function __construct($id, $name, $registered, $salt, $password) {
-		
+		$this->id = $id;
+		$this->name = $name;
+		$this->registered = $resigtered;
+		$this->salt = $salt;
+		$this->password = $password;
 	}
 	
 	
@@ -40,8 +47,8 @@ class User {
 	@param password
 	@return bool: true (correct password) / false (incorrect)
 	*/
-	public function checkPassword($password) {
-		//TODO Check hash value
+	public function checkPassword($enteredPassword) {
+		return ($this->password == encrypt($enteredPassword, $this->salt));
 	}
 	
 	
