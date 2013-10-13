@@ -33,6 +33,15 @@ if(isset($_GET['page']) and htmlspecialchars($_GET['page']) != '') {
     	    $pageName = 'Error';
     	}
 	}
+	elseif($pageName == 'image') {
+	    try {
+	    	$id = intval(htmlspecialchars($_GET['image']));
+	    	$pageName = $u->getImage($id)->getName() . ' - ' . $u->getSiteTitle();
+	    }
+	    catch (exception $exception) {
+	        $pageName = 'Error';
+	    }
+	}
 	elseif($pageName == 'home') {
 		$pageName = $u->getSiteTitle();
 	}
