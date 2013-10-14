@@ -18,35 +18,62 @@ try {
 	    <!-- TODO efix data -->
 	    <div id="exif">
 	    	<ul>
+	    		<?php 
+	    		if($image->getCamera() != NULL) {
+	    		?>
 	    		<li>
 	    			<?php echo $image->getCamera(); ?>
 	    		</li>
+	    		<?php 
+	    		}
 	    		
+	    		if($image->getIso() != NULL) {
+	    		?>
 	    		<li>
 	    			<?php echo $image->getIso(); ?>
 	    		</li>
 	    		
+	    		<?php 
+	    		}
+	    		
+	    		if($image->getAperture() != NULL) {
+	    		?>
 	    		<li>
-	    			<?php echo $image->getAperture(); ?>
+	    			&fnof;/<?php echo $image->getAperture(); ?>
+	    		</li>
+	    		<?php
+	    		}
+	    		
+	    		if($image->getShutterSpeed() != NULL) {
+	    		?>
+	    		<li>
+	    			<?php echo $image->getShutterSpeed(); ?>"
 	    		</li>
 	    		
-	    		<li>
-	    			<?php echo $image->getShutterSpeed(); ?>
-	    		</li>
+	    		<?php 
+	    		}
 	    		
+	    		if($image->getFocalLength() != NULL) {
+	    		?>
 	    		<li>
 	    			<?php echo $image->getFocalLength(); ?>
 	    		</li>
+	    		<?php } ?>
 	    	</ul>
 	    </div>
 	    
 	    
+	    <?php 
+	    if($image->getGpsLatitude() != NULL and $image->getGpsLongitude() != NULL) {
+	    ?>
 	    
 	    <div id="map" style="height: 300px;"></div>
 	    
 	    <script type="text/javascript">
 	    	createMap('map', <?php echo $image->getGpsLatitude(); ?>, <?php echo $image->getGpsLongitude(); ?>);
 	    </script>
+	    
+	    <?php } ?>
 	    
 	    
 	</div>
