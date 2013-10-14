@@ -10,6 +10,7 @@ Date: September 2013
 require_once(dirname(__FILE__).'/error_handler.php');
 require_once(dirname(__FILE__).'/album.php');
 require_once(dirname(__FILE__).'/image.php');
+require_once(dirname(__FILE__).'/imageExif.php');
 require_once(dirname(__FILE__).'/database.php');
 
 

@@ -5,7 +5,8 @@
 
 try {
 	
-	$image = $u->getImage($id);
+	$image = new ImageExif($u->getImage($id));
+	$image->readExifFromFile();
 	
 	?>
 	
@@ -15,6 +16,29 @@ try {
 	    <p><?php echo date('d-m-Y', $image->getDate()); ?></p>
 	
 	    <!-- TODO efix data -->
+	    <div id="exif">
+	    	<ul>
+	    		<li>
+	    			<?php echo $image->getCamera(); ?>
+	    		</li>
+	    		
+	    		<li>
+	    			<?php echo $image->getIso(); ?>
+	    		</li>
+	    		
+	    		<li>
+	    			<?php echo $image->getAperture(); ?>
+	    		</li>
+	    		
+	    		<li>
+	    			<?php echo $image->getShutterSpeed(); ?>
+	    		</li>
+	    		
+	    		<li>
+	    			<?php echo $image->getFocalLength(); ?>
+	    		</li>
+	    	</ul>
+	    </div>
 	</div>
 	
 	
