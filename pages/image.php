@@ -59,8 +59,6 @@ try {
 	</div>
 	
 	
-	<?php var_dump($image); ?>
-	
 	<?php
 	
 }

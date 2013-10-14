@@ -79,13 +79,13 @@ $includePage = preg_replace('/[^a-z0-9.]/', '', $includePage);
 	<script src="<?php echo $u->getSiteUrl(); ?>js/browsercheck.js" type="text/javascript"></script>
 	
 	
-	<link rel="stylesheet" href="<?php echo $u->getSiteUrl(); ?>style.css" type="text/css" />
+	<link rel="stylesheet" href="<?php echo $u->getSiteUrl(); ?>style/style.css" type="text/css" />
 	
-    <link rel="stylesheet" href="<?php echo $u->getSiteUrl(); ?>lightbox.css" type="text/css" />
+    <link rel="stylesheet" href="<?php echo $u->getSiteUrl(); ?>style/lightbox.css" type="text/css" />
     
-    <link rel="stylesheet" href="<?php echo $u->getSiteUrl(); ?>leaflet.css" />
+    <link rel="stylesheet" href="<?php echo $u->getSiteUrl(); ?>style/leaflet.css" />
     <!--[if lte IE 8]>
-        <link rel="stylesheet" href="<?php echo $u->getSiteUrl(); ?>leaflet.ie.css" />
+        <link rel="stylesheet" href="<?php echo $u->getSiteUrl(); ?>style/leaflet.ie.css" />
     <![endif]-->
     
     <script src="<?php echo $u->getSiteUrl(); ?>js/leaflet.js"></script>

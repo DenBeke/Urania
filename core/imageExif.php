@@ -161,8 +161,6 @@ class imageExif extends image {
 						$GPSLatitude = $exif['GPSLatitude'];
 						$GPSLongitude = $exif['GPSLongitude'];
 						
-						var_dump($exif);
-						
 						if(isset($exif['GPSlatitudeRef']) and isset($exif['GPSLongitudeRef'])) {
 							$GPSLatRef = $exif['GPSlatitudeRef'];
 							$GPSLongRef = $exif['GPSLongitudeRef'];
