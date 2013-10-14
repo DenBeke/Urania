@@ -89,6 +89,8 @@ $includePage = preg_replace('/[^a-z0-9.]/', '', $includePage);
     <![endif]-->
     
     <script src="<?php echo $u->getSiteUrl(); ?>js/leaflet.js"></script>
+    
+    <script src="<?php echo $u->getSiteUrl(); ?>js/map.js"></script>
 	
 	
 </head>

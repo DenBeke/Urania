@@ -160,8 +160,20 @@ class imageExif extends image {
 					if(isset($exif['GPSLatitude']) and isset($exif['GPSLongitude'])) {
 						$GPSLatitude = $exif['GPSLatitude'];
 						$GPSLongitude = $exif['GPSLongitude'];
-						$this->gpsLatitude = ImageExif::toDecimal($GPSLatitude[0], $GPSLatitude[1], $GPSLatitude[2], $exif['GPSlatitudeRef']);
-						$this->gpsLongitude = ImageExif::toDecimal($GPSLongitude[0], $GPSLongitude[1], $GPSLongitude[2], $exif['GPSLongitudeRef']);
+						
+						var_dump($exif);
+						
+						if(isset($exif['GPSlatitudeRef']) and isset($exif['GPSLongitudeRef'])) {
+							$GPSLatRef = $exif['GPSlatitudeRef'];
+							$GPSLongRef = $exif['GPSLongitudeRef'];
+						}
+						else {
+							$GPSLatRef = 'N';
+							$GPSLongRef = 'E';
+						}
+						
+						$this->gpsLatitude = ImageExif::toDecimal($GPSLatitude[0], $GPSLatitude[1], $GPSLatitude[2], $GPSLatRef);
+						$this->gpsLongitude = ImageExif::toDecimal($GPSLongitude[0], $GPSLongitude[1], $GPSLongitude[2], $GPSLongRef);
 					}
 					else {
 						$this->gpsLatitude = NULL;
@@ -179,6 +191,7 @@ class imageExif extends image {
     		catch (exception $exception) {
     			//Set NULL and return false
     			//TODO
+    			echo "Error: " . $exception;
     			return false;
     		}
     	}

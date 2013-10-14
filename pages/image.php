@@ -39,6 +39,16 @@ try {
 	    		</li>
 	    	</ul>
 	    </div>
+	    
+	    
+	    
+	    <div id="map" style="height: 300px;"></div>
+	    
+	    <script type="text/javascript">
+	    	createMap('map', <?php echo $image->getGpsLatitude(); ?>, <?php echo $image->getGpsLongitude(); ?>);
+	    </script>
+	    
+	    
 	</div>
 	
 	
@@ -47,6 +57,9 @@ try {
 	        <img src="<?php echo $u->getSiteUrl() . $image->getFileName(); ?>" alt="<?php echo $image->getName(); ?>" />
 	    </a>
 	</div>
+	
+	
+	<?php var_dump($image); ?>
 	
 	<?php
 	
@@ -60,5 +73,6 @@ catch (exception $exception) {
  
 
 ?>
+
 
 </div>
