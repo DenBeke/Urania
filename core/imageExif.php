@@ -105,40 +105,69 @@ class imageExif extends image {
     				$exif = exif_read_data($fileName);
     				
 					//Get the camera
-					$this->camera = $exif['Model'];
+					if(isset($exif['Model'])) {
+						$this->camera = $exif['Model'];
+					}
+					else {
+						$this->camera = NULL;
+					}
 					
 					//Get the aperture
-					$aperture = $exif['FNumber'];
-					$aperture = explode('/', $aperture);
-					$aperture = intval($aperture[0]) / intval($aperture[1]);
-					$this->aperture = round($aperture, 1);
+					if(isset($exif['FNumber'])) {
+						$aperture = $exif['FNumber'];
+						$aperture = explode('/', $aperture);
+						$aperture = intval($aperture[0]) / intval($aperture[1]);
+						$this->aperture = round($aperture, 1);
+					}
+					else {
+						$this->aperture = NULL;
+					}
 					
 					
 					//Get the shutter speed
-					$shutterSpeed = $exif['ExposureTime'];
-					if($shutterSpeed[strlen($shutterSpeed)-1] == '1' && $shutterSpeed[strlen($shutterSpeed)-2] == '/') {
-					    $shutterSpeed = substr($shutterSpeed, 0, strlen($shutterSpeed)-2);
+					if(isset($exif['ExposureTime'])) {
+						$shutterSpeed = $exif['ExposureTime'];
+						if($shutterSpeed[strlen($shutterSpeed)-1] == '1' && $shutterSpeed[strlen($shutterSpeed)-2] == '/') {
+						    $shutterSpeed = substr($shutterSpeed, 0, strlen($shutterSpeed)-2);
+						}
+						$this->shutterSpeed = $shutterSpeed;
 					}
-					$this->shutterSpeed = $shutterSpeed;
+					else {
+						$this->shutterSpeed = NULL;
+					}
 					
 					//Get the ISO value
-					$this->iso = $exif['ISOSpeedRatings'];
+					if(isset($exif['ISOSpeedRatings'])) {
+						$this->iso = $exif['ISOSpeedRatings'];
+					}
+					else {
+						$this->iso = NULL;
+					}
 					
 					//Get the focal length
-					$focalLength = $exif['FocalLength'];
-					$focalLength = explode('/', $focalLength);
-					$focalLength = intval($focalLength[0]) / intval($focalLength[1]);
-					$this->focalLength = round($focalLength, 0) . 'mm';
+					if(isset($exif['FocalLength'])) {
+						$focalLength = $exif['FocalLength'];
+						$focalLength = explode('/', $focalLength);
+						$focalLength = intval($focalLength[0]) / intval($focalLength[1]);
+						$this->focalLength = round($focalLength, 0) . 'mm';
+					}
+					else {
+						$this->focalLength = NULL;
+					}
 					
 					
 					//Parse GPS coordinates
-					$GPSLatitude = $exif['GPSLatitude'];
-					$GPSLongitude = $exif['GPSLongitude'];
+					if(isset($exif['GPSLatitude']) and isset($exif['GPSLongitude'])) {
+						$GPSLatitude = $exif['GPSLatitude'];
+						$GPSLongitude = $exif['GPSLongitude'];
+						$this->gpsLatitude = ImageExif::toDecimal($GPSLatitude[0], $GPSLatitude[1], $GPSLatitude[2], $exif['GPSlatitudeRef']);
+						$this->gpsLongitude = ImageExif::toDecimal($GPSLongitude[0], $GPSLongitude[1], $GPSLongitude[2], $exif['GPSLongitudeRef']);
+					}
+					else {
+						$this->gpsLatitude = NULL;
+						$this->gpsLongitude = NULL;
+					}
 					
-					$this->gpsLatitude = ImageExif::toDecimal($GPSLatitude[0], $GPSLatitude[1], $GPSLatitude[2], $exif['GPSlatitudeRef']);
-					$this->gpsLongitude = ImageExif::toDecimal($GPSLongitude[0], $GPSLongitude[1], $GPSLongitude[2], $exif['GPSLongitudeRef']);
-					
-					//TODO fix devision by zero when no gps coordinates given
 					
 					return true;
     			}
@@ -257,14 +286,23 @@ class imageExif extends image {
         
         //Get degrees
         $deg = explode('/', $deg);
+        if(intval($deg[1]) == 0) {
+        	return NULL;
+        }
         $deg = intval($deg[0])/intval($deg[1]);
         
         //Get minutes
         $min = explode('/', $min);
+        if(intval($min[1]) == 0) {
+        	return NULL;
+        }
         $min = intval($min[0])/intval($min[1]);
         
         //Get seconds
         $sec = explode('/', $sec);
+        if(intval($sec[1]) == 0) {
+        	return NULL;
+        }
         $sec = intval($sec[0])/intval($sec[1]);
         
         //Calculate decimal coordinate
