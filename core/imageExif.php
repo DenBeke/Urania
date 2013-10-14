@@ -108,28 +108,43 @@ class imageExif extends image {
 					$this->camera = $exif['Model'];
 					
 					//Get the aperture
-					$this->aperture = $exif['FNumber'];
+					$aperture = $exif['FNumber'];
+					$aperture = explode('/', $aperture);
+					$aperture = intval($aperture[0]) / intval($aperture[1]);
+					$this->aperture = round($aperture, 1);
+					
 					
 					//Get the shutter speed
-					$this->shutterSpeed = $exif['ExposureTime'];
+					$shutterSpeed = $exif['ExposureTime'];
+					if($shutterSpeed[strlen($shutterSpeed)-1] == '1' && $shutterSpeed[strlen($shutterSpeed)-2] == '/') {
+					    $shutterSpeed = substr($shutterSpeed, 0, strlen($shutterSpeed)-2);
+					}
+					$this->shutterSpeed = $shutterSpeed;
 					
 					//Get the ISO value
 					$this->iso = $exif['ISOSpeedRatings'];
 					
 					//Get the focal length
-					$this->focalLength = $exif['FocalLength'];
+					$focalLength = $exif['FocalLength'];
+					$focalLength = explode('/', $focalLength);
+					$focalLength = intval($focalLength[0]) / intval($focalLength[1]);
+					$this->focalLength = round($focalLength, 0) . 'mm';
 					
-					//TODO GPS
+					
+					//Parse GPS coordinates
 					$GPSLatitude = $exif['GPSLatitude'];
 					$GPSLongitude = $exif['GPSLongitude'];
 					
 					$this->gpsLatitude = ImageExif::toDecimal($GPSLatitude[0], $GPSLatitude[1], $GPSLatitude[2], $exif['GPSlatitudeRef']);
 					$this->gpsLongitude = ImageExif::toDecimal($GPSLongitude[0], $GPSLongitude[1], $GPSLongitude[2], $exif['GPSLongitudeRef']);
 					
+					//TODO fix devision by zero when no gps coordinates given
+					
 					return true;
     			}
     			else {
     				echo "Couldn't read exif";
+    				return false;
     			}
     		}
     		catch (exception $exception) {
