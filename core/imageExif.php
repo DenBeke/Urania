@@ -120,6 +120,12 @@ class imageExif extends image {
 					$this->focalLength = $exif['FocalLength'];
 					
 					//TODO GPS
+					$GPSLatitude = $exif['GPSLatitude'];
+					$GPSLongitude = $exif['GPSLongitude'];
+					
+					$this->gpsLatitude = ImageExif::toDecimal($GPSLatitude[0], $GPSLatitude[1], $GPSLatitude[2], $exif['GPSlatitudeRef']);
+					$this->gpsLongitude = ImageExif::toDecimal($GPSLongitude[0], $GPSLongitude[1], $GPSLongitude[2], $exif['GPSLongitudeRef']);
+					
 					return true;
     			}
     			else {
@@ -214,6 +220,51 @@ class imageExif extends image {
     	return $this->lens;
     }
  
+ 
+
+
+    public function __toString() {
+        $output = parent::__toString();
+        $output = $output . '<ul>';
+        $output = $output . "<li>Camera: $this->camera</li>";
+        $output = $output . "<li>Aperture: $this->aperture</li>";
+        $output = $output . "<li>Shutterspeed: $this->shutterSpeed</li>";
+        $output = $output . "<li>ISO: $this->iso</li>";
+        $output = $output . "<li>Focallength: $this->focalLength</li>";
+        $output = $output . "<li>GPS Longitude: $this->gpsLongitude</li>";
+        $output = $output . "<li>GPS Latitude: $this->gpsLatitude</li>";
+        $output = $output . '</ul>';
+        return $output;
+    }
+    
+    
+    static private function toDecimal($deg, $min, $sec, $hem) {
+        
+        //Get degrees
+        $deg = explode('/', $deg);
+        $deg = intval($deg[0])/intval($deg[1]);
+        
+        //Get minutes
+        $min = explode('/', $min);
+        $min = intval($min[0])/intval($min[1]);
+        
+        //Get seconds
+        $sec = explode('/', $sec);
+        $sec = intval($sec[0])/intval($sec[1]);
+        
+        //Calculate decimal coordinate
+        $dec = $deg + ((($min*60) + ($sec))/3600);
+        
+        //Check if we don't need to take inverse
+        if ($hem=='S' || $hem=='W') {
+            return $dec * -1;
+        }
+        else {
+            return $dec;
+        }
+    }
+    
+    
 } 
 
 
