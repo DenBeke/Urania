@@ -82,6 +82,13 @@ $includePage = preg_replace('/[^a-z0-9.]/', '', $includePage);
 	<link rel="stylesheet" href="<?php echo $u->getSiteUrl(); ?>style.css" type="text/css" />
 	
     <link rel="stylesheet" href="<?php echo $u->getSiteUrl(); ?>lightbox.css" type="text/css" />
+    
+    <link rel="stylesheet" href="<?php echo $u->getSiteUrl(); ?>leaflet.css" />
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="<?php echo $u->getSiteUrl(); ?>leaflet.ie.css" />
+    <![endif]-->
+    
+    <script src="<?php echo $u->getSiteUrl(); ?>js/leaflet.js"></script>
 	
 	
 </head>
