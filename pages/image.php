@@ -10,6 +10,8 @@ try {
 	
 	?>
 	
+	<div id="include">
+	
 	<div id="imageInfo">
 	
 	    <h1><?php echo $image->getName(); ?></h1>
@@ -67,11 +69,13 @@ try {
 	    if($image->getGpsLatitude() != NULL and $image->getGpsLongitude() != NULL) {
 	    ?>
 	    
-	    <div id="map" style="height: 300px;"></div>
+	    <div id="map" style="height: 300px;">
+	    </div>
 	    
 	    <script type="text/javascript">
 	    	createMap('map', <?php echo $image->getGpsLatitude(); ?>, <?php echo $image->getGpsLongitude(); ?>);
 	    </script>
+	    
 	    
 	    <?php } ?>
 	    
@@ -83,6 +87,8 @@ try {
         <a href="<?php echo $u->getSiteUrl() . $image->getFileName(); ?>">
 	        <img src="<?php echo $u->getSiteUrl() . $image->getFileName(); ?>" alt="<?php echo $image->getName(); ?>" />
 	    </a>
+	</div>
+	
 	</div>
 	
 	
