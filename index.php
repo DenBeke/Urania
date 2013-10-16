@@ -33,6 +33,15 @@ if(isset($_GET['page']) and htmlspecialchars($_GET['page']) != '') {
     	    $pageName = 'Error';
     	}
 	}
+	elseif($pageName == 'image') {
+	    try {
+	    	$id = intval(htmlspecialchars($_GET['image']));
+	    	$pageName = $u->getImage($id)->getName() . ' - ' . $u->getSiteTitle();
+	    }
+	    catch (exception $exception) {
+	        $pageName = 'Error';
+	    }
+	}
 	elseif($pageName == 'home') {
 		$pageName = $u->getSiteTitle();
 	}
@@ -70,9 +79,18 @@ $includePage = preg_replace('/[^a-z0-9.]/', '', $includePage);
 	<script src="<?php echo $u->getSiteUrl(); ?>js/browsercheck.js" type="text/javascript"></script>
 	
 	
-	<link rel="stylesheet" href="<?php echo $u->getSiteUrl(); ?>style.css" type="text/css" />
+	<link rel="stylesheet" href="<?php echo $u->getSiteUrl(); ?>style/style.css" type="text/css" />
 	
-    <link rel="stylesheet" href="<?php echo $u->getSiteUrl(); ?>lightbox.css" type="text/css" />
+    <link rel="stylesheet" href="<?php echo $u->getSiteUrl(); ?>style/lightbox.css" type="text/css" />
+    
+    <link rel="stylesheet" href="<?php echo $u->getSiteUrl(); ?>style/leaflet.css" />
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="<?php echo $u->getSiteUrl(); ?>style/leaflet.ie.css" />
+    <![endif]-->
+    
+    <script src="<?php echo $u->getSiteUrl(); ?>js/leaflet.js"></script>
+    
+    <script src="<?php echo $u->getSiteUrl(); ?>js/map.js"></script>
 	
 	
 </head>
