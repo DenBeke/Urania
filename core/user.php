@@ -35,7 +35,7 @@ class User {
 	public function __construct($id, $name, $registered, $salt, $password) {
 		$this->id = $id;
 		$this->name = $name;
-		$this->registered = $resigtered;
+		$this->registered = $registered;
 		$this->salt = $salt;
 		$this->password = $password;
 	}
