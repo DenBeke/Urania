@@ -44,7 +44,7 @@ class Urania {
         $this->db_table_albums = $db_table_albums;
         $this->db_table_images = $db_table_images;
         $this->database = new Database($db_host, $db_user, $db_password, $db_database, dirname(__FILE__).'/../cache/');
-        $this->uploadDir = dirname(__FILE__).'/../'.$uploadDir;
+        $this->uploadDir = $uploadDir;
         $this->siteTitle = $siteTitle;
         $this->siteUrl = $siteUrl;
         $this->copyright = $copyright;
