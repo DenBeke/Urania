@@ -25,7 +25,7 @@ This class takes care of:
 */
 class Urania {
     
-    private $debug = true;
+    private $debug = false;
     private $database;
     private $db_table_albums;
     private $db_table_images;
@@ -44,7 +44,7 @@ class Urania {
         $this->db_table_albums = $db_table_albums;
         $this->db_table_images = $db_table_images;
         $this->database = new Database($db_host, $db_user, $db_password, $db_database, dirname(__FILE__).'/../cache/');
-        $this->uploadDir = $uploadDir;
+        $this->uploadDir = dirname(__FILE__).'/../'.$uploadDir;
         $this->siteTitle = $siteTitle;
         $this->siteUrl = $siteUrl;
         $this->copyright = $copyright;
