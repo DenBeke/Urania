@@ -34,14 +34,15 @@ class Database {
     @param user
     @param password
     @param database
+    @param cache folder
     */
-    public function __construct($db_host, $db_user, $db_password, $db_database) {
+    public function __construct($db_host, $db_user, $db_password, $db_database, $cache) {
         
         $this->db_host = $db_host;
         $this->db_user = $db_user;
         $this->db_password = $db_password;
         $this->db_database = $db_database;
-        $this->cache = new Cache();
+        $this->cache = new Cache($cache);
         
     }
     
