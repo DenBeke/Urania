@@ -8,7 +8,7 @@ Author: Mathias Beke
 function createMap(id, lat, long) {
 	
 	// set up the map
-	map = new L.Map('map');
+	map = new L.Map(id);
 	
 	// create the tile layer with correct attribution
 	var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
