@@ -32,7 +32,7 @@ TODO for the next version
 - Add the possibility to show the exif info of an image in the lightbox
 - Make single view for an image
 - Add map for displaying the location of the image
-- Make it possible to add a caption the certain images
+- Make it possible to add a caption to certain images
 - Better user authentication (possibility to have multiple image uploaders)
 - Separate admin part from the index.php
 - Make it possible to sort images
