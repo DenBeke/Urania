@@ -28,7 +28,7 @@ Installation
 Notes
 =====
 
-* By default PHP has some limits
+* By default PHP has some limits.
   You can change those limits in the php.ini on your server.
 	* upload_max_filesize (should be enough for basic image uploading, but could cause problems when adding very large images)
 	* post_max_size (the maximum total size of all image you are trying to upload)
@@ -50,4 +50,4 @@ TODO for the next version
 * (make an install script)
 
 
-*Created by Mathias Beke - denbeke.be*
+*Created by Mathias Beke - [denbeke.be](http://denbeke.be)*
