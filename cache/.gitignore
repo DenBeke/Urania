@@ -1,0 +1,5 @@
+#Excude all cache files (= .cache files, .timthumb.txt, index.html)
+#Keep the .htaccess file
+*
+!.htaccess
+!.gitignore
