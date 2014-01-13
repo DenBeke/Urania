@@ -43,6 +43,7 @@ TODO for the next version
 * Make single view for an image
 * Add map for displaying the location of the image
 * Make it possible to add a caption to certain images
+* Add an API (using JSON objects) which makes it possible to use CMS content on other systems (i.e. have a photostream with the latest uploads, or a list with albums)
 * Better user authentication (possibility to have multiple image uploaders)
 * Separate admin part from the index.php
 * Make it possible to sort images
