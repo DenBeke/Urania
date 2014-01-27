@@ -295,6 +295,51 @@ class Urania {
     
     
     /**
+    Returns the latest images
+    
+    @param count
+    @return array of images
+    
+    @pre count is greater than, or equal to zero
+    */
+    public function getLatestImages($count) {
+    
+    	if(intval($count) < 1) {
+    		throw new Exception("Number of images must be at least 1");
+    	}
+    	else {
+    		
+    		//Create query
+    		$count = $this->database->escape($count);
+    		$images = $this->database->escape($this->db_table_images);
+    		
+    		$query = 
+    		"
+    		SELECT *
+    		FROM `$images`
+    		ORDER BY `date` DESC
+    		LIMIT 0, $count
+    		";
+    		
+    		$result = $this->database->getQuery($query);
+    		$outputArray = array();
+    		
+    		for($i = 0; $i < sizeof($result); $i++) {
+    		
+    			$outputArray[] = new Image($result[$i]['id'], $this->uploadDir . $this->simplifyFileName($this->getAlbumName($result[$i]['albumId'])) . '/' . $result[$i]['fileName'], $result[$i]['name'], $result[$i]['date'], $result[$i]['albumId']);
+    		
+    		}
+    		
+    		return $outputArray;
+    		
+    	}
+    
+    }
+    
+    
+    
+    
+    /**
     Change the name of the image in the database
     
     @param image id
