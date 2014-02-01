@@ -9,6 +9,7 @@ Date: September 2013
 
 
 require_once(dirname(__FILE__).'/../core/urania.php');
+require_once(dirname(__FILE__) . '/json.php');
 
 $output = array();
 
@@ -22,6 +23,12 @@ try {
 	}
 	$image = intval(htmlspecialchars($_GET['image']));
 	$outputImage;
+	
+	$debug = false;
+	
+	if(isset($_GET['debug']) && htmlspecialchars($_GET['debug']) == 'true') {
+		$debug = true;
+	}
 
 
 	//Get the image
@@ -48,7 +55,15 @@ try {
 	
 	$output['error'] = false;
 	
-	echo json_encode($output);
+	$out = json_encode($output);
+	if($debug) {
+		echo '<pre>';
+		echo formatJson($out);
+		echo '</pre>';
+	}
+	else {
+		echo $out;
+	}
 	
 
 }
