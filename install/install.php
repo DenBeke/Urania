@@ -17,7 +17,7 @@ function connectDatabase($db_host, $db_user, $db_password, $db_database) {
 	// check connection
 	if (mysqli_connect_errno()) {
 	    $error = mysqli_connect_error();
-	    throw new Exception("Connect failed: $error");
+	    throw new Exception("Database Connection failed: $error");
 	}
 	
 	return $link;
@@ -36,7 +36,7 @@ function createAlbumsTable($link) {
 	)";
 	
 	if(!$link->query($query)) {
-		throw new Exception('MySQL Error: ' . $link->error);
+		throw new Exception('Database Error: ' . $link->error);
 	}
 }
 
@@ -56,7 +56,7 @@ function createImagesTable($link) {
 	
 	
 	if(!$link->query($query)) {
-		throw new Exception('MySQL Error: ' . $link->error);
+		throw new Exception('Database Error: ' . $link->error);
 	}
 	
 }

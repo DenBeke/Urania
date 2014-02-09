@@ -21,6 +21,19 @@ if(isset($_POST['db_host']) && isset($_POST['db_user']) && isset($_POST['db_pass
 		$db_password = $_POST['db_password'];
 		$db_database = $_POST['db_database'];
 		
+		if($db_host == '') {
+			throw new exception('Please provide a database host');
+		}
+		elseif($db_user == '') {
+			throw new exception('Please provide a database username');
+		}
+		elseif($db_password == '') {
+			throw new exception('Please provide the database password');
+		}
+		elseif($db_database == '') {
+			throw new exception('Please provide the database name');
+		}
+		
 		$link = connectDatabase($db_host, $db_user, $db_password, $db_database);
 		
 		//Add the tables
