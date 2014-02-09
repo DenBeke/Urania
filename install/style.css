@@ -1,0 +1,10 @@
+body {
+	width: 700px;
+	margin: auto;
+}
+
+div.error {
+	border: 1px solid red;
+	padding: 5px;
+	border-radius: 5px;
+}
