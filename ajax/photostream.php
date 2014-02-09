@@ -35,8 +35,15 @@ try {
 	$output = array();
 	
 	foreach ($stream as $image) {
-		$last = sizeof($output) + 1;
-		$output[$last]['name'] = $image->getName();
+		
+		$row = array();
+		
+		$row['name'] = $image->getName();
+		$row['url'] = $u->getSiteUrl() . $image->getFileName();
+		$row['date'] = $image->getDate();
+		
+		$output[] = $row;
+		
 	}
 	
 	
@@ -62,8 +69,6 @@ catch(exception $exception) {
 	$output['error'] = true;
 	echo json_encode($output);
 	
-	echo $exception;
-
 }
 
 

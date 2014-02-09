@@ -6,8 +6,7 @@ Returns JSON object containing all the info of an image
 http://stackoverflow.com/questions/6054033/pretty-printing-json-with-php
 */
 
-function formatJson($json)
-{
+function formatJson($json) {
 
 	$result = '';
 	$level = 0;
