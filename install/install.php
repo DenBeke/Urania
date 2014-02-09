@@ -26,7 +26,7 @@ function connectDatabase($db_host, $db_user, $db_password, $db_database) {
 
 
 
-function addAlbumsTable($link) {
+function createAlbumsTable($link) {
 
 	$query = "CREATE TABLE `Albums` (
 	  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id of the album',
@@ -43,7 +43,7 @@ function addAlbumsTable($link) {
 
 
 
-function addImagesTable($link) {
+function createImagesTable($link) {
 	
 	$query = "CREATE TABLE `Images` (
 	  `id` int(11) NOT NULL AUTO_INCREMENT,
