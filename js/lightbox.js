@@ -38,36 +38,53 @@ $(document).ready(function() {
 		    if commented, html5 nonsupported browers will reload the page to the specified link.
 		    */
 		 
-		    //get the link location that was clicked
-		    pageurl = $(this).attr('href');
 		 
-		    //to get the ajax content and display in div with id 'content'
+		 	//Get the id of the image
+		 	var jsonUrl = $(this).attr('data-json');
+		 	
+		 	//Retrieve JSON object and load data	
+		 	$.getJSON(jsonUrl, function(data) {
+		 		
+		 		$('#lightboxContent h1').text(data['name']);
+				$('#lightboxContent .date').text(data['date']);
+				$('#lightboxContent #photo').attr('src', data['fileName']);
+				
+				
+				//Check for exif data, and load the data if needed.
+				
+				
+				//Do action when image is loaded
+				$('#lightboxContent #photo').load(function() {
+					
+					$('#lightboxContent #photo').fadeIn();
+					
+				});
+				
+				
+				//Display geo location on map
+				if(data['longitude'] != null && data['latitude'] != null) {
+					createMap('lightboxMap', data['latitude'], data['longitude']);
+				}
+				
+		 	});
+		 	
+		 	
+		 	
+		 			 	
+		 
+		 
+		    //get the link location that was clicked
+		    var pageUrl = $(this).attr('href');
 		 
 		    //to change the browser URL to the given link location
-		    if(pageurl!=window.location){
-		        window.history.pushState({path:pageurl},'',pageurl);
+		    if(pageUrl != window.location){
+		        window.history.pushState({path:pageUrl},'',pageUrl);
 		    }
-		    
 		    
 		    
 		    $('#overlay').fadeIn();
 		    $('#overlay').css('display', 'table-cell');
-		    
-		    //$('#overlay img#image').attr("src", pageurl);
-		    //$( "#lightboxContent" ).load( pageurl + " #image #include" );
-		    //$("#lightboxContent").load( pageurl + " #image script" );
-		    
-		    //$( '#lightboxContent' ).html( $( '<div id="include"></div>' ).html( data ).find( pageurl + " #image #include" ).clone() );
-		    
-		    $.get( pageurl, function ( data ) {
-		        $( '#lightboxContent' ).html( $( '<div></div>' ).html( data ).find( '#include' ).clone() );
-		    });
-		    
-		    
-		    //Prevent body from scrolling
-		    $('body').css('overflow', 'hidden');
-		    
-		    
+		  
 		    
 		    //stop refreshing to the page given in
 		    return false;
@@ -87,8 +104,8 @@ $(document).ready(function() {
 	function closeLightbox() {
 	    //Hide overlay and place loader images back
 	    $('#overlay').fadeOut(0);	
-	    $('#overlay img#image').fadeOut(0);
-	    $('#overlay img#image').attr("src", '');
+	    $('#overlay img#photo').fadeOut(0);
+	    $('#overlay img#photo').attr("src", '../img/ajax-loader.gif');
 	    $('#overlay #lightboxImage').addClass('loader');
 	    $('#overlay #lightboxImage.loader').css('margin-top', -16);
 	    

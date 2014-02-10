@@ -41,7 +41,7 @@ try {
 	$output = array();
 	
 	$output['name'] = $outputImage->getName();
-	$output['fileName'] = $outputImage->getFileName();
+	$output['fileName'] = $u->getSiteUrl() . $outputImage->getFileName();
 	$output['date'] = date('d-m-Y', $outputImage->getDate());
 	
 	$output['shutterSpeed'] = $outputImage->getShutterSpeed();
