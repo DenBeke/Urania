@@ -148,11 +148,22 @@ $includePage = preg_replace('/[^a-z0-9.]/', '', $includePage);
 	<div id="overlay">
 		<div id="lightboxContent" class="loader">	
 			<h1></h1>
-			<span class="date"></span>
-			<img id="photo" src="" alt="" />
 			
-			<!-- Div that will contain the geolocation map -->
-			<div id="lightboxMap" style="height: 300px;"></div>
+			<div id="lightboxWrapper">
+			
+				<div id="imageContainer">
+					<img id="photo" src="" alt="" />
+				</div>
+				
+				
+				<div id="meta">
+					<span class="date"></span>
+					
+					<!-- Div that will contain the geolocation map -->
+					<div id="lightboxMap"></div>
+				</div>
+				
+			</div>
 			
 		</div>
 	</div>
