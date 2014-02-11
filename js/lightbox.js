@@ -97,6 +97,7 @@ $(document).ready(function() {
 	
 	$('#overlay').click(function() {
 		closeLightbox();
+		destroyMap();
 	}
 	);
 	

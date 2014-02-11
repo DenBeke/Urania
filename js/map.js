@@ -28,3 +28,8 @@ function createMap(id, lat, long) {
 	var marker = L.marker([lat, long]).addTo(map);
 	
 }
+
+
+function destroyMap() {
+	window.map.remove();
+}
