@@ -94,12 +94,14 @@ $(document).ready(function() {
 	
 	
 	
+	$('#overlay').click(function(e) {
 	
-	$('#overlay').click(function() {
 		closeLightbox();
 		destroyMap();
 	}
 	);
+	
+	
 	
 	//Close lightbox
 	function closeLightbox() {
