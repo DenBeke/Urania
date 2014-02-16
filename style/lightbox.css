@@ -69,3 +69,14 @@ Date: September 2013
     margin: 0;
     
 }
+
+
+#lightboxContent ul.exif {
+	color: #666;
+	text-align: left;
+}
+
+#lightboxContent ul.exif li {
+	list-style: url('../img/list_arrow.png');
+}
+

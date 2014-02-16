@@ -159,6 +159,10 @@ $includePage = preg_replace('/[^a-z0-9.]/', '', $includePage);
 				<div id="meta">
 					<span class="date"></span>
 					
+					<ul class="exif">
+					
+					</ul>
+					
 					<!-- Div that will contain the geolocation map -->
 					<div id="lightboxMap"></div>
 				</div>

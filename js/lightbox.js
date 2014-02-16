@@ -66,6 +66,28 @@ $(document).ready(function() {
 					createMap('lightboxMap', data['latitude'], data['longitude']);
 				}
 				
+				//Display other exif information
+				if(data['camera'] != null) {
+					$('#lightboxContent .exif').append('<li>' + data['camera'] + '</li>');
+				}
+				
+				if(data['iso'] != null) {
+					$('#lightboxContent .exif').append('<li>ISO ' + data['iso'] + '</li>');
+				}
+				
+				if(data['focallength'] != null) {
+					$('#lightboxContent .exif').append('<li>' + data['focallength'] + '</li>');
+				}
+				
+				if(data['aperture'] != null) {
+					$('#lightboxContent .exif').append('<li>ƒ/' + data['aperture'] + '</li>');
+				}
+				
+				if(data['shutterSpeed'] != null) {
+					$('#lightboxContent .exif').append('<li>' + data['shutterSpeed'] + '"</li>');
+				}
+
+				
 		 	});
 		 	
 		 	
@@ -111,6 +133,11 @@ $(document).ready(function() {
 	    $('#overlay img#photo').attr("src", '../img/ajax-loader.gif');
 	    $('#overlay #lightboxImage').addClass('loader');
 	    $('#overlay #lightboxImage.loader').css('margin-top', -16);
+	    
+	    
+	    //Clean content of exif...
+	    $('#lightboxContent .exif').empty();
+	    
 	    
 	    //Re enable body scrolling
 	    $('body').css('overflow', 'auto');
