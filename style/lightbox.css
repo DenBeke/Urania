@@ -25,15 +25,16 @@ Date: September 2013
 
 #lightboxContent {
     overflow: scroll;
-    width: 1100px;
+    max-width: 1100px;
     margin: auto;
 }
 
 
 #lightboxWrapper {
-	background-color: #fff;
 	overflow: auto;
 	border-radius: 5px;
+	max-width: 95%;
+	margin: auto;
 }
 
 
@@ -64,7 +65,7 @@ Date: September 2013
 }
 
 #lightboxContent img#photo {
-    max-width: 800px;
+    max-width: 100%;
     max-height: 600px;
     margin: 0;
     
@@ -78,5 +79,23 @@ Date: September 2013
 
 #lightboxContent ul.exif li {
 	list-style: url('../img/list_arrow.png');
+}
+
+
+
+/* Responsive part for the lightbox */
+
+@media screen and (max-width: 800px) {
+
+	#lightboxContent #meta {
+		display: block;
+		width: auto;
+	}
+
+	#lightboxContent #imageContainer {
+		display: block;
+		width: auto;
+	}
+
 }
 
