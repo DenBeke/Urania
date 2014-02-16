@@ -97,6 +97,8 @@ $includePage = preg_replace('/[^a-z0-9.]/', '', $includePage);
 <body>
 
 
+	<img src="<?php echo $u->getSiteUrl(); ?>img/ajax-loader.gif" alt="" style="display: none;"/>
+
 
 	<header>
 
@@ -152,7 +154,7 @@ $includePage = preg_replace('/[^a-z0-9.]/', '', $includePage);
 			<div id="lightboxWrapper">
 			
 				<div id="imageContainer">
-					<img id="photo" src="" alt="" />
+					<img id="photo" src="<?php echo $u->getSiteUrl(); ?>img/ajax-loader.gif" alt="" />
 				</div>
 				
 				

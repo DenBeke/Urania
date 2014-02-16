@@ -130,7 +130,7 @@ $(document).ready(function() {
 	    //Hide overlay and place loader images back
 	    $('#overlay').fadeOut(0);	
 	    $('#overlay img#photo').fadeOut(0);
-	    $('#overlay img#photo').attr("src", '../img/ajax-loader.gif');
+	    $('#overlay img#photo').attr("src", '../../img/ajax-loader.gif');
 	    $('#overlay #lightboxImage').addClass('loader');
 	    $('#overlay #lightboxImage.loader').css('margin-top', -16);
 	    

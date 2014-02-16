@@ -14,7 +14,7 @@ Date: September 2013
 	margin: 0;
 	top: 0;
 	left: 0;
-	background-color: rgba(0, 0, 0, 0.7);
+	background-color: rgba(0, 0, 0, 0.9);
 	width: 100%;
 	height: 100%;
 	display: none;
@@ -35,6 +35,8 @@ Date: September 2013
 	border-radius: 5px;
 	max-width: 95%;
 	margin: auto;
+	table-layout: fixed;
+	display: table;
 }
 
 
@@ -57,6 +59,9 @@ Date: September 2013
 #lightboxContent #imageContainer {
 	background-color: #000;
 	width: 800px;
+	max-width: 800px;
+	min-height: 400px;
+	height: 400px;
 	display: table-cell;
 	text-align: center;
 	vertical-align: middle;
@@ -66,6 +71,8 @@ Date: September 2013
 
 #lightboxContent img#photo {
     max-width: 100%;
+    width: auto;
+    height: auto;
     max-height: 600px;
     margin: 0;
     
