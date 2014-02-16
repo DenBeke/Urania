@@ -102,6 +102,7 @@ Date: September 2013
 	#lightboxContent #imageContainer {
 		display: block;
 		width: auto;
+		min-height: 200px;
 	}
 
 }
