@@ -30,6 +30,7 @@ function createMap(id, lat, long) {
 }
 
 
-function destroyMap() {
+function destroyMap(id) {
+	document.getElementById(id).className = ""; //Remove the leaflet classes from the container
 	window.map.remove();
 }

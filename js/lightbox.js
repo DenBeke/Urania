@@ -119,7 +119,7 @@ $(document).ready(function() {
 	$('#overlay').click(function(e) {
 	
 		closeLightbox();
-		destroyMap();
+		destroyMap('lightboxMap');
 	}
 	);
 	
