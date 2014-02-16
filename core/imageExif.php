@@ -32,14 +32,14 @@ And the following information for the EXIF date:
 class imageExif extends image { 
 
 	
-	private $aperture;
-	private $shutterSpeed;
-	private $iso;
-	private $gpsLongitude;
-	private $gpsLatitude;
-	private $focalLength;
-	private $camera;
-	private $lens;
+	private $aperture = NULL;
+	private $shutterSpeed = NULL;
+	private $iso = NULL;
+	private $gpsLongitude = NULL;
+	private $gpsLatitude = NULL;
+	private $focalLength = NULL;
+	private $camera = NULL;
+	private $lens = NULL;
 	
 	
 	/**
@@ -187,9 +187,6 @@ class imageExif extends image {
     			}
     		}
     		catch (exception $exception) {
-    			//Set NULL and return false
-    			//TODO
-    			echo "Error: " . $exception;
     			return false;
     		}
     	}
