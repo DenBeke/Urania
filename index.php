@@ -97,9 +97,6 @@ $includePage = preg_replace('/[^a-z0-9.]/', '', $includePage);
 <body>
 
 
-	<img src="<?php echo $u->getSiteUrl(); ?>img/ajax-loader.gif" alt="" style="display: none;"/>
-
-
 	<header>
 
 		<h1 id="siteTitle"><a href="<?php echo $u->getSiteUrl(); ?>home"><?php echo $u->getSiteTitle(); ?></a></h1>

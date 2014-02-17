@@ -37,6 +37,7 @@ Date: September 2013
 	margin: auto;
 	table-layout: fixed;
 	display: table;
+	overflow: hidden;
 }
 
 
@@ -53,6 +54,7 @@ Date: September 2013
 #lightboxMap.leaflet-container {
 	width: 290px;
 	height: 290px;
+	margin: auto;
 }
 
 
