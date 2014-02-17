@@ -148,13 +148,17 @@ $includePage = preg_replace('/[^a-z0-9.]/', '', $includePage);
 	
 	<!--Lightbox elements-->
 	<div id="overlay">
-		<div id="lightboxContent" class="loader">	
+		<div id="lightboxContent">	
 			<h1></h1>
 			
 			<div id="lightboxWrapper">
 			
 				<div id="imageContainer">
-					<img id="photo" src="<?php echo $u->getSiteUrl(); ?>img/ajax-loader.gif" alt="" />
+				
+					<img id="photo" src="" alt="" />
+					
+					<div class="loading active"></div>
+					
 				</div>
 				
 				

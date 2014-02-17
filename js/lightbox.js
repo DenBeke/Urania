@@ -56,7 +56,9 @@ $(document).ready(function() {
 				//Do action when image is loaded
 				$('#lightboxContent #photo').load(function() {
 					
+					$('#overlay .loading').removeClass('active');
 					$('#lightboxContent #photo').fadeIn();
+					
 					
 				});
 				
@@ -130,7 +132,7 @@ $(document).ready(function() {
 	    //Hide overlay and place loader images back
 	    $('#overlay').fadeOut(0);	
 	    $('#overlay img#photo').fadeOut(0);
-	    $('#overlay img#photo').attr("src", '../../img/ajax-loader.gif');
+	    $('#overlay img#photo').attr("src", '');
 	    $('#overlay #lightboxImage').addClass('loader');
 	    $('#overlay #lightboxImage.loader').css('margin-top', -16);
 	    
@@ -141,6 +143,8 @@ $(document).ready(function() {
 	    
 	    //Re enable body scrolling
 	    $('body').css('overflow', 'auto');
+	    $('#overlay .loading').addClass('active');
+	    
 	}
 	
 
