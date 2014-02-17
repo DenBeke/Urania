@@ -13,6 +13,9 @@ $error;
 
 if(isset($_POST['db_host']) && isset($_POST['db_user']) && isset($_POST['db_password']) && isset($_POST['db_database'])) {
 
+
+	define('SUBMITTED', true);
+
 	try {
 	
 		//Connect to database
@@ -48,13 +51,20 @@ if(isset($_POST['db_host']) && isset($_POST['db_user']) && isset($_POST['db_pass
 		//Fetch username
 		//Fetch the site url
 		//Write everything to the config file
+		
+		define('ERROR', false);
 	
 	}
 	
 	catch (exception $e) {
 		$error = $e->getMessage();
+		define('ERROR', true);
 	}
 }
+else {
+	define('SUBMITTED', false);
+}
+
 
 ?>
 <!DOCTYPE html>
@@ -68,29 +78,56 @@ if(isset($_POST['db_host']) && isset($_POST['db_user']) && isset($_POST['db_pass
 	<![endif]-->
 	
 	<link rel="stylesheet" type="text/css" href="style.css" />
+	<link rel="stylesheet" type="text/css" href="pure.css" />
 	
 </head>
 <body>
 
-	<?php 
-	if(isset($error)) {
-		echo '<div class="error">';
-		echo $error;
-		echo '</div>';
-	}
-	?>
 
-	<form method="post" action="index.php">
+	<div id="container">
+
+
+		<h2>Install Urania Photo CMS</h2>
 	
-		<input type="text" name="db_host" value="localhost" />
-		<input type="text" name="db_database" value="" />
-		<input type="text" name="db_user" value="" />
-		<input type="password" name="db_password" value="" />
+		<?php
+		if(SUBMITTED) {
+			if( !ERROR ) {
+				echo '<p class="notice ok">';
+				echo 'The database was successfully initialized. Please remove the installation directory for security reasons.';
+				echo '</p>';
+			}
+			else {
+				echo '<p class="notice error">';
+				echo $error;
+				echo '</p>';
+			}
+		}
 		
-		<input type="submit" name="submit" value="Submit" />
+		if((SUBMITTED && ERROR) || !SUBMITTED) {
+		?>
+	
+		<form method="post" action="index.php" class="pure-form">
+		
+			<fieldset class="pure-group">
+				<input type="text" name="db_host" value="localhost" class="pure-input-1-2" placeholder="host" required="required"/>
+				<input type="text" name="db_database" value="" class="pure-input-1-2" placeholder="database name" required="required" />
+			</fieldset>
+			
+			<fieldset class="pure-group">
+				<input type="text" name="db_user" value="" class="pure-input-1-2" placeholder="username" required="required" />
+				<input type="password" name="db_password" value="" class="pure-input-1-2" placeholder="password" required="required" />
+			</fieldset>
+			
+			<input type="submit" name="submit" value="Submit" class="pure-button pure-input-1-2 pure-button-primary" />
+		
+		
+		</form>
+		
+		
+		<?php } ?>
 	
 	
-	</form>
+	</body>
 	
 </body>
 </html>

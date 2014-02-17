@@ -28,7 +28,7 @@ function connectDatabase($db_host, $db_user, $db_password, $db_database) {
 
 function createAlbumsTable($link) {
 
-	$query = "CREATE TABLE `Albums` (
+	$query = "CREATE TABLE IF NOT EXISTS `Albums` (
 	  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id of the album',
 	  `name` text NOT NULL COMMENT 'Name of the album',
 	  `date` int(11) NOT NULL COMMENT 'Creation date',
@@ -45,7 +45,7 @@ function createAlbumsTable($link) {
 
 function createImagesTable($link) {
 	
-	$query = "CREATE TABLE `Images` (
+	$query = "CREATE TABLE IF NOT EXISTS `Images` (
 	  `id` int(11) NOT NULL AUTO_INCREMENT,
 	  `name` text NOT NULL,
 	  `fileName` text NOT NULL,

@@ -1,10 +1,50 @@
+/*
+Style for Urania Install Script
+
+Author: Mathias Beke
+Url: http://denbeke.be
+Date: February 2014
+*/
+
+html,
 body {
-	width: 700px;
+	height: 100%;
+}
+
+body {
+	background-color: rgb(249, 249, 249);
+}
+
+
+div#container {
+	height: 100%;
+	background-color: #fff;
+	width: 400px;
 	margin: auto;
+	padding: 20px;
+}
+
+div#container input {
+	width: 100%;
 }
 
 div.error {
 	border: 1px solid red;
 	padding: 5px;
 	border-radius: 5px;
+}
+
+p.notice {
+	padding: 1em 1em;
+	border-radius: 3px;
+	color: #fff;
+}
+
+
+p.notice.ok {
+	background-color: #1f8dd6;
+}
+
+p.notice.error {
+	background-color: rgb(202, 60, 60);
 }
