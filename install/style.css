@@ -22,6 +22,7 @@ div#container {
 	width: 400px;
 	margin: auto;
 	padding: 20px;
+	box-sizing: border-box;
 }
 
 div#container input {
