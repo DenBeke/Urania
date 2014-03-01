@@ -28,7 +28,8 @@ $urls = array(
 	'ERROR' => 'Controller\Error',
 	INSTALL_DIR . '/' => 'Controller\Home',
 	INSTALL_DIR . '/home' => 'Controller\Home',
-	INSTALL_DIR . '/album/(\d+)/[a-zA-Z\-0-9]*' => 'Controller\Album'
+	INSTALL_DIR . '/album/(\d+)/[a-zA-Z\-0-9]*' => 'Controller\Album',
+	INSTALL_DIR . '/album/(\d+)' => 'Controller\Album'
 );
 
 

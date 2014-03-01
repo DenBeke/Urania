@@ -22,6 +22,7 @@ namespace Controller {
 	
 		public function __construct() {
 			$this->theme = 'image.php';
+			$this->pageTitle = 'Image - ' . SITE_TITLE;
 		}
 			
 	

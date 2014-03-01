@@ -17,11 +17,10 @@ namespace Controller {
 	class Error extends Controller {
 
 		public $pageName = 'error';
-		public $pageTitle = 'Error';
-	
 	
 		public function __construct() {
 			$this->theme = 'error.php';
+			$this->pageTitle = 'Error - ' . SITE_TITLE;
 		}
 			
 	

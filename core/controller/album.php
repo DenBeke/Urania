@@ -24,6 +24,7 @@ namespace Controller {
 		public function __construct() {
 			parent::__construct();
 			$this->theme = 'album.php';
+			$this->pageTitle = 'Album - ' . SITE_TITLE;
 		}
 		
 		

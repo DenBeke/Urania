@@ -12,7 +12,7 @@ Date: March 2013
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title><?php echo $controller->pageTitle . ' - ' . SITE_TITLE ; ?></title>
+	<title><?php echo $controller->pageTitle; ?></title>
 	
 	<!--[if lt IE 9]>
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -32,6 +32,7 @@ Date: March 2013
     <link rel="stylesheet" href="<?php echo SITE_URL; ?>style/lightbox.css" type="text/css" />
     
     <link rel="stylesheet" href="<?php echo SITE_URL; ?>style/leaflet.css" />
+   
     <!--[if lte IE 8]>
         <link rel="stylesheet" href="<?php echo SITE_TITLE; ?>style/leaflet.ie.css" />
     <![endif]-->
