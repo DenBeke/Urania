@@ -10,8 +10,8 @@ define('DB_TABLE_IMAGES', 'Images');
 
 
 //User login
-$user_name = 'root';
-$user_password = 'root';
+define('USERNAME', 'root');
+define('PASSWORD', 'root');
 
 
 //Upload directory with slash!!

@@ -1,5 +1,5 @@
 /*
-Style for Urania Install Script
+Style for Urania Admin Pannel
 
 Author: Mathias Beke
 Url: http://denbeke.be
@@ -16,7 +16,7 @@ body {
 }
 
 
-div#container {
+div.page {
 	height: 100%;
 	background-color: #fff;
 	width: 400px;
@@ -25,27 +25,22 @@ div#container {
 	box-sizing: border-box;
 }
 
-div#container input {
-	width: 100%;
+div.page input {
+	width: 100% !important;
 }
 
-div.error {
-	border: 1px solid red;
-	padding: 5px;
-	border-radius: 5px;
-}
 
-p.notification {
+.notification {
 	padding: 1em 1em;
 	border-radius: 3px;
 	color: #fff;
 }
 
 
-p.notification.success {
+.notification.success {
 	background-color: #1f8dd6;
 }
 
-p.notification.error {
+.notification.error {
 	background-color: rgb(202, 60, 60);
 }

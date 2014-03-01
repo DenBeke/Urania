@@ -25,9 +25,35 @@ Date: March 2013
 	<link rel="stylesheet" href="<?php echo SITE_URL; ?>admin/style/pure.css" type="text/css" />
 	
 	<link rel="stylesheet" href="<?php echo SITE_URL; ?>admin/style/style.css" type="text/css" />
+	
+	
+	<?php
+	
+	if($controller->pageName == 'login') {
+		if($controller->notification != NULL and $controller->notification->type == 'success') {
+			?>
+			<meta http-equiv="refresh" content="3; url=<?php echo SITE_URL; ?>admin" />
+			<?php
+		}
+	}
+	elseif ($controller->pageName == 'logout') {
+		if($controller->notification != NULL and $controller->notification->type == 'success') {
+			?>
+			<meta http-equiv="refresh" content="3; url=<?php echo SITE_URL; ?>" />
+			<?php
+		}
+	}
+	
+	?>
+	
     	
 </head>
 <body>
+
+
+	<?php
+	if(!$controller->pageName == 'login') {
+	?>
 
 
 	<header>
@@ -48,3 +74,5 @@ Date: March 2013
 		</nav>
 	
 	</header>
+	
+	<?php } ?>
