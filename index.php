@@ -15,6 +15,9 @@ require_once('./core/glue.php');
 
 //Include controllers
 require_once( dirname(__FILE__) . '/core/controller/error.php' );
+require_once( dirname(__FILE__) . '/core/controller/home.php' );
+require_once( dirname(__FILE__) . '/core/controller/album.php' );
+
 
 $u = new Urania('./core/config.php');
 
@@ -23,17 +26,9 @@ $u = new Urania('./core/config.php');
 
 $urls = array(
 	'ERROR' => 'Controller\Error',
-	INSTALL_DIR . 'player' => 'Controller\Player',
-	INSTALL_DIR . 'register' => 'Controller\Register',
-	INSTALL_DIR  => 'Controller\Home',
-	INSTALL_DIR . 'login' => 'Controller\Login',
-	INSTALL_DIR . 'coach' => 'Controller\Coach',
-	INSTALL_DIR . 'competition' => 'Controller\Competition',
-	INSTALL_DIR . 'match' => 'Controller\Match',
-	INSTALL_DIR . 'referee' => 'Controller\Referee',
-	INSTALL_DIR . 'tournament' => 'Controller\Tournament',
-	INSTALL_DIR . 'news' => 'Controller\News',
-	INSTALL_DIR . 'configPanel' => 'Controller\UserConfigPanel'
+	INSTALL_DIR . '/' => 'Controller\Home',
+	INSTALL_DIR . '/home' => 'Controller\Home',
+	INSTALL_DIR . '/album/(\d+)/[a-zA-Z\-0-9]*' => 'Controller\Album'
 );
 
 

@@ -9,9 +9,15 @@ Date: March 2013
 ?>
 
 
+<div id="home" class="page">
+
+
 	<div class="container">
 	
-		<h2 id="title-error">Error</h2>
+		<h1 id="title-error">Error</h1>
 		<p>The requested url doesn't seem to exist.</p>
 		
 	</div>
+	
+	
+</div>

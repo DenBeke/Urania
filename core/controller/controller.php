@@ -14,6 +14,7 @@ namespace Controller {
 
 
 	require_once( dirname(__FILE__) . '/../config.php' );
+	require_once( dirname(__FILE__) . '/../urania.php' );
 	
 	
 	
@@ -25,6 +26,13 @@ namespace Controller {
 		protected $theme;
 		public $pageName;
 		public $pageTitle;
+		public $urania;
+		
+		
+		
+		public function __construct() {
+			$this->urania = new \Urania;
+		}
 	
 				
 		/**
