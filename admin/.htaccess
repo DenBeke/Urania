@@ -1,4 +1,5 @@
 #Url rewriting
+#Rewrite rules of subdir should override parent
 
 RewriteEngine On 
 RewriteCond %{REQUEST_FILENAME} !-f

@@ -93,12 +93,21 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                     $found = true;
                     if (class_exists($class)) {
                         $obj = new $class;
-                        if (method_exists($obj, $method)) {
-                            $obj->$method($matches);
-                            return $obj;
-                        } else {
+                        if (method_exists($obj, 'GET')) {
+                        	$obj->GET($matches);
+                        }
+                        else {
                             throw new BadMethodCallException("Method, $method, not supported.");
                         }
+                        if($method == 'POST') {
+	                        if (method_exists($obj, $method)) {
+	                            $obj->$method($matches);
+	                        } 
+	                        else {
+	                            throw new BadMethodCallException("Method, $method, not supported.");
+	                        }
+	                    }
+                        return $obj;
                     } else {
                         throw new Exception("Class, $class, not found.");
                     }

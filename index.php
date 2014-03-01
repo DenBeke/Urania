@@ -7,9 +7,7 @@ Url: http://denbeke.be
 Date: September 2013
 */
 
-session_start();
-
-//require_once('./core/config.php');
+require_once('./core/config.php');
 require_once('./core/urania.php');
 require_once('./core/glue.php');
 
@@ -38,14 +36,14 @@ $controller = glue::stick($urls);
 
 
 
-include(dirname(__FILE__) . '/theme/header.php');
+include(THEME_DIR . '/header.php');
 
 
 
 $controller->template();	
 	
 	
-include(dirname(__FILE__) . '/theme/footer.php');
+include(THEME_DIR . '/footer.php');
  
  
  

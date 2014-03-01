@@ -92,7 +92,7 @@ class Urania {
 	        }
 	        
 	        //Add new directory to the upload folder
-	        mkdir($this->uploadDir . '/' . $this->simplifyFileName($albumName));
+	        mkdir( dirname(__FILE__) . '/../' . $this->uploadDir . '/' . $this->simplifyFileName($albumName));
 	        
 	    }
         
@@ -395,7 +395,7 @@ class Urania {
                 echo "$affectedRows affected rows with query<br>$query";
             }
 
-            rename($this->uploadDir . $this->simplifyFileName($oldAlbum), $this->uploadDir . $this->simplifyFileName($albumName));
+            rename(dirname(__FILE__) . '/../' . $this->uploadDir . '/' . $this->simplifyFileName($oldAlbum), dirname(__FILE__) . '/../' . $this->uploadDir . '/' . $this->simplifyFileName($albumName));
             
         }
     }
@@ -435,7 +435,7 @@ class Urania {
             $result = $this->database->getQuery($query);
             $image = new Image($result[0]['id'], $result[0]['fileName'], $result[0]['name'], $result[0]['date'], $result[0]['albumId']);
             
-            unlink($this->uploadDir . $this->simplifyFileName($this->getAlbumName($image->getAlbumId())) . '/' . $image->getFileName());
+            unlink(dirname(__FILE__) . '/../' . $this->uploadDir . '/' . $this->simplifyFileName($this->getAlbumName($image->getAlbumId())) . '/' . $image->getFileName());
             
             //Delete image in the database
             $query = "DELETE FROM `$images` WHERE `$images`.`id` = $id";
@@ -477,11 +477,11 @@ class Urania {
             $this->database->doQuery($query);
             
             //Delete album directory
-            $dir = opendir($this->uploadDir . $this->simplifyFileName($album->getName()));
+            $dir = opendir(dirname(__FILE__) . '/../' . $this->uploadDir . '/' . $this->simplifyFileName($album->getName()));
             //do whatever you need
             closedir($dir);
-            rmdir($this->uploadDir . $this->simplifyFileName($album->getName()));
-        }
+            rmdir( dirname(__FILE__) . '/../' . $this->uploadDir . '/' . $this->simplifyFileName($album->getName()));
+            }
     }
     
     
@@ -561,13 +561,13 @@ class Urania {
     	}
     	
     	//Upload the file
-    	move_uploaded_file($tempFile, $this->uploadDir . $albumName . '/' . $fileName);
+    	move_uploaded_file($tempFile, dirname(__FILE__) . '/../' . $this->uploadDir . '/' . $albumName . '/' . $fileName);
     	
     	//Get image date from efix date
     	//If it couldn't read the efix date, the current time will be used
     	try {
-	    	if(function_exists("exif_read_data") && exif_read_data($this->uploadDir . $albumName . '/' . $fileName)){ 
-				$efix = exif_read_data($this->uploadDir . $albumName . '/' . $fileName);
+	    	if(function_exists("exif_read_data") && exif_read_data(dirname(__FILE__) . '/../' . $this->uploadDir . '/' . $albumName . '/' . $fileName)){ 
+				$efix = exif_read_data(dirname(__FILE__) . '/../' . $this->uploadDir . '/' . $albumName . '/' . $fileName);
 				$imageDate = strtotime($efix['DateTimeOriginal']);
 				if ($imageDate == 0) {
 					$imageDate = time();
@@ -703,7 +703,7 @@ class Urania {
     @return true/false
     */
     private function fileNameExists($fileName) {
-    	return file_exists($this->uploadDir . $fileName);
+    	return file_exists(dirname(__FILE__) . '/../' . $this->uploadDir . '/' . $fileName);
     }
     
     

@@ -68,10 +68,7 @@ namespace Controller {
 		
 		@param params
 		*/
-		public function POST($args) {
-			if(is_array($args)) {
-				$this->data = $args;
-			}
+		public function POST() {
 		}
 		
 	}
