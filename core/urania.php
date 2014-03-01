@@ -8,9 +8,9 @@ Date: September 2013
 */
 
 require_once(dirname(__FILE__).'/error_handler.php');
-require_once(dirname(__FILE__).'/album.php');
-require_once(dirname(__FILE__).'/image.php');
-require_once(dirname(__FILE__).'/imageExif.php');
+require_once(dirname(__FILE__).'/model/album.php');
+require_once(dirname(__FILE__).'/model/image.php');
+require_once(dirname(__FILE__).'/model/imageExif.php');
 require_once(dirname(__FILE__).'/database.php');
 
 
@@ -39,48 +39,16 @@ class Urania {
     
     @param path to config file
     */
-    public function __construct($config = "./config.php") {
-        require($config);
-        $this->db_table_albums = $db_table_albums;
-        $this->db_table_images = $db_table_images;
-        $this->database = new Database($db_host, $db_user, $db_password, $db_database, dirname(__FILE__).'/../cache/');
-        $this->uploadDir = $uploadDir;
-        $this->siteTitle = $siteTitle;
-        $this->siteUrl = $siteUrl;
-        $this->copyright = $copyright;
+    public function __construct() {
+        $this->db_table_albums = DB_TABLE_ALBUMS;
+        $this->db_table_images = DB_TABLE_IMAGES;
+        $this->database = new Database(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE, dirname(__FILE__).'/../cache/');
+        $this->uploadDir = UPLOAD_DIR;
+        $this->siteTitle = SITE_TITLE;
+        $this->siteUrl = SITE_URL;
+        $this->copyright = COPYRIGHT;
     }
-    
-    
-    /**
-    Get the title of the site
-    
-    @return site title
-    */
-    public function getSiteTitle() {
-    	return $this->siteTitle;
-    }
-    
-    
-    /**
-    Get the url of the site
-    Site url should end with a slash
-    
-    @return site url
-    */
-    public function getSiteUrl() {
-        return $this->siteUrl;
-    }
-    
-    
-    /**
-    Get the copyright information/text for the footer
-    
-    @return copyright
-    */
-    public function getCopyright() {
-    	return $this->copyright;
-    }
-    
+     
     
     /**
     Add a new photo album to the database with the given name

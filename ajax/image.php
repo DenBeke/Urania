@@ -71,6 +71,7 @@ catch(exception $exception) {
 
 	$output['error'] = true;
 	echo json_encode($output);
+	echo $exception;
 	
 }
 

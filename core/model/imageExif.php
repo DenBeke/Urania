@@ -90,7 +90,7 @@ class imageExif extends image {
     public function readExifFromFile($fileName = NULL) {
     	if ($fileName == NULL) {
     		//If no filename given, we read exif date from the image file
-    		$fileName = dirname(__FILE__).'/../'.$this->getFileName();
+    		$fileName = dirname(__FILE__).'/../../'.$this->getFileName();
     	}
     	if(!file_exists($fileName)) {
     		throw new exception('The given file does not exist');

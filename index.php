@@ -9,172 +9,48 @@ Date: September 2013
 
 session_start();
 
+//require_once('./core/config.php');
 require_once('./core/urania.php');
+require_once('./core/glue.php');
+
+//Include controllers
+require_once( dirname(__FILE__) . '/core/controller/error.php' );
 
 $u = new Urania('./core/config.php');
 
 
-//Find the page type
-$includePage = '';
-$pageName = '';
-$id = 0;
-if(isset($_GET['page']) and htmlspecialchars($_GET['page']) != '') {
-	//Album
-	$includePage = htmlspecialchars($_GET['page']) . '.php';
-	$pageName = htmlspecialchars($_GET['page']);
-	
-	
-	if($pageName == 'album') {
-		try {
-    		$id = intval(htmlspecialchars($_GET['album']));
-    		$pageName = $u->getAlbum($id)->getName() . ' - ' . $u->getSiteTitle();
-    	}
-    	catch (exception $exception) {
-    	    $pageName = 'Error';
-    	}
-	}
-	elseif($pageName == 'image') {
-	    try {
-	    	$id = intval(htmlspecialchars($_GET['image']));
-	    	$pageName = $u->getImage($id)->getName() . ' - ' . $u->getSiteTitle();
-	    }
-	    catch (exception $exception) {
-	        $pageName = 'Error';
-	    }
-	}
-	elseif($pageName == 'home') {
-		$pageName = $u->getSiteTitle();
-	}
-	else {
-		$pageName = ucfirst($pageName) . ' - ' . $u->getSiteTitle();
-	}
-}
-else {
-	$includePage = 'home.php';
-	$pageName = $u->getSiteTitle();
-}
+//URL handling
+
+$urls = array(
+	'ERROR' => 'Controller\Error',
+	INSTALL_DIR . 'player' => 'Controller\Player',
+	INSTALL_DIR . 'register' => 'Controller\Register',
+	INSTALL_DIR  => 'Controller\Home',
+	INSTALL_DIR . 'login' => 'Controller\Login',
+	INSTALL_DIR . 'coach' => 'Controller\Coach',
+	INSTALL_DIR . 'competition' => 'Controller\Competition',
+	INSTALL_DIR . 'match' => 'Controller\Match',
+	INSTALL_DIR . 'referee' => 'Controller\Referee',
+	INSTALL_DIR . 'tournament' => 'Controller\Tournament',
+	INSTALL_DIR . 'news' => 'Controller\News',
+	INSTALL_DIR . 'configPanel' => 'Controller\UserConfigPanel'
+);
 
 
-//Limit include page to everything but letters, numbers and a dot
-$includePage = preg_replace('/[^a-z0-9.]/', '', $includePage);
+$controller = glue::stick($urls);
 
 
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title><?php echo $pageName; ?></title>
-	
-	<!--[if lt IE 9]>
-	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-	
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
-	<script src="<?php echo $u->getSiteUrl(); ?>js/jquery.js" type="text/javascript"></script>
-	
-	<script src="<?php echo $u->getSiteUrl(); ?>js/lightbox.js" type="text/javascript"></script>
-	
-	<script src="<?php echo $u->getSiteUrl(); ?>js/browsercheck.js" type="text/javascript"></script>
-	
-	
-	<link rel="stylesheet" href="<?php echo $u->getSiteUrl(); ?>style/style.css" type="text/css" />
-	
-    <link rel="stylesheet" href="<?php echo $u->getSiteUrl(); ?>style/lightbox.css" type="text/css" />
-    
-    <link rel="stylesheet" href="<?php echo $u->getSiteUrl(); ?>style/leaflet.css" />
-    <!--[if lte IE 8]>
-        <link rel="stylesheet" href="<?php echo $u->getSiteUrl(); ?>style/leaflet.ie.css" />
-    <![endif]-->
-    
-    <script src="<?php echo $u->getSiteUrl(); ?>js/leaflet.js"></script>
-    
-    <script src="<?php echo $u->getSiteUrl(); ?>js/map.js"></script>
-	
-	
-</head>
-<body>
 
 
-	<header>
+include(dirname(__FILE__) . '/theme/header.php');
 
-		<h1 id="siteTitle"><a href="<?php echo $u->getSiteUrl(); ?>home"><?php echo $u->getSiteTitle(); ?></a></h1>
-		
-		<nav id="albumNav">
-			<ul>
-				<?php
-				$url = $u->getSiteUrl();
-				
-				foreach ($u->getAllAlbums() as $album) {
-					$navId = $album->getId();
-					$name = $album->getName();
-					$simpleName = $u->simplifyFileName($name);
-					echo "<li><a href=\"$url"."album/$navId/$simpleName\">$name</a></li>";
-				}
-				?>
-			</ul>
-		</nav>
-	
-	</header>
-	
-	
 
-	<?php 
-	
-	if(file_exists('./pages/' . $includePage)) {
-	    include('./pages/' . $includePage);
-	}
-	else {
-	    ?>
-	    <div class="page" id="home">
-	    	<h2 class="error">Sorry, but this page doesn't exist</h2>
-	    </div>
-	    <?php
-	}
-	?>
-	
-	
-	
-	<footer>
-		<p>
-			<?php echo $u->getCopyright(); ?>
-		</p>
-	</footer>
 
+$controller->template();	
 	
-	<!--Lightbox elements-->
-	<div id="overlay">
-		<div id="lightboxContent">	
-			<h1></h1>
-			
-			<div id="lightboxWrapper">
-			
-				<div id="imageContainer">
-				
-					<img id="photo" src="" alt="" />
-					
-					<div class="loading active"></div>
-					
-				</div>
-				
-				
-				<div id="meta">
-					<span class="date"></span>
-					
-					<ul class="exif">
-					
-					</ul>
-					
-					<!-- Div that will contain the geolocation map -->
-					<div id="lightboxMap"></div>
-				</div>
-				
-			</div>
-			
-		</div>
-	</div>
 	
-		
-</body>
-</html>
+include(dirname(__FILE__) . '/theme/footer.php');
+ 
+ 
+ 
+ ?>
