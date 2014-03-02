@@ -15,6 +15,7 @@ require_once('./core/glue.php');
 require_once( dirname(__FILE__) . '/core/controller/error.php' );
 require_once( dirname(__FILE__) . '/core/controller/home.php' );
 require_once( dirname(__FILE__) . '/core/controller/album.php' );
+require_once( dirname(__FILE__) . '/core/controller/image.php' );
 
 
 $u = new Urania('./core/config.php');
@@ -27,7 +28,9 @@ $urls = array(
 	INSTALL_DIR . '/' => 'Controller\Home',
 	INSTALL_DIR . '/home' => 'Controller\Home',
 	INSTALL_DIR . '/album/(\d+)/[a-zA-Z\-0-9]*' => 'Controller\Album',
-	INSTALL_DIR . '/album/(\d+)' => 'Controller\Album'
+	INSTALL_DIR . '/album/(\d+)' => 'Controller\Album',
+	INSTALL_DIR . '/image/(\d+)/[a-zA-Z\-0-9]*' => 'Controller\Image',
+	INSTALL_DIR . '/image/(\d+)' => 'Controller\Image'
 );
 
 

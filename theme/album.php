@@ -1,5 +1,15 @@
-<div class="page" id="album">
+<?php
+/*
+Theme part for page with album
 
+Author: Mathias Beke
+Url: http://denbeke.be
+Date: March 2013
+*/
+?>
+
+
+<div class="page" id="album">
 
 
 <?php 
