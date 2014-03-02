@@ -6,14 +6,99 @@ Url: http://denbeke.be
 Date: February 2014
 */
 
-html,
-body {
-	height: 100%;
-}
-
 body {
 	background-color: rgb(249, 249, 249);
+	padding-top: 50px;
 }
+
+
+
+
+/* Header *
+**********/
+
+
+header {
+	color: #ccc;
+	background-color: #222;
+	overflow: auto;
+	font-weight: lighter;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 48px;
+}
+
+
+
+header #header-wrapper {
+	width: 80%;
+	margin: 0 auto;
+}
+
+
+header a {
+	color: #999;
+	text-decoration: none;
+}
+
+
+header a:hover {
+	color: #fff;
+}
+
+
+header h1 {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 18px;
+	margin: 0;
+	padding: 12px;
+	padding-left: 0;
+	text-decoration: none;
+	font-weight: normal;
+	
+	float: left;
+}
+
+header nav {
+	display: inline-block;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 14px;
+}
+
+
+header ul {
+	margin: 0;
+	padding: 0;
+}
+
+header li {
+	display: inline-block;
+	margin: 0;
+}
+
+
+header .user a,
+header li a {
+	display: block;
+	padding: 15px;
+	padding-top: 16px;
+}
+
+
+header .user a:hover,
+header li a:hover {
+	background-color: #333;
+}
+
+
+header .user {
+	float: right;
+	font-size: 14px;
+	display: block;
+}
+
 
 
 div.page {
@@ -30,6 +115,45 @@ div.page input {
 }
 
 
+
+
+/* Content *
+***********/
+
+#wrapper {
+	width: 80%;
+	padding: 0 20px;
+	padding-top: 10px;
+	margin: auto;
+	background-color: #fff;
+}
+
+
+
+
+
+/* Footer *
+**********/
+
+footer {
+	font-style: italic;
+	color: #777;
+	font-size: 14px;
+	text-align: center;
+}
+
+
+footer a {
+	color: #777;
+}
+
+
+
+
+/* General / Misc *
+******************/
+
+
 .notification {
 	padding: 1em 1em;
 	border-radius: 3px;
@@ -43,4 +167,10 @@ div.page input {
 
 .notification.error {
 	background-color: rgb(202, 60, 60);
+}
+
+
+
+hr {
+	border: 1px solid #eee;
 }

@@ -52,27 +52,44 @@ Date: March 2013
 
 
 	<?php
-	if(!$controller->pageName == 'login') {
+	if($controller->pageName != 'login' and $controller->pageName != 'logout') {
 	?>
 
 
 	<header>
+	
+	
+		<div id="header-wrapper">
+	
 
-		<h1 id="siteTitle"><a href="<?php echo SITE_URL; ?>home"><?php echo SITE_TITLE; ?></a></h1>
+			<h1 id="siteTitle"><a href="<?php echo SITE_URL; ?>home"><?php echo SITE_TITLE; ?></a></h1>
+			
+			<nav id="albumNav">
+				<ul>
+					<?php
+					foreach ($controller->urania->getAllAlbums() as $album) {
+						$navId = $album->getId();
+						$name = $album->getName();
+						$simpleName = $controller->urania->simplifyFileName($name);
+						echo '<li><a href="' . SITE_URL . "album/$navId/$simpleName\">$name</a></li>";
+					}
+					?>
+				</ul>
+			</nav>
 		
-		<nav id="albumNav">
-			<ul>
-				<?php
-				foreach ($u->getAllAlbums() as $album) {
-					$navId = $album->getId();
-					$name = $album->getName();
-					$simpleName = $u->simplifyFileName($name);
-					echo '<li><a href="' . SITE_URL . "album/$navId/$simpleName\">$name</a></li>";
-				}
-				?>
-			</ul>
-		</nav>
+		
+		
+			<div class="user">
+				<a href="<?php echo SITE_URL; ?>admin/logout">Logout</a>
+			</div>
+			
+		</div>
+		
 	
 	</header>
 	
 	<?php } ?>
+	
+	
+	<div id="wrapper">
+	

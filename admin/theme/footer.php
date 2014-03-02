@@ -8,11 +8,19 @@ Date: March 2013
 */
 ?>
 
-	<footer>
-		<p>
-			<?php echo COPYRIGHT; ?>
-		</p>
-	</footer>
+		
+		<hr>
+
+
+		<footer>
+			<p>
+				<?php echo COPYRIGHT; ?>
+			</p>
+		</footer>
+	
+	
+	
+	</div>
 	
 		
 </body>
