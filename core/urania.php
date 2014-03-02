@@ -533,7 +533,7 @@ class Urania {
     public function uploadImage($imageName, $tempFile, $albumId) {
     	//Check if upload file is image
     	$info = getimagesize($tempFile);
-    	if ($info === FALSE) {
+    	if ($info == FALSE) {
     	   throw new exception('File is not of type image');
     	}
     	

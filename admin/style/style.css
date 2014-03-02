@@ -123,6 +123,7 @@ header .user {
 
 #wrapper {
 	width: 80%;
+	max-width: 1400px;
 	padding: 0 20px;
 	padding-top: 10px;
 	margin: auto;
@@ -142,10 +143,24 @@ table#admin-album td {
 table#admin-album img,
 table#admin-albums img {
 	border-radius: 50%;
-	width: 100px;
-	height: 100px;
 	background-color: rgb(249, 249, 249);
 }
+
+
+table .previews {
+	margin-top: 20px;
+}
+
+table .previews img {
+	margin-right: 10px;
+	opacity: 0.5;
+	-webkit-transition: opacity 0.2s;
+}
+
+table .previews img:hover {
+	opacity: 1;
+}
+
 
 table#admin-albums td:nth-child(1),
 table#admin-album td:nth-child(1) {
@@ -155,18 +170,25 @@ table#admin-album td:nth-child(1) {
 
 table#admin-albums td:nth-child(4),
 table#admin-album td:nth-child(4) {
-	width: 325px;
+	width: 327px;
+	padding-right: 1px;
+	text-align: right;
 }
 
 table#admin-albums td:nth-child(5),
 table#admin-album td:nth-child(5) {
 	width: 70px;
 	padding-top: 9px;
+	padding-left: 1px;
 }
 
 
 table td.date {
 	width: 74px;
+}
+
+table input[type=text] {
+	width: 204px;
 }
 
 
@@ -317,7 +339,11 @@ table th[class*="col-"] {
 	color: #333;
 	padding: 10px 15px;
 	border-bottom: 1px solid transparent;
+	
 	background-image: -webkit-linear-gradient(top, rgb(249, 249, 249) 0%, rgb(240,240, 240) 100%);
+	background-image: -moz-linear-gradient(top, rgb(249, 249, 249) 0%, rgb(240,240, 240) 100%);
+	background-image: -ms-linear-gradient(top, rgb(249, 249, 249) 0%, rgb(240,240, 240) 100%);
+	background-image: linear-gradient(to bottom, rgb(249, 249, 249) 0%, rgb(240,240, 240) 100%);
 }
 
 .panel .panel-title {
@@ -342,7 +368,11 @@ form p {
 	padding-top: 0;
 }
 
-
+input {
+	box-sizing: border-box;
+	font-weight: inherit;
+	font-size: inherit;
+}
 
 
 /* Different style for Login/Logout page *

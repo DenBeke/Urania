@@ -55,6 +55,10 @@ if($this->notification != NULL) {
 		$imageHeight = 100;
 		$imageWidth = 100;
 		
+		$imageHeightSmall = 60;
+		$imageWidthSmall = 60;
+		$limit = 4;
+		
 		foreach ($this->albums as $album) {
 			$id = $album->getId();
 			//echo "<a href=\"index.php?page=admin&album=$id\">$album</a>";
@@ -76,6 +80,23 @@ if($this->notification != NULL) {
 			
 				<td>
 					<a href="<?php echo SITE_URL; ?>admin/album/<?php echo $id; ?>"><?php echo $album->getName(); ?></a>
+					
+					<div class="pure-u-1 previews">
+					<?php 
+					for ($i = 1; $i < $album->getNumberOfImages(); $i++) {
+				
+					?>
+					<img src="<?php echo SITE_URL; ?>core/timthumb.php?src=<?php echo $album->getImage($i)->getFileName() . "&h=$imageHeightSmall&w=$imageWidthSmall"; ?>" alt="<?php echo $album->getImage($i)->getName(); ?>" />
+					<?php
+					
+						if($i == $limit) {
+							break;
+						}
+				
+					}
+					?>
+					</div>
+					
 				</td>
 				
 				<td class="date">
@@ -133,6 +154,7 @@ if($this->notification != NULL) {
 </div>
 
 
+<div class="pure-u-1-24"><!--Seperator--></div>
 
 
 <div class="panel pure-u-1-3">

@@ -27,7 +27,10 @@ namespace Controller\Admin {
 			$this->themeDir = dirname(__FILE__) . '/../../admin/theme/';
 			$this->theme = 'albums.php';
 			$this->pageTitle = 'Album - ' . SITE_TITLE;
-			$this->albums = $this->urania->getAllAlbums();
+					
+			foreach ($this->urania->getAllAlbums() as $album) {
+				$this->albums[] = $this->urania->getAlbum($album->getId());
+			}
 		}
 		
 
