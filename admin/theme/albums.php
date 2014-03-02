@@ -66,27 +66,33 @@ if($this->notification != NULL) {
 			<tr>
 			
 				<td>
-					<?php if($album->getImage(0)->getName() != 'error') { ?>
-					<img src="<?php echo SITE_URL; ?>core/timthumb.php?src=<?php echo $album->getImage(0)->getFileName() . "&h=$imageHeight&w=$imageWidth"; ?>" alt="<?php echo $album->getImage(0)->getName(); ?>" />
-					<?php 
-					}
-					else {
-					?>
-					<img src="" alt="" />
-					<?php
-					}
-					?>
+					<a href="<?php echo SITE_URL; ?>admin/album/<?php echo $id; ?>">
+						<?php if($album->getImage(0)->getName() != 'error') { ?>
+						<img src="<?php echo SITE_URL; ?>core/timthumb.php?src=<?php echo $album->getImage(0)->getFileName() . "&h=$imageHeight&w=$imageWidth"; ?>" alt="<?php echo $album->getImage(0)->getName(); ?>" />
+						<?php 
+						}
+						else {
+						?>
+						<img src="" alt="" />
+						<?php
+						}
+						?>
+					</a>
 				</td>
 			
 				<td>
-					<a href="<?php echo SITE_URL; ?>admin/album/<?php echo $id; ?>"><?php echo $album->getName(); ?></a>
+					<h3>
+						<a href="<?php echo SITE_URL; ?>admin/album/<?php echo $id; ?>"><?php echo $album->getName(); ?></a>
+					</h3>
 					
 					<div class="pure-u-1 previews">
 					<?php 
 					for ($i = 1; $i < $album->getNumberOfImages(); $i++) {
 				
 					?>
-					<img src="<?php echo SITE_URL; ?>core/timthumb.php?src=<?php echo $album->getImage($i)->getFileName() . "&h=$imageHeightSmall&w=$imageWidthSmall"; ?>" alt="<?php echo $album->getImage($i)->getName(); ?>" />
+					<a href="<?php echo SITE_URL; ?>admin/album/<?php echo $id; ?>">
+						<img src="<?php echo SITE_URL; ?>core/timthumb.php?src=<?php echo $album->getImage($i)->getFileName() . "&h=$imageHeightSmall&w=$imageWidthSmall"; ?>" alt="<?php echo $album->getImage($i)->getName(); ?>" />
+					</a>
 					<?php
 					
 						if($i == $limit) {

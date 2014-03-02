@@ -87,7 +87,7 @@ if($this->notification != NULL) {
 							if($image->getIso() != NULL) {
 							?>
 							<li>
-								<?php echo $image->getIso(); ?>
+								ISO <?php echo $image->getIso(); ?>
 							</li>
 							
 							<?php 

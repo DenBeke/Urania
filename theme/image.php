@@ -33,7 +33,7 @@ Date: March 2013
 	    		if($this->image->getIso() != NULL) {
 	    		?>
 	    		<li>
-	    			<?php echo $this->image->getIso(); ?>
+	    			ISO <?php echo $this->image->getIso(); ?>
 	    		</li>
 	    		
 	    		<?php 
