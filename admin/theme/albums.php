@@ -19,23 +19,30 @@ if($this->notification != NULL) {
 }
 ?>
 
-<h3 class="nav"><a href="<?php echo SITE_URL; ?>admin/">Albums</a></h3>
-<table>
+
+<h2 id="admin-albums-title">Admin</h2>
+
+
+<table id="admin-albums" class="table table-striped">
 
 	<tbody>
 	
-	
 		<tr>
 		
+			<th></th>
+		
 			<th>
-			Album
+				Album
 			</th>
+			
 			<th>
-			Date
+				Date
 			</th>
+			
 			<th>
 			
 			</th>
+			
 			<th>
 			
 			</th>
@@ -45,28 +52,48 @@ if($this->notification != NULL) {
 	
 		<?php
 		
+		$imageHeight = 100;
+		$imageWidth = 100;
+		
 		foreach ($this->albums as $album) {
 			$id = $album->getId();
 			//echo "<a href=\"index.php?page=admin&album=$id\">$album</a>";
 			?>
 			<tr>
+			
+				<td>
+					<?php if($album->getImage(0)->getName() != 'error') { ?>
+					<img src="<?php echo SITE_URL; ?>core/timthumb.php?src=<?php echo $album->getImage(0)->getFileName() . "&h=$imageHeight&w=$imageWidth"; ?>" alt="<?php echo $album->getImage(0)->getName(); ?>" />
+					<?php 
+					}
+					else {
+					?>
+					<img src="" alt="" />
+					<?php
+					}
+					?>
+				</td>
+			
 				<td>
 					<a href="<?php echo SITE_URL; ?>admin/album/<?php echo $id; ?>"><?php echo $album->getName(); ?></a>
 				</td>
+				
 				<td class="date">
 					<?php echo date('d-m-Y', $album->getDate()); ?>
 				</td>
+				
+				<td>
+					<form method="post" action="<?php echo SITE_URL; ?>admin/" class="pure-form">
+						<input class="pure-input" type="hidden" name="changeAlbumId" value="<?php echo $album->getId(); ?>">
+						<input type="text" name="changeName" value="" placeholder="Name" />
+						<input class="pure-button pure-button-primary" type="submit" value="Change name">
+					</form>
+				</td>
+				
 				<td>
 					<form method="post" action="<?php echo SITE_URL; ?>admin/">
 						<input type="hidden" name="deleteAlbum" value="<?php echo $id; ?>">
-						<input type="submit" value="Delete">
-					</form>
-				</td>
-				<td>
-					<form method="post" action="<?php echo SITE_URL; ?>admin/">
-						<input type="hidden" name="changeAlbumId" value="<?php echo $album->getId(); ?>">
-						<input type="text" name="changeName" value="" / required>
-						<input type="submit" value="Change name">
+						<input class="pure-button pure-button-primary" type="submit" value="Delete">
 					</form>
 				</td>
 			</tr>

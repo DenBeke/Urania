@@ -21,7 +21,7 @@ body {
 header {
 	color: #ccc;
 	background-color: #222;
-	overflow: auto;
+	//overflow: auto;
 	font-weight: lighter;
 	position: fixed;
 	top: 0;
@@ -83,13 +83,30 @@ header .user a,
 header li a {
 	display: block;
 	padding: 15px;
-	padding-top: 16px;
+	padding-top: 15px;
 }
 
 
 header .user a:hover,
-header li a:hover {
+header li a:hover,
+header li:hover {
 	background-color: #333;
+}
+
+
+header ul.children {
+	display: none;
+}
+
+header ul.children li {
+	clear: both;
+	display: block;
+}
+
+header li:hover ul.children {
+	background-color: #222;
+	display: block;
+	position: fixed;
 }
 
 
@@ -98,22 +115,6 @@ header .user {
 	font-size: 14px;
 	display: block;
 }
-
-
-
-div.page {
-	height: 100%;
-	background-color: #fff;
-	width: 400px;
-	margin: auto;
-	padding: 20px;
-	box-sizing: border-box;
-}
-
-div.page input {
-	width: 100% !important;
-}
-
 
 
 
@@ -129,6 +130,44 @@ div.page input {
 }
 
 
+table#admin-albums,
+table#admin-album {
+	width: 100%;
+}
+
+table#admin-album td {
+	vertical-align: top;
+}
+
+table#admin-album img,
+table#admin-albums img {
+	border-radius: 50%;
+	width: 100px;
+	height: 100px;
+	background-color: rgb(249, 249, 249);
+}
+
+table#admin-albums td:nth-child(1),
+table#admin-album td:nth-child(1) {
+	width: 100px;
+	padding: 8px !important;
+}
+
+table#admin-albums td:nth-child(4),
+table#admin-album td:nth-child(4) {
+	width: 325px;
+}
+
+table#admin-albums td:nth-child(5),
+table#admin-album td:nth-child(5) {
+	width: 70px;
+	padding-top: 9px;
+}
+
+
+table td.date {
+	width: 74px;
+}
 
 
 
@@ -153,6 +192,11 @@ footer a {
 /* General / Misc *
 ******************/
 
+a {
+    color: #129FEA; /* block-background-text-normal */
+    text-decoration: none;
+}
+
 
 .notification {
 	padding: 1em 1em;
@@ -173,4 +217,130 @@ footer a {
 
 hr {
 	border: 1px solid #eee;
+}
+
+
+form input.pure-button {
+	font-size: 14px;
+}
+
+form input {
+	font-size: 14px;
+}
+
+
+.level-nav {
+	font-size: 14px;
+	padding: 8px 15px;
+	margin-bottom: 20px;
+	list-style: none;
+	background-color: rgb(249, 249, 249);
+	border-radius: 4px;
+}
+.level-nav li {
+	display: inline-block;
+}
+.level-nav li + li:before {
+	padding: 0 5px;
+	color: #ccc;
+	content: "/\00a0";
+}
+.level-nav > .active {
+	color: #999;
+}
+
+
+
+
+/* Table *
+*******************/
+
+
+table {
+  max-width: 100%;
+  background-color: transparent;
+  font-size: 14px;
+}
+th {
+  text-align: left;
+}
+.table {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.table thead tr th,
+.table tbody tr th,
+.table tfoot tr th,
+.table thead tr td,
+.table tbody tr td,
+.table tfoot tr td {
+  padding: 8px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border-top: 1px solid #ddd;
+}
+.table .table {
+  background-color: #fff;
+}
+.table-striped tbody tr:nth-child(odd) td,
+.table-striped tbody tr:nth-child(odd) th {
+  background-color: rgb(249, 249, 249);
+}
+table col[class*="col-"] {
+  position: static;
+  display: table-column;
+  float: none;
+}
+table td[class*="col-"],
+table th[class*="col-"] {
+  position: static;
+  display: table-cell;
+  float: none;
+}
+
+
+/* Different style for Login/Logout page *
+*****************************************/
+
+body.logout,
+body.login {
+	padding: 0;
+}
+
+.logout #wrapper,
+.login #wrapper {
+	width: 100%;
+	background: transparent;
+	padding: 0;
+	margin: 0;
+}
+
+
+.logout header,
+.login header {
+	display: none;
+}
+
+.logout footer,
+.login footer {
+	display: none;
+}
+
+.logout hr,
+.login hr {
+	display: none;
+}
+
+div.page {
+	height: 100%;
+	height: 100vh;
+	background-color: #fff;
+	width: 400px;
+	margin: auto;
+	padding: 20px;
+	box-sizing: border-box;
+}
+
+div.page input {
+	width: 100% !important;
 }

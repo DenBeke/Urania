@@ -48,7 +48,7 @@ Date: March 2013
 	
     	
 </head>
-<body>
+<body class="<?php echo $controller->pageName ?>">
 
 
 	<?php
@@ -66,14 +66,18 @@ Date: March 2013
 			
 			<nav id="albumNav">
 				<ul>
-					<?php
-					foreach ($controller->urania->getAllAlbums() as $album) {
-						$navId = $album->getId();
-						$name = $album->getName();
-						$simpleName = $controller->urania->simplifyFileName($name);
-						echo '<li><a href="' . SITE_URL . "album/$navId/$simpleName\">$name</a></li>";
-					}
-					?>
+					<li><a href="<?php echo SITE_URL; ?>admin">Administrator</a></li>
+					<li><a href="<?php echo SITE_URL; ?>admin/albums">Albums</a>
+						<ul class="children">
+						<?php
+						foreach ($controller->urania->getAllAlbums() as $album) {
+							$navId = $album->getId();
+							$name = $album->getName();
+							echo '<li><a href="' . SITE_URL . "admin/album/$navId/\">$name</a></li>";
+						}
+						?>
+						</ul>
+					</li>
 				</ul>
 			</nav>
 		
@@ -88,8 +92,25 @@ Date: March 2013
 	
 	</header>
 	
-	<?php } ?>
+	
 	
 	
 	<div id="wrapper">
+	
+	
+		<ol class="level-nav" style="margin-bottom: 5px;">
+		      <li><a href="<?php echo SITE_URL; ?>admin">Admin</a></li>
+		      <li><a href="<?php echo SITE_URL; ?>admin/albums">Albums</a></li>
+		      <?php if($controller->pageName == 'album') { ?>
+		      <li class="active"><?php echo $controller->album->getName(); ?></li>
+		      <?php } ?>
+		</ol>
+	
+	<?php } 
+	else {
+	?>
+	
+	<div id="wrapper">
+	
+	<?php } ?>
 	

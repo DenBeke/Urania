@@ -20,9 +20,11 @@ if($this->notification != NULL) {
 }
 ?>
 
-<h3 class="nav"><a href="<?php echo SITE_URL; ?>admin">Albums</a> &gt; <a href="<?php echo SITE_URL; ?>admin/album/<?php echo $this->album->getId(); ?>"><?php echo $this->album->getName(); ?></a></h3>
 
-<table id="adminAlbum">
+<h2 id="admin-album-title"><?php echo $this->album->getName(); ?></h2>
+
+
+<table id="admin-album" class="table table-striped">
 
 	<tbody>
 	
@@ -53,8 +55,8 @@ if($this->notification != NULL) {
 	
 		<?php
 		
-		$imageHeight = 75;
-		$imageWidth = 75;
+		$imageHeight = 100;
+		$imageWidth = 100;
 		
 		for ($i = 0; $i < $this->album->getNumberOfImages(); $i++) {
 			
@@ -65,7 +67,57 @@ if($this->notification != NULL) {
 					<img src="<?php echo SITE_URL; ?>core/timthumb.php?src=<?php echo $this->album->getImage($i)->getFileName() . "&h=$imageHeight&w=$imageWidth"; ?>" alt="<?php echo $this->album->getImage($i)->getName(); ?>" />
 				</td>
 				<td>
-					<?php echo $this->album->getImage($i)->getName(); ?>
+					<?php 
+					echo $this->album->getImage($i)->getName(); 
+					$image = new imageExif($this->album->getImage($i));
+					$image->readExifFromFile();
+					?>
+					
+					<div id="exif">
+						<ul>
+							<?php 
+							if($image->getCamera() != NULL) {
+							?>
+							<li>
+								<?php echo $image->getCamera(); ?>
+							</li>
+							<?php 
+							}
+							
+							if($image->getIso() != NULL) {
+							?>
+							<li>
+								<?php echo $image->getIso(); ?>
+							</li>
+							
+							<?php 
+							}
+							
+							if($image->getAperture() != NULL) {
+							?>
+							<li>
+								&fnof;/<?php echo $image->getAperture(); ?>
+							</li>
+							<?php
+							}
+							
+							if($image->getShutterSpeed() != NULL) {
+							?>
+							<li>
+								<?php echo $image->getShutterSpeed(); ?>"
+							</li>
+							
+							<?php 
+							}
+							
+							if($image->getFocalLength() != NULL) {
+							?>
+							<li>
+								<?php echo $image->getFocalLength(); ?>
+							</li>
+							<?php } ?>
+						</ul>
+					</div>
 				</td>
 				
 				<td class="date">
@@ -73,17 +125,17 @@ if($this->notification != NULL) {
 				</td>
 				
 				<td>
-					<form method="post" action="<?php echo SITE_URL; ?>admin/album/<?php echo $this->album->getId(); ?>">
-						<input type="hidden" name="deleteImage" value="<?php echo $this->album->getImage($i)->getId(); ?>">
-						<input type="submit" value="Delete">
+					<form method="post" action="<?php echo SITE_URL; ?>admin/album/<?php echo $this->album->getId(); ?>" class="pure-form">
+						<input type="hidden" name="changeImage" value="<?php echo $this->album->getImage($i)->getId(); ?>">
+						<input type="text" name="changeName" value=""/>
+						<input class="pure-button pure-button-primary" type="submit" value="Change name">
 					</form>
 				</td>
 				
 				<td>
-					<form method="post" action="<?php echo SITE_URL; ?>admin/album/<?php echo $this->album->getId(); ?>">
-						<input type="hidden" name="changeImage" value="<?php echo $this->album->getImage($i)->getId(); ?>">
-						<input type="text" name="changeName" value="" required/>
-						<input type="submit" value="Change name">
+					<form method="post" action="<?php echo SITE_URL; ?>admin/album/<?php echo $this->album->getId(); ?>" class="pure-form">
+						<input type="hidden" name="deleteImage" value="<?php echo $this->album->getImage($i)->getId(); ?>">
+						<input class="pure-button pure-button-primary" type="submit" value="Delete">
 					</form>
 				</td>
 				
