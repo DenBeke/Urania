@@ -109,40 +109,69 @@ if($this->notification != NULL) {
 </table>
 
 
-<form id="addAlbum" name="input" action="<?php echo SITE_URL; ?>admin/" method="post">
-	<p>Add Album
-	</p>
-	<p>
-		<input type="text" name="albumName" required>
-	</p>
-	<p class="submitButton">
-		<input type="submit" value="Add">
-	</p>
-</form>
+<div class="panel pure-u-1-3">
+
+	<div class="panel-header">
+		<h3 class="panel-title">Add Album</h3>
+	</div>
 
 
-<form id="uploadImages" enctype="multipart/form-data" name="upload" action="<?php echo SITE_URL; ?>admin/" method="post">
-	<p>
-		Upload Photos
-	</p>
-	<p>
-		<input type="file" name="file[]" multiple required>
-	</p>
-	<p>
-	<select name="albumId">
+	<div class="panel-body">
+
+		<form id="addAlbum" name="input" action="<?php echo SITE_URL; ?>admin/" method="post" class="pure-form pure-form-stacked">
+			
+			
+			<input class="pure-input pure-u-1" type="text" name="albumName" placeholder="Name">
+			
+			
+			<input class="pure-button pure-button-primary pure-u-1" type="submit" value="Add">
+			
+		</form>
+
+	</div>
+
+</div>
+
+
+
+
+<div class="panel pure-u-1-3">
+
+
+	<div class="panel-header">
+		<h3 class="panel-title">Upload Photos</h3>
+	</div>	
 	
-	<?php
 	
-	foreach ($this->albums as $album) {
-		$id = $album->getId();
-		$name = $album->getName();
-		//echo "<a href=\"index.php?page=admin&album=$id\">$album</a>";
-		echo "<option value=\"$id\">$name</option>";
-	}
-	?>
-	</select>
-	</p>
-	<p class="submitButton">
-		<input type="submit" value="Upload">
-	</p>
-</form>
+	<div class="panel-body">
+
+
+	<form id="uploadImages" enctype="multipart/form-data" name="upload" action="<?php echo SITE_URL; ?>admin/" method="post" class="pure-form pure-form-stacked">
+
+		
+		<p>
+			<input class="" type="file" name="file[]" multiple required>
+		</p>
+
+		<select class="pure-input pure-u-1" name="albumId">
+		
+		<?php
+		
+		foreach ($this->albums as $album) {
+			$id = $album->getId();
+			$name = $album->getName();
+			//echo "<a href=\"index.php?page=admin&album=$id\">$album</a>";
+			echo "<option value=\"$id\">$name</option>";
+		}
+		?>
+		
+		</select>
+		
+		<input class="pure-button pure-button-primary pure-u-1" type="submit" value="Upload">
+		
+	</form>
+
+
+	</div>
+
+</div>
