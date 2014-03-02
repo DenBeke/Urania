@@ -163,7 +163,7 @@ table#admin-albums .previews {
 
 table#admin-albums .previews img {
 	margin-right: 10px;
-	opacity: 0.5;
+	opacity: 0.3;
 	-webkit-transition: opacity 0.2s;
 }
 
