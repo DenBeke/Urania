@@ -20,8 +20,10 @@ try {
 		?>
 		
 		<li>
-			<a href="<?php echo $u->getSiteUrl() . $album->getImage($i)->getFileName() ?>" class="lightbox" title="<?php echo $album->getImage($i)->getName(); ?>">
+			<a href="<?php echo $u->getSiteUrl() . 'image/' . $album->getImage($i)->getId() . '/' . $u->simplifyFileName($album->getImage($i)->getName()); ?>" class="lightbox" title="<?php echo $album->getImage($i)->getName(); ?>" data-json="<?php echo $u->getSiteUrl() . 'ajax/image.php?image=' . $album->getImage($i)->getId(); ?>">
+			
 				<img src="<?php echo $u->getSiteUrl(); ?>core/timthumb.php?src=<?php echo $album->getImage($i)->getFileName() . "&amp;h=$imageHeight&amp;w=$imageWidth"; ?>" alt="<?php echo $album->getImage($i)->getName(); ?>" title="<?php echo $album->getImage($i)->getName(); ?>" />
+				
 			</a>
 		</li>
 		

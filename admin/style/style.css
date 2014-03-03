@@ -1,0 +1,438 @@
+/*
+Style for Urania Admin Pannel
+
+Author: Mathias Beke
+Url: http://denbeke.be
+Date: February 2014
+*/
+
+body {
+	background-color: rgb(249, 249, 249);
+	padding-top: 50px;
+}
+
+
+
+
+/* Header *
+**********/
+
+
+header {
+	color: #ccc;
+	background-color: #222;
+	//overflow: auto;
+	font-weight: lighter;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 48px;
+	z-index: 100000;
+}
+
+
+
+header #header-wrapper {
+	width: 80%;
+	margin: 0 auto;
+}
+
+
+header a {
+	color: #999;
+	text-decoration: none;
+}
+
+
+header a:hover {
+	color: #fff;
+}
+
+
+header h1 {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 18px;
+	margin: 0;
+	padding: 12px;
+	padding-left: 0;
+	text-decoration: none;
+	font-weight: normal;
+	
+	float: left;
+}
+
+header nav {
+	display: inline-block;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 14px;
+}
+
+
+header ul {
+	margin: 0;
+	padding: 0;
+}
+
+header li {
+	display: inline-block;
+	margin: 0;
+}
+
+
+header .user a,
+header li a {
+	display: block;
+	padding: 15px;
+	padding-top: 15px;
+}
+
+
+header .user a:hover,
+header li a:hover,
+header li:hover {
+	background-color: #333;
+}
+
+
+header ul.children {
+	display: none;
+}
+
+header ul.children li {
+	clear: both;
+	display: block;
+}
+
+header li:hover ul.children {
+	background-color: #222;
+	display: block;
+	position: fixed;
+}
+
+
+header .user {
+	float: right;
+	font-size: 14px;
+	display: block;
+}
+
+
+
+/* Content *
+***********/
+
+#wrapper {
+	width: 80%;
+	max-width: 1400px;
+	padding: 0 20px;
+	padding-top: 10px;
+	margin: auto;
+	background-color: #fff;
+}
+
+
+table#admin-albums,
+table#admin-album {
+	width: 100%;
+}
+
+table#admin-album td {
+	vertical-align: top;
+}
+
+table#admin-album img,
+table#admin-albums img {
+	border-radius: 50%;
+	background-color: rgb(249, 249, 249);
+}
+
+table#admin-albums img {
+	opacity: 0.9;
+	-webkit-transition: opacity 0.2s;
+}
+
+table#admin-albums img:hover {
+	opacity: 1;
+}
+
+
+table#admin-albums .previews {
+	margin-top: 20px;
+}
+
+table#admin-albums .previews img {
+	margin-right: 10px;
+	opacity: 0.3;
+	-webkit-transition: opacity 0.2s;
+}
+
+table#admin-albums .previews img:hover {
+	opacity: 1;
+}
+
+
+table#admin-albums h3 {
+	margin: 0;
+}
+
+
+table#admin-albums td:nth-child(1),
+table#admin-album td:nth-child(1) {
+	width: 100px;
+	padding: 8px !important;
+}
+
+table#admin-albums td:nth-child(4),
+table#admin-album td:nth-child(4) {
+	width: 327px;
+	padding-right: 1px;
+	text-align: right;
+}
+
+table#admin-albums td:nth-child(5),
+table#admin-album td:nth-child(5) {
+	width: 70px;
+	padding-top: 9px;
+	padding-left: 1px;
+}
+
+
+table td.date {
+	width: 74px;
+}
+
+table input[type=text] {
+	width: 204px;
+}
+
+
+
+/* Footer *
+**********/
+
+footer {
+	font-style: italic;
+	color: #777;
+	font-size: 14px;
+	text-align: center;
+}
+
+
+footer a {
+	color: #777;
+}
+
+
+
+
+/* General / Misc *
+******************/
+
+a {
+    color: #129FEA; /* block-background-text-normal */
+    text-decoration: none;
+}
+
+
+.notification {
+	padding: 1em 1em;
+	border-radius: 3px;
+	color: #fff;
+}
+
+
+.notification.success {
+	background-color: #1f8dd6;
+}
+
+.notification.error {
+	background-color: rgb(202, 60, 60);
+}
+
+
+
+hr {
+	border: 1px solid #eee;
+}
+
+
+form input.pure-button {
+	font-size: 14px;
+}
+
+form input {
+	font-size: 14px;
+}
+
+
+.level-nav {
+	font-size: 14px;
+	padding: 8px 15px;
+	margin-bottom: 20px;
+	list-style: none;
+	background-color: rgb(249, 249, 249);
+	border-radius: 4px;
+}
+.level-nav li {
+	display: inline-block;
+}
+.level-nav li + li:before {
+	padding: 0 5px;
+	color: #ccc;
+	content: "/\00a0";
+}
+.level-nav > .active {
+	color: #999;
+}
+
+
+
+
+/* Table *
+*******************/
+
+
+table {
+  max-width: 100%;
+  background-color: transparent;
+  font-size: 14px;
+}
+th {
+  text-align: left;
+}
+.table {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.table thead tr th,
+.table tbody tr th,
+.table tfoot tr th,
+.table thead tr td,
+.table tbody tr td,
+.table tfoot tr td {
+  padding: 8px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border-top: 1px solid #ddd;
+}
+.table .table {
+  background-color: #fff;
+}
+.table-striped tbody tr:nth-child(odd) td,
+.table-striped tbody tr:nth-child(odd) th {
+  background-color: rgb(249, 249, 249);
+}
+table col[class*="col-"] {
+  position: static;
+  display: table-column;
+  float: none;
+}
+table td[class*="col-"],
+table th[class*="col-"] {
+  position: static;
+  display: table-cell;
+  float: none;
+}
+
+
+
+/* Panel *
+*********/
+
+.panel {
+	border-radius: 5px;
+	overflow: hidden;
+	border: 1px solid;
+	border-color: #ddd;
+	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05);
+	margin-bottom: 20px;
+}
+
+.panel .panel-header {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	color: #333;
+	padding: 10px 15px;
+	border-bottom: 1px solid transparent;
+	
+	background-image: -webkit-linear-gradient(top, rgb(249, 249, 249) 0%, rgb(240,240, 240) 100%);
+	background-image: -moz-linear-gradient(top, rgb(249, 249, 249) 0%, rgb(240,240, 240) 100%);
+	background-image: -ms-linear-gradient(top, rgb(249, 249, 249) 0%, rgb(240,240, 240) 100%);
+	background-image: linear-gradient(to bottom, rgb(249, 249, 249) 0%, rgb(240,240, 240) 100%);
+}
+
+.panel .panel-title {
+	margin-top: 0;
+	margin-bottom: 0;
+	font-size: 14px;
+	color: inherit;
+}
+
+.panel .panel-body {
+	padding: 15px;
+}
+
+
+
+/* Form enhancements *
+*********************/
+
+form p {
+	margin: 0;
+	padding-bottom: 2px;
+	padding-top: 0;
+}
+
+input {
+	box-sizing: border-box;
+	font-weight: inherit;
+	font-size: inherit;
+}
+
+
+/* Different style for Login/Logout page *
+*****************************************/
+
+body.logout,
+body.login {
+	padding: 0;
+	width: 100%;
+}
+
+.logout #wrapper,
+.login #wrapper {
+	width: 100%;
+	background: transparent;
+	padding: 0;
+	margin: auto;
+}
+
+
+.logout header,
+.login header {
+	display: none;
+}
+
+.logout footer,
+.login footer {
+	display: none;
+}
+
+.logout hr,
+.login hr {
+	display: none;
+}
+
+div.page {
+	height: 100%;
+	height: 100vh;
+	background-color: #fff;
+	max-width: 400px;
+	margin: auto;
+	padding: 20px;
+	box-sizing: border-box;
+}
+
+div.page input {
+	width: 100% !important;
+}

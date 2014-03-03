@@ -8,7 +8,7 @@ function error_handler( $errno, $errmsg, $filename, $linenum, $vars )
       return false;
 
     if ( $errno !== E_ERROR )
-      throw new \ErrorException( sprintf('%s: %s', $errno, $errmsg ), 0, $errno, $filename, $linenum );
+      throw new ErrorException( sprintf('%s: %s', $errno, $errmsg ), 0, $errno, $filename, $linenum );
 
 }
 ?>

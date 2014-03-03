@@ -7,9 +7,11 @@ Url: http://denbeke.be
 Date: September 2013
 */
 
+require_once(dirname(__FILE__).'/config.php');
 require_once(dirname(__FILE__).'/error_handler.php');
-require_once(dirname(__FILE__).'/album.php');
-require_once(dirname(__FILE__).'/image.php');
+require_once(dirname(__FILE__).'/model/album.php');
+require_once(dirname(__FILE__).'/model/image.php');
+require_once(dirname(__FILE__).'/model/imageExif.php');
 require_once(dirname(__FILE__).'/database.php');
 
 
@@ -38,48 +40,16 @@ class Urania {
     
     @param path to config file
     */
-    public function __construct($config = "./config.php") {
-        require($config);
-        $this->db_table_albums = $db_table_albums;
-        $this->db_table_images = $db_table_images;
-        $this->database = new Database($db_host, $db_user, $db_password, $db_database);
-        $this->uploadDir = $uploadDir;
-        $this->siteTitle = $siteTitle;
-        $this->siteUrl = $siteUrl;
-        $this->copyright = $copyright;
+    public function __construct() {
+        $this->db_table_albums = DB_TABLE_ALBUMS;
+        $this->db_table_images = DB_TABLE_IMAGES;
+        $this->database = new Database(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE, dirname(__FILE__).'/../cache/');
+        $this->uploadDir = UPLOAD_DIR;
+        $this->siteTitle = SITE_TITLE;
+        $this->siteUrl = SITE_URL;
+        $this->copyright = COPYRIGHT;
     }
-    
-    
-    /**
-    Get the title of the site
-    
-    @return site title
-    */
-    public function getSiteTitle() {
-    	return $this->siteTitle;
-    }
-    
-    
-    /**
-    Get the url of the site
-    Site url should end with a slash
-    
-    @return site url
-    */
-    public function getSiteUrl() {
-        return $this->siteUrl;
-    }
-    
-    
-    /**
-    Get the copyright information/text for the footer
-    
-    @return copyright
-    */
-    public function getCopyright() {
-    	return $this->copyright;
-    }
-    
+     
     
     /**
     Add a new photo album to the database with the given name
@@ -122,7 +92,7 @@ class Urania {
 	        }
 	        
 	        //Add new directory to the upload folder
-	        mkdir($this->uploadDir . '/' . $this->simplifyFileName($albumName));
+	        mkdir( dirname(__FILE__) . '/../' . $this->uploadDir . '/' . $this->simplifyFileName($albumName));
 	        
 	    }
         
@@ -294,6 +264,51 @@ class Urania {
     
     
     /**
+    Returns the latest images
+    
+    @param count
+    @return array of images
+    
+    @pre count is greater than, or equal to zero
+    */
+    public function getLatestImages($count) {
+    
+    	if(intval($count) < 1) {
+    		throw new Exception("Number of images must be at least 1");
+    	}
+    	else {
+    		
+    		//Create query
+    		$count = $this->database->escape($count);
+    		$images = $this->database->escape($this->db_table_images);
+    		
+    		$query = 
+    		"
+    		SELECT *
+    		FROM `$images`
+    		ORDER BY `date` DESC
+    		LIMIT 0, $count
+    		";
+    		
+    		$result = $this->database->getQuery($query);
+    		$outputArray = array();
+    		
+    		for($i = 0; $i < sizeof($result); $i++) {
+    		
+    			$outputArray[] = new Image($result[$i]['id'], $this->uploadDir . $this->simplifyFileName($this->getAlbumName($result[$i]['albumId'])) . '/' . $result[$i]['fileName'], $result[$i]['name'], $result[$i]['date'], $result[$i]['albumId']);
+    		
+    		}
+    		
+    		return $outputArray;
+    		
+    	}
+    
+    }
+    
+    
+    
+    
+    /**
     Change the name of the image in the database
     
     @param image id
@@ -380,7 +395,7 @@ class Urania {
                 echo "$affectedRows affected rows with query<br>$query";
             }
 
-            rename($this->uploadDir . $this->simplifyFileName($oldAlbum), $this->uploadDir . $this->simplifyFileName($albumName));
+            rename(dirname(__FILE__) . '/../' . $this->uploadDir . '/' . $this->simplifyFileName($oldAlbum), dirname(__FILE__) . '/../' . $this->uploadDir . '/' . $this->simplifyFileName($albumName));
             
         }
     }
@@ -420,7 +435,7 @@ class Urania {
             $result = $this->database->getQuery($query);
             $image = new Image($result[0]['id'], $result[0]['fileName'], $result[0]['name'], $result[0]['date'], $result[0]['albumId']);
             
-            unlink($this->uploadDir . $this->simplifyFileName($this->getAlbumName($image->getAlbumId())) . '/' . $image->getFileName());
+            unlink(dirname(__FILE__) . '/../' . $this->uploadDir . '/' . $this->simplifyFileName($this->getAlbumName($image->getAlbumId())) . '/' . $image->getFileName());
             
             //Delete image in the database
             $query = "DELETE FROM `$images` WHERE `$images`.`id` = $id";
@@ -462,11 +477,11 @@ class Urania {
             $this->database->doQuery($query);
             
             //Delete album directory
-            $dir = opendir($this->uploadDir . $this->simplifyFileName($album->getName()));
+            $dir = opendir(dirname(__FILE__) . '/../' . $this->uploadDir . '/' . $this->simplifyFileName($album->getName()));
             //do whatever you need
             closedir($dir);
-            rmdir($this->uploadDir . $this->simplifyFileName($album->getName()));
-        }
+            rmdir( dirname(__FILE__) . '/../' . $this->uploadDir . '/' . $this->simplifyFileName($album->getName()));
+            }
     }
     
     
@@ -518,7 +533,7 @@ class Urania {
     public function uploadImage($imageName, $tempFile, $albumId) {
     	//Check if upload file is image
     	$info = getimagesize($tempFile);
-    	if ($info === FALSE) {
+    	if ($info == FALSE) {
     	   throw new exception('File is not of type image');
     	}
     	
@@ -546,13 +561,13 @@ class Urania {
     	}
     	
     	//Upload the file
-    	move_uploaded_file($tempFile, $this->uploadDir . $albumName . '/' . $fileName);
+    	move_uploaded_file($tempFile, dirname(__FILE__) . '/../' . $this->uploadDir . '/' . $albumName . '/' . $fileName);
     	
     	//Get image date from efix date
     	//If it couldn't read the efix date, the current time will be used
     	try {
-	    	if(function_exists("exif_read_data") && exif_read_data($this->uploadDir . $albumName . '/' . $fileName)){ 
-				$efix = exif_read_data($this->uploadDir . $albumName . '/' . $fileName);
+	    	if(function_exists("exif_read_data") && exif_read_data(dirname(__FILE__) . '/../' . $this->uploadDir . '/' . $albumName . '/' . $fileName)){ 
+				$efix = exif_read_data(dirname(__FILE__) . '/../' . $this->uploadDir . '/' . $albumName . '/' . $fileName);
 				$imageDate = strtotime($efix['DateTimeOriginal']);
 				if ($imageDate == 0) {
 					$imageDate = time();
@@ -688,7 +703,7 @@ class Urania {
     @return true/false
     */
     private function fileNameExists($fileName) {
-    	return file_exists($this->uploadDir . $fileName);
+    	return file_exists(dirname(__FILE__) . '/../' . $this->uploadDir . '/' . $fileName);
     }
     
     
