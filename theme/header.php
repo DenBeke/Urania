@@ -7,7 +7,6 @@ Url: http://denbeke.be
 Date: March 2013
 */
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

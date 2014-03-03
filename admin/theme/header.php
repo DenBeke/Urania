@@ -7,7 +7,6 @@ Url: http://denbeke.be
 Date: March 2013
 */
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,6 +24,13 @@ Date: March 2013
 	<link rel="stylesheet" href="<?php echo SITE_URL; ?>admin/style/pure.css" type="text/css" />
 	
 	<link rel="stylesheet" href="<?php echo SITE_URL; ?>admin/style/style.css" type="text/css" />
+	
+	<link rel="stylesheet" href="<?php echo SITE_URL; ?>admin/style/lightbox.css" type="text/css" />
+	
+	
+	<script src="<?php echo SITE_URL; ?>js/jquery.js" type="text/javascript"></script>
+	
+	<script src="<?php echo SITE_URL; ?>admin/js/lightbox.js" type="text/javascript"></script>
 	
 	
 	<?php

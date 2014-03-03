@@ -64,7 +64,9 @@ if($this->notification != NULL) {
 			
 			<tr>
 				<td>
-					<img src="<?php echo SITE_URL; ?>core/timthumb.php?src=<?php echo $this->album->getImage($i)->getFileName() . "&h=$imageHeight&w=$imageWidth"; ?>" alt="<?php echo $this->album->getImage($i)->getName(); ?>" />
+					<a href="<?php echo SITE_URL . $this->album->getImage($i)->getFileName(); ?>" class="lightbox">
+						<img src="<?php echo SITE_URL; ?>core/timthumb.php?src=<?php echo $this->album->getImage($i)->getFileName() . "&h=$imageHeight&w=$imageWidth"; ?>" alt="<?php echo $this->album->getImage($i)->getName(); ?>" />
+					</a>
 				</td>
 				<td>
 					<?php 
@@ -182,3 +184,6 @@ if($this->notification != NULL) {
 
 
 </div>
+
+
+<?php include(dirname(__FILE__) . '/lightbox.php'); ?>
