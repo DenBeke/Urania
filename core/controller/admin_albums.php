@@ -18,7 +18,7 @@ namespace Controller\Admin {
 	
 	
 		public $pageName = 'albums';
-		public $albums;
+		public $albums = array();
 		public $notification = NULL;
 	
 	
