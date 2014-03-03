@@ -15,7 +15,7 @@ Date: September 2013
     font-family: 'Bad Script';
     font-style: normal;
     font-weight: 400;
-    src: local('Bad Script Regular'), local('BadScript-Regular'), url(bad_script.woff) format('woff');
+    src: local('Bad Script Regular'), local('BadScript-Regular'), url('../font/bad_script.woff') format('woff');
 }
 
 
