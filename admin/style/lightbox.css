@@ -33,11 +33,11 @@ Date: March 2014
 
 #lightbox-content {
 	display: inline-block;
-	overflow: visible;
+	overflow: hidden;
 	padding: 10px;
 	margin: auto;
 	max-width: 80%;
-	max-height: 80%;
+	max-height: 80vh;
 	background-color: #fff;
 	border-radius: 10px;
 	box-shadow: 0px 1px 5px #ccc;
@@ -46,6 +46,7 @@ Date: March 2014
 
 
 #lightbox-content img {
-	max-height: 80%;
+	position: relative;
+	max-height: inherit;
 	max-width: 100%;
 }
