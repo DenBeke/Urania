@@ -39,11 +39,11 @@ if($this->notification != NULL) {
 				Date
 			</th>
 			
-			<th>
+			<th class="pure-hidden-tablet pure-hidden-phone">
 			
 			</th>
 			
-			<th>
+			<th class="pure-hidden-tablet pure-hidden-phone">
 			
 			</th>
 
@@ -109,7 +109,7 @@ if($this->notification != NULL) {
 					<?php echo date('d-m-Y', $album->getDate()); ?>
 				</td>
 				
-				<td>
+				<td class="pure-hidden-tablet pure-hidden-phone">
 					<form method="post" action="<?php echo SITE_URL; ?>admin/" class="pure-form">
 						<input class="pure-input" type="hidden" name="changeAlbumId" value="<?php echo $album->getId(); ?>">
 						<input type="text" name="changeName" value="" placeholder="Name" />
@@ -117,7 +117,7 @@ if($this->notification != NULL) {
 					</form>
 				</td>
 				
-				<td>
+				<td class="pure-hidden-tablet pure-hidden-phone">
 					<form method="post" action="<?php echo SITE_URL; ?>admin/">
 						<input type="hidden" name="deleteAlbum" value="<?php echo $id; ?>">
 						<input class="pure-button pure-button-primary" type="submit" value="Delete">
