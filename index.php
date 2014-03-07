@@ -7,7 +7,7 @@ Url: http://denbeke.be
 Date: September 2013
 */
 
-require_once('./core/config.php');
+//require_once('./core/config.php');
 require_once('./core/urania.php');
 require_once('./core/glue.php');
 
