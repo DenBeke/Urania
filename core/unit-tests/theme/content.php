@@ -70,7 +70,13 @@ foreach ($scenario->tests as $case) {
 							if($test['result'] == false) {
 								?>
 								<li>
+									<?php if(isset($test['type']) and $test['type'] == 'unexpected') { ?>
+									<p>Unexpected Exception</p>
+									<?php } 
+									else {
+									?>
 									<p>Failure on line <?php echo $test['line']; ?></p>
+									<?php } ?>
 									<code><?php echo $test['failed_line']; ?></code>
 								</li>
 								<?php

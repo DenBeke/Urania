@@ -5,8 +5,15 @@ namespace UnitTest;
 
 
 
-function test() {
-	//throw new \exception('Error');
+function divide($a, $b) {
+	/*
+	Normally you would throw an exception...
+	But if you don't, the performed test will give an error
+	
+	if($b == 0) {
+		throw new Exception('Cannot divide by ZERO');
+	}
+	*/
 }
 
 
@@ -29,8 +36,6 @@ class Example extends UnitTest {
 		$this->testVarB = $this->testVarA;
 		$this->REQUIRE_EQUAL($this->testVarB, $this->testVarA);
 		
-		$this->REQUIRE_THROWS(test());
-		
 	}
 	
 	
@@ -40,6 +45,22 @@ class Example extends UnitTest {
 		$var = implode(' ', $var);
 		
 		$this->REQUIRE_EQUAL($var, $this->testVarA);
+		
+	}
+	
+	
+	
+	public function ExceptionTest() {
+		
+		$this->BEGIN_REQUIRE_EXCEPTION();
+
+		//A statement between BEGIN_REQUIRE and
+		//END_REQUIRE should thrown an exception
+		//in orde to make the performed test 'passed'.
+		
+		divide(2, 0);
+		
+		$this->END_REQUIRE_EXCEPTION();
 		
 	}
 	

@@ -33,7 +33,6 @@ class Equals extends UnitTest {
 		$this->REQUIRE_EQUAL(0,0);
 	}
 	
-	
 
 }
 

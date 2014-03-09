@@ -9,12 +9,13 @@ Date: March 2014
 
 
 require_once( dirname(__FILE__) . '/unit-test.php' );
-
+require_once( dirname(__FILE__) . '/preprocess.php');
 
 $t = new \UnitTest\UnitTest;
 
+preprocess();
 
-foreach (glob(dirname(__FILE__) . '/tests/*.php') as $file) {
+foreach (glob(dirname(__FILE__) . '/tests/preprocessed/*.php') as $file) {
 	require_once($file);
 }
 

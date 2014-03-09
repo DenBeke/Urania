@@ -61,6 +61,10 @@ which can be accessed in orde to view te test results.
 You can also output the test to html using the `write` function.
 */
 class UnitTest {
+	
+	
+	private $requireException = false;
+	
 
 	public function REQUIRE_EQUAL($a, $b) {
 		
@@ -89,17 +93,47 @@ class UnitTest {
 	
 	public function REQUIRE_FALSE($a, $b) {
 	
-
 	
 	}
 	
 	
+	public function BEGIN_REQUIRE_EXCEPTION() {
+		
+		$this->requireException = true;
+		
+	}
 	
-	public function REQUIRE_THROWS($a) {
+	public function EXCEPT($method = NULL) {
+		
+		if($this->requireException) {
+			$test['result'] = true;
+			$this->requireException = false;
+		}
+		else {
+			$test['type'] = 'unexpected';
+			$test['result'] = false;
+		}
+		$this->saveTest($test, $method);
+		
 	}
 	
 	
-	private function saveTest($test) {
+	public function NOEXCEPT() {
+		
+		if($this->requireException) {
+			$test['result'] = false;
+			$test['type'] = 'no_exception';
+			$this->requireException = false;
+		}
+		else {
+			$test['result'] = true;
+		}
+		$this->saveTest($test);
+		
+	}
+	
+	
+	public function saveTest($test, $method = NULL) {
 		
 		
 		global $scenario;
@@ -110,7 +144,9 @@ class UnitTest {
 		$test['line'] = debug_backtrace()[1]['line'];
 		
 		//Get the method from which the REQUIRE function is called
-		$method = debug_backtrace()[3]['args'][0][1];
+		if($method == NULL) {
+			$method = debug_backtrace()[3]['args'][0][1];
+		}
 		
 		//Get class name without namespace in front of it
 		$class = get_class($this);
@@ -141,10 +177,45 @@ class UnitTest {
 			//Count the number of failures
 			$section->success= false;
 			$scenario->numberOfFailures++;
+		
+					
+			//Regular test case
+			if(!isset($test['type'])) {
+				//Get get the source line from the caller
+				$lines = file($test['file']);
+				$test['failed_line'] = $lines[$test['line']-1];
+			}
 			
-			//Get get the source line from the caller
-			$lines = file($test['file']);
-			$test['failed_line'] = $lines[$test['line']-1];
+			//In case of expected exception that was not thrown
+			//We output the whole code block
+			elseif(isset($test['type']) and $test['type'] == 'no_exception') {
+				$file = explode('/', $test['file']);
+				unset($file[sizeof($file)-2]);
+				$file = implode('/', $file);
+				$lines = file($file);
+				$line = $test['line'];
+				
+				
+				$startLine = $line;
+				
+				while(!preg_match('/.*BEGIN_REQUIRE_EXCEPTION.*/i', $lines[$startLine])) {
+					$startLine--;
+				}
+				
+				$test['failed_line'] = '';
+				$test['line'] = $startLine+1;
+				
+				
+				while($startLine != $line) {
+					$test['failed_line'] = $test['failed_line'] . '<br>' . $lines[$startLine];
+					$startLine++;
+				}
+			
+			}
+			else {
+				$test['failed_line'] = "$class::$method {<br> ... <br>}";
+			}
+		
 		}
 		
 		$section->tests[] = $test;
@@ -193,7 +264,13 @@ class UnitTest {
 						}
 						
 						
-						call_user_func(array($objects[$class], $method));
+						try {
+							call_user_func(array($objects[$class], $method));
+						}
+						catch(\Exception $e) {
+							//$test['result'] = false;
+							$objects[$class]->EXCEPT($method);
+						}
 						
 						
 							
