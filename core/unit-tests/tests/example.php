@@ -45,6 +45,9 @@ class Example extends UnitTest {
 		$var = implode(' ', $var);
 		
 		$this->REQUIRE_EQUAL($var, $this->testVarA);
+		$this->REQUIRE_NOTEQUAL('one', 'two');
+		$this->REQUIRE_TRUE('one' == 'one');
+		$this->REQUIRE_FALSE('one' == 'two');
 		
 	}
 	
@@ -55,8 +58,8 @@ class Example extends UnitTest {
 		$this->BEGIN_REQUIRE_EXCEPTION();
 
 		//A statement between BEGIN_REQUIRE and
-		//END_REQUIRE should thrown an exception
-		//in orde to make the performed test 'passed'.
+		//END_REQUIRE should throw an exception
+		//in order to make the performed test 'passed'.
 		
 		divide(2, 0);
 		

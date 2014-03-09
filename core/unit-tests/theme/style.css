@@ -44,13 +44,21 @@ h3 {
 }
 
 
+div.table-wrapper {
+	border-radius: 5px;
+	overflow: hidden;
+	background-color: #b2dba1;
+	//border: 1px #b2dba1 solid;
+}
+
+
 table {
 	width: 100%;
 	border-collapse: collapse;
 	border-spacing: 0;
-	border-radius: 10px;
 	font-size: 14px;
 }
+
 
 table tr {
 	margin-top: 10px;
@@ -80,8 +88,12 @@ table td {
 	vertical-align: top;
 }
 
+table td:nth-child(1) {
+	width: 100%;
+}
+
 table td:nth-child(2) {
-	width: 100px;
+	text-align: right;
 }
 
 
@@ -115,6 +127,7 @@ ul.failed-tests p {
 	font-weight: bold;
 	padding: 5px;
 	font-size: 14px;
+	border-radius: 5px;
 }
 
 #total-tests p {

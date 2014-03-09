@@ -73,14 +73,11 @@ class UnitTest {
 		$test['a'] = $a;
 		$test['b'] = $b;
 		
-		if($a == $b) {
-			
+		if($a == $b) {	
 			$test['result'] = true;
-			
 		}
 		else {
 			$test['result'] = false;
-			
 		}
 		
 		$this->saveTest($test);
@@ -91,10 +88,61 @@ class UnitTest {
 	
 	
 	
-	public function REQUIRE_FALSE($a, $b) {
+	public function REQUIRE_NOTEQUAL($a, $b) {
 	
+		$test = array();
+		$test['a'] = $a;
+		$test['b'] = $b;
+		
+		if($a != $b) {
+			$test['result'] = true;
+		}
+		else {
+			$test['result'] = false;	
+		}
+		
+		$this->saveTest($test);
 	
 	}
+	
+	
+	
+	public function REQUIRE_TRUE($a) {
+	
+		$test = array();
+		$test['a'] = $a;
+		
+		if($a) {
+			$test['result'] = true;
+		}
+		else {
+			$test['result'] = false;
+		}
+		
+		$this->saveTest($test);
+	
+	}
+	
+	
+	
+	
+	public function REQUIRE_FALSE($a) {
+	
+		$test = array();
+		$test['a'] = $a;
+		
+		if(!$a) {
+			$test['result'] = true;
+		}
+		else {
+			$test['result'] = false;
+		}
+		
+		$this->saveTest($test);
+	
+	}
+	
+	
 	
 	
 	public function BEGIN_REQUIRE_EXCEPTION() {

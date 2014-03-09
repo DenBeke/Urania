@@ -34,7 +34,6 @@ Date: March 2014
 </div>
 
 
-
 <?php
 
 foreach ($scenario->tests as $case) {
@@ -43,80 +42,85 @@ foreach ($scenario->tests as $case) {
 	
 	<h3><?php echo $case->name; ?></h3>
 	
-	<table>
-		
-		<tbody>
+	
+	<div class="table-wrapper">
+	
+		<table>
 			
-			
-			<?php
-			
-			foreach ($case->sections as $section) {
-			
-			?>
-			
-			
-			<tr <?php if(!$section->success) echo 'class="failed"'; ?>>
+			<tbody>
 				
-				<td>
-					<?php echo $section->name; ?>
+				
+				<?php
+				
+				foreach ($case->sections as $section) {
+				
+				?>
+				
+				
+				<tr <?php if(!$section->success) echo 'class="failed"'; ?>>
 					
-					
-					
-					<ul class="failed-tests">
+					<td>
+						<?php echo $section->name; ?>
 						
-						<?php 
 						
-						foreach ($section->tests as $test) {
-							if($test['result'] == false) {
-								?>
-								<li>
-									<?php if(isset($test['type']) and $test['type'] == 'unexpected') { ?>
-									<p>Unexpected Exception</p>
-									<?php } 
-									else {
+						
+						<ul class="failed-tests">
+							
+							<?php 
+							
+							foreach ($section->tests as $test) {
+								if($test['result'] == false) {
 									?>
-									<p>Failure on line <?php echo $test['line']; ?></p>
-									<?php } ?>
-									<code><?php echo $test['failed_line']; ?></code>
-								</li>
-								<?php
+									<li>
+										<?php if(isset($test['type']) and $test['type'] == 'unexpected') { ?>
+										<p>Unexpected Exception</p>
+										<?php } 
+										else {
+										?>
+										<p>Failure on line <?php echo $test['line']; ?></p>
+										<?php } ?>
+										<code><?php echo $test['failed_line']; ?></code>
+									</li>
+									<?php
+								}
 							}
+							
+							?>
+							
+						</ul>
+						
+						
+					</td>
+					
+					
+					<td>
+						
+						<?php
+						
+						if($section->success) {
+							echo 'OK';
+						}
+						else {
+							echo 'ERROR';
+							
 						}
 						
 						?>
 						
-					</ul>
+					</td>
 					
-					
-				</td>
+				</tr>
 				
 				
-				<td>
-					
-					<?php
-					
-					if($section->success) {
-						echo 'OK';
-					}
-					else {
-						echo 'ERROR';
-						
-					}
-					
-					?>
-					
-				</td>
 				
-			</tr>
+				<?php } ?>
+				
+				
+			</tbody>
 			
-			
-			
-			<?php } ?>
-			
-			
-		</tbody>
+		</table>	
 		
-	</table>	
+	</div>
 	
 	<?php
 	
