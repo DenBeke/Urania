@@ -16,6 +16,7 @@ If not placed in this namespace, the tests will not be recognized.
 namespace UnitTest;
 
 
+
 require_once( dirname(__FILE__) . '/objects.php' );
 
 
@@ -61,7 +62,7 @@ You can also output the test to html using the `write` function.
 */
 class UnitTest {
 
-	public function REQUIRE_TRUE($a, $b) {
+	public function REQUIRE_EQUAL($a, $b) {
 		
 		
 		$test = array();
@@ -94,6 +95,10 @@ class UnitTest {
 	
 	
 	
+	public function REQUIRE_THROWS($a) {
+	}
+	
+	
 	private function saveTest($test) {
 		
 		
@@ -101,6 +106,7 @@ class UnitTest {
 		$scenario->numberOfTest++;
 		
 		//Get the line from which the REQUIRE function is called
+		$test['file'] = debug_backtrace()[1]['file'];
 		$test['line'] = debug_backtrace()[1]['line'];
 		
 		//Get the method from which the REQUIRE function is called
@@ -129,13 +135,19 @@ class UnitTest {
 			$section  = $scenario->tests[$class]->sections[$method];
 		}
 		
-		$section->tests[] = $test;
-		
-		//Count the number of failures
+		//On failure
 		if($test['result'] == false) {
+			
+			//Count the number of failures
 			$section->success= false;
 			$scenario->numberOfFailures++;
+			
+			//Get get the source line from the caller
+			$lines = file($test['file']);
+			$test['failed_line'] = $lines[$test['line']-1];
 		}
+		
+		$section->tests[] = $test;
 		
 	}
 	
@@ -151,6 +163,11 @@ class UnitTest {
 	
 	public function run() {
 		
+		
+		//Cache class objects
+		$objects = array();
+		
+		
 		//Loop through all declared classes
 		foreach (get_declared_classes() as $class) {
 			
@@ -160,11 +177,26 @@ class UnitTest {
 				//Loop through functions of that class
 				foreach (get_class_methods($class) as $method) {
 					
-					$object = new $class;
+					
+					//Don't run constructors
+					if($method == '__construct') {
+						continue;
+					}
 					
 					//If not a method of this class, we call the function
 					if(!in_array($method, get_class_methods(get_class($this)))) {
-						call_user_func(array($object, $method));
+						
+						//Check if object yet cached or not
+						//Since we don't want to construct it every time
+						if(!isset($objects[$class])) {
+							$objects[$class] = new $class;
+						}
+						
+						
+						call_user_func(array($objects[$class], $method));
+						
+						
+							
 					}
 				}
 				

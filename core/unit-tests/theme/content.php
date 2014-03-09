@@ -59,6 +59,29 @@ foreach ($scenario->tests as $case) {
 				
 				<td>
 					<?php echo $section->name; ?>
+					
+					
+					
+					<ul class="failed-tests">
+						
+						<?php 
+						
+						foreach ($section->tests as $test) {
+							if($test['result'] == false) {
+								?>
+								<li>
+									<p>Failure on line <?php echo $test['line']; ?></p>
+									<code><?php echo $test['failed_line']; ?></code>
+								</li>
+								<?php
+							}
+						}
+						
+						?>
+						
+					</ul>
+					
+					
 				</td>
 				
 				
@@ -71,27 +94,7 @@ foreach ($scenario->tests as $case) {
 					}
 					else {
 						echo 'ERROR';
-						?>
 						
-						<ul class="failed-tests">
-							
-							<?php 
-							
-							foreach ($section->tests as $test) {
-								if($test['result'] == false) {
-									?>
-									<li>
-										line <?php echo $test['line']; ?>
-									</li>
-									<?php
-								}
-							}
-							
-							?>
-							
-						</ul>
-						
-						<?php
 					}
 					
 					?>

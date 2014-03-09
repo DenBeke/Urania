@@ -86,6 +86,23 @@ table td:nth-child(2) {
 
 
 
+ul.failed-tests {
+	font-size: 12px;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+ul.failed-tests li {
+	padding-top: 10px;
+	padding-left: 10px;
+}
+
+ul.failed-tests p {
+	font-weight: bold;
+	margin: 0;
+}
+
 
 #total-tests {
 	margin-top: 10px;
