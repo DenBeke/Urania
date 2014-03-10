@@ -1,7 +1,7 @@
 Urania
 ======
 
-￼![Urania Logo](https://bytebucket.org/MathiasB/urania/raw/7203798937088aa0528f99c51f867fbb85580d5d/img/logo.png)
+￼![Urania Logo](http://denbeke.be/urania/img/logo.png)
 
 Urania is a CMS for photo albums.
 
