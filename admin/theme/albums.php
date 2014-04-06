@@ -67,7 +67,7 @@ if($this->notification != NULL) {
 			
 				<td>
 					<a href="<?php echo SITE_URL; ?>admin/album/<?php echo $id; ?>">
-						<?php if($album->getImage(0)->getName() != 'error') { ?>
+						<?php if($album->getNumberOfImages() > 0 and $album->getImage(0)->getName() != 'error') { ?>
 						<img src="<?php echo SITE_URL; ?>core/timthumb.php?src=<?php echo $album->getImage(0)->getFileName() . "&h=$imageHeight&w=$imageWidth"; ?>" alt="<?php echo $album->getImage(0)->getName(); ?>" />
 						<?php 
 						}

@@ -10,7 +10,6 @@ Date: September 2013
 //require_once('./core/config.php');
 require_once( dirname(__FILE__) . '/../core/urania.php');
 require_once( dirname(__FILE__) . '/../core/glue.php');
-require_once( dirname(__FILE__) . '/../core/glue.php');
 
 //Include controllers
 require_once( dirname(__FILE__) . '/../core/controller/admin_error.php' );
