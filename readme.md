@@ -1,6 +1,8 @@
 Urania
 ======
 
+￼![Urania Logo](http://denbeke.be/urania/img/logo.png)
+
 Urania is a CMS for photo albums.
 
 * The admin can create albums and upload images.
