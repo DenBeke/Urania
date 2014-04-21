@@ -21,18 +21,18 @@ Installation
         * id(int)(AutoIncrement)
         * name(text)
         * date(int)
-* Change the database config, table names, and other site info in the './core/config.php' file.
-* Start creating albums!!!
+* Change the database config, table names, and other site info in the `./core/config.php` file.
+* Start uploading your pictures!
 
 
 Notes
 =====
 
 * By default PHP has some limits.
-  You can change those limits in the php.ini on your server.
-	* upload_max_filesize (should be enough for basic image uploading, but could cause problems when adding very large images)
-	* post_max_size (the maximum total size of all image you are trying to upload)
-	* max_file_uploads (by default you can add only 20 images at once)
+  You can change those limits in the `php.ini` on your server.
+	* `upload_max_filesize` (should be enough for basic image uploading, but could cause problems when adding very large images)
+	* `post_max_size` (the maximum total size of all image you are trying to upload)
+	* `max_file_uploads` (by default you can add only 20 images at once)
 * Your admin password is stored in plain text, make sure this password is unique and can not cause problems for other (more important) services
 
 
