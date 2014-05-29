@@ -12,7 +12,7 @@ Date: March 2014
 namespace Controller\Admin {
 
 	
-	require_once(dirname(__FILE__) . '/controller.php');
+	require_once(dirname(__FILE__) . '/../controller.php');
 
 
 	class Error extends \Controller\Controller {

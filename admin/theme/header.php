@@ -84,6 +84,12 @@ Date: March 2013
 						?>
 						</ul>
 					</li>
+					<li><a href="">Appearance</a>
+						<ul class="children">
+							<li><a href="">Theme</a></li>
+							<li><a href="">Site Configuration</a></li>
+						</ul>
+					</li>
 				</ul>
 			</nav>
 		

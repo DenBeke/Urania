@@ -12,11 +12,11 @@ require_once( dirname(__FILE__) . '/../core/urania.php');
 require_once( dirname(__FILE__) . '/../core/glue.php');
 
 //Include controllers
-require_once( dirname(__FILE__) . '/../core/controller/admin_error.php' );
-require_once( dirname(__FILE__) . '/../core/controller/admin_albums.php' );
-require_once( dirname(__FILE__) . '/../core/controller/admin_album.php' );
-require_once( dirname(__FILE__) . '/../core/controller/login.php' );
-require_once( dirname(__FILE__) . '/../core/controller/logout.php' );
+require_once( dirname(__FILE__) . '/../core/controller/admin/error.php' );
+require_once( dirname(__FILE__) . '/../core/controller/admin/albums.php' );
+require_once( dirname(__FILE__) . '/../core/controller/admin/album.php' );
+require_once( dirname(__FILE__) . '/../core/controller/admin/login.php' );
+require_once( dirname(__FILE__) . '/../core/controller/admin/logout.php' );
 
 
 
