@@ -13,7 +13,7 @@ Date: March 2013
 if($this->notification != NULL) {
 ?>
 <div class="notification <?php echo $this->notification->type ?>">
-	<?php echo $this->notification->message; ?>
+	<span class="glyphicon <?php if($this->notification->type == 'success') { echo 'glyphicon-ok'; } else { echo 'glyphicon-warning-sign'; } ?>"></span> <?php echo $this->notification->message; ?>
 </div>
 <?php
 }

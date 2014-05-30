@@ -88,7 +88,7 @@ Date: March 2013
 						?>
 						</ul>
 					</li>
-					<li><a>Appearance</a>
+					<li><a>Settings</a>
 						<ul class="children">
 							<li><a href="<?php echo SITE_URL; ?>admin/themes"><span class="glyphicon glyphicon-th"> </span> Theme</a></li>
 							<li><a href="<?php echo SITE_URL; ?>admin/configuration"><span class="glyphicon glyphicon-wrench"> </span> Site Configuration</a></li>

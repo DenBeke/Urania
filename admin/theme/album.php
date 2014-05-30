@@ -14,7 +14,7 @@ Date: March 2013
 if($this->notification != NULL) {
 ?>
 <div class="notification <?php echo $this->notification->type ?>">
-	<?php echo $this->notification->message; ?>
+	<span class="glyphicon <?php if($this->notification->type == 'success') { echo 'glyphicon-ok'; } else { echo 'glyphicon-warning-sign'; } ?>"></span> <?php echo $this->notification->message; ?>
 </div>
 <?php
 }
@@ -186,6 +186,9 @@ if($this->notification != NULL) {
 			
 			
 			<input class="pure-input pure-button pure-button-primary pure-u-1" type="submit" value="Upload">
+			<!-- <button class="pure-input pure-button pure-button-primary pure-u-1" type="submit">
+				Upload
+			</button>-->
 			
 		</form>
 	

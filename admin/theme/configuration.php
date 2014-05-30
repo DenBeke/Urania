@@ -64,7 +64,7 @@ Date: May 2014
 	<div class="pure-u-lg-1-2 pure-u-1">
 
 	
-		<h4><span class="glyphicon glyphicon-signal"></span> Analytics</h4>
+		<h4><span class="glyphicon glyphicon-stats"></span> Analytics</h4>
 		
 		
 		<form action="" method="post" class="pure-form pure-form-aligned">
