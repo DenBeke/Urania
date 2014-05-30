@@ -23,6 +23,8 @@ Date: March 2013
 	
 	<link rel="stylesheet" href="<?php echo SITE_URL; ?>admin/style/pure.css" type="text/css" />
 	
+	<link rel="stylesheet" href="<?php echo SITE_URL; ?>admin/style/grids-responsive.css" type="text/css" />
+	
 	<link rel="stylesheet" href="<?php echo SITE_URL; ?>admin/style/style.css" type="text/css" />
 	
 	<link rel="stylesheet" href="<?php echo SITE_URL; ?>admin/style/lightbox.css" type="text/css" />
