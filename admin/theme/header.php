@@ -29,6 +29,8 @@ Date: March 2013
 	
 	<link rel="stylesheet" href="<?php echo SITE_URL; ?>admin/style/lightbox.css" type="text/css" />
 	
+	<link rel="stylesheet" href="<?php echo SITE_URL; ?>admin/style/glyphicons.css" type="text/css" />
+	
 	
 	<script src="<?php echo SITE_URL; ?>js/jquery.js" type="text/javascript"></script>
 	
@@ -86,10 +88,10 @@ Date: March 2013
 						?>
 						</ul>
 					</li>
-					<li><a href="">Appearance</a>
+					<li><a>Appearance</a>
 						<ul class="children">
-							<li><a href="<?php echo SITE_URL; ?>admin/themes">Theme</a></li>
-							<li><a href="<?php echo SITE_URL; ?>admin/configuration">Site Configuration</a></li>
+							<li><a href="<?php echo SITE_URL; ?>admin/themes"><span class="glyphicon glyphicon-th"> </span> Theme</a></li>
+							<li><a href="<?php echo SITE_URL; ?>admin/configuration"><span class="glyphicon glyphicon-wrench"> </span> Site Configuration</a></li>
 						</ul>
 					</li>
 				</ul>

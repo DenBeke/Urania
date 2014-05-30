@@ -11,6 +11,7 @@ Date: May 2014
 
 <h2 id="admin-themes-title">Themes</h2>
 
+<hr>
 
 <div id="admin-themes pure-g-r">
 

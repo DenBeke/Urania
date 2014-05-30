@@ -50,6 +50,11 @@ if($this->notification != NULL) {
 			<th>
 			
 			</th>
+			
+			
+			<th>
+				
+			</th>
 		
 		</tr>
 	
@@ -139,6 +144,10 @@ if($this->notification != NULL) {
 						<input type="hidden" name="deleteImage" value="<?php echo $this->album->getImage($i)->getId(); ?>">
 						<input class="pure-button pure-button-primary" type="submit" value="Delete">
 					</form>
+				</td>
+				
+				<td>
+					<a href="<?php echo SITE_URL . $this->album->getImage($i)->getFileName(); ?>" class="pure-button pure-button-primary"><span class="glyphicon glyphicon-save"></span></a>
 				</td>
 				
 			</tr>

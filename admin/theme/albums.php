@@ -20,7 +20,7 @@ if($this->notification != NULL) {
 ?>
 
 
-<h2 id="admin-albums-title">Admin</h2>
+<h2 id="admin-albums-title">Albums</h2>
 
 
 <table id="admin-albums" class="table table-striped">

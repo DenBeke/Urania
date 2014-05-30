@@ -198,6 +198,18 @@ table#admin-album td:nth-child(5) {
 	padding-left: 1px;
 }
 
+table#admin-album td:nth-child(5) {
+	padding-right: 1px;
+}
+
+table#admin-album td:nth-child(6) {
+	padding-left: 1px;
+}
+
+table#admin-album td:nth-child(6) a {
+	margin-top: 1px;
+}
+
 
 table td.date {
 	width: 74px;
