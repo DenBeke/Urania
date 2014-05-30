@@ -147,7 +147,7 @@ if($this->notification != NULL) {
 				</td>
 				
 				<td>
-					<a href="<?php echo SITE_URL . $this->album->getImage($i)->getFileName(); ?>" class="pure-button pure-button-primary"><span class="glyphicon glyphicon-save"></span></a>
+					<a href="<?php echo SITE_URL . $this->album->getImage($i)->getFileName(); ?>" download="<?php echo $this->album->getImage($i)->getName(); ?>" class="pure-button pure-button-primary"><span class="glyphicon glyphicon-save"></span></a>
 				</td>
 				
 			</tr>
