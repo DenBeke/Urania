@@ -426,6 +426,19 @@ input {
 
 
 
+/* Site Configuration *
+**********************/
+
+label {
+	color: gray;
+}
+
+.pure-form-aligned .pure-control-group input {
+	width: ;
+}
+
+
+
 /* Different style for Login/Logout page *
 *****************************************/
 

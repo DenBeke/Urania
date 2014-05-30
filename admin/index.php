@@ -18,6 +18,7 @@ require_once( dirname(__FILE__) . '/../core/controller/admin/album.php' );
 require_once( dirname(__FILE__) . '/../core/controller/admin/login.php' );
 require_once( dirname(__FILE__) . '/../core/controller/admin/logout.php' );
 require_once( dirname(__FILE__) . '/../core/controller/admin/themes.php' );
+require_once( dirname(__FILE__) . '/../core/controller/admin/configuration.php' );
 
 
 
@@ -30,6 +31,7 @@ $urls = array(
 	INSTALL_DIR . '/admin/login' 		=> 'Controller\Admin\Login',
 	INSTALL_DIR . '/admin/logout' 		=> 'Controller\Admin\Logout',
 	INSTALL_DIR . '/admin/themes' 		=> 'Controller\Admin\Themes',
+	INSTALL_DIR . '/admin/configuration'	=> 'Controller\Admin\Configuration',
 );
 	
 	
