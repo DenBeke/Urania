@@ -86,7 +86,7 @@ Date: March 2013
 					</li>
 					<li><a href="">Appearance</a>
 						<ul class="children">
-							<li><a href="">Theme</a></li>
+							<li><a href="<?php echo SITE_URL; ?>admin/themes">Theme</a></li>
 							<li><a href="">Site Configuration</a></li>
 						</ul>
 					</li>

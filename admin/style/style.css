@@ -391,6 +391,41 @@ input {
 }
 
 
+
+
+/* Themes *
+**********/
+
+.theme {
+	border: 1px solid #ddd;
+	background-color: rgb(249, 249, 249);
+	margin: 5%;
+	border-radius: 5px;
+	overflow: hidden;
+}
+
+.theme-container:first-child .theme {
+	margin-left: 0;
+}
+
+.theme-container:last-child  .theme{
+	margin-right: 0;
+}
+
+.theme-image {
+	max-width: 100%;
+}
+
+.theme .meta {
+	padding: 5px;
+}
+
+.theme .meta > * {
+	margin: 0;
+}
+
+
+
 /* Different style for Login/Logout page *
 *****************************************/
 
