@@ -18,7 +18,7 @@ Date: May 2014
 	
 	<div class="pure-u-lg-1-2 pure-u-1">
 
-		<h4>General Configuration</h4>
+		<h4><span class="glyphicon glyphicon-globe"></span> General Configuration</h4>
 	
 	
 		<form action="" method="post" class="pure-form pure-form-aligned">
@@ -51,6 +51,12 @@ Date: May 2014
 			
 		</form>
 	
+	
+		<!-- Horizontal line for smaller screens -->
+		<!-- Appears when 'Analytics' comes under 'General Configuration' -->
+		<hr class="pure-hidden-desktop">
+	
+	
 	</div>
 	
 	
@@ -58,7 +64,7 @@ Date: May 2014
 	<div class="pure-u-lg-1-2 pure-u-1">
 
 	
-		<h4>Analytics</h4>
+		<h4><span class="glyphicon glyphicon-signal"></span> Analytics</h4>
 		
 		
 		<form action="" method="post" class="pure-form pure-form-aligned">
