@@ -22,7 +22,7 @@ define('UPLOAD_DIR', 'upload/');
 define('SITE_TITLE', 'DenBeke Images');
 define('SITE_URL', 'http://localhost:8888/Urania/'); //With slash!!
 define('INSTALL_DIR', '/Urania'); //Without slash
-define('THEME_DIR', dirname(__FILE__) . '/../theme/');
+define('THEME_DIR', dirname(__FILE__) . '/../theme/default');
 
 //Time zone
 date_default_timezone_set('Europe/Brussels');
