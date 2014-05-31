@@ -15,6 +15,7 @@ Date: March 2014
 	height: 100%;
 	background-color: rgba(255, 255, 255, 0.51);
 	display: table;
+	z-index: 100001;
 }
 
 
