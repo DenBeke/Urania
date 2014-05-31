@@ -51,10 +51,6 @@ if($this->notification != NULL) {
 			
 			</th>
 			
-			
-			<th>
-				
-			</th>
 		
 		</tr>
 	
@@ -131,6 +127,7 @@ if($this->notification != NULL) {
 					<?php echo date('d-m-Y',$this->album->getImage($i)->getDate()); ?>
 				</td>
 				
+				<!--
 				<td>
 					<form method="post" action="<?php echo SITE_URL; ?>admin/album/<?php echo $this->album->getId(); ?>" class="pure-form">
 						<input type="hidden" name="changeImage" value="<?php echo $this->album->getImage($i)->getId(); ?>">
@@ -145,6 +142,13 @@ if($this->notification != NULL) {
 						<input class="pure-button pure-button-primary" type="submit" value="Delete">
 					</form>
 				</td>
+				-->
+				
+				
+				<td>
+					<a class="pure-button pure-button-primary"><span class="glyphicon glyphicon-pencil"></span></a>
+				</td>
+				
 				
 				<td>
 					<a href="<?php echo SITE_URL . $this->album->getImage($i)->getFileName(); ?>" download="<?php echo $this->album->getImage($i)->getName(); ?>" class="pure-button pure-button-primary"><span class="glyphicon glyphicon-save"></span></a>
@@ -170,7 +174,7 @@ if($this->notification != NULL) {
 
 
 	<div class="panel-header">
-		<h3 class="panel-title">Upload Photos</h3>
+		<h3 class="panel-title"><span class="glyphicon glyphicon-open"></span> Upload Photos</h3>
 	</div>
 
 

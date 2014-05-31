@@ -186,28 +186,17 @@ table#admin-album td:nth-child(1) {
 
 table#admin-albums td:nth-child(4),
 table#admin-album td:nth-child(4) {
-	width: 327px;
-	padding-right: 1px;
+	//width: 327px;
+	padding-right: 4px;
 	text-align: right;
+	position: relative;
 }
 
 table#admin-albums td:nth-child(5),
 table#admin-album td:nth-child(5) {
-	width: 70px;
-	padding-top: 9px;
-	padding-left: 1px;
-}
-
-table#admin-album td:nth-child(5) {
-	padding-right: 1px;
-}
-
-table#admin-album td:nth-child(6) {
-	padding-left: 1px;
-}
-
-table#admin-album td:nth-child(6) a {
-	margin-top: 1px;
+	width: 1px;
+	//padding-top: 9px;
+	padding-left: 4px;
 }
 
 
@@ -215,10 +204,57 @@ table td.date {
 	width: 74px;
 }
 
-table input[type=text] {
-	width: 204px;
+
+
+
+
+
+
+.edit-box {
+	position: absolute;
+	display: none;
+	background-color: #fff;
+	box-shadow: 0px 1px 3px #bbb;
+	//border-radius: 5px;
+	padding: 8px;
+	width: 230px;
+	right: 0;
+	
+	margin-top: 8px;
+	margin-right: -2px;
+	z-index: 10000;
 }
 
+.edit-box form {
+	display: inline;
+	text-align: left;
+}
+
+.edit-box input[type=submit] {
+	width: 100%;
+}
+
+.button-container {
+	width: 50% !important;
+	margin-top: 8px;
+	box-sizing: border-box;
+	padding: 0;
+	float:left;
+}
+
+.button-container.left {
+	padding-right: 4px;
+}
+
+.button-container.right {
+	padding-left: 4px;
+}
+
+
+.pure-button-warning {
+	background-color: rgb(202, 60, 60);
+	color: #fff;
+}
 
 
 /* Footer *

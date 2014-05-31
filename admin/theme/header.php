@@ -34,7 +34,7 @@ Date: March 2013
 	
 	<script src="<?php echo SITE_URL; ?>js/jquery.js" type="text/javascript"></script>
 	
-	<script src="<?php echo SITE_URL; ?>admin/js/lightbox.js" type="text/javascript"></script>
+	<script src="<?php echo SITE_URL; ?>admin/js/script.js" type="text/javascript"></script>
 	
 	
 	<?php
@@ -79,6 +79,7 @@ Date: March 2013
 					<li><a href="<?php echo SITE_URL; ?>admin">Administrator</a></li>
 					<li><a href="<?php echo SITE_URL; ?>admin/albums">Albums</a>
 						<ul class="children">
+							<!-- <li><a href=""><span class="glyphicon glyphicon-plus"></span> Add Album</a></li> -->
 						<?php
 						foreach ($controller->urania->getAllAlbums() as $album) {
 							$navId = $album->getId();

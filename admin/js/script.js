@@ -9,6 +9,9 @@ Date: March 2014
 $(document).ready(function() {
     
     
+    /* Lightbox *
+    ************/   
+    
     //Open lightbox
 	$("a.lightbox").click(function(e){
 	    
@@ -67,6 +70,43 @@ $(document).ready(function() {
 			e.stopPropagation();
 		});
 	});
+	
+	
+	
+	
+	
+	
+	
+	/* Edit Box *
+	************/
+	
+	
+	//Open the edit box on click
+	$('.edit-button').click(function(e) {	
+		
+		$(this).next('.edit-box').fadeIn();
+		$(this).addClass('open');
+		$('body').addClass('edit-box-open');
+		
+		e.stopPropagation();
+	
+	});
+	
+	//Close the box when clicking outside it
+	$('body').click(function() {
+		
+		$('.edit-box').hide();
+		
+	});
+
+	
+	//Prevent edit box from closing
+	$(function() {
+		$(".edit-box").on("click", function(e) {
+			e.stopPropagation();
+		});
+	});
+	
 	
 
 });
