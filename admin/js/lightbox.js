@@ -58,6 +58,16 @@ $(document).ready(function() {
 	    
 	}
 	);
+	
+	
+	
+	//Prevent lightbox from closing
+	$(function() {
+		$("#lightbox-content").on("click", function(e) {
+			e.stopPropagation();
+		});
+	});
+	
 
 });
 

@@ -147,6 +147,14 @@ $(document).ready(function() {
 	    
 	}
 	
+	
+	//Prevent lightbox from closing
+	$(function() {
+		$("#lightboxContent").on("click", function(e) {
+			e.stopPropagation();
+		});
+	});
+	
 
 });
 
