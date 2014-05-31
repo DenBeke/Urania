@@ -74,37 +74,46 @@ Date: March 2013
 
 			<h1 id="siteTitle"><a href="<?php echo SITE_URL; ?>home"><?php echo SITE_TITLE; ?></a></h1>
 			
-			<nav id="albumNav">
-				<ul>
-					<li><a href="<?php echo SITE_URL; ?>admin">Administrator</a></li>
-					<li><a href="<?php echo SITE_URL; ?>admin/albums">Albums</a>
-						<ul class="children">
-							<!-- <li><a href=""><span class="glyphicon glyphicon-plus"></span> Add Album</a></li> -->
-						<?php
-						foreach ($controller->urania->getAllAlbums() as $album) {
-							$navId = $album->getId();
-							$name = $album->getName();
-							echo '<li><a href="' . SITE_URL . "admin/album/$navId/\">$name</a></li>";
-						}
-						?>
-						</ul>
-					</li>
-					<li><a>Settings</a>
-						<ul class="children">
-							<li><a href="<?php echo SITE_URL; ?>admin/themes"><span class="glyphicon glyphicon-th"> </span> Theme</a></li>
-							<li><a href="<?php echo SITE_URL; ?>admin/configuration"><span class="glyphicon glyphicon-wrench"> </span> Site Configuration</a></li>
-						</ul>
-					</li>
-				</ul>
-			</nav>
-		
-		
-		
-			<div class="user">
-				<a href="<?php echo SITE_URL; ?>admin/logout">Logout</a>
+			
+			<div id="nav-bar">
+
+				<nav id="albumNav" class="">
+					<ul>
+						<li><a href="<?php echo SITE_URL; ?>admin">Administrator</a></li>
+						<li><a href="<?php echo SITE_URL; ?>admin/albums">Albums</a>
+							<ul class="children">
+								<!-- <li><a href=""><span class="glyphicon glyphicon-plus"></span> Add Album</a></li> -->
+							<?php
+							foreach ($controller->urania->getAllAlbums() as $album) {
+								$navId = $album->getId();
+								$name = $album->getName();
+								echo '<li><a href="' . SITE_URL . "admin/album/$navId/\">$name</a></li>";
+							}
+							?>
+							</ul>
+						</li>
+						<li><a>Settings</a>
+							<ul class="children">
+								<li><a href="<?php echo SITE_URL; ?>admin/themes"><span class="glyphicon glyphicon-th"> </span> Theme</a></li>
+								<li><a href="<?php echo SITE_URL; ?>admin/configuration"><span class="glyphicon glyphicon-wrench"> </span> Site Configuration</a></li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+			
+			
+			
+				<div class="user">
+					<a href="<?php echo SITE_URL; ?>admin/logout">Logout</a>
+				</div>
+				
+			</div><!-- #nav-bard -->
+			
+			<div class="user nav-toggle">
+				<a><span class="glyphicon glyphicon-list"></span></a>
 			</div>
 			
-		</div>
+		</div><!-- #header-wrapper -->
 		
 	
 	</header>

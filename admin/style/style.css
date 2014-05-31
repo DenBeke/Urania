@@ -120,6 +120,57 @@ header .user {
 
 
 
+/*
+Responsive navbar
+
+When the navbar becomes to large for the screen,
+we hide it, and display a button for toggling the nav.
+*/
+header .nav-toggle {
+	display: none;
+	position: absolute;
+	top: 0;
+	right: 0;
+	cursor: pointer;
+}
+
+@media only screen and (max-width : 640px) {
+	
+	
+	#nav-bar {
+		display: none;
+		clear: both;
+	}
+	
+	header nav {
+		display: block;
+		margin-top: 48px;
+		background-color: #222;
+	}
+	
+	
+	header ul.children {
+		display: block;
+		position: relative !important;
+		padding-left: 48px;
+	}
+	
+	header li {
+		display: block;
+		margin: 0;
+	}
+	
+	header .nav-toggle {
+		display: block;
+	}
+	
+	
+}
+
+
+
+
+
 /* Content *
 ***********/
 

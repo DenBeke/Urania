@@ -9,6 +9,26 @@ Date: March 2014
 $(document).ready(function() {
     
     
+    
+    /* Menu *
+    ********/
+    
+    $('.nav-toggle').click(function(e) {
+	   
+	    if($('#nav-bar').hasClass('open')) {
+			$('#nav-bar').hide();
+			$('#nav-bar').removeClass('open');
+	    }
+	    else {
+			$('#nav-bar').fadeIn();
+			$('#nav-bar').addClass('open');  
+	    }
+	   
+	    
+    });
+    
+    
+    
     /* Lightbox *
     ************/   
     
