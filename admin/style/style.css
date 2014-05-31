@@ -164,6 +164,13 @@ header .nav-toggle {
 		display: block;
 	}
 	
+	header .logout {
+		display: block;
+		float: none;
+		clear: both !important;
+		background-color: #222;
+	}
+	
 	
 }
 

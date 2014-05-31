@@ -103,12 +103,14 @@ Date: March 2013
 			
 			
 			
-				<div class="user">
+				<div class="user logout">
 					<a href="<?php echo SITE_URL; ?>admin/logout">Logout</a>
 				</div>
 				
 			</div><!-- #nav-bard -->
 			
+			<!-- Button for show responsive nav-bar -->
+			<!-- Is hidden by default -->
 			<div class="user nav-toggle">
 				<a><span class="glyphicon glyphicon-list"></span></a>
 			</div>
