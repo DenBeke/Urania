@@ -146,7 +146,35 @@ if($this->notification != NULL) {
 				
 				
 				<td>
-					<a class="pure-button pure-button-primary"><span class="glyphicon glyphicon-pencil"></span></a>
+					<a class="pure-button pure-button-primary edit-button"><span class="glyphicon glyphicon-pencil"></span></a>
+					
+					<!-- Edit box -->
+					<div class="edit-box">
+						<form method="post" action="<?php echo SITE_URL; ?>admin/album/<?php echo $this->album->getId(); ?>" class="pure-form">
+							<input type="hidden" name="changeImage" value="<?php echo $this->album->getImage($i)->getId(); ?>">
+							
+							<input type="text" name="changeName" value="" placeholder="New image name" class="pure-u-1" />
+							
+							
+							<div class="button-container left">
+								<input class="pure-button pure-button-primary" type="submit" value="Change name">
+							</div>
+							
+							
+						</form>
+						
+						<form method="post" action="<?php echo SITE_URL; ?>admin/album/<?php echo $this->album->getId(); ?>" class="pure-form">
+							<input type="hidden" name="deleteImage" value="<?php echo $this->album->getImage($i)->getId(); ?>">
+							
+							<div class="button-container right">
+								<input class="pure-button pure-button-warning" type="submit" value="Delete">
+							</div>
+							
+							
+						</form>
+						
+					</div><!-- Edit box -->
+					
 				</td>
 				
 				
