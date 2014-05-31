@@ -32,7 +32,7 @@ if($this->notification != NULL) {
 		<tr>
 		
 			<th>
-	
+				
 			</th>
 			
 			<th>
@@ -120,7 +120,7 @@ if($this->notification != NULL) {
 							</li>
 							<?php } ?>
 						</ul>
-					</div>
+					</div><!-- #exif -->
 				</td>
 				
 				<td class="date">
@@ -148,7 +148,6 @@ if($this->notification != NULL) {
 				<td>
 					<a class="pure-button pure-button-primary edit-button"><span class="glyphicon glyphicon-pencil"></span></a>
 					
-					<!-- Edit box -->
 					<div class="edit-box">
 						<form method="post" action="<?php echo SITE_URL; ?>admin/album/<?php echo $this->album->getId(); ?>" class="pure-form">
 							<input type="hidden" name="changeImage" value="<?php echo $this->album->getImage($i)->getId(); ?>">
@@ -173,7 +172,7 @@ if($this->notification != NULL) {
 							
 						</form>
 						
-					</div><!-- Edit box -->
+					</div><!-- .edit-box -->
 					
 				</td>
 				
@@ -193,7 +192,7 @@ if($this->notification != NULL) {
 	
 	</tbody>
 
-</table>
+</table><!-- #admin-album -->
 
 
 
@@ -227,7 +226,7 @@ if($this->notification != NULL) {
 	</div>
 
 
-</div>
+</div><!-- .panel -->
 
 
 <?php include(dirname(__FILE__) . '/lightbox.php'); ?>
