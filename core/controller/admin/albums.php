@@ -11,20 +11,20 @@ Date: March 2014
 namespace Controller\Admin {
 
 	
-	require_once(dirname(__FILE__) . '/controller.php');
+	require_once(dirname(__FILE__) . '/../controller.php');
 	
 	
 	class Albums extends \Controller\Controller {
 	
 	
 		public $pageName = 'albums';
-		public $albums;
+		public $albums = array();
 		public $notification = NULL;
 	
 	
 		public function __construct() {
 			parent::__construct();
-			$this->themeDir = dirname(__FILE__) . '/../../admin/theme/';
+			$this->themeDir = dirname(__FILE__) . '/../../../admin/theme/';
 			$this->theme = 'albums.php';
 			$this->pageTitle = 'Album - ' . SITE_TITLE;
 					

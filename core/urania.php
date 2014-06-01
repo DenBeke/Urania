@@ -59,13 +59,13 @@ class Urania {
     */
     public function addAlbum($albumName) {
     
-    	if($this->albumNameExists($albumName)) {
-    		throw new Exception("There is already an album with the name '$albumName'");
-    	}
-    	if($albumName == '') {
-    		throw new Exception("Album name cannot be empty");
-    	}
-    	else {
+	    	if($this->albumNameExists($albumName)) {
+	    		throw new Exception("There is already an album with the name '$albumName'");
+	    	}
+	    	if($albumName == '') {
+	    		throw new Exception("Album name cannot be empty");
+	    	}
+	    	else {
     
 	        //Create query
 	        $albums = $this->database->escape($this->db_table_albums);
@@ -273,35 +273,35 @@ class Urania {
     */
     public function getLatestImages($count) {
     
-    	if(intval($count) < 1) {
-    		throw new Exception("Number of images must be at least 1");
-    	}
-    	else {
-    		
-    		//Create query
-    		$count = $this->database->escape($count);
-    		$images = $this->database->escape($this->db_table_images);
-    		
-    		$query = 
-    		"
-    		SELECT *
-    		FROM `$images`
-    		ORDER BY `date` DESC
-    		LIMIT 0, $count
-    		";
-    		
-    		$result = $this->database->getQuery($query);
-    		$outputArray = array();
-    		
-    		for($i = 0; $i < sizeof($result); $i++) {
-    		
-    			$outputArray[] = new Image($result[$i]['id'], $this->uploadDir . $this->simplifyFileName($this->getAlbumName($result[$i]['albumId'])) . '/' . $result[$i]['fileName'], $result[$i]['name'], $result[$i]['date'], $result[$i]['albumId']);
-    		
-    		}
-    		
-    		return $outputArray;
-    		
-    	}
+	    	if(intval($count) < 1) {
+	    		throw new Exception("Number of images must be at least 1");
+	    	}
+	    	else {
+	    		
+	    		//Create query
+	    		$count = $this->database->escape($count);
+	    		$images = $this->database->escape($this->db_table_images);
+	    		
+	    		$query = 
+	    		"
+	    		SELECT *
+	    		FROM `$images`
+	    		ORDER BY `date` DESC
+	    		LIMIT 0, $count
+	    		";
+	    		
+	    		$result = $this->database->getQuery($query);
+	    		$outputArray = array();
+	    		
+	    		for($i = 0; $i < sizeof($result); $i++) {
+	    		
+	    			$outputArray[] = new Image($result[$i]['id'], $this->uploadDir . $this->simplifyFileName($this->getAlbumName($result[$i]['albumId'])) . '/' . $result[$i]['fileName'], $result[$i]['name'], $result[$i]['date'], $result[$i]['albumId']);
+	    		
+	    		}
+	    		
+	    		return $outputArray;
+	    		
+	    	}
     
     }
     
@@ -467,7 +467,7 @@ class Urania {
             
             //Delete all images
             for ($i = 0; $i < $album->getNumberOfImages(); $i++) {
-            	$this->deleteImage($album->getImage($i)->getId());
+            		$this->deleteImage($album->getImage($i)->getId());
             }
            
             //Delete album in the database
@@ -481,7 +481,7 @@ class Urania {
             //do whatever you need
             closedir($dir);
             rmdir( dirname(__FILE__) . '/../' . $this->uploadDir . '/' . $this->simplifyFileName($album->getName()));
-            }
+        }
     }
     
     
@@ -531,56 +531,56 @@ class Urania {
     @pre Album with given albumId exists
     */
     public function uploadImage($imageName, $tempFile, $albumId) {
-    	//Check if upload file is image
-    	$info = getimagesize($tempFile);
-    	if ($info == FALSE) {
-    	   throw new exception('File is not of type image');
-    	}
-    	
-    	/* 
-    	Store
-    	- image name (without extension)
-    	- date
-    	- album name
-    	*/
-    	$imageTitle = $this->removeExtension($imageName);
-    	$albumName = $this->simplifyFileName($this->getAlbumName($albumId));
-    	$imageDate = time();
-    	
-    	//Get the filename of the image
-    	$fileName = $this->simplifyFileName($imageName);
-
-		//Check if this file name is unique
-		//If it exists, we add a suffix to it and check again if it's unique    	
-    	if($this->fileNameExists($fileName)) {
-    		$suffix = 2;
-    		while ($this->fileNameExists($this->addSuffix($fileName, "-" . $suffix))) {
-    			$suffix++;
-    		}
-    		$fileName = $this->addSuffix($fileName, "-" . $suffix);
-    	}
-    	
-    	//Upload the file
-    	move_uploaded_file($tempFile, dirname(__FILE__) . '/../' . $this->uploadDir . '/' . $albumName . '/' . $fileName);
-    	
-    	//Get image date from efix date
-    	//If it couldn't read the efix date, the current time will be used
-    	try {
-	    	if(function_exists("exif_read_data") && exif_read_data(dirname(__FILE__) . '/../' . $this->uploadDir . '/' . $albumName . '/' . $fileName)){ 
-				$efix = exif_read_data(dirname(__FILE__) . '/../' . $this->uploadDir . '/' . $albumName . '/' . $fileName);
-				$imageDate = strtotime($efix['DateTimeOriginal']);
-				if ($imageDate == 0) {
-					$imageDate = time();
-				}	
+	    	//Check if upload file is image
+	    	$info = getimagesize($tempFile);
+	    	if ($info == FALSE) {
+	    	   throw new exception('File is not of type image');
 	    	}
-	    }
-	    catch (exception $exception) {
+	    	
+	    	/* 
+	    	Store
+	    	- image name (without extension)
+	    	- date
+	    	- album name
+	    	*/
+	    	$imageTitle = $this->removeExtension($imageName);
+	    	$albumName = $this->simplifyFileName($this->getAlbumName($albumId));
 	    	$imageDate = time();
-	    }
-    	
-    	//Insert the image in the database
-    	$image = new Image(0, $fileName, $imageTitle, $imageDate, $albumId);
-    	$this->addImage($image);
+	    	
+	    	//Get the filename of the image
+	    	$fileName = $this->simplifyFileName($imageName);
+	
+			//Check if this file name is unique
+			//If it exists, we add a suffix to it and check again if it's unique    	
+	    	if($this->fileNameExists($fileName)) {
+	    		$suffix = 2;
+	    		while ($this->fileNameExists($this->addSuffix($fileName, "-" . $suffix))) {
+	    			$suffix++;
+	    		}
+	    		$fileName = $this->addSuffix($fileName, "-" . $suffix);
+	    	}
+	    	
+	    	//Upload the file
+	    	move_uploaded_file($tempFile, dirname(__FILE__) . '/../' . $this->uploadDir . '/' . $albumName . '/' . $fileName);
+	    	
+	    	//Get image date from efix date
+	    	//If it couldn't read the efix date, the current time will be used
+	    	try {
+		    	if(function_exists("exif_read_data") && exif_read_data(dirname(__FILE__) . '/../' . $this->uploadDir . '/' . $albumName . '/' . $fileName)){ 
+					$efix = exif_read_data(dirname(__FILE__) . '/../' . $this->uploadDir . '/' . $albumName . '/' . $fileName);
+					$imageDate = strtotime($efix['DateTimeOriginal']);
+					if ($imageDate == 0) {
+						$imageDate = time();
+					}	
+		    	}
+		    }
+		    catch (exception $exception) {
+		    	$imageDate = time();
+		    }
+	    	
+	    	//Insert the image in the database
+	    	$image = new Image(0, $fileName, $imageTitle, $imageDate, $albumId);
+	    	$this->addImage($image);
     	
     	
     }
@@ -656,42 +656,42 @@ class Urania {
     @return string
     */
     public static function simplifyFileName($fileName) {
-    	$table = array(
-    	    'à' => 'a', 'á' => 'a', 'â' => 'a', 'ã' => 'a', 'ä' => 'a', 'å' => 'a',
-    	    'ă' => 'a', 'ā' => 'a', 'ą' => 'a', 'æ' => 'a', 'ǽ' => 'a', 'þ' => 'b',
-    	    'ç' => 'c', 'č' => 'c', 'ć' => 'c', 'ĉ' => 'c', 'ċ' => 'c', 'ż' => 'z',
-    	    'đ' => 'd', 'ď' => 'd', 'è' => 'e', 'é' => 'e', 'ê' => 'e', 'ë' => 'e',
-    	    'ĕ' => 'e', 'ē' => 'e', 'ę' => 'e', 'ė' => 'e', 'ĝ' => 'g', 'ğ' => 'g',
-    	    'ġ' => 'g', 'ģ' => 'g', 'ĥ' => 'h', 'ħ' => 'h', 'ì' => 'i', 'í' => 'i',
-    	    'î' => 'i', 'ï' => 'i', 'į' => 'i', 'ĩ' => 'i', 'ī' => 'i', 'ĭ' => 'i',
-    	    'ı' => 'i', 'ĵ' => 'j', 'ķ' => 'k', 'ĸ' => 'k', 'ĺ' => 'l', 'ļ' => 'l',
-    	    'ľ' => 'l', 'ŀ' => 'l', 'ł' => 'l', 'ñ' => 'n', 'ń' => 'n', 'ň' => 'n',
-    	    'ņ' => 'n', 'ŋ' => 'n', 'ŉ' => 'n', 'ò' => 'o', 'ó' => 'o', 'ô' => 'o',
-    	    'õ' => 'o', 'ö' => 'o', 'ø' => 'o', 'ō' => 'o', 'ŏ' => 'o', 'ő' => 'o',
-    	    'œ' => 'o', 'ð' => 'o', 'ŕ' => 'r', 'ř' => 'r', 'ŗ' => 'r', 'š' => 's',
-    	    'ŝ' => 's', 'ś' => 's', 'ş' => 's', 'ŧ' => 't', 'ţ' => 't', 'ť' => 't',
-    	    'ù' => 'u', 'ú' => 'u', 'û' => 'u', 'ü' => 'u', 'ũ' => 'u', 'ū' => 'u',
-    	    'ŭ' => 'u', 'ů' => 'u', 'ű' => 'u', 'ų' => 'u', 'ŵ' => 'w', 'ẁ' => 'w',
-    	    'ẃ' => 'w', 'ẅ' => 'w', 'ý' => 'y', 'ÿ' => 'y', 'ŷ' => 'y', 'ž' => 'z',
-    	    'ź' => 'z',
-    	);
-    	
-    	// We don't deal with uppercase characters
-    	$fileName = strtolower($fileName);
-    	
-    	// Strip accents
-    	$fileName = strtr($fileName, $table);
-    	
-    	// Non-alphanumericals characters become spaces
-    	$fileName = preg_replace('/[^a-z0-9.]/', ' ', $fileName);
-    	
-    	// Remove trailing and ending spaces
-    	$fileName = trim($fileName);
-    	
-    	// Spaces become -
-    	$fileName = preg_replace('#\s+#', '-', $fileName);
-    	
-    	return $fileName;
+	    	$table = array(
+	    	    'à' => 'a', 'á' => 'a', 'â' => 'a', 'ã' => 'a', 'ä' => 'a', 'å' => 'a',
+	    	    'ă' => 'a', 'ā' => 'a', 'ą' => 'a', 'æ' => 'a', 'ǽ' => 'a', 'þ' => 'b',
+	    	    'ç' => 'c', 'č' => 'c', 'ć' => 'c', 'ĉ' => 'c', 'ċ' => 'c', 'ż' => 'z',
+	    	    'đ' => 'd', 'ď' => 'd', 'è' => 'e', 'é' => 'e', 'ê' => 'e', 'ë' => 'e',
+	    	    'ĕ' => 'e', 'ē' => 'e', 'ę' => 'e', 'ė' => 'e', 'ĝ' => 'g', 'ğ' => 'g',
+	    	    'ġ' => 'g', 'ģ' => 'g', 'ĥ' => 'h', 'ħ' => 'h', 'ì' => 'i', 'í' => 'i',
+	    	    'î' => 'i', 'ï' => 'i', 'į' => 'i', 'ĩ' => 'i', 'ī' => 'i', 'ĭ' => 'i',
+	    	    'ı' => 'i', 'ĵ' => 'j', 'ķ' => 'k', 'ĸ' => 'k', 'ĺ' => 'l', 'ļ' => 'l',
+	    	    'ľ' => 'l', 'ŀ' => 'l', 'ł' => 'l', 'ñ' => 'n', 'ń' => 'n', 'ň' => 'n',
+	    	    'ņ' => 'n', 'ŋ' => 'n', 'ŉ' => 'n', 'ò' => 'o', 'ó' => 'o', 'ô' => 'o',
+	    	    'õ' => 'o', 'ö' => 'o', 'ø' => 'o', 'ō' => 'o', 'ŏ' => 'o', 'ő' => 'o',
+	    	    'œ' => 'o', 'ð' => 'o', 'ŕ' => 'r', 'ř' => 'r', 'ŗ' => 'r', 'š' => 's',
+	    	    'ŝ' => 's', 'ś' => 's', 'ş' => 's', 'ŧ' => 't', 'ţ' => 't', 'ť' => 't',
+	    	    'ù' => 'u', 'ú' => 'u', 'û' => 'u', 'ü' => 'u', 'ũ' => 'u', 'ū' => 'u',
+	    	    'ŭ' => 'u', 'ů' => 'u', 'ű' => 'u', 'ų' => 'u', 'ŵ' => 'w', 'ẁ' => 'w',
+	    	    'ẃ' => 'w', 'ẅ' => 'w', 'ý' => 'y', 'ÿ' => 'y', 'ŷ' => 'y', 'ž' => 'z',
+	    	    'ź' => 'z',
+	    	);
+	    	
+	    	// We don't deal with uppercase characters
+	    	$fileName = strtolower($fileName);
+	    	
+	    	// Strip accents
+	    	$fileName = strtr($fileName, $table);
+	    	
+	    	// Non-alphanumericals characters become spaces
+	    	$fileName = preg_replace('/[^a-z0-9.]/', ' ', $fileName);
+	    	
+	    	// Remove trailing and ending spaces
+	    	$fileName = trim($fileName);
+	    	
+	    	// Spaces become -
+	    	$fileName = preg_replace('#\s+#', '-', $fileName);
+	    	
+	    	return $fileName;
     }
     
     
@@ -715,16 +715,16 @@ class Urania {
     @return string
     */
     private static function addSuffix($fileName, $suffix) {
-    	$dotIndex = 0;
-    	for ($i = strlen($fileName)-1; $i > 0; $i--) {
-    		if($fileName[$i] == '.'){
-    			$dotIndex = $i;
-    			break;
-    		}
-    	}
-    	$baseName = substr($fileName, 0, $dotIndex);
-    	$extension = substr($fileName, $dotIndex);
-    	return $baseName . $suffix . $extension;
+	    	$dotIndex = 0;
+	    	for ($i = strlen($fileName)-1; $i > 0; $i--) {
+	    		if($fileName[$i] == '.'){
+	    			$dotIndex = $i;
+	    			break;
+	    		}
+	    	}
+	    	$baseName = substr($fileName, 0, $dotIndex);
+	    	$extension = substr($fileName, $dotIndex);
+	    	return $baseName . $suffix . $extension;
     }
     
     
@@ -775,33 +775,34 @@ class Urania {
     @return exists
     */
     private function albumNameExists($albumName) {
-    	//Create query
-    	$albums = $this->database->escape($this->db_table_albums);
-    	$albumName = $this->database->escape($albumName);
-    	
-    	$query = 
-    	"
-    	SELECT * 
-    	FROM  `$albums` 
-    	WHERE  `name` = '$albumName'
-    	LIMIT 0 , 30
-    	";
-    	
-    	//DEBUG
-    	if($this->debug) {
-    	    echo $query;
-    	}
-    	
-    	//Fetch query
-    	$result = $this->database->getQuery($query);
-    	
-    	//Check if there is a result (album)
-    	if(sizeof($result) > 0) {
-    	    return true;
-    	}
-    	else {
-    	    return false;
-    	}
+	    	
+	    	//Create query
+	    	$albums = $this->database->escape($this->db_table_albums);
+	    	$albumName = $this->database->escape($albumName);
+	    	
+	    	$query = 
+	    	"
+	    	SELECT * 
+	    	FROM  `$albums` 
+	    	WHERE  `name` = '$albumName'
+	    	LIMIT 0 , 30
+	    	";
+	    	
+	    	//DEBUG
+	    	if($this->debug) {
+	    	    echo $query;
+	    	}
+	    	
+	    	//Fetch query
+	    	$result = $this->database->getQuery($query);
+	    	
+	    	//Check if there is a result (album)
+	    	if(sizeof($result) > 0) {
+	    	    return true;
+	    	}
+	    	else {
+	    	    return false;
+	    	}
     	
     }
     

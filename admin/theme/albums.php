@@ -13,14 +13,14 @@ Date: March 2013
 if($this->notification != NULL) {
 ?>
 <div class="notification <?php echo $this->notification->type ?>">
-	<?php echo $this->notification->message; ?>
+	<span class="glyphicon <?php if($this->notification->type == 'success') { echo 'glyphicon-ok'; } else { echo 'glyphicon-warning-sign'; } ?>"></span> <?php echo $this->notification->message; ?>
 </div>
 <?php
 }
 ?>
 
 
-<h2 id="admin-albums-title">Admin</h2>
+<h2 id="admin-albums-title">Albums</h2>
 
 
 <table id="admin-albums" class="table table-striped">
@@ -67,7 +67,7 @@ if($this->notification != NULL) {
 			
 				<td>
 					<a href="<?php echo SITE_URL; ?>admin/album/<?php echo $id; ?>">
-						<?php if($album->getImage(0)->getName() != 'error') { ?>
+						<?php if($album->getNumberOfImages() > 0 and $album->getImage(0)->getName() != 'error') { ?>
 						<img src="<?php echo SITE_URL; ?>core/timthumb.php?src=<?php echo $album->getImage(0)->getFileName() . "&h=$imageHeight&w=$imageWidth"; ?>" alt="<?php echo $album->getImage(0)->getName(); ?>" />
 						<?php 
 						}
@@ -109,7 +109,8 @@ if($this->notification != NULL) {
 					<?php echo date('d-m-Y', $album->getDate()); ?>
 				</td>
 				
-				<td>
+				<!--
+				<td class="pure-hidden-tablet pure-hidden-phone">
 					<form method="post" action="<?php echo SITE_URL; ?>admin/" class="pure-form">
 						<input class="pure-input" type="hidden" name="changeAlbumId" value="<?php echo $album->getId(); ?>">
 						<input type="text" name="changeName" value="" placeholder="Name" />
@@ -117,12 +118,53 @@ if($this->notification != NULL) {
 					</form>
 				</td>
 				
-				<td>
+				<td class="pure-hidden-tablet pure-hidden-phone">
 					<form method="post" action="<?php echo SITE_URL; ?>admin/">
 						<input type="hidden" name="deleteAlbum" value="<?php echo $id; ?>">
 						<input class="pure-button pure-button-primary" type="submit" value="Delete">
 					</form>
 				</td>
+				-->
+				
+				<td>
+					<a class="pure-button pure-button-primary edit-button"><span class="glyphicon glyphicon-pencil"></span></a>
+					
+					
+					<!-- Edit box -->
+					<div class="edit-box">
+						<form method="post" action="<?php echo SITE_URL; ?>admin/" class="pure-form">
+							<input class="pure-input" type="hidden" name="changeAlbumId" value="<?php echo $album->getId(); ?>">
+							
+							<input type="text" name="changeName" value="" placeholder="New album name" class="pure-u-1" />
+							
+							
+							<div class="button-container left">
+								<input class="pure-button pure-button-primary" type="submit" value="Change name">
+							</div>
+							
+							
+						</form>
+						
+						<form method="post" action="<?php echo SITE_URL; ?>admin/">
+							<input type="hidden" name="deleteAlbum" value="<?php echo $id; ?>">
+							
+							<div class="button-container right">
+								<input class="pure-button pure-button-warning" type="submit" value="Delete">
+							</div>
+							
+							
+						</form>
+						
+					</div><!-- Edit box -->
+					
+				</td>
+				
+				
+				<td>
+					<a href="" download="<?php echo $album->getName(); ?>" class="pure-button pure-button-primary"><span class="glyphicon glyphicon-save"></span></a>
+				</td>
+				
+				
 			</tr>
 			<?php
 
@@ -139,7 +181,7 @@ if($this->notification != NULL) {
 <div class="panel pure-u-1-3">
 
 	<div class="panel-header">
-		<h3 class="panel-title">Add Album</h3>
+		<h3 class="panel-title"><span class="glyphicon glyphicon-plus"></span> Add Album</h3>
 	</div>
 
 
@@ -167,7 +209,7 @@ if($this->notification != NULL) {
 
 
 	<div class="panel-header">
-		<h3 class="panel-title">Upload Photos</h3>
+		<h3 class="panel-title"><span class="glyphicon glyphicon-open"></span> Upload Photos</h3>
 	</div>	
 	
 	

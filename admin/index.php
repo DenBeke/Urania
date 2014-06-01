@@ -10,25 +10,28 @@ Date: September 2013
 //require_once('./core/config.php');
 require_once( dirname(__FILE__) . '/../core/urania.php');
 require_once( dirname(__FILE__) . '/../core/glue.php');
-require_once( dirname(__FILE__) . '/../core/glue.php');
 
 //Include controllers
-require_once( dirname(__FILE__) . '/../core/controller/admin_error.php' );
-require_once( dirname(__FILE__) . '/../core/controller/admin_albums.php' );
-require_once( dirname(__FILE__) . '/../core/controller/admin_album.php' );
-require_once( dirname(__FILE__) . '/../core/controller/login.php' );
-require_once( dirname(__FILE__) . '/../core/controller/logout.php' );
+require_once( dirname(__FILE__) . '/../core/controller/admin/error.php' );
+require_once( dirname(__FILE__) . '/../core/controller/admin/albums.php' );
+require_once( dirname(__FILE__) . '/../core/controller/admin/album.php' );
+require_once( dirname(__FILE__) . '/../core/controller/admin/login.php' );
+require_once( dirname(__FILE__) . '/../core/controller/admin/logout.php' );
+require_once( dirname(__FILE__) . '/../core/controller/admin/themes.php' );
+require_once( dirname(__FILE__) . '/../core/controller/admin/configuration.php' );
 
 
 
 //URL handling
 $urls = array(
-	'ERROR' => 'Controller\Admin\Error',
-	INSTALL_DIR . '/admin/' => 'Controller\Admin\Albums',
-	INSTALL_DIR . '/admin/albums' => 'Controller\Admin\Albums',
-	INSTALL_DIR . '/admin/album/(\d+)' => 'Controller\Admin\Album',
-	INSTALL_DIR . '/admin/login' => 'Controller\Admin\Login',
-	INSTALL_DIR . '/admin/logout' => 'Controller\Admin\Logout'
+	'ERROR' 								=> 'Controller\Admin\Error',
+	INSTALL_DIR . '/admin/' 				=> 'Controller\Admin\Albums',
+	INSTALL_DIR . '/admin/albums' 		=> 'Controller\Admin\Albums',
+	INSTALL_DIR . '/admin/album/(\d+)' 	=> 'Controller\Admin\Album',
+	INSTALL_DIR . '/admin/login' 		=> 'Controller\Admin\Login',
+	INSTALL_DIR . '/admin/logout' 		=> 'Controller\Admin\Logout',
+	INSTALL_DIR . '/admin/themes' 		=> 'Controller\Admin\Themes',
+	INSTALL_DIR . '/admin/configuration'	=> 'Controller\Admin\Configuration',
 );
 	
 	

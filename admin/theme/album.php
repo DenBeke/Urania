@@ -14,7 +14,7 @@ Date: March 2013
 if($this->notification != NULL) {
 ?>
 <div class="notification <?php echo $this->notification->type ?>">
-	<?php echo $this->notification->message; ?>
+	<span class="glyphicon <?php if($this->notification->type == 'success') { echo 'glyphicon-ok'; } else { echo 'glyphicon-warning-sign'; } ?>"></span> <?php echo $this->notification->message; ?>
 </div>
 <?php
 }
@@ -32,7 +32,7 @@ if($this->notification != NULL) {
 		<tr>
 		
 			<th>
-	
+				
 			</th>
 			
 			<th>
@@ -50,6 +50,7 @@ if($this->notification != NULL) {
 			<th>
 			
 			</th>
+			
 		
 		</tr>
 	
@@ -64,7 +65,9 @@ if($this->notification != NULL) {
 			
 			<tr>
 				<td>
-					<img src="<?php echo SITE_URL; ?>core/timthumb.php?src=<?php echo $this->album->getImage($i)->getFileName() . "&h=$imageHeight&w=$imageWidth"; ?>" alt="<?php echo $this->album->getImage($i)->getName(); ?>" />
+					<a href="<?php echo SITE_URL . $this->album->getImage($i)->getFileName(); ?>" class="lightbox">
+						<img src="<?php echo SITE_URL; ?>core/timthumb.php?src=<?php echo $this->album->getImage($i)->getFileName() . "&h=$imageHeight&w=$imageWidth"; ?>" alt="<?php echo $this->album->getImage($i)->getName(); ?>" />
+					</a>
 				</td>
 				<td>
 					<?php 
@@ -117,13 +120,14 @@ if($this->notification != NULL) {
 							</li>
 							<?php } ?>
 						</ul>
-					</div>
+					</div><!-- #exif -->
 				</td>
 				
 				<td class="date">
 					<?php echo date('d-m-Y',$this->album->getImage($i)->getDate()); ?>
 				</td>
 				
+				<!--
 				<td>
 					<form method="post" action="<?php echo SITE_URL; ?>admin/album/<?php echo $this->album->getId(); ?>" class="pure-form">
 						<input type="hidden" name="changeImage" value="<?php echo $this->album->getImage($i)->getId(); ?>">
@@ -138,6 +142,44 @@ if($this->notification != NULL) {
 						<input class="pure-button pure-button-primary" type="submit" value="Delete">
 					</form>
 				</td>
+				-->
+				
+				
+				<td>
+					<a class="pure-button pure-button-primary edit-button"><span class="glyphicon glyphicon-pencil"></span></a>
+					
+					<div class="edit-box">
+						<form method="post" action="<?php echo SITE_URL; ?>admin/album/<?php echo $this->album->getId(); ?>" class="pure-form">
+							<input type="hidden" name="changeImage" value="<?php echo $this->album->getImage($i)->getId(); ?>">
+							
+							<input type="text" name="changeName" value="" placeholder="New image name" class="pure-u-1" />
+							
+							
+							<div class="button-container left">
+								<input class="pure-button pure-button-primary" type="submit" value="Change name">
+							</div>
+							
+							
+						</form>
+						
+						<form method="post" action="<?php echo SITE_URL; ?>admin/album/<?php echo $this->album->getId(); ?>" class="pure-form">
+							<input type="hidden" name="deleteImage" value="<?php echo $this->album->getImage($i)->getId(); ?>">
+							
+							<div class="button-container right">
+								<input class="pure-button pure-button-warning" type="submit" value="Delete">
+							</div>
+							
+							
+						</form>
+						
+					</div><!-- .edit-box -->
+					
+				</td>
+				
+				
+				<td>
+					<a href="<?php echo SITE_URL . $this->album->getImage($i)->getFileName(); ?>" download="<?php echo $this->album->getImage($i)->getName(); ?>" class="pure-button pure-button-primary"><span class="glyphicon glyphicon-save"></span></a>
+				</td>
 				
 			</tr>
 			
@@ -150,7 +192,7 @@ if($this->notification != NULL) {
 	
 	</tbody>
 
-</table>
+</table><!-- #admin-album -->
 
 
 
@@ -159,7 +201,7 @@ if($this->notification != NULL) {
 
 
 	<div class="panel-header">
-		<h3 class="panel-title">Upload Photos</h3>
+		<h3 class="panel-title"><span class="glyphicon glyphicon-open"></span> Upload Photos</h3>
 	</div>
 
 
@@ -175,10 +217,16 @@ if($this->notification != NULL) {
 			
 			
 			<input class="pure-input pure-button pure-button-primary pure-u-1" type="submit" value="Upload">
+			<!-- <button class="pure-input pure-button pure-button-primary pure-u-1" type="submit">
+				Upload
+			</button>-->
 			
 		</form>
 	
 	</div>
 
 
-</div>
+</div><!-- .panel -->
+
+
+<?php include(dirname(__FILE__) . '/lightbox.php'); ?>

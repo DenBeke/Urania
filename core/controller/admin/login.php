@@ -12,9 +12,9 @@ namespace Controller\Admin {
 
 
 	
-	require_once(dirname(__FILE__) . '/controller.php');
-	require_once(dirname(__FILE__) . '/../model/notification.php');
-	require_once(dirname(__FILE__) . '/../login.php');
+	require_once(dirname(__FILE__) . '/../controller.php');
+	require_once(dirname(__FILE__) . '/../../model/notification.php');
+	require_once(dirname(__FILE__) . '/../../login.php');
 	
 	
 	class Login extends \Controller\Controller {
@@ -27,7 +27,7 @@ namespace Controller\Admin {
 	
 		public function __construct() {
 			parent::__construct();
-			$this->themeDir = dirname(__FILE__) . '/../../admin/theme/';
+			$this->themeDir = dirname(__FILE__) . '/../../../admin/theme/';
 			$this->theme = 'login.php';
 			$this->pageTitle = 'Login - ' . SITE_TITLE;
 		}	

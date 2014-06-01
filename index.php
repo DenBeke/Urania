@@ -7,8 +7,8 @@ Url: http://denbeke.be
 Date: September 2013
 */
 
-require_once('./core/config.php');
-require_once('./core/urania.php');
+
+//Include GluePHP for url handling
 require_once('./core/glue.php');
 
 //Include controllers
@@ -33,21 +33,18 @@ $urls = array(
 	INSTALL_DIR . '/image/(\d+)' => 'Controller\Image'
 );
 
-
 $controller = glue::stick($urls);
 
 
 
-
+//Include header template
 include(THEME_DIR . '/header.php');
 
-
-
+//Include content template
 $controller->template();	
 	
-	
+//Include footer template
 include(THEME_DIR . '/footer.php');
- 
  
  
  ?>
