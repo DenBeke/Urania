@@ -65,9 +65,7 @@ $(document).ready(function() {
 		return false;
 		    
 		
-	  });
-	
-	
+	});
 	
 	
 	
@@ -81,7 +79,6 @@ $(document).ready(function() {
 	    
 	}
 	);
-	
 	
 	
 	//Prevent lightbox from closing
@@ -104,18 +101,31 @@ $(document).ready(function() {
 	//Open the edit box on click
 	$('.edit-button').click(function(e) {	
 		
-		$(this).next('.edit-box').fadeIn();
-		$(this).addClass('open');
-		$('body').addClass('edit-box-open');
+		//if not opened, open
+		if(! $(this).hasClass('open')) {
+			
+			$(this).next('.edit-box').fadeIn();
+			$(this).addClass('open');
+			$('body').addClass('edit-box-open');
+			
+			e.stopPropagation();	
+		}
+		//else, close
+		else {
+			$(this).removeClass('open');
+		}
 		
-		e.stopPropagation();
+		
 	
 	});
+	
 	
 	//Close the box when clicking outside it
 	$('body').click(function() {
 		
 		$('.edit-box').hide();
+		$('.edit-button').removeClass('open');
+		
 		
 	});
 
