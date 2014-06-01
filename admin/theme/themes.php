@@ -23,31 +23,41 @@ Date: May 2014
 		<div class="theme">	
 		
 			<!-- Theme preview image -->
-			<img src="<?php echo SITE_URL . 'theme/default/screenshot.png'; ?>" class="theme-image">
+			<div class="theme-image-container">
+				
+				<img src="<?php echo SITE_URL . 'theme/default/screenshot.png'; ?>" class="theme-image">
+				
+			</div>
 			
 			
-			
-			<div class="meta">
-			
+			<div class="title">
+				
 				<!-- Theme name -->
 				<h4>
 					<?php echo $theme->name; ?>	
 				</h4>
+
+				<a href="" class="pure-button pure-button-primary activate-theme">Activate</a>
+	
 				
+				
+			</div>
+			
+			
+
+			<div class="meta">
 				
 				<!-- Theme author -->
 				<p>
-					<?php echo $theme->author; ?>
+					<span class="label">Author: </span><span class="info"><?php echo $theme->author; ?><span>
 				</p>
 				
 				<!-- Theme description -->
 				<p>
-					<?php echo $theme->description; ?>
+					<span class="label">Description: </span><span class="info"><?php echo $theme->description; ?></span>
 				</p>
 				
 			</div>
-			
-			<center><a href="" class="pure-button pure-button-primary">Activate</a></center>
 			
 		</div>
 		

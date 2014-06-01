@@ -33,6 +33,7 @@ namespace Controller\Admin {
 			$themes = dirname(__FILE__) . '/../../../theme/*';			
 			foreach (glob( $themes ) as $dir) {
 				$this->themes[] = json_decode( file_get_contents($dir . '/theme.json') );
+				$this->themes[sizeof($this->themes)-1]->dir = $dir;
 			}
 			
 		}
