@@ -1,5 +1,8 @@
 <?php
 
+//Get the base dir of the installation
+define( 'BASE_DIR', __DIR__ . '/..' );
+
 //Connection details for the database
 define( 'DB_HOST', 'localhost');
 define( 'DB_USER', 'root');
