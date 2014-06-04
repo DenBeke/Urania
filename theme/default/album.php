@@ -14,8 +14,8 @@ Date: March 2013
 
 <?php 
 
-$imageHeight = 240;
-$imageWidth = 240;
+$imageHeight = 270;
+$imageWidth = 270;
 
 try {
 	$albumName = $this->album->getName();

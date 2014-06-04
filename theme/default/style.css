@@ -27,176 +27,74 @@ html {
 body {
 	margin: 0;
 	padding: 0;
-	background-color: #dbdcdb;
-	background: -webkit-radial-gradient(center, ellipse, rgba(247,251,252,1) 0%, rgb(230, 230, 230) 52.7%, rgb(167, 167, 167) 100%) fixed rgb(247,251,252);
-	background: -moz-radial-gradient(center, ellipse, rgba(247,251,252,1) 0%, rgb(230, 230, 230) 52.7%, rgb(167, 167, 167) 100%) fixed rgb(247,251,252);
-	background: -ms-radial-gradient(center, ellipse, rgba(247,251,252,1) 0%, rgb(230, 230, 230) 52.7%, rgb(167, 167, 167) 100%) fixed rgb(247,251,252);
-	background: -o-radial-gradient(center, ellipse, rgba(247,251,252,1) 0%, rgb(230, 230, 230) 52.7%, rgb(167, 167, 167) 100%) fixed rgb(247,251,252);
-	background: radial-gradient(ellipse at center, rgba(247,251,252,1) 0%, rgb(230, 230, 230) 52.7%, rgb(167, 167, 167) 100%) fixed rgb(247,251,252);
+	background-color: #f1f1f1; /* #f2f2f2 */
 }
 
 
 
 
 .page {
-	width: 900px;
+	width: 990px;
 	margin: auto;
 }
-
-
-
-/* Header */
-
-
-h1#siteTitle {
-	text-align: center;
-	font: normal bold 3.5em 'Bad Script', cursive;
-	color: #6e6e6e;
-	text-shadow: 0 0 5px #fff;
-	margin-bottom: 0;
-	
-}
-
-h1#siteTitle a {
-	color: #6e6e6e;
-	text-decoration: none;
-}
-
-h1#siteTitle a:hover {
-	color: #595959;
-}
-
-
-#albumNav ul {
-	list-style: none;
-	padding: 0;
-	margin: 0;
-	text-align: center;
-	max-width: 900px;
-	margin: auto;
-}
-
-#albumNav li {
-	padding: 5px;
-	
-	background-color: #fff;
-	
-	margin: 0 20px;
-	margin-bottom: 20px;
-	border-radius: 5px;
-	box-shadow: 1px 1px 5px #aaa;
-}
-
-#albumNav li:hover a {
-	-webkit-transition: all 0.5s;
-	color: #000000;
-}
-
-#albumNav a {
-	color: #6e6e6e;
-	text-decoration: none;
-	font-family: 'Bad Script';
-	font-variant: small-caps;
-}
-
-
-
-
-@media screen and (min-width: 1400px) {
-	header {
-		position: absolute;
-		top: 0;
-		left: 0;
-	}
-	
-	header h1 {
-		font-size: 3em !important;
-		padding-left: 15px;
-	}
-	
-	#albumNav {
-		margin-top: 25px;
-	}
-	
-	#albumNav li {
-		display: block;
-		max-width: 200px;
-	}
-	
-	#loginTitle {
-		text-align: center;
-		font: normal bold 3em 'Bad Script', cursive;
-		color: #6e6e6e;
-		text-shadow: 0 0 2px #fff;
-		margin-bottom: 0;
-	}
-	
-}
-
-
-
-@media screen and (max-width: 1400px) { 
-
-	header {
-		background-image: -webkit-radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.64) 0%, rgba(255, 255, 255, 0) 71.5%);
-		background-image: -moz-radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.64) 0%, rgba(255, 255, 255, 0) 71.5%);
-		background-image: -ms-radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.64) 0%, rgba(255, 255, 255, 0) 71.5%);
-		background-image: radial-gradient(ellipse farthest-corner, rgba(255, 255, 255, 0.64) 0%, rgba(255, 255, 255, 0) 71.5%);
-		
-		padding-bottom: 30px;
-		max-width: 1200px;
-		margin: auto;
-	}
-	#albumNav li {
-		display: inline-block;
-	}
-	
-	#homeTitle,
-	#loginTitle {
-		display: none;
-	}
-	
-}
-	
-	
-}
-
 
 
 /* Home */
 
-#home li div {
-	width: 240px;
+#home div.home-album-image-container {
+	width: 270px;
 	height: 240px;
-}
-
-#home li a {
-	width: 240px;
-	height: 240px;
-	text-decoration: none;
-	color: #6e6e6e;
-	text-shadow: 0 0 5px #fff;
-	font-size: 1.5em !important;
-	display: table-cell;
-	vertical-align: bottom;
+	box-shadow: 0 0 1px rgba(0,0,0,0.3) inset;
+	transition: opacity 0.2s;
 	text-align: center;
 }
 
+#home li a:hover div.home-album-image-container {
+	opacity: 0.8;
+}
+
+#home div.home-album-title {
+	height: 30px;
+	box-sizing: border-box;
+	padding: 4px;
+}
+
+#home div.home-album-title h3 {
+	margin: 0;
+	font-size: 0.95em;
+	line-height: 22px;
+}
+
+#home div.home-album-image-container span {
+	font-size: 2em;
+	line-height: 240px;
+}
+
+#home li a {
+	color: #333;
+	text-decoration: none;
+}
+
+
+#home li {
+	float: left;
+	margin: 25px;
+	padding: 0px;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	border-radius: 0;
+	//box-shadow: 0 0 2px rgba(0,0,0,0.3);
+}
+
+
+#home li a {
+
+}
+
 #home li a:hover {
-	-webkit-transition: all 0.5s;
-	background: transparent;
 }
 
 #home li h3 {
-	margin: 0;
-	padding: 0;
-	padding-top: 30px;
-	font-family: 'Bad Script';
-	
-    background-image: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0.83) 0%, rgba(255, 255, 255, 0.66) 60.7%, rgba(255, 255, 255, 0) 100%);
-	background-image: -moz-linear-gradient(bottom, rgba(255, 255, 255, 0.83) 0%, rgba(255, 255, 255, 0.66) 60.7%, rgba(255, 255, 255, 0) 100%);
-	background-image: -ms-linear-gradient(bottom, rgba(255, 255, 255, 0.83) 0%, rgba(255, 255, 255, 0.66) 60.7%, rgba(255, 255, 255, 0) 100%);
-	background-image: linear-gradient(to top, rgba(255, 255, 255, 0.83) 0%, rgba(255, 255, 255, 0.66) 60.7%, rgba(255, 255, 255, 0) 100%);
 }
 
 
@@ -207,8 +105,10 @@ h1#siteTitle a:hover {
 #homeTitle,
 #album h1 {
 	text-align: center;
-	font: normal bold 3em 'Bad Script', cursive;
-	color: #6e6e6e;
+	/* font: normal bold 3em 'Bad Script', cursive; */
+	font-weight: 100;
+	font-size: 3em;
+	color: #333;
 	text-shadow: 0 0 2px #fff;
 	margin-bottom: 0;
 }
@@ -222,24 +122,19 @@ h1#siteTitle a:hover {
 	list-style: none;
 }
 
-#home a,
-#album a {
-	display: block;
-	margin: 0;
-	padding: 0;
-	font-size: 0;
-}
 
-#home ul li,
+
 #album ul li {
 	float: left;
+	width: 270px;
+	height: 270px;
+	
 	margin: 25px;
-	width: 240px;
-	height: 240px;
-	padding: 5px;
+	padding: 0px;
 	background-color: #fff;
-	border-radius: 5px;
-	box-shadow: 1px 1px 7px #777;
+	border: 1px solid #ccc;
+	border-radius: 0;
+
 }
 
 th {
@@ -251,199 +146,6 @@ th {
 
 
 
-/* Admin */
-
-
-h3.notice {
-	display: block !important;
-	clear: both;
-	padding: 10px;
-	border-radius: 5px;
-	margin-top: 0;
-	text-align: left;
-	font-size: 1em !important;
-}
-
-h3.notice.ok {
-	border: 1px solid green;
-	color: green;
-}
-
-h3.notice.error {
-	border: 1px solid red;
-	color: red;
-}
-
-
-
-/* - Login */
-
-.error {
-	text-align: center;
-	color: red;
-	text-shadow: 0 0 3px #fff;
-	font-family: Verdana;
-}
-
-#login form {
-	width: 240px;
-	height: 240px;
-	background-color: #fff;
-	border-radius: 5px;
-	box-shadow: 1px 1px 7px #777;
-	margin: 25px auto;
-	padding: 5px;
-}
-
-#login form p {
-	font: normal bold 1.2em 'Bad Script', cursive;
-	text-align: center;
-	margin: 0;
-	color: #6e6e6e;
-}
-
-#login form p:nth-child(even) {
-	margin-bottom: 25px;
-}
-
-
-#login input[type=text],
-#login input[type=password] {
-	width: 100%;
-	box-sizing: border-box;
-	border-radius: 5px;
-	padding: 10px;
-	border: 0px solid #ccc;
-	outline: none;
-	box-shadow: 0px 0px 5px #777 inset;
-}
-
-/* - General admin */
-
-#admin {
-	background-color: #fff;
-	border-radius: 5px;
-	box-shadow: 1px 1px 7px #777;
-	margin: 25px auto;
-	padding: 5px;
-	font-family: Verdana;
-	min-width: 600px !important;
-}
-
-#admin h1 {
-	text-align: center;
-	margin: 0;
-	color: #6e6e6e;
-	font: normal bold 3em 'Bad Script', cursive;
-	display: inline;
-	margin-left: 10px;
-}
-
-#admin h3.nav {
-	font-size: 0.8em;
-	color: #8b8b8b;
-	font-style: italic;
-	font-weight: normal;
-	margin: 0;
-}
-
-#admin h3.nav a {
-	text-decoration: underline;
-	color: #8b8b8b;
-	font-style: italic;
-}
-
-#admin table {
-	width: 100%;
-	border-spacing:0;
-	border-collapse:collapse;
-	margin-bottom: 50px;
-	
-}
-
-#admin table tr:nth-child(odd) {
-	/*background-color: #fbfbfb;*/
-}
-
-#admin table td {
-	padding: 10px 5px;
-}
-
-
-#admin table td:first-child {
-	background-image: url('img/list_arrow.png');
-	background-repeat: no-repeat;
-	background-position: left center;
-	padding-left: 15px;
-}
-
-
-#admin table tr td:last-child {
-	text-align: right;
-}
-
-
-#admin table td.date {
-	font-size: 0.8em;
-	color: gray;
-	font-style: italic;
-}
-
-#admin table a {
-	color: #000;
-	text-decoration: none;
-}
-
-
-#admin input[type=text] {
-	/*width: 100%;*/
-	box-sizing: border-box;
-	border-radius: 5px;
-	padding: 5px;
-	border: 0px solid #ccc;
-	outline: none;
-	box-shadow: 0px 0px 5px #777 inset;
-}
-
-form#addAlbum,
-form#uploadImages {
-	float: left;
-	margin: 10px;
-	background-color: #e6e8e7;
-	padding: 10px;
-	border-radius: 10px;
-}
-
-form#addAlbum p,
-form#uploadImages p {
-	margin: 0;
-	margin-bottom: 5px;
-	font-style: italic;
-}
-
-form#addAlbum p:last-child,
-form#uploadImages p:last-child {
-	margin-bottom: 0;
-}
-
-p.submitButton {
-	text-align: right;
-}
-
-
-.clear {
-	clear: both;
-	width: 0;
-	height: 0;
-	overflow: hidden;
-}
-
-
-#adminAlbum img {
-	border-radius: 5px;
-	width: 75px;
-	height: 75px;
-}
 
 
 /* Footer */

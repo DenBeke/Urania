@@ -25,8 +25,13 @@ Date: March 2013
 	
 	<script src="<?php echo SITE_URL; ?>js/browsercheck.js" type="text/javascript"></script>
 	
+	<link rel="stylesheet" href="<?php echo SITE_URL; ?>theme/default/pure.css" type="text/css" />
+	
+	<link rel="stylesheet" href="<?php echo SITE_URL; ?>theme/default/grids-responsive.css" type="text/css" />
 	
 	<link rel="stylesheet" href="<?php echo SITE_URL; ?>theme/default/style.css" type="text/css" />
+	
+	<link rel="stylesheet" href="<?php echo SITE_URL; ?>theme/default/glyphicons.css" type="text/css" />
 	
     <link rel="stylesheet" href="<?php echo SITE_URL; ?>style/lightbox.css" type="text/css" />
     
