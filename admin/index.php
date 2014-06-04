@@ -53,14 +53,14 @@ if(!loggedIn() && $controller->pageName != 'login' && $controller->pageName != '
 
 
 
-include(dirname(__FILE__) . '/theme/header.php');
+include( __DIR__ . '/theme/header.php');
 
 
 
 $controller->template();	
 	
 	
-include(dirname(__FILE__) . '/theme/footer.php');
+include( __DIR__ . '/theme/footer.php');
  
  
  
