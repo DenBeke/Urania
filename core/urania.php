@@ -7,7 +7,6 @@ Url: http://denbeke.be
 Date: September 2013
 */
 
-require_once(dirname(__FILE__).'/config.php');
 require_once(dirname(__FILE__).'/error_handler.php');
 require_once(dirname(__FILE__).'/model/album.php');
 require_once(dirname(__FILE__).'/model/image.php');

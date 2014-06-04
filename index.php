@@ -7,15 +7,17 @@ Url: http://denbeke.be
 Date: September 2013
 */
 
+//Initialize configuration
+require_once( __DIR__ . '/core/config.php' );
 
 //Include GluePHP for url handling
-require_once('./core/glue.php');
+require_once( __DIR__ . '/core/glue.php');
 
 //Include controllers
-require_once( dirname(__FILE__) . '/core/controller/error.php' );
-require_once( dirname(__FILE__) . '/core/controller/home.php' );
-require_once( dirname(__FILE__) . '/core/controller/album.php' );
-require_once( dirname(__FILE__) . '/core/controller/image.php' );
+require_once( __DIR__ . '/core/controller/error.php' );
+require_once( __DIR__ . '/core/controller/home.php' );
+require_once( __DIR__ . '/core/controller/album.php' );
+require_once( __DIR__ . '/core/controller/image.php' );
 
 
 $u = new Urania('./core/config.php');

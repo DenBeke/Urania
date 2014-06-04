@@ -12,11 +12,7 @@ Date: March 2014
 namespace Controller {
 
 
-
-	require_once( dirname(__FILE__) . '/../config.php' );
-	require_once( dirname(__FILE__) . '/../urania.php' );
-	
-	
+	require_once( dirname(__FILE__) . '/../urania.php' );	
 	
 	
 	abstract class Controller {
