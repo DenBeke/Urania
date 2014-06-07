@@ -31,7 +31,7 @@ Date: March 2013
 	
 	<link rel="stylesheet" href="<?php echo SITE_URL; ?>theme/default/style.css" type="text/css" />
 	
-	<link rel="stylesheet" href="<?php echo SITE_URL; ?>theme/default/glyphicons.css" type="text/css" />
+	<!--<link rel="stylesheet" href="<?php echo SITE_URL; ?>theme/default/glyphicons.css" type="text/css" />-->
 	
     <link rel="stylesheet" href="<?php echo SITE_URL; ?>style/lightbox.css" type="text/css" />
     
