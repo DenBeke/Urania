@@ -8,7 +8,7 @@ Date: September 2013
 */
 
 
-require_once(dirname(__FILE__).'/image.php');
+require_once( __DIR__ .'/image.php');
 
 /**
 @brief Class containing an image and it's EXIF information
@@ -90,7 +90,7 @@ class imageExif extends image {
     public function readExifFromFile($fileName = NULL) {
     	if ($fileName == NULL) {
     		//If no filename given, we read exif date from the image file
-    		$fileName = dirname(__FILE__).'/../../'.$this->getFileName();
+    		$fileName = __DIR__ . '/../../'.$this->getFileName();
     	}
     	if(!file_exists($fileName)) {
     		throw new exception('The given file does not exist');

@@ -11,7 +11,7 @@ Date: March 2014
 namespace Controller\Admin {
 
 	
-	require_once(dirname(__FILE__) . '/../controller.php');
+	require_once( __DIR__ . '/../controller.php');
 
 
 	class Themes extends \Controller\Controller {
@@ -25,12 +25,12 @@ namespace Controller\Admin {
 		
 		public function __construct() {
 			parent::__construct();
-			$this->themeDir = dirname(__FILE__) . '/../../../admin/theme/';
+			$this->themeDir = __DIR__ . '/../../../admin/theme/';
 			$this->theme = 'themes.php';
 			$this->pageTitle = 'Themes - ' . SITE_TITLE;
 					
 			
-			$themes = dirname(__FILE__) . '/../../../theme/*';			
+			$themes = __DIR__ . '/../../../theme/*';			
 			foreach (glob( $themes ) as $dir) {
 				$this->themes[] = json_decode( file_get_contents($dir . '/theme.json') );
 				$this->themes[sizeof($this->themes)-1]->dir = $dir;

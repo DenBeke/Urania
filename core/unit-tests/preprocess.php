@@ -11,7 +11,7 @@ Date: March 2014
 function preprocess($dir = '/tests/', $preprocessed_dir = 'preprocessed/') {
 
 
-	foreach (glob(dirname(__FILE__) . $dir . '*.php') as $file) {
+	foreach (glob( __DIR__ . $dir . '*.php') as $file) {
 	
 	
 		$lines = file($file);

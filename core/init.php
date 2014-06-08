@@ -12,7 +12,7 @@ Date: March 2013
 */
 
 	
-require_once(__DIR__ . '/config.php');
+require_once( __DIR__ . '/config.php');
 
 
 

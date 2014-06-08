@@ -11,9 +11,9 @@ Date: March 2014
 namespace Controller {
 
 	
-	require_once(dirname(__FILE__) . '/controller.php');
-	require_once(dirname(__FILE__) . '/../model/image.php');
-	require_once(dirname(__FILE__) . '/../model/imageExif.php');
+	require_once( __DIR__ . '/controller.php');
+	require_once( __DIR__ . '/../model/image.php');
+	require_once( __DIR__ . '/../model/imageExif.php');
 
 
 	class Image extends Controller {

@@ -15,7 +15,7 @@ Date: March 2013
 	</footer>
 
 
-	<?php include(dirname(__FILE__) . '/lightbox.php') ?>
+	<?php include( __DIR__ . '/lightbox.php') ?>
 	
 		
 </body>
