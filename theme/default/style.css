@@ -191,7 +191,7 @@ header {
 }
 
 #home li a {
-	color: #333;
+	color: #444;
 	text-decoration: none;
 }
 
@@ -219,7 +219,8 @@ header {
 
 
 
-/* Album */
+/* Album *
+*********/
 
 #adminTitle,
 #homeTitle,
@@ -228,9 +229,10 @@ header {
 	/* font: normal bold 3em 'Bad Script', cursive; */
 	font-family: 'Open Sans';
 	font-weight: 300;
-	font-size: 3em;
+	font-size: 2em;
+	font-style: italic;
 	color: #333;
-	text-shadow: 0 0 2px #fff;
+	margin-top: 30px;
 	margin-bottom: 0;
 }
 
@@ -250,7 +252,7 @@ header {
 	width: 270px;
 	height: 270px;
 	
-	margin: 25px;
+	margin: 30px;
 	padding: 0px;
 	background-color: #fff;
 	border: 1px solid #ccc;
@@ -258,13 +260,9 @@ header {
 
 }
 
-th {
-	color: #6d6e6d;
-	font-style: italic;
-	font-weight: normal;
+#album {
+	padding-bottom: 30px;
 }
-
-
 
 
 
