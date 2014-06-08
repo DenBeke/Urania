@@ -155,6 +155,11 @@ header {
 
 /* Home */
 
+#home {
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+
 #home div.home-album-image-container {
 	width: 270px;
 	height: 240px;
@@ -280,8 +285,7 @@ footer {
 	padding-top: 2em;
 	padding-bottom: 2em;
 
-	color: #6e6e6e;
-	text-shadow: 0 0 3px #fff;
+	color: #444;
 	text-align: center;
 	font-family: 'Open Sans';
 	font-weight: 400;
@@ -289,7 +293,7 @@ footer {
 }
 
 footer a {
-	color: #6e6e6e;
+	color: #444;
 	text-decoration: underline;
 }
 
@@ -301,29 +305,38 @@ footer a:hover {
 
 
 /* Responsive part */
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 996px) {
 
 	.page {
-		width: 600px !important;
-		max-width: 600px;
+		width: 664px !important;
+		max-width: 664px;
 		text-align: center;
 		
 	}
-	h1 {
-		font-size: 2.5em !important;
+
+	header,
+	footer {
+		max-width: 604px;
 	}
 
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 664px) {
 
 	.page {
-		width: 300px !important;
-		max-width: 300px;
+		width: 332px !important;
+		max-width: 332px;
 		text-align: center;	
 	}
-	h1 {
-		font-size: 2em !important;
+	
+	header,
+	footer {
+		max-width: 272px;
 	}
+	
+	header {
+		text-align: center;
+	}
+
 
 }
