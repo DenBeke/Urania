@@ -91,14 +91,14 @@ body {
 
 
 .header-container {
-	width: 100%;
+	//width: 100%;
 	margin: 0;
-	padding: 0;
+	padding: 0 2.5%;	
 	background-color: #fafafa;
 }
 
 header {
-	width: 940px;
+	max-width: 940px;
 	margin: 0 auto;
 	border-bottom: 1px #ccc solid;
 	padding-top: 2em;
@@ -140,10 +140,10 @@ header {
 	margin-right: 1em;
 	margin-bottom: 1em;
 	font-size: 0.9em;
-	color: #333;
+	color: #444;
 	text-decoration: none;
 	background-color: #f1f1f1;
-	border: 1px #ccc solid;
+	border: 1px #ddd solid;
 	
 	transition: all 0.1s;
 }
