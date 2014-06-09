@@ -322,7 +322,6 @@ footer a:hover {
 @media screen and (max-width: 664px) {
 
 	.page {
-		width: 332px !important;
 		max-width: 332px;
 		text-align: center;	
 	}
@@ -334,6 +333,17 @@ footer a:hover {
 	
 	header {
 		text-align: center;
+	}
+	
+	#home ul,
+	#album ul {
+		width: 272px;
+	}
+	
+	#home ul li,
+	#album ul li {
+		margin-left: 0;
+		margin-right: 0;
 	}
 
 
