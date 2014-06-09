@@ -324,6 +324,7 @@ footer a:hover {
 	.page {
 		max-width: 332px;
 		text-align: center;	
+		padding: 0;
 	}
 	
 	header,
@@ -338,12 +339,14 @@ footer a:hover {
 	#home ul,
 	#album ul {
 		width: 272px;
+		padding: 0;
+		margin: 0 auto;
 	}
 	
 	#home ul li,
 	#album ul li {
-		margin-left: 0;
-		margin-right: 0;
+		margin-left: auto;
+		margin-right: auto;
 	}
 
 
