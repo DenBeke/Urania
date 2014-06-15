@@ -47,8 +47,7 @@ Date: March 2013
 	
 	
 </head>
-<body>
-
+<body class="<?php echo $controller->pageName ?>">
 
 	<div class="header-container">
 		

@@ -155,10 +155,21 @@ header {
 
 /* Home */
 
+
+body.home #album-nav {
+	opacity: 0;
+	transition: all 0.2s;
+}
+
+body.home header:hover #album-nav {
+	opacity: 1;
+}
+
 #home {
 	padding-top: 30px;
 	padding-bottom: 30px;
 }
+
 
 #home div.home-album-image-container {
 	width: 270px;
