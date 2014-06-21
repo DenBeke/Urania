@@ -56,18 +56,44 @@ class Image {
 	}
 	
 	
+	
 	/**
 	Get the images from the album with the given id
 	
 	@param album id
 	@return images
 	*/
-	function getImagesFromAlbum($albumId) {
+	public function getImagesFromAlbum($albumId) {
 		
 		$query = $this->builder->table('Images')->where('albumId', '=', $albumId);
 		$result = $query->get();
 		
 		return Image::resultToImage($result);
+		
+	}
+	
+	
+	
+	
+	/**
+	Get the latest image from the album with the given id
+	
+	@param album id
+	@return image
+	
+	@pre album exists
+	*/
+	public function getLatestImage($albumId) {
+		
+		$query = $this->builder->table('Images')->where('albumId', '=', $albumId)->orderBy('date', 'DESC')->limit(1);
+		$result = $query->get();
+		
+		if(sizeof($result) != 1) {
+			throw new \exception("Could not find latest image of album with the given albumId($albumId)");
+		}
+		else {
+			return Image::resultToImage($result)[0];	
+		}
 		
 	}
 	
@@ -101,6 +127,10 @@ class Image {
 	
 }
 
+
+$i = new Image;
+
+echo $i->getLatestImage(5)
 
 
 ?>
