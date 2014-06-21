@@ -15,9 +15,6 @@ require_once(__DIR__ . '/../model/image.php');
 
 class Image {
 
-	private $builder;
-
-
 	public function __construct() {
 		
 		$config = array(
@@ -28,8 +25,7 @@ class Image {
 			'password'  => 'root',
 		);
 		
-		$connection = new \Pixie\Connection('mysql', $config);
-		$this->builder = new \Pixie\QueryBuilder\QueryBuilderHandler($connection);
+		new \Pixie\Connection('mysql', $config, '\Database\BUILDER');
 	}
 
 
@@ -43,7 +39,7 @@ class Image {
 	*/
 	public function getImageById($id) {
 		
-		$query = $this->builder->table('Images')->where('id', '=', $id);
+		$query = BUILDER::table('Images')->where('id', '=', $id);
 		$result = $query->get();
 		
 		if(sizeof($result) != 1) {
@@ -65,7 +61,7 @@ class Image {
 	*/
 	public function getImagesFromAlbum($albumId) {
 		
-		$query = $this->builder->table('Images')->where('albumId', '=', $albumId);
+		$query = BUILDER::table('Images')->where('albumId', '=', $albumId);
 		$result = $query->get();
 		
 		return Image::resultToImage($result);
@@ -85,7 +81,7 @@ class Image {
 	*/
 	public function getLatestImage($albumId) {
 		
-		$query = $this->builder->table('Images')->where('albumId', '=', $albumId)->orderBy('date', 'DESC')->limit(1);
+		$query = BUILDER::table('Images')->where('albumId', '=', $albumId)->orderBy('date', 'DESC')->limit(1);
 		$result = $query->get();
 		
 		if(sizeof($result) != 1) {
@@ -126,11 +122,6 @@ class Image {
 	}
 	
 }
-
-
-$i = new Image;
-
-echo $i->getLatestImage(5)
 
 
 ?>
