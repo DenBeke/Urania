@@ -53,4 +53,10 @@ TODO for the next version
 * (make an install script)
 
 
+Acknowledgements
+================
+
+* [Pixie](https://github.com/usmanhalalit/pixie) by Muhammad Usman
+
+
 *Created by Mathias Beke - [denbeke.be](http://denbeke.be)*
