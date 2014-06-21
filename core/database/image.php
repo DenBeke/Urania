@@ -57,6 +57,24 @@ class Image {
 	
 	
 	/**
+	Get the images from the album with the given id
+	
+	@param album id
+	@return images
+	*/
+	function getImagesFromAlbum($albumId) {
+		
+		$query = $this->builder->table('Images')->where('albumId', '=', $albumId);
+		$result = $query->get();
+		
+		return Image::resultToImage($result);
+		
+	}
+	
+	
+	
+	
+	/**
 	Convert the database result to an instance of Image
 	
 	@param result
@@ -82,8 +100,6 @@ class Image {
 	}
 	
 }
-
-
 
 
 
