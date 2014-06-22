@@ -44,6 +44,10 @@ class Connection
      */
     public function __construct($adapter, array $adapterConfig, $alias = null, Container $container = null)
     {
+        if(class_exists($alias)) {
+            return;
+        }
+        
         $container = $container ? : new Container();
 
         $this->container = $container;
