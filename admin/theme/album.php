@@ -24,6 +24,12 @@ if($this->notification != NULL) {
 <h2 id="admin-album-title"><?php echo $this->album->getName(); ?></h2>
 
 
+<div class="description">
+	<?php echo $this->album->getDescription(); ?>
+	<p></p>
+</div>
+
+
 <table id="admin-album" class="table table-striped">
 
 	<tbody>
@@ -227,6 +233,38 @@ if($this->notification != NULL) {
 
 
 </div><!-- .panel -->
+
+
+
+
+<div class="panel pure-u-1-3">
+
+
+	<div class="panel-header">
+		<h3 class="panel-title"><span class="glyphicon glyphicon-align-center"></span> Album Description</h3>
+	</div>
+
+
+	<div class="panel-body">
+
+		<form id="change-album-description" name="change-description" action="<?php echo SITE_URL; ?>admin/album/<?php echo $this->album->getId(); ?>/edit-description" method="post" class="pure-form pure-form-stacked">
+
+			<textarea name="description"></textarea>
+
+			<input class="pure-input pure-button pure-button-primary pure-u-1" type="submit" value="Update">
+			<!-- <button class="pure-input pure-button pure-button-primary pure-u-1" type="submit">
+				Upload
+			</button>-->
+
+		</form>
+
+	</div>
+
+
+</div><!-- .panel -->
+
+
+
 
 
 <?php include(dirname(__FILE__) . '/lightbox.php'); ?>

@@ -214,12 +214,11 @@ class Album {
 	
 	
 	/**
-	Change update the information of the given album in the database
+	Change the information of the given album in the database
 
 	@param album
 	@param new album name
 
-	@pre album exists
 	@pre there is no album with the new name
 	@pre new album name not empty
 	*/
@@ -230,6 +229,33 @@ class Album {
 		);
 		
 		BUILDER::table(self::ALBUMS)->where('id', '=', $id)->update($data);
+		
+	}
+	
+	
+	/**
+	Change the description of an album
+	
+	@param Album id
+	@param description
+	
+	@pre album exists
+	*/
+	static public function changeAlbumDescription($id, $description) {
+		
+		if(!self::albumExists($id)) {
+			throw new Exception("There is no album with the id $id");
+		}
+		else {
+		
+			$data = array(
+				'description' => $description
+			);
+			
+			BUILDER::table(self::ALBUMS)->where('id', '=', $id)->update($data);
+			
+		}
+		
 		
 	}
 	
@@ -251,8 +277,9 @@ class Album {
 			$id = intval($album->id);
 			$name = $album->name;
 			$date = intval($album->date);
+			$description = $album->description;
 
-			$output[] = new \Album($id, $name, $date);
+			$output[] = new \Album($id, $name, $date, $description);
 			
 		}
 

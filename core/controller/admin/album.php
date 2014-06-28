@@ -33,8 +33,32 @@ namespace Controller\Admin {
 		
 		
 		public function GET($args) {
+			
+			if(!isset($args[1])) {
+				throw new exception("No album id given");
+			}
+			
 			$id = intval($args[1]);
 			$this->album = $this->urania->getAlbum($id);
+			
+			
+			if(isset($args[2])) {
+			
+				//if there is an action provided
+				switch ($args[2]) {
+				
+					case "edit-description":
+					case "edit-description/":
+						$this->editDescription();
+						break;
+				
+				}
+				
+				
+				//Fetch the album again (with updated data)
+				$this->album = $this->urania->getAlbum($id);
+				
+			}
 		}	
 		
 		public function POST() {
@@ -75,7 +99,24 @@ namespace Controller\Admin {
 		
 			$this->album = $this->urania->getAlbum($this->album->getId()); //Update album after post
 		
-		}	
+		}
+		
+		
+		public function editDescription() {
+			
+			if(!isset($_POST['description'])) {
+				return;
+			}
+			else {
+				
+				//Update description
+				$description = $_POST['description'];
+				\Database\Album::changeAlbumDescription($this->album->getId(), $description);
+				
+			}
+			
+		}
+		
 	
 	}
 	

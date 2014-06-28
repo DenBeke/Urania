@@ -319,6 +319,12 @@ table td.date {
 }
 
 
+form#change-album-description textarea {
+	width: 100%;
+	box-sizing: border-box;
+}
+
+
 /* Footer *
 **********/
 
