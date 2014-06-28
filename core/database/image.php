@@ -72,7 +72,7 @@ class Image {
 	@param album id
 	@return images
 	*/
-	public function getImagesFromAlbum($albumId) {
+	static public function getImagesFromAlbum($albumId) {
 		
 		$query = BUILDER::table(self::IMAGES)->where('albumId', '=', $albumId);
 		$result = $query->get();
@@ -118,6 +118,19 @@ class Image {
 		$query = BUILDER::table(self::IMAGES)->where('id', '=', $id);
 		$result = $query->delete();
 	
+	}
+	
+	
+	/**
+	Delete all images of the given album
+	
+	@param album id
+	*/
+	static public function deleteImagesFromAlbum($albumId) {
+		
+		$query = BUILDER::table(self::IMAGES)->where('albumId', '=', $albumId);
+		$result = $query->delete();
+		
 	}
 	
 	

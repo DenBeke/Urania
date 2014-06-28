@@ -93,6 +93,64 @@ class Album {
 	
 	
 	
+	/**
+	Get the album with the given id
+	
+	@param id
+	@return album
+	
+	@pre id exists
+	*/
+	static public function getAlbum($id) {
+		
+		$query = BUILDER::table(self::ALBUMS)->where('id', '=', $id);
+		$result = $query->get();
+		
+		if(sizeof($result) != 1) {
+			throw new \exception("Could not find album with the given id($id)");
+		}
+		else {
+			
+			$album =  Album::resultToAlbum($result)[0];	
+			$images = Image::getImagesFromAlbum($id);
+			
+			foreach ($images as $image) {
+				$album->addImage($image);
+			}
+			
+			return $album;
+		}
+		
+	}
+	
+	
+	
+	/**
+	Delete the album with the given id
+	
+	Note: this function does not delete the album folder
+	
+	@param id   
+	@pre album exists
+	*/
+	public function deleteAlbum($id) {
+		if(!$this->albumExists($id)) {
+			throw new Exception("There is no album with the id $id");
+		}
+		else {
+			//Delete the images from the database
+			Image::deleteImagesFromAlbum($id);
+			
+			//Delete the album from the database
+			$query = BUILDER::table(self::ALBUMS)->where('id', '=', $id);
+			$result = $query->delete();
+		}
+		
+		//TODO NOT YET TESTED
+		
+	}
+	
+	
 	
 	
 	/**
@@ -112,6 +170,7 @@ class Album {
 			$date = intval($album->date);
 
 			$output[] = new \Album($id, $name, $date);
+			
 		}
 
 		return $output;
