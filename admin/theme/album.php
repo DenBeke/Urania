@@ -25,7 +25,16 @@ if($this->notification != NULL) {
 
 
 <div class="description">
-	<?php echo $this->album->getDescription(); ?>
+	<?php
+	if($this->album->getDescription() == '') {
+		?>
+		<span class="empty-description">No description</span>
+		<?php
+	}
+	else {
+		echo $this->album->getDescription();
+	}
+	?>
 	<p></p>
 </div>
 

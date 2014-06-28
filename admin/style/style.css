@@ -324,6 +324,15 @@ form#change-album-description textarea {
 	box-sizing: border-box;
 }
 
+span.empty-description {
+	font-style: italic;
+	color: gray;
+}
+
+.description {
+	font-weight: ;
+}
+
 
 /* Footer *
 **********/
