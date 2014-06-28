@@ -1,6 +1,6 @@
 <?php 
 /*
-Database functions for Image
+Image Database Controller
 
 Author: Mathias Beke
 Url: http://denbeke.be
@@ -9,23 +9,33 @@ Date: June 2014
 
 namespace Database;
 
-require_once(__DIR__ . '/../pixie/includes.php');
 require_once(__DIR__ . '/../model/image.php');
 
 
+/**
+Image Database Controller
+*/
 class Image {
 
-	public function __construct() {
+
+	/**
+	Check if the image with the given id exists
+	
+	@param id
+	@return image exist (true/false)
+	*/
+	static public function imageExists($id) {
+	
+		$query = BUILDER::table('Images')->where('id', '=', $id);
+		$count = $query->count();
 		
-		$config = array(
-			'driver'    => 'mysql', // Db driver
-			'host'      => 'localhost',
-			'database'  => 'Urania',
-			'username'  => 'root',
-			'password'  => 'root',
-		);
-		
-		new \Pixie\Connection('mysql', $config, '\Database\BUILDER');
+		if($count == 1) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	
 	}
 
 
@@ -37,7 +47,7 @@ class Image {
 	@return image
 	@pre There exists an image with the given ID.
 	*/
-	public function getImageById($id) {
+	static public function getImageById($id) {
 		
 		$query = BUILDER::table('Images')->where('id', '=', $id);
 		$result = $query->get();
@@ -79,7 +89,7 @@ class Image {
 	
 	@pre album exists
 	*/
-	public function getLatestImage($albumId) {
+	static public function getLatestImage($albumId) {
 		
 		$query = BUILDER::table('Images')->where('albumId', '=', $albumId)->orderBy('date', 'DESC')->limit(1);
 		$result = $query->get();
@@ -93,6 +103,19 @@ class Image {
 		
 	}
 	
+	
+	
+	/**
+	Delete the image with the given id
+	
+	@param id
+	*/
+	static public function deleteImage($id) {
+	
+		$query = BUILDER::table('Images')->where('id', '=', $id);
+		$result = $query->delete();
+	
+	}
 	
 	
 	
@@ -122,6 +145,7 @@ class Image {
 	}
 	
 }
+
 
 
 ?>
