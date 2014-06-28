@@ -66,30 +66,9 @@ class Urania {
 	    		throw new Exception("Album name cannot be empty");
 	    	}
 	    	else {
-    
-	        //Create query
-	        $albums = $this->database->escape($this->db_table_albums);
-	        $albumName = $this->database->escape($albumName);
-	        $date = time();
-	        
-	        $query = 
-	        "
-	        INSERT INTO  `$albums` (
-	        `id` ,
-	        `name` ,
-	        `date`
-	        )
-	        VALUES (
-	        NULL ,  '$albumName',  '$date'
-	        );
-	        ";
-	        
-	        $affectedRows = $this->database->doQuery($query);
-	        
-	        //Debug
-	        if($this->debug) {
-	            echo "$affectedRows affected rows with query<br>$query";
-	        }
+
+			//Insert album in database        
+	        Database\Album::addAlbum($albumName, time());
 	        
 	        //Add new directory to the upload folder
 	        mkdir( dirname(__FILE__) . '/../' . $this->uploadDir . '/' . $this->simplifyFileName($albumName));
@@ -106,31 +85,7 @@ class Urania {
     */
     public function addImage($image) {
     
-        //Escape strings
-        $fileName = $this->database->escape($image->getFileName());
-        $name = $this->database->escape($image->getName());
-        $date = $this->database->escape($image->getDate());
-        $albumId = $this->database->escape($image->getAlbumId());
-    
-        $query = 
-        "
-        INSERT INTO  `Images` (
-        `id` ,
-        `fileName` ,
-        `name` ,
-        `date` ,
-        `albumId`
-        )
-        VALUES (
-        NULL ,  '$fileName',  '$name',  '$date',  '$albumId'
-        );
-        ";
-        
-        $affectedRows = $this->database->doQuery($query);
-        
-        if($this->debug) {
-            echo "$affectedRows affected rows with query<br>$query";
-        }
+        \Database\Image::addImage($image);
     
     }
     
@@ -251,19 +206,19 @@ class Urania {
             throw new Exception("There is no album with the id $id");
         }
         elseif($this->albumNameExists($albumName)) {
-        	throw new Exception("There is already an album with the new name '$albumName'");
+        		throw new Exception("There is already an album with the new name '$albumName'");
         }
         elseif($albumName == '') {
-        	throw new Exception("Album name cannot be empty");
+        		throw new Exception("Album name cannot be empty");
         }
         else {
-        	//Get the old album name
-        	$oldAlbum = $this->getAlbumName($id);
-        	
-        	//Check if name is not the same, if so, we can return immediately
-        	if ($oldAlbum == $albumName) {
-        		return;
-        	}
+	        	//Get the old album name
+	        	$oldAlbum = $this->getAlbumName($id);
+	        	
+	        	//Check if name is not the same, if so, we can return immediately
+	        	if ($oldAlbum == $albumName) {
+	        		return;
+	        	}
         
             //Create query from image to change the info in the database
             $id = $this->database->escape($id);
@@ -301,39 +256,16 @@ class Urania {
             throw new Exception("There is no image with the id $id");
         }
         else {
-            //Find image
-            //Create query
-            $images = $this->database->escape($this->db_table_images);
-            $id = $this->database->escape($id);
             
-            $query = 
-            "
-            SELECT * 
-            FROM  `$images` 
-            WHERE  `id` = $id
-            LIMIT 0 , 30
-            ";
+            //Get image from database
+            $image = Database\Image::getImageById($id);
             
-            //DEBUG
-            if($this->debug) {
-                echo $query;
-            }
+            //Delete file
+            unlink( __DIR__ . '/../' . $image->getFileName() );
             
-            //Fetch query
-            $result = $this->database->getQuery($query);
-            $image = new Image($result[0]['id'], $result[0]['fileName'], $result[0]['name'], $result[0]['date'], $result[0]['albumId']);
+            //Delete image from database
+            Database\Image::deleteImage($id);
             
-            unlink(dirname(__FILE__) . '/../' . $this->uploadDir . '/' . $this->simplifyFileName($this->getAlbumName($image->getAlbumId())) . '/' . $image->getFileName());
-            
-            //Delete image in the database
-            $query = "DELETE FROM `$images` WHERE `$images`.`id` = $id";
-            $this->database->doQuery($query);
-            
-           
-            //Debug           
-            if($this->debug) {
-                echo $query;
-            }
         }
     }
     

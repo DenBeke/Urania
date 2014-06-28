@@ -62,15 +62,18 @@ class Album {
 	}
 	
 	
-	/**
+    	/**
 	Add a new photo album to the database with the given name
-	@param name
+	
+ 	@param name
+ 	@param date
+ 	
 	@pre there is no album with the given name
 	@pre album name cannot be empty
 	*/
-	static public function addAlbum($albumName) {
+	static public function addAlbum($albumName, $date) {
 		
-		if(self::ALBUMSNameExists($albumName)) {
+		if(self::AlbumNameExists($albumName)) {
 			
 			throw new Exception("There is already an album with the name '$albumName'");
 		
@@ -82,7 +85,13 @@ class Album {
 		}
 		else {
 		
-			//TODO!!!
+			$data = array(
+				'name' => $albumName,
+				'date' => $date
+			);
+			$insertId = BUILDER::table(self::ALBUMS)->insert($data);
+			
+			return $insertId;
 		
 		}
 		
@@ -104,7 +113,12 @@ class Album {
 		
 		//Add the latest image to each album
 		foreach ($albums as $album) {
-			$album->addImage(Image::getLatestImage($album->getId()));
+			try {
+				$album->addImage(Image::getLatestImage($album->getId()));
+			}
+			catch (\exception $e) {
+				continue;
+			}
 		}
 		
 		return $albums;

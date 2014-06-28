@@ -134,6 +134,27 @@ class Image {
 	}
 	
 	
+	/**
+	Add the given (new) image to the database
+	
+	@param image
+	*/
+	static public function addImage($image) {
+	
+		$data = array(
+			'name' => $image->getName(),
+			'fileName' => $image->getFileName(),
+			'date' => $image->getDate(),
+			'albumId' => $image->getAlbumId()
+		);
+		
+		$insertId = BUILDER::table(self::IMAGES)->insert($data);
+		
+		return $insertId;
+
+	
+	}
+	
 	
 	/**
 	Convert the database result to an instance of Image
