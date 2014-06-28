@@ -18,6 +18,9 @@ Image Database Controller
 class Image {
 
 
+	const IMAGES = 'Images';
+
+
 	/**
 	Check if the image with the given id exists
 	
@@ -26,7 +29,7 @@ class Image {
 	*/
 	static public function imageExists($id) {
 	
-		$query = BUILDER::table('Images')->where('id', '=', $id);
+		$query = BUILDER::table(self::IMAGES)->where('id', '=', $id);
 		$count = $query->count();
 		
 		if($count == 1) {
@@ -49,7 +52,7 @@ class Image {
 	*/
 	static public function getImageById($id) {
 		
-		$query = BUILDER::table('Images')->where('id', '=', $id);
+		$query = BUILDER::table(self::IMAGES)->where('id', '=', $id);
 		$result = $query->get();
 		
 		if(sizeof($result) != 1) {
@@ -71,7 +74,7 @@ class Image {
 	*/
 	public function getImagesFromAlbum($albumId) {
 		
-		$query = BUILDER::table('Images')->where('albumId', '=', $albumId);
+		$query = BUILDER::table(self::IMAGES)->where('albumId', '=', $albumId);
 		$result = $query->get();
 		
 		return Image::resultToImage($result);
@@ -91,7 +94,7 @@ class Image {
 	*/
 	static public function getLatestImage($albumId) {
 		
-		$query = BUILDER::table('Images')->where('albumId', '=', $albumId)->orderBy('date', 'DESC')->limit(1);
+		$query = BUILDER::table(self::IMAGES)->where('albumId', '=', $albumId)->orderBy('date', 'DESC')->limit(1);
 		$result = $query->get();
 		
 		if(sizeof($result) != 1) {
@@ -112,7 +115,7 @@ class Image {
 	*/
 	static public function deleteImage($id) {
 	
-		$query = BUILDER::table('Images')->where('id', '=', $id);
+		$query = BUILDER::table(self::IMAGES)->where('id', '=', $id);
 		$result = $query->delete();
 	
 	}

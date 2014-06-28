@@ -17,7 +17,7 @@ Image Database Controller
 */
 class Album {
 
-	const ALBUM = 'Albums';
+	const ALBUMS = 'Albums';
 
 		
 	/**
@@ -28,7 +28,7 @@ class Album {
 	*/
 	static public function albumNameExists($name) {
 		
-		$query = BUILDER::table(self::ALBUM)->where('name', '=', $name);
+		$query = BUILDER::table(self::ALBUMS)->where('name', '=', $name);
 		$count = $query->count();
 		
 		if($count >= 1) {
@@ -50,7 +50,7 @@ class Album {
 	*/
 	static public function addAlbum($albumName) {
 		
-		if(self::albumNameExists($albumName)) {
+		if(self::ALBUMSNameExists($albumName)) {
 			
 			throw new Exception("There is already an album with the name '$albumName'");
 		
@@ -77,7 +77,7 @@ class Album {
 	static public function getAllAlbums() {
 		
 		//Get all albums		
-		$query = BUILDER::table(self::ALBUM)->select('*')->orderBy('date', 'DESC');
+		$query = BUILDER::table(self::ALBUMS)->select('*')->orderBy('date', 'DESC');
 		$result = $query->get();
 		
 		$albums = self::resultToAlbum($result);
