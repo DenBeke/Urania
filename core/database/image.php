@@ -148,10 +148,11 @@ class Image {
 		foreach ($result as $image) {
 			
 			$id = intval($image->id);
+			$albumId = intval($image->albumId);
 			$fileName = $image->fileName;
+			$fileName = UPLOAD_DIR . simplifyFileName( Album::getAlbumName($albumId) ) . '/' . $fileName;
 			$name = $image->name;
 			$date = intval($image->date);
-			$albumId = intval($image->albumId);
 			
 			$output[] = new \Image($id, $fileName, $name, $date, $albumId);
 		}
