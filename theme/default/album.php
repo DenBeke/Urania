@@ -19,8 +19,11 @@ $imageWidth = 270;
 
 try {
 	$albumName = $this->album->getName();
+	$description = $this->album->getDescription();
 	
 	echo "<h1>$albumName</h1>";
+	
+	echo "<div class=\"album-description\">$description</div>";
 	
 	echo '<ul>';
 	

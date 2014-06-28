@@ -265,6 +265,13 @@ header {
 }
 
 
+.album-description {
+	padding-left: 30px;
+	padding-right: 30px;
+	font-weight: 300;
+	text-align: justify;
+}
+
 
 
 /* Footer *
@@ -347,6 +354,10 @@ footer a:hover {
 	#album ul li {
 		margin-left: 0;
 		margin-right: 0;
+	}
+	
+	.album-description {
+		padding: 0;
 	}
 
 
