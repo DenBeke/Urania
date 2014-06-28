@@ -156,6 +156,37 @@ class Image {
 	}
 	
 	
+	
+	/**
+	Change the name of the image in the database
+	
+	@param image id
+	@param new image name
+	
+	@pre image exists
+	@pre new image name not empty
+	*/
+	static public function changeImageName($id, $imageName) {
+		if(!self::imageExists($id)) {
+			throw new Exception("There is no image with the id $id");
+		}
+		elseif ($imageName == '') {
+			throw new Exception('Image name cannot be empty');
+		}
+		else {
+			
+			$data = array(
+				'name' => $imageName
+			);
+			
+			BUILDER::table(self::IMAGES)->where('id', '=', $id)->update($data);
+			
+		}
+	}
+	
+	
+	
+	
 	/**
 	Convert the database result to an instance of Image
 	

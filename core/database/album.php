@@ -184,46 +184,6 @@ class Album {
 		//TODO NOT YET TESTED
 		
 	}
-	
-	
-	
-	
-	/**
-	Change update the information of the given album in the database
-	
-	@param album
-	@param new album name
-	
-	@pre album exists
-	@pre there is no album with the new name
-	@pre new album name not empty
-	*/
-	public function changeAlbumName($id, $albumName) {
-		if(!self::albumExists($id)) {
-			throw new Exception("There is no album with the id $id");
-		}
-		elseif(self::albumNameExists($albumName)) {
-			throw new Exception("There is already an album with the new name '$albumName'");
-		}
-		elseif($albumName == '') {
-			throw new Exception("Album name cannot be empty");
-		}
-		else {
-			
-			//Get the old album name
-			$oldAlbum = self::getAlbumName($id);
-			
-			//Check if name is not the same, if so, we can return immediately
-			if ($oldAlbum == $albumName) {
-				return;
-			}
-		
-		
-			//TODO: update the album name in the database
-
-			
-		}
-	}
 
 	
 	
@@ -253,6 +213,28 @@ class Album {
 	
 	
 	
+	/**
+	Change update the information of the given album in the database
+
+	@param album
+	@param new album name
+
+	@pre album exists
+	@pre there is no album with the new name
+	@pre new album name not empty
+	*/
+	static public function changeAlbumName($id, $albumName) {
+			
+		$data = array(
+			'name' => $albumName
+		);
+		
+		BUILDER::table(self::ALBUMS)->where('id', '=', $id)->update($data);
+		
+	}
+	
+	
+	
 	
 	/**
 	Convert the database result to an instance of Album
@@ -260,7 +242,7 @@ class Album {
 	@param result
 	@return Album
 	*/
-	static private function resultToAlbum($result) {
+	static public function resultToAlbum($result) {
 
 		$output = [];
 

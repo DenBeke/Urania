@@ -161,33 +161,10 @@ class Urania {
     @pre new image name not empty
     */
     public function changeImageName($id, $imageName) {
-        if(!$this->imageExists($id)) {
-            throw new Exception("There is no image with the id $id");
-        }
-        elseif ($imageName == '') {
-            throw new Exception('Image name cannot be empty');
-        }
-        else {
-            //Create query from image
-            $id = $this->database->escape($id);
-            $name = $this->database->escape($imageName);
-            $images = $this->database->escape($this->db_table_images);
             
-            $query = 
-            "
-            UPDATE  `$images` SET
-            `name` =  '$name'
-            WHERE `id` = $id
-            ";
+    		Database\Image::changeImageName($id, $imageName);
             
-            $affectedRows = $this->database->doQuery($query);
-            
-            //Debug
-            if($this->debug) {
-                echo "$affectedRows affected rows with query<br>$query";
-            }
-            
-        }
+
     }
     
     
@@ -220,23 +197,7 @@ class Urania {
 	        		return;
 	        	}
         
-            //Create query from image to change the info in the database
-            $id = $this->database->escape($id);
-            $name = $this->database->escape($albumName);
-            $albums = $this->database->escape($this->db_table_albums);
-            
-            $query = 
-            "
-            UPDATE  `$albums` SET `name` =  '$name'
-            WHERE  `$albums`.`id` = $id;
-            ";
-            
-            $affectedRows = $this->database->doQuery($query);
-            
-            //Debug
-            if($this->debug) {
-                echo "$affectedRows affected rows with query<br>$query";
-            }
+            Database\Album::changeAlbumName($id, $albumName);
 
             rename(dirname(__FILE__) . '/../' . $this->uploadDir . '/' . $this->simplifyFileName($oldAlbum), dirname(__FILE__) . '/../' . $this->uploadDir . '/' . $this->simplifyFileName($albumName));
             
@@ -503,33 +464,7 @@ class Urania {
     */
     private function imageExists($id) {
         
-        //Create query
-        $images = $this->database->escape($this->db_table_images);
-        $id = $this->database->escape($id);
-        
-        $query = 
-        "
-        SELECT * 
-        FROM  `$images` 
-        WHERE  `id` = $id
-        LIMIT 0 , 30
-        ";
-        
-        //DEBUG
-        if($this->debug) {
-            echo $query;
-        }
-        
-        //Fetch query
-        $result = $this->database->getQuery($query);
-        
-        //Check if there is a result (album)
-        if(sizeof($result) > 0) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        Database\Image::imageExists($id);
         
     }
     
