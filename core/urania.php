@@ -142,33 +142,7 @@ class Urania {
     */
     public function getAllAlbums() {
         
-        //Create query
-        $albums = $this->database->escape($this->db_table_albums);
-    
-        $query = 
-        "
-        SELECT * 
-        FROM  `$albums` 
-        ORDER BY  `Albums`.`date` DESC 
-        ";
-        
-        $result = $this->database->getQuery($query);
-        
-        //Debug           
-        if($this->debug) {
-            echo $query;
-        }
-        
-        $albums = array();
-        
-        foreach ($result as $row => $album) {
-            $albums[] = new Album($album['id'], $album['name'], $album['date']);
-        }
-        foreach ($albums as $album) {
-        	$album->addImage($this->getLatestImage($album->getId()));
-        }
-        
-        return $albums;
+    		return Database\Album::getAllAlbums();
         
     }
     
@@ -183,43 +157,9 @@ class Urania {
     @pre id exists
     */
     public function getAlbum($id) {
-        if(!$this->albumExists($id)) {
-            throw new Exception("There is no album with the id $id");
-        }
-        else {
-            
-            //Get all images from the album
-            $images = $this->getImagesFromAlbum($id);
         
+        return Database\Album::getAlbum($id);
         
-            //Get album information
-            //Create query
-            $albums = $this->database->escape($this->db_table_albums);
-            $id = $this->database->escape($id);
-            
-            $query = 
-            "
-            SELECT * 
-            FROM  `$albums` 
-            WHERE id = $id
-            ";
-            
-            //Debug
-            if($this->debug) {
-                echo $query;
-            }
-            
-            //Fetch query
-            $result = $this->database->getQuery($query);
-            $album = new Album($result[0]['id'], $result[0]['name'], $result[0]['date']);
-            
-            foreach ($images as $image) {
-                $album->addImage($image);
-            }
-            
-            return $album;
-            
-        }
     }
     
     
@@ -232,33 +172,9 @@ class Urania {
     @pre image exists
     */
     public function getImage($id) {
-        if(!$this->imageExists($id)) {
-            throw new Exception("There is no image with the id $id");
-        }
-        else {
-            
-            //Create query
-            $images = $this->database->escape($this->db_table_images);
-            $id = $this->database->escape($id);
-            
-            $query = 
-            "
-            SELECT * 
-            FROM  `$images` 
-            WHERE id = $id
-            ";
-            
-            //Debug
-            if($this->debug) {
-                echo $query;
-            }
-            
-            //Fetch query
-            $result = $this->database->getQuery($query);
-            $image = new Image($result[0]['id'], $this->uploadDir . $this->simplifyFileName($this->getAlbumName($result[0]['albumId'])) . '/' . $result[0]['fileName'], $result[0]['name'], $result[0]['date'], $result[0]['albumId']);
-            
-            return $image;
-        }
+        
+        return Database\Image::getImageById($id);
+        
     }
     
     
@@ -273,35 +189,7 @@ class Urania {
     */
     public function getLatestImages($count) {
     
-	    	if(intval($count) < 1) {
-	    		throw new Exception("Number of images must be at least 1");
-	    	}
-	    	else {
-	    		
-	    		//Create query
-	    		$count = $this->database->escape($count);
-	    		$images = $this->database->escape($this->db_table_images);
-	    		
-	    		$query = 
-	    		"
-	    		SELECT *
-	    		FROM `$images`
-	    		ORDER BY `date` DESC
-	    		LIMIT 0, $count
-	    		";
-	    		
-	    		$result = $this->database->getQuery($query);
-	    		$outputArray = array();
-	    		
-	    		for($i = 0; $i < sizeof($result); $i++) {
-	    		
-	    			$outputArray[] = new Image($result[$i]['id'], $this->uploadDir . $this->simplifyFileName($this->getAlbumName($result[$i]['albumId'])) . '/' . $result[$i]['fileName'], $result[$i]['name'], $result[$i]['date'], $result[$i]['albumId']);
-	    		
-	    		}
-	    		
-	    		return $outputArray;
-	    		
-	    	}
+	    	return Database\Image::getLatestImages($count);
     
     }
     
@@ -488,34 +376,7 @@ class Urania {
     
     private function albumExists($id) {
         
-        //Create query
-        $albums = $this->database->escape($this->db_table_albums);
-        $id = $this->database->escape($id);
-        
-        $query = 
-        "
-        SELECT * 
-        FROM  `$albums` 
-        WHERE  `id` = $id
-        LIMIT 0 , 30
-        ";
-    
-        //DEBUG
-        if($this->debug) {
-            echo $query;
-        }
-        
-        //Fetch query
-        $result = $this->database->getQuery($query);
-        
-        //Check if there is a result (album)
-        if(sizeof($result) > 0) {
-            return true;
-        }
-        else {
-            return false;
-        }
-        
+        return Database\Album::albumExists($id);       
     }
     
     
@@ -596,36 +457,9 @@ class Urania {
     @pre albume exists
     */
     private function getAlbumName($id) {
-    	if(!$this->albumExists($id)) {
-    	    throw new Exception("There is no album with the id $id");
-    	}
-    	else {
-    	
- 
-    	    //Create query
-    	    $albums = $this->database->escape($this->db_table_albums);
-    	    $id = $this->database->escape($id);
-    	    
-    	    $query = 
-    	    "
-    	    SELECT * 
-    	    FROM  `$albums` 
-    	    WHERE id = $id
-    	    ";
-    	    
-    	    //Debug
-    	    if($this->debug) {
-    	        echo $query;
-    	    }
-    	    
-    	    //Fetch query
-    	    $result = $this->database->getQuery($query);
-    	    $album = new Album($result[0]['id'], $result[0]['name'], $result[0]['date']);
-    	    
-    	    return $album->getName();
-    	    
-    	}
-    	
+    
+    		return Database\Album::getAlbumName($id);
+        	
     }
     
     
@@ -703,7 +537,7 @@ class Urania {
     @return true/false
     */
     private function fileNameExists($fileName) {
-    	return file_exists(dirname(__FILE__) . '/../' . $this->uploadDir . '/' . $fileName);
+    		return file_exists(dirname(__FILE__) . '/../' . $this->uploadDir . '/' . $fileName);
     }
     
     
@@ -776,67 +610,15 @@ class Urania {
     */
     private function albumNameExists($albumName) {
 	    	
-	    	//Create query
-	    	$albums = $this->database->escape($this->db_table_albums);
-	    	$albumName = $this->database->escape($albumName);
-	    	
-	    	$query = 
-	    	"
-	    	SELECT * 
-	    	FROM  `$albums` 
-	    	WHERE  `name` = '$albumName'
-	    	LIMIT 0 , 30
-	    	";
-	    	
-	    	//DEBUG
-	    	if($this->debug) {
-	    	    echo $query;
-	    	}
-	    	
-	    	//Fetch query
-	    	$result = $this->database->getQuery($query);
-	    	
-	    	//Check if there is a result (album)
-	    	if(sizeof($result) > 0) {
-	    	    return true;
-	    	}
-	    	else {
-	    	    return false;
-	    	}
+	    return Database\Album::albumNameExists($albumName);
     	
     }
     
     
     private function getImagesFromAlbum($albumId) {
         
-        //Create query
-        $images = $this->database->escape($this->db_table_images);
-        $albumId = $this->database->escape($albumId);
+        return Database\Album::getImagesFromAlbum($albumId);
         
-        $query = 
-        "
-        SELECT * 
-        FROM  `$images` 
-        WHERE  `albumId` = $albumId
-        ORDER BY  `$images`.`date` DESC
-        ";
-        
-        //DEBUG
-        if($this->debug) {
-            echo $query;
-        }
-        
-        //Fetch query
-        $result = $this->database->getQuery($query);
-        
-        //Create images from result
-        $images = array();
-        
-        foreach ($result as $row => $image) {
-            $images[] = new Image($image['id'], $this->uploadDir . $this->simplifyFileName($this->getAlbumName($albumId)) . '/' . $image['fileName'], $image['name'], $image['date'], $image['albumId']);
-        }
-        
-        return $images;
     }
     
     
@@ -850,42 +632,11 @@ class Urania {
     @pre album exists
     */
     private function getLatestImage($id) {
-        if(!$this->albumExists($id)) {
-            throw new Exception("There is no album with the id $id");
-        }
-        else {
-            
-            //Create query
-            $images = $this->database->escape($this->db_table_images);
-            $id = $this->database->escape($id);
-            
-            $query = 
-            "
-            SELECT * 
-            FROM  `$images` 
-            WHERE albumId = $id
-            ORDER BY  `$images`.`date` DESC 
-            LIMIT 0,1
-            ";
-            
-            //Debug
-            if($this->debug) {
-                echo $query;
-            }
-            
-            //Fetch query
-            $result = $this->database->getQuery($query);
-            if(!$result) {
-                $image = new Image(0, 'notfound.jpg', 'error', 0, $id);
-                return $image;
-            }
-            else {
-                $image = new Image($result[0]['id'], $this->uploadDir . $this->simplifyFileName($this->getAlbumName($id)) . '/' . $result[0]['fileName'], $result[0]['name'], $result[0]['date'], $result[0]['albumId']);
-                 return $image;
-            }
         
-        }
+        return Database\Image::getLatestImage($id);
+        
     }
+
 }
 
 

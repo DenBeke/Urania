@@ -26,8 +26,4 @@ $config = array(
 new \Pixie\Connection('mysql', $config, '\Database\BUILDER');
 
 
-foreach (Album::getAllAlbums() as $album) {
-	echo $album;
- }
-
 ?>

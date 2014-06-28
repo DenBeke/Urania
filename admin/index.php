@@ -7,6 +7,12 @@ Url: http://denbeke.be
 Date: September 2013
 */
 
+//Include general functions
+require_once( __DIR__ . '/../core/functions.php');
+
+//Include database controller
+require_once( __DIR__ . '/../core/database/database.php');
+
 //require_once('./core/config.php');
 require_once( dirname(__FILE__) . '/../core/urania.php');
 require_once( dirname(__FILE__) . '/../core/glue.php');

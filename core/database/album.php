@@ -42,7 +42,10 @@ class Album {
 	
 	
 	/**
+	Check if the album with the given id exists
 	
+	@param id
+	@return exists(true) or not(false)
 	*/
 	static public function albumExists($id) {
 	
@@ -136,6 +139,7 @@ class Album {
 			}
 			
 			return $album;
+			
 		}
 		
 	}
