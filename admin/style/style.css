@@ -329,8 +329,12 @@ span.empty-description {
 	color: gray;
 }
 
-.description {
+.album-description {
 	font-weight: ;
+}
+
+.album-description .pure-button {
+	font-size: 7px;
 }
 
 

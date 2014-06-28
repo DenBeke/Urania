@@ -24,7 +24,7 @@ if($this->notification != NULL) {
 <h2 id="admin-album-title"><?php echo $this->album->getName(); ?></h2>
 
 
-<div class="description">
+<div class="album-description">
 	<?php
 	if($this->album->getDescription() == '') {
 		?>
@@ -35,6 +35,7 @@ if($this->notification != NULL) {
 		echo $this->album->getDescription();
 	}
 	?>
+	<a href="#change-album-description" class="pure-button pure-button-primary edit-button"><span class="glyphicon glyphicon-pencil"></span></a>
 	<p></p>
 </div>
 
