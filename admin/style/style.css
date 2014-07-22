@@ -504,6 +504,13 @@ table th[class*="col-"] {
 
 
 
+.album-description-edit-container {
+	padding-left: 15px;
+	box-sizing: border-box;
+}
+
+
+
 /* Form enhancements *
 *********************/
 
@@ -517,6 +524,14 @@ input {
 	box-sizing: border-box;
 	font-weight: inherit;
 	font-size: inherit;
+}
+
+input[type=submit] {
+	margin-top: 15px;
+}
+
+textarea {
+	height: 120px;
 }
 
 

@@ -212,66 +212,81 @@ if($this->notification != NULL) {
 
 
 
-
-<div class="panel pure-u-1-3">
-
-
-	<div class="panel-header">
-		<h3 class="panel-title"><span class="glyphicon glyphicon-open"></span> Upload Photos</h3>
-	</div>
-
-
-	<div class="panel-body">
+<div class="pure-g">
 	
-		<form id="uploadImages" enctype="multipart/form-data" name="upload" action="<?php echo SITE_URL; ?>admin/album/<?php echo $this->album->getId(); ?>" method="post" class="pure-form pure-form-stacked">
-
-			<p>
-				<input class="pure-input pure-u-1" type="file" name="file[]" multiple required>
-			</p>
-		
-			<input type="hidden" name="albumId" value="<?php echo $this->album->getId(); ?>">
-			
-			
-			<input class="pure-input pure-button pure-button-primary pure-u-1" type="submit" value="Upload">
-			<!-- <button class="pure-input pure-button pure-button-primary pure-u-1" type="submit">
-				Upload
-			</button>-->
-			
-		</form>
+	
+	<div class="pure-u-1-3 album-upload-photos-container">
+	
+		<div class="panel">
+	
+	
+			<div class="panel-header">
+				<h3 class="panel-title"><span class="glyphicon glyphicon-open"></span> Upload Photos</h3>
+			</div>
+	
+	
+			<div class="panel-body">
+	
+				<form id="uploadImages" enctype="multipart/form-data" name="upload" action="<?php echo SITE_URL; ?>admin/album/<?php echo $this->album->getId(); ?>" method="post" class="pure-form pure-form-stacked">
+	
+					<p>
+						<input class="pure-input pure-u-1" type="file" name="file[]" multiple required>
+					</p>
+	
+					<input type="hidden" name="albumId" value="<?php echo $this->album->getId(); ?>">
+	
+	
+					<input class="pure-input pure-button pure-button-primary" type="submit" value="Upload">
+					<!-- <button class="pure-input pure-button pure-button-primary pure-u-1" type="submit">
+						Upload
+					</button>-->
+	
+				</form>
+	
+			</div>
+	
+	
+		</div><!-- .panel -->
 	
 	</div>
-
-
-</div><!-- .panel -->
-
-
-
-
-<div class="panel pure-u-1-3">
-
-
-	<div class="panel-header">
-		<h3 class="panel-title"><span class="glyphicon glyphicon-align-center"></span> Album Description</h3>
+	
+	
+	
+	
+	<div class="pure-u-2-3 album-description-edit-container">
+	
+		<div class="panel">
+	
+	
+			<div class="panel-header">
+				<h3 class="panel-title"><span class="glyphicon glyphicon-align-center"></span> Album Description</h3>
+			</div>
+	
+	
+			<div class="panel-body">
+	
+				<form id="change-album-description" name="change-description" action="<?php echo SITE_URL; ?>admin/album/<?php echo $this->album->getId(); ?>/edit-description" method="post" class="pure-form pure-form-stacked">
+	
+					<textarea name="description"><?php echo $this->album->getDescription(); ?></textarea>
+	
+					<input class="pure-input pure-button pure-button-primary" type="submit" value="Update">
+					<!-- <button class="pure-input pure-button pure-button-primary pure-u-1" type="submit">
+						Upload
+					</button>-->
+	
+				</form>
+	
+			</div>
+	
+	
+		</div><!-- .panel -->
+	
 	</div>
+	
+	
+</div><!-- .pure-g -->
 
 
-	<div class="panel-body">
-
-		<form id="change-album-description" name="change-description" action="<?php echo SITE_URL; ?>admin/album/<?php echo $this->album->getId(); ?>/edit-description" method="post" class="pure-form pure-form-stacked">
-
-			<textarea name="description"></textarea>
-
-			<input class="pure-input pure-button pure-button-primary pure-u-1" type="submit" value="Update">
-			<!-- <button class="pure-input pure-button pure-button-primary pure-u-1" type="submit">
-				Upload
-			</button>-->
-
-		</form>
-
-	</div>
-
-
-</div><!-- .panel -->
 
 
 
