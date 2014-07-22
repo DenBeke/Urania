@@ -7,6 +7,9 @@ Url: http://denbeke.be
 Date: March 2013
 */
 
+require_once(dirname(__FILE__) . '/php-markdown/Michelf/MarkdownExtra.inc.php');
+use \Michelf\MarkdownExtra;
+
 
 /**
 Simplify a file name to store the file on the disk
@@ -46,6 +49,23 @@ function simplifyFileName($fileName) {
 		$fileName = preg_replace('#\s+#', '-', $fileName);
 		return $fileName;
 }
+
+
+
+
+
+/**
+Markup a markdown snippet
+
+@param markdown
+@return html
+*/
+function markdown_convert($md) {
+	
+	return MarkdownExtra::defaultTransform($md);
+	
+}
+
 
 
 

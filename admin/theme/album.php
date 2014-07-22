@@ -32,7 +32,7 @@ if($this->notification != NULL) {
 		<?php
 	}
 	else {
-		echo $this->album->getDescription();
+		echo markdown_convert($this->album->getDescription());
 	}
 	?>
 	<a href="#change-album-description" class="pure-button pure-button-primary edit-button"><span class="glyphicon glyphicon-pencil"></span></a>

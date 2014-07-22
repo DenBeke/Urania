@@ -20,6 +20,7 @@ $imageWidth = 270;
 try {
 	$albumName = $this->album->getName();
 	$description = $this->album->getDescription();
+	$description = markdown_convert($description);
 	
 	echo "<h1>$albumName</h1>";
 	

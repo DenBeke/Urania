@@ -57,6 +57,7 @@ Acknowledgements
 ================
 
 * [Pixie](https://github.com/usmanhalalit/pixie) by Muhammad Usman
+* [PHP Markdown Lib](https://github.com/michelf/php-markdown) by Michel Fortin
 
 
 *Created by Mathias Beke - [denbeke.be](http://denbeke.be)*
