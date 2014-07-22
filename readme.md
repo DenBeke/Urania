@@ -58,6 +58,11 @@ Acknowledgements
 
 * [Pixie](https://github.com/usmanhalalit/pixie) by Muhammad Usman
 * [PHP Markdown Lib](https://github.com/michelf/php-markdown) by Michel Fortin
+* [TimThumb](http://www.binarymoon.co.uk/projects/timthumb/) by Ben Gillbanks and Mark Maunder
+* [GluePHP](http://gluephp.com) by Joe Topjian
+* [GLYPHICONS](http://glyphicons.com) by Jan Kovařík
+* [Pure](http://purecss.io) by Yahoo! Inc.
+* [jQuery](http://jquery.com)
 
 
 *Created by Mathias Beke - [denbeke.be](http://denbeke.be)*
