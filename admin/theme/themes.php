@@ -43,7 +43,7 @@ Date: May 2014
 					
 				<?php else: ?>
 					
-					<a class="pure-button pure-button-primary activate-theme active-theme-button"><span class="glyphicon glyphicon-ok"></span> Active Theme</a>
+					<a class="pure-button pure-button-primary activate-theme active-theme-button"><span class="glyphicon glyphicon-ok"></span></a>
 					
 				<?php endif; ?>
 	
