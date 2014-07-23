@@ -1,0 +1,4 @@
+#Exclude everything in the upload directory except the .htacces file
+*
+!.htaccess
+!.gitignore

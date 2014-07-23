@@ -1,29 +1,34 @@
 <?php
-//Connection details for the database
-$db_host = 'localhost';
-$db_user = 'root';
-$db_password = 'root';
-$db_database = 'Urania';
 
-$db_table_albums = 'Albums';
-$db_table_images = 'Images';
+//Get the base dir of the installation
+define( 'BASE_DIR', __DIR__ . '/..' );
+
+//Connection details for the database
+define( 'DB_HOST', 'localhost');
+define( 'DB_USER', 'root');
+define( 'DB_PASSWORD', 'root');
+define( 'DB_DATABASE', 'Urania');
+
+define('DB_TABLE_ALBUMS', 'Albums');
+define('DB_TABLE_IMAGES', 'Images');
 
 
 //User login
-$user_name = 'root';
-$user_password = 'root';
+define('USERNAME', 'root');
+define('PASSWORD', 'root');
 
 
 //Upload directory with slash!!
-$uploadDir = 'upload/';
+define('UPLOAD_DIR', 'upload/');
 
 //General Site Information
-$siteTitle = 'DenBeke Images';
-$siteUrl = 'http://localhost:8888/Urania/'; //With slahs!!
+//define('SITE_TITLE', 'DenBeke Images');
+//define('SITE_URL', 'http://localhost:8888/Urania/'); //With slash!!
+define('INSTALL_DIR', '/Urania'); //Without slash
 
 //Time zone
 date_default_timezone_set('Europe/Brussels');
 
 //Copyright
-$copyright = '&copy; Mathias Beke - <a href="http://denbeke.be">DenBeke.be</a>';
+//define('COPYRIGHT', '&copy; Mathias Beke - <a href="http://denbeke.be">DenBeke.be</a>');
 ?>

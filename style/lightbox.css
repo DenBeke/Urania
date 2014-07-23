@@ -1,0 +1,207 @@
+/*
+Style for Lightbox of Urania Image Gallery
+
+Author: Mathias Beke
+Url: http://denbeke.be
+Date: September 2013
+*/
+
+
+
+#overlay {
+	position: fixed;
+	padding: 0;
+	margin: 0;
+	top: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.9);
+	width: 100%;
+	height: 100%;
+	display: none;
+	text-align: center;
+	vertical-align: middle;
+	overflow: scroll;
+}
+
+#lightboxContent {
+    overflow: scroll;
+    max-width: 1100px;
+    margin: auto;
+}
+
+
+#lightboxWrapper {
+	overflow: auto;
+	border-radius: 5px;
+	max-width: 95%;
+	margin: auto;
+	table-layout: fixed;
+	display: table;
+	overflow: hidden;
+}
+
+
+#lightboxContent #meta {
+	width: 300px;
+	display: table-cell;
+	background-color: #fff;
+	margin: 0;
+	padding: 5px;
+	vertical-align: top;
+}
+
+
+#lightboxMap.leaflet-container {
+	width: 290px;
+	height: 290px;
+	margin: auto;
+}
+
+
+#lightboxContent #imageContainer {
+	background-color: #000;
+	width: 800px;
+	max-width: 800px;
+	min-height: 400px;
+	height: 400px;
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+	padding: 0;
+	font-size: 0pt;
+}
+
+#lightboxContent img#photo {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    max-height: 600px;
+    margin: 0;
+    
+}
+
+
+#lightboxContent ul.exif {
+	color: #666;
+	text-align: left;
+}
+
+#lightboxContent ul.exif li {
+	list-style: url('../img/list_arrow.png');
+}
+
+
+
+/* Ajax loader animation */
+
+
+.loading {
+	margin: auto;
+	border-bottom: 4px solid #ddd;
+	border-left: 4px solid #ddd;
+	border-right: 4px solid #555;
+	border-top: 4px solid #555;
+	border-radius: 100%;
+	height: 50px;
+	width: 50px;
+	-webkit-animation: spin .6s infinite linear;
+	-moz-animation: spin .6s infinite linear;
+	-ms-animation: spin .6s infinite linear;
+	-o-animation: spin .6s infinite linear;
+	animation: spin .6s infinite linear;
+
+	display: none;
+}
+
+
+.loading.active {
+	display: block;
+}
+
+
+
+@keyframes "spin" {
+ from {
+    -webkit-transform: rotate(0deg);
+   	-moz-transform: rotate(0deg);
+   	-o-transform: rotate(0deg);
+   	-ms-transform: rotate(0deg);
+   	transform: rotate(0deg);
+ }
+ to {
+    -webkit-transform: rotate(359deg);
+   	-moz-transform: rotate(359deg);
+   	-o-transform: rotate(359deg);
+   	-ms-transform: rotate(359deg);
+   	transform: rotate(359deg);
+ }
+
+}
+
+@-moz-keyframes spin {
+ from {
+   -moz-transform: rotate(0deg);
+   transform: rotate(0deg);
+ }
+ to {
+   -moz-transform: rotate(359deg);
+   transform: rotate(359deg);
+ }
+
+}
+
+@-webkit-keyframes "spin" {
+ from {
+   -webkit-transform: rotate(0deg);
+   transform: rotate(0deg);
+ }
+ to {
+   -webkit-transform: rotate(359deg);
+   transform: rotate(359deg);
+ }
+
+}
+
+@-ms-keyframes "spin" {
+ from {
+   -ms-transform: rotate(0deg);
+   transform: rotate(0deg);
+ }
+ to {
+   -ms-transform: rotate(359deg);
+   transform: rotate(359deg);
+ }
+
+}
+
+@-o-keyframes "spin" {
+ from {
+   -o-transform: rotate(0deg);
+   transform: rotate(0deg);
+ }
+ to {
+   -o-transform: rotate(359deg);
+   transform: rotate(359deg);
+ }
+
+}
+
+
+
+/* Responsive part for the lightbox */
+
+@media screen and (max-width: 800px) {
+
+	#lightboxContent #meta {
+		display: block;
+		width: auto;
+	}
+
+	#lightboxContent #imageContainer {
+		display: block;
+		width: auto;
+		min-height: 200px;
+	}
+
+}
+

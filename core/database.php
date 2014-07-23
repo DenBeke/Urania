@@ -8,7 +8,7 @@ Date: August 2013
 */
 
 
-require(dirname(__FILE__).'/cache.php');
+require( __DIR__ .'/cache.php');
 
 
 /**
@@ -34,15 +34,25 @@ class Database {
     @param user
     @param password
     @param database
+    @param cache folder
     */
-    public function __construct($db_host, $db_user, $db_password, $db_database) {
+    public function __construct($db_host, $db_user, $db_password, $db_database, $cache) {
         
         $this->db_host = $db_host;
         $this->db_user = $db_user;
         $this->db_password = $db_password;
         $this->db_database = $db_database;
-        $this->cache = new Cache();
+        $this->cache = new Cache($cache);
         
+        $this->connect();
+        
+    }
+    
+    
+    public function __destruct() {
+    	
+    	$this->disconnect();
+    	
     }
     
     
@@ -53,9 +63,7 @@ class Database {
     @return escaped string
     */
     public function escape($string) {
-        $this->connect();
         $out = $this->link->real_escape_string($string);
-        $this->disconnect();
         return $out;
     }
     
@@ -85,8 +93,8 @@ class Database {
         //Else fetch array from database and write array to the cache
         else {
             
-            $this->connect();
             $mysqlResult = $this->link->query($query);
+            
             
             if(!$mysqlResult) {
             	throw new Exception('MySQL Error: ' . $this->link->error);
@@ -97,7 +105,6 @@ class Database {
             }
                
             $this->cache->writeCache($query, serialize($result));
-            $this->disconnect();
         }
         
         return $result;
@@ -114,15 +121,12 @@ class Database {
     */
     public function doQuery($query) {
         
-        $this->connect();
         $this->link->query($query);
         $affectedRows = $this->link->affected_rows;
         
 		if($affectedRows == -1) {
 			throw new Exception('MySQL Error: ' . $this->link->error);
 		}        
-     
-        $this->disconnect();
         return $affectedRows;
         
     }
