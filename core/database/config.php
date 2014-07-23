@@ -9,8 +9,6 @@ Date: July 2014
 
 namespace Database;
 
-require_once(__DIR__ . '/../model/album.php');
-
 
 /**
 Config Database Controller
@@ -62,8 +60,15 @@ class Config {
 		
 		foreach ($config_data as $config_key => $config_value) {
 			
-			//TODO check for empty keys/values
-			self::saveSingle($config_key, $config_value);
+			if($config_key == '' or $config_key == NULL) {
+				throw new \exception('No config key given');	
+			}
+			elseif($config_value == '' or $config_value == NULL) {
+				throw new \exception('No config value given');
+			}
+			else {
+				self::saveSingle($config_key, $config_value);	
+			}
 			
 		}
 		
