@@ -29,6 +29,19 @@ class Options {
 	*/
 	static public function init() {
 		self::$options = Config::read();
+		
+		//Create system options
+		
+		//Site url/title/footer
+		define('SITE_TITLE', self::get('site_title'));
+		define('SITE_URL', self::get('site_url')); //With slash!!
+		define('COPYRIGHT', self::get('copyright'));
+		
+		//Theme
+		define('THEME_DIR', BASE_DIR . '/theme/' . self::get('theme') );
+		define('THEME_URL', SITE_URL . 'theme/' . self::get('theme') );
+		define('THEME', self::get('theme'));
+		
 	}
 	
 	
@@ -40,7 +53,7 @@ class Options {
 	*/
 	static public function get($key) {
 		
-		if(!isset($key)) {
+		if(!isset(self::$options[$key])) {
 			throw new exception("Option($key) not found");
 		}
 		else {
@@ -80,6 +93,10 @@ class Options {
 	
 	
 }
+
+
+
+Options::init();
 
 
 ?>

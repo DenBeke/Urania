@@ -620,6 +620,11 @@ textarea {
 	width: 67%;
 }
 
+.active-theme-button {
+	background-color: green !important;
+	cursor: default;
+}
+
 
 /* Site Configuration *
 **********************/

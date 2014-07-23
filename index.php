@@ -17,6 +17,9 @@ require_once( __DIR__ . '/core/functions.php');
 //Include database controller
 require_once( __DIR__ . '/core/database/database.php');
 
+//Include options
+require_once __DIR__ . '/core/options.php';
+
 //Include GluePHP for url handling
 require_once( __DIR__ . '/core/glue.php');
 

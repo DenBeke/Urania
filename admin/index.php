@@ -22,6 +22,9 @@ require_once( __DIR__ . '/../core/functions.php');
 //Include database controller
 require_once( __DIR__ . '/../core/database/database.php');
 
+//Include options
+require_once BASE_DIR .'/core/options.php';
+
 
 //Include controllers
 require_once( __DIR__ . '/../core/controller/admin/error.php' );
@@ -44,6 +47,7 @@ $urls = array(
 	INSTALL_DIR . '/admin/login' 				=> 'Controller\Admin\Login',
 	INSTALL_DIR . '/admin/logout' 				=> 'Controller\Admin\Logout',
 	INSTALL_DIR . '/admin/themes' 				=> 'Controller\Admin\Themes',
+	INSTALL_DIR . '/admin/themes/([a-z\-]+)/([a-z\-_]+)' 				=> 'Controller\Admin\Themes',
 	INSTALL_DIR . '/admin/configuration'			=> 'Controller\Admin\Configuration',
 );
 	

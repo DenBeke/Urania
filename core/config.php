@@ -22,14 +22,13 @@ define('PASSWORD', 'root');
 define('UPLOAD_DIR', 'upload/');
 
 //General Site Information
-define('SITE_TITLE', 'DenBeke Images');
-define('SITE_URL', 'http://localhost:8888/Urania/'); //With slash!!
+//define('SITE_TITLE', 'DenBeke Images');
+//define('SITE_URL', 'http://localhost:8888/Urania/'); //With slash!!
 define('INSTALL_DIR', '/Urania'); //Without slash
-define('THEME_DIR', __DIR__ . '/../theme/default');
 
 //Time zone
 date_default_timezone_set('Europe/Brussels');
 
 //Copyright
-define('COPYRIGHT', '&copy; Mathias Beke - <a href="http://denbeke.be">DenBeke.be</a>');
+//define('COPYRIGHT', '&copy; Mathias Beke - <a href="http://denbeke.be">DenBeke.be</a>');
 ?>

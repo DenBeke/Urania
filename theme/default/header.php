@@ -25,20 +25,20 @@ Date: March 2013
 	
 	<script src="<?php echo SITE_URL; ?>js/browsercheck.js" type="text/javascript"></script>
 	
-	<link rel="stylesheet" href="<?php echo SITE_URL; ?>theme/default/pure.css" type="text/css" />
+	<link rel="stylesheet" href="<?php echo THEME_URL; ?>/pure.css" type="text/css" />
 	
-	<link rel="stylesheet" href="<?php echo SITE_URL; ?>theme/default/grids-responsive.css" type="text/css" />
+	<link rel="stylesheet" href="<?php echo THEME_URL; ?>/grids-responsive.css" type="text/css" />
 	
-	<link rel="stylesheet" href="<?php echo SITE_URL; ?>theme/default/style.css" type="text/css" />
+	<link rel="stylesheet" href="<?php echo THEME_URL; ?>/style.css" type="text/css" />
 	
-	<!--<link rel="stylesheet" href="<?php echo SITE_URL; ?>theme/default/glyphicons.css" type="text/css" />-->
+	<!--<link rel="stylesheet" href="<?php echo THEME_URL; ?>/glyphicons.css" type="text/css" />-->
 	
     <link rel="stylesheet" href="<?php echo SITE_URL; ?>style/lightbox.css" type="text/css" />
     
     <link rel="stylesheet" href="<?php echo SITE_URL; ?>style/leaflet.css" />
    
     <!--[if lte IE 8]>
-        <link rel="stylesheet" href="<?php echo SITE_TITLE; ?>style/leaflet.ie.css" />
+        <link rel="stylesheet" href="<?php echo SITE_URL; ?>style/leaflet.ie.css" />
     <![endif]-->
     
     <script src="<?php echo SITE_URL; ?>js/leaflet.js"></script>

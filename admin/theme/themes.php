@@ -15,7 +15,7 @@ Date: May 2014
 
 <div id="admin-themes pure-g-r">
 
-<?php foreach ($this->themes as $theme) { ?>
+<?php foreach ($this->themes as $theme_name => $theme) { ?>
 	
 	<div class="pure-u-sm-1 pure-u-md-1-2 pure-u-lg-1-3 theme-container">
 		
@@ -25,7 +25,7 @@ Date: May 2014
 			<!-- Theme preview image -->
 			<div class="theme-image-container">
 				
-				<img src="<?php echo SITE_URL . 'theme/default/screenshot.png'; ?>" class="theme-image">
+				<img src="<?php echo SITE_URL . 'theme/' . $theme_name . '/screenshot.png'; ?>" class="theme-image">
 				
 			</div>
 			
@@ -34,10 +34,18 @@ Date: May 2014
 				
 				<!-- Theme name -->
 				<h4>
-					<?php echo $theme->name; ?>	
+					<?php echo $theme->name; ?>
 				</h4>
 
-				<a href="" class="pure-button pure-button-primary activate-theme">Activate</a>
+				<?php if(THEME != $theme_name):  ?>
+					
+					<a href="<?php echo SITE_URL . 'admin/themes/activate/' . $theme_name; ?>" class="pure-button pure-button-primary activate-theme">Activate</a>
+					
+				<?php else: ?>
+					
+					<a class="pure-button pure-button-primary activate-theme active-theme-button"><span class="glyphicon glyphicon-ok"></span> Active Theme</a>
+					
+				<?php endif; ?>
 	
 				
 				

@@ -90,4 +90,20 @@ function createConfigTable($link) {
 
 
 
+function saveDefaultOptions() {
+	
+	//TODO!!!
+	
+	$options = [
+		'theme' => 'default',
+		'site_title' => '',
+		'site_url' => '',
+		'copyright' => '',
+	];
+	
+}
+
+
+
+
 ?>
