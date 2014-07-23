@@ -67,14 +67,14 @@ Date: May 2014
 		<h4><span class="glyphicon glyphicon-stats"></span> Analytics</h4>
 		
 		
-		<form action="" method="post" class="pure-form pure-form-aligned">
+		<form action="<?php echo SITE_URL . 'admin/configuration/edit-analytics'; ?>" method="post" class="pure-form pure-form-aligned">
 		
 		
 			<fieldset>
 		
 				<div class="pure-control-group">
 					<label for="analytics">Analytics Code</label>
-					<textarea name="analytics" type="text"></textarea>
+					<textarea name="analytics" type="text"><?php echo ANALYTICS; ?></textarea>
 				</div>
 		
 		

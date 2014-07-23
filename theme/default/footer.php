@@ -21,6 +21,10 @@ Date: March 2013
 
 	<?php include( __DIR__ . '/lightbox.php') ?>
 	
+	
+	<!-- Analytics -->
+	<?php echo ANALYTICS; ?>
+	
 		
 </body>
 </html>

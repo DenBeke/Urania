@@ -20,7 +20,6 @@ namespace Controller\Admin {
 		public $pageName = 'configuration';
 		public $albums = array();
 		public $notification = NULL;
-		public $themes = [];
 		
 		
 		public function __construct() {
@@ -44,6 +43,11 @@ namespace Controller\Admin {
 					case "edit-site-options":
 					case "edit-site-options/":
 						$this->edit_site_options();
+						break;
+						
+					case "edit-analytics":
+					case "edit-analytics/":
+						$this->edit_analytics();
 						break;
 				
 				}
@@ -75,6 +79,23 @@ namespace Controller\Admin {
 			}
 			
 			\Options::set($options);
+			
+			header('Location: ' . SITE_URL . 'admin/configuration');
+			
+		}
+		
+		
+		
+		private function edit_analytics() {
+			
+			$options = [
+				'analytics' => \Options::get('analytics'),
+			];
+			
+			if(isset($_POST['analytics'])) {
+				$options['analytics'] = $_POST['analytics'];
+				\Options::set($options);
+			}
 			
 			header('Location: ' . SITE_URL . 'admin/configuration');
 			

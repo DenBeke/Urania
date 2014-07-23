@@ -99,6 +99,7 @@ function saveDefaultOptions() {
 		'site_title' => '',
 		'site_url' => '',
 		'copyright' => '',
+		'analytics' => '',
 	];
 	
 }

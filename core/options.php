@@ -42,6 +42,9 @@ class Options {
 		define('THEME_URL', SITE_URL . 'theme/' . self::get('theme') );
 		define('THEME', self::get('theme'));
 		
+		//Analytics
+		define('ANALYTICS', self::get('analytics'));
+		
 	}
 	
 	

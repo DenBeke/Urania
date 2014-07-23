@@ -63,9 +63,6 @@ class Config {
 			if($config_key == '' or $config_key == NULL) {
 				throw new \exception('No config key given');	
 			}
-			elseif($config_value == '' or $config_value == NULL) {
-				throw new \exception('No config value given');
-			}
 			else {
 				self::saveSingle($config_key, $config_value);	
 			}
