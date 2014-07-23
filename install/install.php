@@ -75,8 +75,8 @@ function createConfigTable($link) {
 	*/
 	
 	$query = "CREATE TABLE `Config` (
-  		`key` varchar(64) NOT NULL,
-  		`value` text NOT NULL,
+  		`config_key` varchar(64) NOT NULL,
+  		`config_value` text NOT NULL,
   		PRIMARY KEY (`key`)
 		)";
 	
