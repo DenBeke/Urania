@@ -63,4 +63,31 @@ function createImagesTable($link) {
 
 
 
+
+function createConfigTable($link) {
+	
+	/*
+	CREATE TABLE `Config` (
+	  `key` varchar(64) NOT NULL,
+	  `value` text NOT NULL,
+	  PRIMARY KEY (`key`)
+	) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+	*/
+	
+	$query = "CREATE TABLE `Config` (
+  		`key` varchar(64) NOT NULL,
+  		`value` text NOT NULL,
+  		PRIMARY KEY (`key`)
+		)";
+	
+	
+	if(!$link->query($query)) {
+		throw new Exception('Database Error: ' . $link->error);
+	}
+	
+}
+
+
+
+
 ?>
