@@ -8,15 +8,56 @@ Date: September 2013
 
 
 @font-face {
-    /*
-    'Bad Script' font
-    Fount on Google: @import url(http://fonts.googleapis.com/css?family=Bad+Script);
-    */
-    font-family: 'Bad Script';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Bad Script Regular'), local('BadScript-Regular'), url('./font/bad_script.woff') format('woff');
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: 300;
+	src: local('Open Sans Light'), local('OpenSans-Light'), url('./font/Open-Sans-300-normal.woff') format('woff');
 }
+
+@font-face {
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Open Sans'), local('OpenSans'), url('./font/Open-Sans-400-normal.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: 600;
+	src: local('Open Sans Semibold'), local('OpenSans-Semibold'), url('./font/Open-Sans-600-normal.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: 700;
+	src: local('Open Sans Bold'), local('OpenSans-Bold'), url('./font/Open-Sans-700-normal.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	font-style: italic;
+	font-weight: 300;
+	src: local('Open Sans Light Italic'), local('OpenSansLight-Italic'), url('./font/Open-Sans-300-italic.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	font-style: italic;
+	font-weight: 400;
+	src: local('Open Sans Italic'), local('OpenSans-Italic'), url('./font/Open-Sans-400-italic.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	font-style: italic;
+	font-weight: 600;
+	src: local('Open Sans Semibold Italic'), local('OpenSans-SemiboldItalic'), url('./font/Open-Sans-600-italic.woff') format('woff');
+}
+
+
+
 
 
 html {
@@ -28,18 +69,96 @@ body {
 	margin: 0;
 	padding: 0;
 	background-color: #f1f1f1; /* #f2f2f2 */
+	font-family: 'Open Sans';
 }
 
 
 
 
 .page {
-	width: 990px;
+	/*
+	Width of image = 270px + 2px (for border)
+	Margin = 30px each side
+		=> 332 * 3 = 996
+	*/
+	width: 996px;
 	margin: auto;
 }
 
 
+/* Header *
+**********/
+
+
+.header-container {
+	//width: 100%;
+	margin: 0;
+	padding: 0 2.5%;	
+	background-color: #fafafa;
+}
+
+header {
+	max-width: 936px;
+	margin: 0 auto;
+	border-bottom: 1px #ccc solid;
+	padding-top: 2em;
+}
+
+
+#site-title {
+	text-align: left;
+	margin: 0;
+}
+
+#site-title a {
+	color: #444;
+	text-decoration: none;
+	font-weight: 300;
+}
+
+#site-title a:hover {
+	color: #222;
+}
+
+#album-nav {
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+
+#album-nav ul {
+	padding: 0;
+	margin: 0;
+}
+
+#album-nav li {
+	display: inline-block;
+}
+
+#album-nav a {
+	display: block;
+	padding: 0.5em;
+	margin-right: 1em;
+	margin-bottom: 1em;
+	font-size: 0.9em;
+	color: #444;
+	text-decoration: none;
+	background-color: #f1f1f1;
+	border: 1px #ddd solid;
+	
+	transition: all 0.1s;
+}
+
+#album-nav a:hover {
+	border-color: #aaa;
+}
+
+
 /* Home */
+
+#home {
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
 
 #home div.home-album-image-container {
 	width: 270px;
@@ -62,6 +181,7 @@ body {
 #home div.home-album-title h3 {
 	margin: 0;
 	font-size: 0.95em;
+	font-weight: 500;
 	line-height: 22px;
 }
 
@@ -71,14 +191,14 @@ body {
 }
 
 #home li a {
-	color: #333;
+	color: #444;
 	text-decoration: none;
 }
 
 
 #home li {
 	float: left;
-	margin: 25px;
+	margin: 30px;
 	padding: 0px;
 	background-color: #fff;
 	border: 1px solid #ccc;
@@ -99,17 +219,20 @@ body {
 
 
 
-/* Album */
+/* Album *
+*********/
 
 #adminTitle,
 #homeTitle,
 #album h1 {
 	text-align: center;
 	/* font: normal bold 3em 'Bad Script', cursive; */
-	font-weight: 100;
-	font-size: 3em;
+	font-family: 'Open Sans';
+	font-weight: 300;
+	font-size: 2em;
+	font-style: italic;
 	color: #333;
-	text-shadow: 0 0 2px #fff;
+	margin-top: 30px;
 	margin-bottom: 0;
 }
 
@@ -129,7 +252,7 @@ body {
 	width: 270px;
 	height: 270px;
 	
-	margin: 25px;
+	margin: 30px;
 	padding: 0px;
 	background-color: #fff;
 	border: 1px solid #ccc;
@@ -137,28 +260,45 @@ body {
 
 }
 
-th {
-	color: #6d6e6d;
-	font-style: italic;
-	font-weight: normal;
+#album {
+	padding-bottom: 30px;
+}
+
+
+.album-description {
+	padding-left: 30px;
+	padding-right: 30px;
+	font-weight: 300;
+	text-align: justify;
 }
 
 
 
+/* Footer *
+**********/
 
+.footer-wrapper {
+	padding: 0 2.5%;
+	background-color: #fff;
+}
 
-
-/* Footer */
 
 footer {
-	color: #6e6e6e;
-	text-shadow: 0 0 3px #fff;
+	max-width: 940px;
+	margin: 0 auto;
+	border-top: 1px #ccc solid;
+	padding-top: 2em;
+	padding-bottom: 2em;
+
+	color: #444;
 	text-align: center;
-	font-family: 'Bad Script';
+	font-family: 'Open Sans';
+	font-weight: 400;
+	font-size: 0.9em;
 }
 
 footer a {
-	color: #6e6e6e;
+	color: #444;
 	text-decoration: underline;
 }
 
@@ -170,29 +310,55 @@ footer a:hover {
 
 
 /* Responsive part */
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 996px) {
 
 	.page {
-		width: 600px !important;
-		max-width: 600px;
+		width: 664px !important;
+		max-width: 664px;
 		text-align: center;
 		
 	}
-	h1 {
-		font-size: 2.5em !important;
+
+	header,
+	footer {
+		max-width: 604px;
 	}
 
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 664px) {
 
 	.page {
-		width: 300px !important;
-		max-width: 300px;
+		max-width: 272px;
 		text-align: center;	
+		padding: 0;
 	}
-	h1 {
-		font-size: 2em !important;
+	
+	header,
+	footer {
+		max-width: 272px;
 	}
+	
+	header {
+		text-align: center;
+	}
+	
+	#home ul,
+	#album ul {
+		width: 272px;
+		padding: 0;
+		margin: 0;
+	}
+	
+	#home ul li,
+	#album ul li {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	
+	.album-description {
+		padding: 0;
+	}
+
 
 }

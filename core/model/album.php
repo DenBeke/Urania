@@ -26,6 +26,7 @@ class Album {
     private $name;
     private $images = array();
     private $date;
+    private $description;
     
     
     /**
@@ -35,10 +36,11 @@ class Album {
     @param name
     @param date
     */
-    public function __construct($id, $name, $date) {
+    public function __construct($id, $name, $date, $description) {
         $this->id = $id;
         $this->name = $name;
         $this->date = $date;
+        $this->description = $description;
     }
     
     
@@ -130,6 +132,16 @@ class Album {
     */
     public function getDate() {
         return $this->date;
+    }
+    
+    
+    /**
+    Get the description of the album
+    
+    @return date
+    */
+    public function getDescription() {
+        return $this->description;
     }
     
     

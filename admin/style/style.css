@@ -319,6 +319,25 @@ table td.date {
 }
 
 
+form#change-album-description textarea {
+	width: 100%;
+	box-sizing: border-box;
+}
+
+span.empty-description {
+	font-style: italic;
+	color: gray;
+}
+
+.album-description {
+	font-weight: ;
+}
+
+.album-description .pure-button {
+	font-size: 7px;
+}
+
+
 /* Footer *
 **********/
 
@@ -485,6 +504,13 @@ table th[class*="col-"] {
 
 
 
+.album-description-edit-container {
+	padding-left: 15px;
+	box-sizing: border-box;
+}
+
+
+
 /* Form enhancements *
 *********************/
 
@@ -498,6 +524,14 @@ input {
 	box-sizing: border-box;
 	font-weight: inherit;
 	font-size: inherit;
+}
+
+input[type=submit] {
+	margin-top: 15px;
+}
+
+textarea {
+	height: 120px;
 }
 
 

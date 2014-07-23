@@ -8,12 +8,16 @@ Date: March 2013
 */
 ?>
 
-	<footer>
-		<p>
-			<?php echo COPYRIGHT; ?>
-		</p>
-	</footer>
+	<div class="footer-wrapper">
 
+		<footer>
+			<p>
+				<?php echo COPYRIGHT; ?>
+			</p>
+		</footer>
+		
+		
+	</div>
 
 	<?php include( __DIR__ . '/lightbox.php') ?>
 	

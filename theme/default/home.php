@@ -12,7 +12,7 @@ Date: March 2013
 	<div id="home" class="page">
 		
 		
-		<h1 id="homeTitle">Albums</h1>
+		<!-- <h1 id="homeTitle">Albums</h1> -->
 		
 		
 		<ul>

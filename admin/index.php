@@ -7,7 +7,6 @@ Url: http://denbeke.be
 Date: September 2013
 */
 
-
 //Initialize configuration
 require_once( __DIR__ . '/../core/config.php' );
 
@@ -16,6 +15,13 @@ require_once( __DIR__ . '/../core/glue.php');
 
 //Create Urania instance
 require_once( __DIR__ . '/../core/urania.php');
+
+//Include general functions
+require_once( __DIR__ . '/../core/functions.php');
+
+//Include database controller
+require_once( __DIR__ . '/../core/database/database.php');
+
 
 //Include controllers
 require_once( __DIR__ . '/../core/controller/admin/error.php' );
@@ -30,14 +36,15 @@ require_once( __DIR__ . '/../core/controller/admin/configuration.php' );
 
 //URL handling
 $urls = array(
-	'ERROR' 								=> 'Controller\Admin\Error',
-	INSTALL_DIR . '/admin/' 				=> 'Controller\Admin\Albums',
-	INSTALL_DIR . '/admin/albums' 		=> 'Controller\Admin\Albums',
-	INSTALL_DIR . '/admin/album/(\d+)' 	=> 'Controller\Admin\Album',
-	INSTALL_DIR . '/admin/login' 		=> 'Controller\Admin\Login',
-	INSTALL_DIR . '/admin/logout' 		=> 'Controller\Admin\Logout',
-	INSTALL_DIR . '/admin/themes' 		=> 'Controller\Admin\Themes',
-	INSTALL_DIR . '/admin/configuration'	=> 'Controller\Admin\Configuration',
+	'ERROR' 										=> 'Controller\Admin\Error',
+	INSTALL_DIR . '/admin/' 						=> 'Controller\Admin\Albums',
+	INSTALL_DIR . '/admin/albums' 				=> 'Controller\Admin\Albums',
+	INSTALL_DIR . '/admin/album/(\d+)' 			=> 'Controller\Admin\Album',
+	INSTALL_DIR . '/admin/album/(\d+)/([a-z\-]+)' => 'Controller\Admin\Album',
+	INSTALL_DIR . '/admin/login' 				=> 'Controller\Admin\Login',
+	INSTALL_DIR . '/admin/logout' 				=> 'Controller\Admin\Logout',
+	INSTALL_DIR . '/admin/themes' 				=> 'Controller\Admin\Themes',
+	INSTALL_DIR . '/admin/configuration'			=> 'Controller\Admin\Configuration',
 );
 	
 	

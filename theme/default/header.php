@@ -31,7 +31,7 @@ Date: March 2013
 	
 	<link rel="stylesheet" href="<?php echo SITE_URL; ?>theme/default/style.css" type="text/css" />
 	
-	<link rel="stylesheet" href="<?php echo SITE_URL; ?>theme/default/glyphicons.css" type="text/css" />
+	<!--<link rel="stylesheet" href="<?php echo SITE_URL; ?>theme/default/glyphicons.css" type="text/css" />-->
 	
     <link rel="stylesheet" href="<?php echo SITE_URL; ?>style/lightbox.css" type="text/css" />
     
@@ -50,21 +50,28 @@ Date: March 2013
 <body>
 
 
-	<header>
-
-		<h1 id="siteTitle"><a href="<?php echo SITE_URL; ?>home"><?php echo SITE_TITLE; ?></a></h1>
+	<div class="header-container">
 		
-		<nav id="albumNav">
-			<ul>
-				<?php
-				foreach ($u->getAllAlbums() as $album) {
-					$navId = $album->getId();
-					$name = $album->getName();
-					$simpleName = $u->simplifyFileName($name);
-					echo '<li><a href="' . SITE_URL . "album/$navId/$simpleName\">$name</a></li>";
-				}
-				?>
-			</ul>
-		</nav>
 	
-	</header>
+		<header>
+			
+	
+			<h1 id="site-title"><a href="<?php echo SITE_URL; ?>home"><?php echo SITE_TITLE; ?></a></h1>
+			
+			<nav id="album-nav">
+				<ul>
+					<?php
+					foreach ($u->getAllAlbums() as $album) {
+						$navId = $album->getId();
+						$name = $album->getName();
+						$simpleName = $u->simplifyFileName($name);
+						echo '<li><a href="' . SITE_URL . "album/$navId/$simpleName\">$name</a></li>";
+					}
+					?>
+				</ul>
+			</nav>
+		
+		</header>
+		
+		
+	</div><!-- .header-container -->
