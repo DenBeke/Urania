@@ -12,7 +12,7 @@ Date: March 2013
 
 		<footer>
 			<p>
-				<?php echo COPYRIGHT; ?>
+				<?php echo markdown_convert(COPYRIGHT); ?>
 			</p>
 		</footer>
 		
