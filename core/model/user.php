@@ -8,7 +8,7 @@ Date: June 2013
 */
 
 
-require_once(dirname(__FILE__).'/login.php');
+require_once( __DIR__ .'/../login.php');
 
 
 /**
@@ -80,6 +80,27 @@ class User {
 	public function getRegistrationDate() {
 		return $this->registered;
 	}
+	
+	
+	/**
+	Get the salt
+	
+	@return salt
+	*/
+	public function getSalt() {
+		return $this->salt;
+	}
+	
+	
+	/**
+	Get the password
+	
+	@return password
+	*/
+	public function getPassword() {
+		return $this->password;
+	}
+	
 	
 }
 
