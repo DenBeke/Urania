@@ -60,9 +60,10 @@ class Config {
 	*/
 	static public function save($config_data) {
 		
-		foreach ($config_data as $config_key => $config_valye) {
+		foreach ($config_data as $config_key => $config_value) {
 			
-			self::saveSingle($config_key, $config_valye);
+			//TODO check for empty keys/values
+			self::saveSingle($config_key, $config_value);
 			
 		}
 		
@@ -99,14 +100,14 @@ class Config {
 	@param config key
 	@param config value
 	*/
-	static private function saveSingle($config_key, $config_valye) {
+	static private function saveSingle($config_key, $config_value) {
 		
 		if(!self::exists($config_key)) {
 			
 			//If not exists, we make new item
 			$data = [
 				'config_key' => $config_key,
-				'config_value' => $config_valye
+				'config_value' => $config_value
 			];
 			
 			BUILDER::table(self::CONFIG)->insert($data);
@@ -116,7 +117,7 @@ class Config {
 			
 			//Else, we update the item
 			$data = [
-				'config_value' => $config_valye
+				'config_value' => $config_value
 			];
 			
 			BUILDER::table(self::CONFIG)->where('config_key', '=', $config_key)->update($data);
