@@ -11,7 +11,7 @@ Date: March 2014
 namespace Controller {
 
 	
-	require_once(dirname(__FILE__) . '/controller.php');
+	require_once( __DIR__ . '/controller.php');
 
 
 	class ImageExif extends Controller {

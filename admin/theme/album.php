@@ -292,4 +292,4 @@ if($this->notification != NULL) {
 
 
 
-<?php include(dirname(__FILE__) . '/lightbox.php'); ?>
+<?php include( __DIR__ . '/lightbox.php'); ?>

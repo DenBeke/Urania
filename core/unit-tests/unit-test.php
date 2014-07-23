@@ -17,7 +17,7 @@ namespace UnitTest;
 
 
 
-require_once( dirname(__FILE__) . '/objects.php' );
+require_once( __DIR__ . '/objects.php' );
 
 
 $scenario = new Scenario;
@@ -275,7 +275,7 @@ class UnitTest {
 	public function write() {
 	
 		global $scenario;
-		include(dirname(__FILE__) . '/theme/content.php');
+		include( __DIR__ . '/theme/content.php');
 	
 	}
 	

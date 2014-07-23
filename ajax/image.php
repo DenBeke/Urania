@@ -14,8 +14,9 @@ require_once( __DIR__ . '/../core/functions.php');
 require_once( __DIR__ . '/../core/database/database.php');
 
 
-require_once(dirname(__FILE__).'/../core/urania.php');
-require_once(dirname(__FILE__) . '/json.php');
+require_once( __DIR__ . '/../core/init.php');
+require_once( __DIR__ . '/../core/urania.php' );
+require_once( __DIR__ . '/json.php' );
 
 $output = array();
 
@@ -38,7 +39,7 @@ try {
 
 
 	//Get the image
-	$u = new Urania(dirname(__FILE__).'/../core/config.php');
+	$u = new Urania;
 	$outputImage = new imageExif($u->getImage($image));
 	$outputImage->readExifFromFile();
 	

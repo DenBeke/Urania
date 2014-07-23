@@ -7,7 +7,7 @@ Url: http://denbeke.be
 Date: February 2014
 */
 
-require_once(dirname(__FILE__).'/install.php');
+require_once( __DIR__ .'/install.php');
 
 $error;
 
@@ -44,7 +44,7 @@ if(isset($_POST['db_host']) && isset($_POST['db_user']) && isset($_POST['db_pass
 		createImagesTable($link);
 		
 		//Create the 'upload' dir
-		mkdir(dirname(__FILE__).'/../upload');
+		mkdir( __DIR__ .'/../upload');
 		
 		
 		//TODO

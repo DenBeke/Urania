@@ -8,7 +8,7 @@ Date: August 2013
 */
 
 
-require(dirname(__FILE__).'/cache.php');
+require( __DIR__ .'/cache.php');
 
 
 /**

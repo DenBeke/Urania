@@ -21,7 +21,7 @@ Date: May 2014
 		<h4><span class="glyphicon glyphicon-globe"></span> General Configuration</h4>
 	
 	
-		<form action="" method="post" class="pure-form pure-form-aligned">
+		<form action="<?php echo SITE_URL . 'admin/configuration/edit-site-options'; ?>" method="post" class="pure-form pure-form-aligned">
 			
 			
 			<fieldset>

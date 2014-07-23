@@ -8,7 +8,7 @@ Date: September 2013
 */
 
 
-require_once(dirname(__FILE__).'/image.php');
+require_once( __DIR__ .'/image.php');
 
 
 /**

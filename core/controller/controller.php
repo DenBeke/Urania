@@ -8,15 +8,13 @@ Date: March 2014
 */
 
 
-
+/**
+@brief Namespace containing all controller objects
+*/
 namespace Controller {
 
 
-
-	require_once( dirname(__FILE__) . '/../config.php' );
-	require_once( dirname(__FILE__) . '/../urania.php' );
-	
-	
+	require_once( __DIR__ . '/../urania.php' );	
 	
 	
 	abstract class Controller {
