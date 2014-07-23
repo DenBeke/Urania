@@ -11,20 +11,8 @@ Urania is a CMS for photo albums.
 Installation
 ============
 
-* In order to install/configure Uranian, create a new database
-* Add two tables to this database
-    * Table for images, with 5 fields
-        * id(int)(AutoIncrement)
-        * fileName(text)
-        * name(text)
-        * date(int)
-        * albumId(int)
-    * Table for albums, with 3 fields
-        * id(int)(AutoIncrement)
-        * name(text)
-        * date(int)
-* Change the database config, table names, and other site info in the `./core/config.php` file.
-* Start uploading your pictures!
+*Create all tables in `install/install.php`.*  
+*Install script will be updated.*
 
 
 Notes
@@ -42,14 +30,10 @@ TODO for the next version
 =========================
 
 * Add the possibility to show the exif info of an image in the lightbox
-* Make single view for an image
-* Add map for displaying the location of the image
 * Make it possible to add a caption to certain images
 * Add an API (using JSON objects) which makes it possible to use CMS content on other systems (i.e. have a photostream with the latest uploads, or a list with albums)
 * Better user authentication (possibility to have multiple image uploaders)
-* Separate admin part from the index.php
 * Make it possible to sort images
-* (store config information in the database)
 * (make an install script)
 
 
