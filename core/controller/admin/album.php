@@ -8,6 +8,9 @@ Date: March 2014
 */
 
 
+/**
+@brief Namespace containing all admin controller objects
+*/
 namespace Controller\Admin {
 
 

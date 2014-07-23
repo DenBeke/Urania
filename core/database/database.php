@@ -7,6 +7,9 @@ Url: http://denbeke.be
 Date: June 2014
 */
 
+/**
+@brief Namespace containing all database classes
+*/
 namespace Database;
 
 require_once(__DIR__ . '/../pixie/includes.php');
