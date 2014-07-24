@@ -231,6 +231,10 @@ table#admin-albums img {
 	background-color: rgb(249, 249, 249);
 }
 
+table#admin-albums img.none {
+	/* border: 1px solid #d5d5d5; */
+}
+
 table#admin-albums img {
 	opacity: 0.9;
 	-webkit-transition: opacity 0.2s;

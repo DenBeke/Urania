@@ -68,12 +68,12 @@ if($this->notification != NULL) {
 				<td>
 					<a href="<?php echo SITE_URL; ?>admin/album/<?php echo $id; ?>">
 						<?php if($album->getNumberOfImages() > 0 and $album->getImage(0)->getName() != 'error') { ?>
-						<img src="<?php echo SITE_URL; ?>core/timthumb.php?src=<?php echo $album->getImage(0)->getFileName() . "&h=$imageHeight&w=$imageWidth"; ?>" alt="<?php echo $album->getImage(0)->getName(); ?>" />
+						<img src="<?php echo SITE_URL; ?>core/timthumb.php?src=<?php echo $album->getImage(0)->getFileName() . "&h=$imageHeight&w=$imageWidth"; ?>" alt="<?php echo $album->getImage(0)->getName(); ?>" width="<?php echo $imageWidth; ?>px" height="<?php echo $imageHeight; ?>px" />
 						<?php 
 						}
 						else {
 						?>
-						<img src="" alt="" />
+						<img src="<?php echo SITE_URL; ?>img/none.png" alt="" width="<?php echo $imageWidth; ?>px" height="<?php echo $imageHeight; ?>px" class="none" />
 						<?php
 						}
 						?>
@@ -91,7 +91,7 @@ if($this->notification != NULL) {
 				
 					?>
 					<a href="<?php echo SITE_URL; ?>admin/album/<?php echo $id; ?>">
-						<img src="<?php echo SITE_URL; ?>core/timthumb.php?src=<?php echo $album->getImage($i)->getFileName() . "&h=$imageHeightSmall&w=$imageWidthSmall"; ?>" alt="<?php echo $album->getImage($i)->getName(); ?>" />
+						<img src="<?php echo SITE_URL; ?>core/timthumb.php?src=<?php echo $album->getImage($i)->getFileName() . "&h=$imageHeightSmall&w=$imageWidthSmall"; ?>" alt="<?php echo $album->getImage($i)->getName(); ?>" width="<?php echo $imageWidthSmall; ?>px" height="<?php echo $imageHeightSmall; ?>px" />
 					</a>
 					<?php
 					
