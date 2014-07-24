@@ -11,7 +11,9 @@ body {
 	padding-top: 50px;
 }
 
-
+a.no-link {
+	cursor: default;
+}
 
 
 /* Header *
@@ -120,6 +122,8 @@ header .user {
 
 header .logout a {
 	display: inline-block;
+	font-size: 14px;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 
