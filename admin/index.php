@@ -34,6 +34,7 @@ require_once( __DIR__ . '/../core/controller/admin/login.php' );
 require_once( __DIR__ . '/../core/controller/admin/logout.php' );
 require_once( __DIR__ . '/../core/controller/admin/themes.php' );
 require_once( __DIR__ . '/../core/controller/admin/configuration.php' );
+require_once( __DIR__ . '/../core/controller/admin/user.php' );
 
 
 
@@ -50,6 +51,8 @@ $urls = array(
 	INSTALL_DIR . '/admin/themes/([a-z\-]+)/([a-z\-_]+)' 	=> 'Controller\Admin\Themes',
 	INSTALL_DIR . '/admin/configuration'					=> 'Controller\Admin\Configuration',
 	INSTALL_DIR . '/admin/configuration/([a-z\-]+)'		=> 'Controller\Admin\Configuration',
+	INSTALL_DIR . '/admin/user'							=> 'Controller\Admin\User',
+	INSTALL_DIR . '/admin/user/([a-z\-]+)'				=> 'Controller\Admin\User',
 );
 	
 	

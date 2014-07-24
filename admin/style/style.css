@@ -118,6 +118,10 @@ header .user {
 	display: block;
 }
 
+header .logout a {
+	display: inline-block;
+}
+
 
 
 /*
@@ -134,7 +138,16 @@ header .nav-toggle {
 	cursor: pointer;
 }
 
-@media only screen and (max-width : 640px) {
+header .nav-toggle a {
+	padding: 0 15px;
+}
+
+header .nav-toggle .glyphicon  {
+	font-size: 22px;
+	line-height: 48px;
+}
+
+@media only screen and (max-width : 750px) {
 	
 	
 	#nav-bar {
@@ -173,6 +186,10 @@ header .nav-toggle {
 		float: none;
 		clear: both !important;
 		background-color: #222;
+	}
+	
+	header .logout a {
+		display: block;
 	}
 	
 	
