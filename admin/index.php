@@ -37,6 +37,9 @@ require_once( __DIR__ . '/../core/controller/admin/configuration.php' );
 require_once( __DIR__ . '/../core/controller/admin/user.php' );
 
 
+//Initialize authentication
+Auth::init();
+
 
 //URL handling
 $urls = array(
@@ -55,17 +58,15 @@ $urls = array(
 	INSTALL_DIR . '/admin/user/([a-z\-]+)'				=> 'Controller\Admin\User',
 );
 	
-	
-$controller = glue::stick($urls);
-	
 
-if(!loggedIn() && $controller->pageName != 'login' && $controller->pageName != 'logout') {
+$controller = glue::stick($urls);
+
+if(!Auth::loggedIn() && $controller->pageName != 'login' && $controller->pageName != 'logout') {
 
 	$controller = new Controller\Admin\Login;
 	$controller->notification = new Notification('Access Denied.<br>You must be logged in for admin access', 'error');
 
 }
-
 
 
 include( __DIR__ . '/theme/header.php');

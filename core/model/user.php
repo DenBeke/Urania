@@ -48,7 +48,7 @@ class User {
 	@return bool: true (correct password) / false (incorrect)
 	*/
 	public function checkPassword($enteredPassword) {
-		return ($this->password == encrypt($enteredPassword, $this->salt));
+		return ($this->password == \Auth::encrypt($enteredPassword, $this->salt));
 	}
 	
 	

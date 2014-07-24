@@ -9,6 +9,13 @@ Date: July 2014
 ?>
 
 
+<?php if($this->notification != NULL): ?>
+<div class="notification <?php echo $this->notification->type ?>">
+	<span class="glyphicon <?php if($this->notification->type == 'success') { echo 'glyphicon-ok'; } else { echo 'glyphicon-warning-sign'; } ?>"></span> <?php echo $this->notification->message; ?>
+</div>
+<?php endif; ?>
+
+
 <h2 id="admin-user-title">User Control Panel</h2>
 
 <hr>

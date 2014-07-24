@@ -3,73 +3,111 @@
 /*
 Add logged-in to user session
 */
-function login() {
-	session_start();
-	$_SESSION['login'] = true;
-}
+
+class Auth {
+	
+	
+	static public $user;
+	static private $loggedIn = NULL;
+	
+
+	
+	static public function init() {
+		
+		self::loggedIn();
+		
+	}
 
 
-/*
-Logout user, destroy session
-*/
-function logout() {
-	session_start();
-	$_SESSION['login'] = false;
-	session_destroy();
-}
-
-
-/*
-Check if a user is logged in
-*/
-function loggedIn() {
-	if(!isset($_SESSION['login'])) {
-	    session_start();
+	static public function login($userId) {
+		
+		if(session_status() == PHP_SESSION_NONE) {
+			session_start();
+		}
+		
+		$_SESSION['login'] = true;
+		$_SESSION['userId'] = $userId;
+		self::$user = \Database\User::getUserById($userId);
+		
 	}
 	
-	if(!isset($_SESSION['login'])) {
-		return false;
-	}
-	if($_SESSION['login']) {
-		return true;
-	}
-	else {
-		return false;
-	}
-}
-
-
-/*
-Check if the username and password are correct
-*/
-function checkLoginDetails($username, $password) {
 	
-	try { 
-		return \Database\User::getUserByName($username)->checkPassword($password);
-	}
-	catch (exception $e) {
-		return false;
+	/*
+	Logout user, destroy session
+	*/
+	static public function logout() {
+		
+		if(session_status() == PHP_SESSION_NONE) {
+			session_start();
+		}
+		
+		$_SESSION['login'] = false;
+		$_SESSION['userId'] = 0;
+		session_destroy();
 	}
 	
+	
+	/*
+	Check if a user is logged in
+	*/
+	static public function loggedIn() {
+		
+		if(self::$loggedIn != NULL) {
+			return self::$loggedIn;
+		}
+		
+		if(session_status() == PHP_SESSION_NONE) {
+		    session_start();
+		}
+		
+		if(!isset($_SESSION['login'])) {
+			self::$loggedIn = false;
+			return false;
+		}
+		elseif($_SESSION['login'] && isset($_SESSION['userId'])) {
+			self::$user = \Database\User::getUserById($_SESSION['userId']);
+			self::$loggedIn = true;
+			return true;
+		}
+		else {
+			self::$loggedIn = false;
+			return false;
+		}
+	}
+	
+
+		
+	/*
+	Check if the username and password are correct
+	*/
+	static public function checkLoginDetails($username, $password) {
+		
+		try { 
+			return \Database\User::getUserByName($username)->checkPassword($password);
+		}
+		catch (exception $e) {
+			return false;
+		}
+		
+	}
+	
+	
+	/*
+	Generate a salt
+	*/
+	static public function generateSalt() {
+		return uniqid(rand(0, 1000000));
+	}
+	
+	
+	/*
+	Encrypt a string with a salt
+	*/
+	static public function encrypt($text, $salt) {
+		return hash('sha512', $salt . $text);	
+	}
+
+
 }
-
-
-/*
-Generate a salt
-*/
-function generateSalt() {
-	return uniqid(rand(0, 1000000));
-}
-
-
-/*
-Encrypt a string with a salt
-*/
-function encrypt($text, $salt) {
-	return hash('sha512', $salt . $text);	
-}
-
-
-
 
 ?>
