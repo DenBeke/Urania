@@ -126,13 +126,7 @@ Date: March 2013
 	<div id="wrapper">
 	
 	
-		<ol class="level-nav" style="margin-bottom: 5px;">
-		      <li><a href="<?php echo SITE_URL; ?>admin">Admin</a></li>
-		      <li><a href="<?php echo SITE_URL; ?>admin/albums">Albums</a></li>
-		      <?php if($controller->pageName == 'album') { ?>
-		      <li class="active"><?php echo $controller->album->getName(); ?></li>
-		      <?php } ?>
-		</ol>
+		<?php Theme::nav($controller); ?>
 	
 	<?php } 
 	else {

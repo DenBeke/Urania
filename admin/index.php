@@ -23,8 +23,10 @@ require_once( __DIR__ . '/../core/functions.php');
 require_once( __DIR__ . '/../core/database/database.php');
 
 //Include options
-require_once BASE_DIR .'/core/options.php';
+require_once BASE_DIR . '/core/options.php';
 
+//Include Theme functions
+require_once BASE_DIR . '/core/theme_functions.php';
 
 //Include controllers
 require_once( __DIR__ . '/../core/controller/admin/error.php' );
