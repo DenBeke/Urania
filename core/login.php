@@ -1,9 +1,16 @@
 <?php 
-
 /*
-Add logged-in to user session
+Login functions
+
+Author: Mathias Beke
+Url: http://denbeke.be
+Date: July 2014
 */
 
+
+/**
+User Authentication
+*/
 class Auth {
 	
 	
@@ -11,7 +18,9 @@ class Auth {
 	static private $loggedIn = NULL;
 	
 
-	
+	/**
+	Initialize auth
+	*/
 	static public function init() {
 		
 		self::loggedIn();
@@ -19,6 +28,11 @@ class Auth {
 	}
 
 
+	/**
+	Login a user
+	
+	@param user id
+	*/
 	static public function login($userId) {
 		
 		if(session_status() == PHP_SESSION_NONE) {
@@ -32,7 +46,7 @@ class Auth {
 	}
 	
 	
-	/*
+	/**
 	Logout user, destroy session
 	*/
 	static public function logout() {
@@ -47,8 +61,10 @@ class Auth {
 	}
 	
 	
-	/*
+	/**
 	Check if a user is logged in
+	
+	@return logged in
 	*/
 	static public function loggedIn() {
 		
@@ -77,8 +93,10 @@ class Auth {
 	
 
 		
-	/*
+	/**
 	Check if the username and password are correct
+	
+	@return correct
 	*/
 	static public function checkLoginDetails($username, $password) {
 		
@@ -92,16 +110,24 @@ class Auth {
 	}
 	
 	
-	/*
+	/**
 	Generate a salt
+	
+	@return salt
 	*/
 	static public function generateSalt() {
 		return uniqid(rand(0, 1000000));
 	}
 	
 	
-	/*
+	/**
 	Encrypt a string with a salt
+	
+	Encryption is done with SHA512
+	
+	@param text
+	@param salt
+	@return encrypted string
 	*/
 	static public function encrypt($text, $salt) {
 		return hash('sha512', $salt . $text);	
