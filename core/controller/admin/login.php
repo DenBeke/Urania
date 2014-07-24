@@ -14,7 +14,7 @@ namespace Controller\Admin {
 	
 	require_once( __DIR__ . '/../controller.php');
 	require_once( __DIR__ . '/../../model/notification.php');
-	require_once( __DIR__ . '/../../login.php');
+	require_once( __DIR__ . '/../../auth.php');
 	
 	
 	class Login extends \Controller\Controller {
