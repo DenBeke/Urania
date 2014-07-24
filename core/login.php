@@ -42,8 +42,14 @@ function loggedIn() {
 /*
 Check if the username and password are correct
 */
-function checkLoginDetails($userName, $passWord) {
-	return USERNAME == $userName and PASSWORD == $passWord;
+function checkLoginDetails($username, $password) {
+	
+	try { 
+		return \Database\User::getUserByName($username)->checkPassword($password);
+	}
+	catch (exception $e) {
+		return false;
+	}
 	
 }
 
