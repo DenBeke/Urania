@@ -14,7 +14,7 @@ namespace Controller\Admin {
 	
 	require_once( __DIR__ . '/../controller.php');
 	require_once( __DIR__ . '/../../model/notification.php');
-	require_once( __DIR__ . '/../../login.php');
+	require_once( __DIR__ . '/../../auth.php');
 	
 	
 	class Login extends \Controller\Controller {
@@ -41,8 +41,8 @@ namespace Controller\Admin {
 					$this->notification = new \Notification('Please provide username and password', 'error');
 				}
 				else {
-					if(checkLoginDetails($_POST['username'], $_POST['password'])) {
-						login();
+					if(\Auth::checkLoginDetails($_POST['username'], $_POST['password'])) {
+						\Auth::login(\Database\User::getUserByName($_POST['username'])->getId());
 						$this->notification = new \Notification('You are successfully logged in', 'success');
 					}
 					else {

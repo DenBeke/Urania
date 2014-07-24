@@ -13,11 +13,6 @@ define('DB_TABLE_ALBUMS', 'Albums');
 define('DB_TABLE_IMAGES', 'Images');
 
 
-//User login
-define('USERNAME', 'root');
-define('PASSWORD', 'root');
-
-
 //Upload directory with slash!!
 define('UPLOAD_DIR', 'upload/');
 

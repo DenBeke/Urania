@@ -193,7 +193,7 @@ if($this->notification != NULL) {
 			<input class="pure-input pure-u-1" type="text" name="albumName" placeholder="Name">
 			
 			
-			<input class="pure-button pure-button-primary pure-u-1" type="submit" value="Add">
+			<input class="pure-button pure-button-primary" type="submit" value="Add">
 			
 		</form>
 
@@ -237,7 +237,7 @@ if($this->notification != NULL) {
 		
 		</select>
 		
-		<input class="pure-button pure-button-primary pure-u-1" type="submit" value="Upload">
+		<input class="pure-button pure-button-primary" type="submit" value="Upload">
 		
 	</form>
 

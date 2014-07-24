@@ -24,7 +24,7 @@ namespace Controller\Admin {
 			$this->theme = 'logout.php';
 			$this->pageTitle = 'Logout - ' . SITE_TITLE;
 			$this->notification = new \Notification('You are successfully logged out', 'success');
-			logout();
+			\Auth::logout();
 		}
 			
 	

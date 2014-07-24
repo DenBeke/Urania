@@ -92,7 +92,7 @@ Date: March 2013
 							?>
 							</ul>
 						</li>
-						<li><a>Settings</a>
+						<li><a class="no-link">Settings</a>
 							<ul class="children">
 								<li><a href="<?php echo SITE_URL; ?>admin/themes"><span class="glyphicon glyphicon-th"> </span> Theme</a></li>
 								<li><a href="<?php echo SITE_URL; ?>admin/configuration"><span class="glyphicon glyphicon-wrench"> </span> Site Configuration</a></li>
@@ -104,7 +104,8 @@ Date: March 2013
 			
 			
 				<div class="user logout">
-					<a href="<?php echo SITE_URL; ?>admin/logout">Logout</a>
+					<a href="<?php echo SITE_URL; ?>admin/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
+					<a href="<?php echo SITE_URL; ?>admin/user"><span class="glyphicon glyphicon-user"></span> <?php echo Auth::$user->getName(); ?></a>
 				</div>
 				
 			</div><!-- #nav-bard -->
@@ -112,7 +113,7 @@ Date: March 2013
 			<!-- Button for show responsive nav-bar -->
 			<!-- Is hidden by default -->
 			<div class="user nav-toggle">
-				<a><span class="glyphicon glyphicon-list"></span></a>
+				<a><span class="glyphicon glyphicon-align-justify"></span></a>
 			</div>
 			
 		</div><!-- #header-wrapper -->
