@@ -8,22 +8,22 @@ Date: September 2013
 */
 
 //Initialize configuration
-require_once( __DIR__ . '/../core/config.php' );
+require __DIR__ . '/../core/config.php';
 
 //Include auto loader
 require BASE_DIR . '/core/autoloader.php';
 
 //Include general functions
-require_once( __DIR__ . '/../core/functions.php');
+require BASE_DIR . '/core/functions.php';
 
 //Include database controller
-require_once( __DIR__ . '/../core/database/database.php');
+require BASE_DIR . '/core/database/database.php';
 
 //Include options
-require_once BASE_DIR . '/core/options.php';
+require BASE_DIR . '/core/options.php';
 
 //Include Theme functions
-require_once BASE_DIR . '/core/theme_functions.php';
+require BASE_DIR . '/core/theme_functions.php';
 
 
 

@@ -9,7 +9,7 @@ Date: September 2013
 
 
 /**
-Namespace containing all models.
+@brief Namespace containing all models.
 */
 namespace Model;
 
