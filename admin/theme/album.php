@@ -23,12 +23,11 @@ if($this->notification != NULL) {
 
 <h2 id="admin-album-title"><?php echo $this->album->getName(); ?></h2>
 
-
 <div class="album-description">
 	<?php
 	if($this->album->getDescription() == '') {
 		?>
-		<span class="empty-description">No description</span>
+		<p><span class="empty-description">No description</span></p>
 		<?php
 	}
 	else {

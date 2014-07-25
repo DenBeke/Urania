@@ -337,6 +337,9 @@ table td.date {
 	padding-left: 4px;
 }
 
+.button-container input[type=submit] {
+	margin-top: 0;
+}
 
 .pure-button-warning {
 	background-color: rgb(202, 60, 60);
@@ -355,7 +358,10 @@ span.empty-description {
 }
 
 .album-description {
-	font-weight: ;
+	font-weight: 300;
+	font-size: 1em;
+	text-align: justify;
+	border-top: 1px #d5d5d5 solid;
 }
 
 .album-description .pure-button {
