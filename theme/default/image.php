@@ -8,12 +8,17 @@ Date: March 2013
 */
 ?>
 
+<div id="image-photo">
+	<a href="<?php echo SITE_URL . $this->image->getFileName(); ?>">
+		<img src="<?php echo SITE_URL . $this->image->getFileName(); ?>" alt="<?php echo $this->image->getName(); ?>" />
+	</a>
+</div>
+
 
 <div class="page" id="image">
+
 	
-	<div id="include">
-	
-	<div id="imageInfo">
+	<div id="image-info">
 	
 	    <h1><?php echo $this->image->getName(); ?></h1>
 	    <p><?php echo date('d-m-Y', $this->image->getDate()); ?></p>
@@ -81,16 +86,11 @@ Date: March 2013
 	    <?php } ?>
 	    
 	    
-	</div>
+	</div><!-- #imageInfo -->
 	
 	
-	<div id="imagePhoto">
-        <a href="<?php echo SITE_URL . $this->image->getFileName(); ?>">
-	        <img src="<?php echo SITE_URL . $this->image->getFileName(); ?>" alt="<?php echo $this->image->getName(); ?>" />
-	    </a>
-	</div>
 	
-	</div>
+	
 	
 
 
