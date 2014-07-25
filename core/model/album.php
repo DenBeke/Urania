@@ -14,9 +14,6 @@ Date: September 2013
 namespace Model;
 
 
-require_once( __DIR__ .'/image.php');
-
-
 /**
 @brief Class containing an album
 
