@@ -104,8 +104,8 @@ Date: March 2013
 			
 			
 				<div class="user logout">
-					<a href="<?php echo SITE_URL; ?>admin/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
 					<a href="<?php echo SITE_URL; ?>admin/user"><span class="glyphicon glyphicon-user"></span> <?php echo Auth::$user->getName(); ?></a>
+					<a href="<?php echo SITE_URL; ?>admin/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
 				</div>
 				
 			</div><!-- #nav-bard -->

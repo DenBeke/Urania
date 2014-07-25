@@ -13,6 +13,7 @@ $(document).ready(function() {
     /* Menu *
     ********/
     
+    //Togle the nav
     $('.nav-toggle').click(function(e) {
 	   
 	    if($('#nav-bar').hasClass('open')) {
@@ -25,6 +26,15 @@ $(document).ready(function() {
 	    }
 	   
 	    
+    });
+    
+    //Show the nav when resizing the page
+    $(window).resize(function(){  
+    	var w = $(window).width();  
+    	if(w > 750) {  
+    		$('#nav-bar').removeAttr('style');
+    		$('#nav-bar').removeClass('open');
+    	}  
     });
     
     
