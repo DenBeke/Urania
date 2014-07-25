@@ -10,9 +10,6 @@ Date: March 2014
 
 namespace Controller\Admin {
 
-	
-	require_once( __DIR__ . '/../controller.php');
-
 
 	class Themes extends \Controller\Controller {
 

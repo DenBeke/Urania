@@ -9,8 +9,6 @@ Date: June 2014
 
 namespace Database;
 
-require_once(__DIR__ . '/../model/image.php');
-
 
 /**
 Image Database Controller

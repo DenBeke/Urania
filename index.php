@@ -11,6 +11,9 @@ Date: September 2013
 //Initialize configuration
 require_once( __DIR__ . '/core/config.php' );
 
+//Include auto loader
+require BASE_DIR . '/core/autoloader.php';
+
 //Include general functions
 require_once( __DIR__ . '/core/functions.php');
 
@@ -20,17 +23,6 @@ require_once( __DIR__ . '/core/database/database.php');
 //Include options
 require_once __DIR__ . '/core/options.php';
 
-//Include GluePHP for url handling
-require_once( __DIR__ . '/core/glue.php');
-
-//Include Urania class
-require_once( __DIR__ . '/core/urania.php');
-
-//Include controllers
-require_once( __DIR__ . '/core/controller/error.php' );
-require_once( __DIR__ . '/core/controller/home.php' );
-require_once( __DIR__ . '/core/controller/album.php' );
-require_once( __DIR__ . '/core/controller/image.php' );
 
 
 $u = new Urania('./core/config.php');

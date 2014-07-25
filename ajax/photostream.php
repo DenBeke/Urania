@@ -7,7 +7,6 @@ Url: http://denbeke.be
 Date: September 2013
 */
 
-require_once( __DIR__ . '/../core/init.php');
 require_once( __DIR__ . '/../core/urania.php' );
 require_once( __DIR__ . '/json.php' );
 

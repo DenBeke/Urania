@@ -10,11 +10,8 @@ Date: September 2013
 //Initialize configuration
 require_once( __DIR__ . '/../core/config.php' );
 
-//Include GluePHP for url handling
-require_once( __DIR__ . '/../core/glue.php');
-
-//Create Urania instance
-require_once( __DIR__ . '/../core/urania.php');
+//Include auto loader
+require BASE_DIR . '/core/autoloader.php';
 
 //Include general functions
 require_once( __DIR__ . '/../core/functions.php');
@@ -28,15 +25,6 @@ require_once BASE_DIR . '/core/options.php';
 //Include Theme functions
 require_once BASE_DIR . '/core/theme_functions.php';
 
-//Include controllers
-require_once( __DIR__ . '/../core/controller/admin/error.php' );
-require_once( __DIR__ . '/../core/controller/admin/albums.php' );
-require_once( __DIR__ . '/../core/controller/admin/album.php' );
-require_once( __DIR__ . '/../core/controller/admin/login.php' );
-require_once( __DIR__ . '/../core/controller/admin/logout.php' );
-require_once( __DIR__ . '/../core/controller/admin/themes.php' );
-require_once( __DIR__ . '/../core/controller/admin/configuration.php' );
-require_once( __DIR__ . '/../core/controller/admin/user.php' );
 
 
 //Initialize authentication

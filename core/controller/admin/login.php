@@ -9,12 +9,6 @@ Date: March 2014
 
 
 namespace Controller\Admin {
-
-
-	
-	require_once( __DIR__ . '/../controller.php');
-	require_once( __DIR__ . '/../../model/notification.php');
-	require_once( __DIR__ . '/../../auth.php');
 	
 	
 	class Login extends \Controller\Controller {

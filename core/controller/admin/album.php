@@ -12,11 +12,6 @@ Date: March 2014
 @brief Namespace containing all admin controller objects
 */
 namespace Controller\Admin {
-
-
-	
-	require_once( __DIR__ . '/../controller.php');
-	require_once( __DIR__ . '/../../model/notification.php');
 	
 	
 	class Album extends \Controller\Controller {

@@ -10,6 +10,9 @@ Date: September 2013
 //Initialize configuration
 require_once( __DIR__ . '/../core/config.php' );
 
+//Include auto loader
+require BASE_DIR . '/core/autoloader.php';
+
 //Include general functions
 require_once( __DIR__ . '/../core/functions.php');
 
@@ -20,8 +23,6 @@ require_once( __DIR__ . '/../core/database/database.php');
 require_once BASE_DIR .'/core/options.php';
 
 
-require_once( __DIR__ . '/../core/init.php');
-require_once( __DIR__ . '/../core/urania.php' );
 require_once( __DIR__ . '/json.php' );
 
 $output = array();

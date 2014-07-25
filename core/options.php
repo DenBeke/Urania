@@ -8,7 +8,6 @@ Date: July 2014
 */
 
 
-require_once __DIR__ . '/database/config.php';
 use \Database\Config;
 
 /**
