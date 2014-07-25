@@ -29,13 +29,12 @@ Notes
 TODO for the next version
 =========================
 
-* Add the possibility to show the exif info of an image in the lightbox
 * Make it possible to add a caption to certain images
+* Image  tags
 * Add an API (using JSON objects) which makes it possible to use CMS content on other systems (i.e. have a photostream with the latest uploads, or a list with albums)
-* Better user authentication (possibility to have multiple image uploaders)
 * Make it possible to sort images
 * (make an install script)
-
+* (possibility to have multiple image uploaders)
 
 Acknowledgements
 ================
