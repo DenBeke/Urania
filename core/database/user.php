@@ -160,7 +160,7 @@ class User {
 			$salt = $user->salt;
 			$password = $user->password;
 
-			$output[] = new \User($id, $name, $registered, $salt, $password);
+			$output[] = new \Model\User($id, $name, $registered, $salt, $password);
 
 		}
 

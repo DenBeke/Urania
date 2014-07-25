@@ -38,15 +38,15 @@ namespace Controller\Admin {
 			if(isset($_POST['username']) && isset($_POST['password'])) {
 			
 				if($_POST['username'] == '' or $_POST['password'] == '') {
-					$this->notification = new \Notification('Please provide username and password', 'error');
+					$this->notification = new \Model\Notification('Please provide username and password', 'error');
 				}
 				else {
 					if(\Auth::checkLoginDetails($_POST['username'], $_POST['password'])) {
 						\Auth::login(\Database\User::getUserByName($_POST['username'])->getId());
-						$this->notification = new \Notification('You are successfully logged in', 'success');
+						$this->notification = new \Model\Notification('You are successfully logged in', 'success');
 					}
 					else {
-						$this->notification = new \Notification('Wrong username or password', 'error');
+						$this->notification = new \Model\Notification('Wrong username or password', 'error');
 					}
 				}
 				

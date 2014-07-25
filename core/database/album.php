@@ -279,7 +279,7 @@ class Album {
 			$date = intval($album->date);
 			$description = $album->description;
 
-			$output[] = new \Album($id, $name, $date, $description);
+			$output[] = new \Model\Album($id, $name, $date, $description);
 			
 		}
 

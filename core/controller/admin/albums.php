@@ -40,10 +40,10 @@ namespace Controller\Admin {
 			if(isset($_POST['albumName'])) {
 				try {
 				    $this->urania->addAlbum(stripslashes($_POST['albumName']));
-				    $this->notification = new \Notification('Added album: ' . $_POST['albumName'], 'success');
+				    $this->notification = new \Model\Notification('Added album: ' . $_POST['albumName'], 'success');
 				}
 				catch (\exception $exception) {
-				    $this->notification = new \Notification('Could not add album: ' . $exception->getMessage(), 'error');
+				    $this->notification = new \Model\Notification('Could not add album: ' . $exception->getMessage(), 'error');
 				}
 			}
 			elseif (isset($_POST['albumId'])) {
@@ -51,30 +51,30 @@ namespace Controller\Admin {
 			    	for ($i = 0; $i <  count($_FILES['file']['name']); $i++) {
 			    		$this->urania->uploadImage($_FILES['file']['name'][$i], $_FILES['file']['tmp_name'][$i], $_POST['albumId']);
 			    	}
-			    	$this->notification = new \Notification('Image(s) successfully uploaded', 'success');
+			    	$this->notification = new \Model\Notification('Image(s) successfully uploaded', 'success');
 			    }
 			    catch (\exception $exception) {
-			        $this->notification = new \Notification('Could not upload image: ' . $exception->getMessage(), 'error');
+			        $this->notification = new \Model\Notification('Could not upload image: ' . $exception->getMessage(), 'error');
 			    }
 					
 			}
 			elseif (isset($_POST['deleteAlbum'])) {
 			    try {
 				    $this->urania->deleteAlbum(intval($_POST['deleteAlbum']));
-				    $this->notification = new \Notification('Album successfully deleted', 'success');
+				    $this->notification = new \Model\Notification('Album successfully deleted', 'success');
 				}
 				catch (\exception $exception) {
-				    $this->notification = new \Notification('Could not delete album: ' . $exception->getMessage(), 'error');
+				    $this->notification = new \Model\Notification('Could not delete album: ' . $exception->getMessage(), 'error');
 				}
 			}
 			elseif (isset($_POST['changeName'])) {
 				//Change the name of the image
 				try {
 			    	$this->urania->changeAlbumName(intval($_POST['changeAlbumId']), stripslashes($_POST['changeName']));
-			    	$this->notification = new \Notification('Name of album successfully changed', 'success');
+			    	$this->notification = new \Model\Notification('Name of album successfully changed', 'success');
 			    }
 			    catch (\exception $exception) {
-			        $this->notification = new \Notification('Could not change album name: ' . $exception->getMessage(), 'error');
+			        $this->notification = new \Model\Notification('Could not change album name: ' . $exception->getMessage(), 'error');
 			    }
 			}
 			

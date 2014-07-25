@@ -71,12 +71,12 @@ namespace Controller\Admin {
 							
 							\Database\User::changePassword(\Auth::$user->getId(), $newEncrypted);
 							
-							$this->notification = new \Notification('Password changed.', 'success');
+							$this->notification = new \Model\Notification('Password changed.', 'success');
 						
 						}
 						else {
 							//Password cannot be empty
-							$this->notification = new \Notification('Password cannot be empty', 'error');
+							$this->notification = new \Model\Notification('Password cannot be empty', 'error');
 						}
 						
 						
@@ -85,19 +85,19 @@ namespace Controller\Admin {
 					}
 					else {
 						//Passwords are not the same
-						$this->notification = new \Notification('Passwords are not the same. Please verify you type two times the same password', 'error');
+						$this->notification = new \Model\Notification('Passwords are not the same. Please verify you type two times the same password', 'error');
 					}
 					
 				}
 				else {
 					//Wrong password
-					$this->notification = new \Notification('Wrong password.', 'error');
+					$this->notification = new \Model\Notification('Wrong password.', 'error');
 				}
 				
 			}
 			else {
 				//Please fill all fields... :)
-				$this->notification = new \Notification('Please fill all fields', 'error');
+				$this->notification = new \Model\Notification('Please fill all fields', 'error');
 			}
 			
 		}

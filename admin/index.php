@@ -66,7 +66,7 @@ $controller = glue::stick($urls);
 if(!Auth::loggedIn() && $controller->pageName != 'login' && $controller->pageName != 'logout') {
 
 	$controller = new Controller\Admin\Login;
-	$controller->notification = new Notification('Access Denied.<br>You must be logged in for admin access', 'error');
+	$controller->notification = new \Model\Notification('Access Denied.<br>You must be logged in for admin access', 'error');
 
 }
 

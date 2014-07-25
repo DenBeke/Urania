@@ -8,6 +8,11 @@ Date: June 2013
 */
 
 
+/**
+Namespace containing all models.
+*/
+namespace Model;
+
 require_once( __DIR__ .'/../auth.php');
 
 

@@ -8,6 +8,12 @@ Date: September 2013
 */
 
 
+/**
+Namespace containing all models.
+*/
+namespace Model;
+
+
 require_once( __DIR__ .'/image.php');
 
 
@@ -56,7 +62,7 @@ class Album {
         //Check if image is unique
         foreach ($this->images as $i) {
             if($image->getId() == $i->getId()) {
-                throw new Exception("There is already an image with id $i->getId() in the album");
+                throw new \exception("There is already an image with id $i->getId() in the album");
             }
             else {
                 continue;
@@ -97,7 +103,7 @@ class Album {
     */
     public function getImage($index) {
         if(!($index < $this->getNumberOfImages())) {
-            throw new Exception("Image index $index out of range");
+            throw new \exception("Image index $index out of range");
         }
         else {
             return $this->images[$index];

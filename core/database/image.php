@@ -206,7 +206,7 @@ class Image {
 			$name = $image->name;
 			$date = intval($image->date);
 			
-			$output[] = new \Image($id, $fileName, $name, $date, $albumId);
+			$output[] = new \Model\Image($id, $fileName, $name, $date, $albumId);
 		}
 		
 		return $output;

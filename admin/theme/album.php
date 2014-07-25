@@ -87,7 +87,7 @@ if($this->notification != NULL) {
 				<td>
 					<?php 
 					echo $this->album->getImage($i)->getName(); 
-					$image = new imageExif($this->album->getImage($i));
+					$image = new \Model\imageExif($this->album->getImage($i));
 					$image->readExifFromFile();
 					?>
 					

@@ -8,6 +8,11 @@ Date: September 2013
 */
 
 
+/**
+Namespace containing all models.
+*/
+namespace Model;
+
 require_once( __DIR__ .'/image.php');
 
 /**
@@ -59,11 +64,11 @@ class imageExif extends image {
     public function __construct($idOrBasicImage, $fileName = NULL, $name = NULL, $date = NULL, $albumId = NULL) { 
         
         if(func_num_args() != 1 and func_num_args() != 5) {
-        	throw new exception('Number of arguments must be 1 or 5');
+        	throw new \exception('Number of arguments must be 1 or 5');
         }
         if(func_num_args() == 1) {
-        	if(get_class($idOrBasicImage) != 'Image') {
-        		throw new exception('When only one argument given, the argument must be of type Image');
+        	if(get_class($idOrBasicImage) != '\Model\Image' and get_class($idOrBasicImage) != 'Model\Image') {
+        		throw new \exception('When only one argument given, the argument must be of type Image');
         	}
         	//Construct basic image from given image
         	parent::__construct($idOrBasicImage->getId(), $idOrBasicImage->getFileName(), $idOrBasicImage->getName(), $idOrBasicImage->getDate(), $idOrBasicImage->getAlbumId());
@@ -93,7 +98,7 @@ class imageExif extends image {
     		$fileName = __DIR__ . '/../../'.$this->getFileName();
     	}
     	if(!file_exists($fileName)) {
-    		throw new exception('The given file does not exist');
+    		throw new \exception('The given file does not exist');
     	}
     	else {
     		//TODO read exif data and clean it up
@@ -186,7 +191,7 @@ class imageExif extends image {
     				return false;
     			}
     		}
-    		catch (exception $exception) {
+    		catch (\exception $exception) {
     			return false;
     		}
     	}

@@ -46,7 +46,7 @@ try {
 
 	//Get the image
 	$u = new Urania;
-	$outputImage = new imageExif($u->getImage($image));
+	$outputImage = new \Model\imageExif($u->getImage($image));
 	$outputImage->readExifFromFile();
 	
 

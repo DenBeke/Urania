@@ -10,6 +10,11 @@ Date: September 2013
 
 
 /**
+Namespace containing all models.
+*/
+namespace Model;
+
+/**
 @brief Class containing a notification
 
 The class contains the following information:

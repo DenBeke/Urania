@@ -23,7 +23,7 @@ namespace Controller\Admin {
 			$this->themeDir = __DIR__ . '/../../../admin/theme/';
 			$this->theme = 'logout.php';
 			$this->pageTitle = 'Logout - ' . SITE_TITLE;
-			$this->notification = new \Notification('You are successfully logged out', 'success');
+			$this->notification = new \Model\Notification('You are successfully logged out', 'success');
 			\Auth::logout();
 		}
 			

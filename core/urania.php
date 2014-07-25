@@ -332,7 +332,7 @@ class Urania {
 		    }
 	    	
 	    	//Insert the image in the database
-	    	$image = new Image(0, $fileName, $imageTitle, $imageDate, $albumId);
+	    	$image = new \Model\Image(0, $fileName, $imageTitle, $imageDate, $albumId);
 	    	$this->addImage($image);
     	
     	

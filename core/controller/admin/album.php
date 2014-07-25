@@ -70,10 +70,10 @@ namespace Controller\Admin {
 			if (isset($_POST['deleteImage'])) {
 			    try {	
 				    $this->urania->deleteImage(intval($_POST['deleteImage']));
-				    $this->notification = new \Notification('Image successfully deleted', 'success');
+				    $this->notification = new \Model\Notification('Image successfully deleted', 'success');
 				}
 				catch (\exception $exception) {
-				    $this->notification = new \Notification('Could not delete image', 'error');
+				    $this->notification = new \Model\Notification('Could not delete image', 'error');
 				}
 			
 			}
@@ -82,10 +82,10 @@ namespace Controller\Admin {
 			    	for ($i = 0; $i <  count($_FILES['file']['name']); $i++) {
 			    		$this->urania->uploadImage($_FILES['file']['name'][$i], $_FILES['file']['tmp_name'][$i], $_POST['albumId']);
 			    	}
-			    	$this->notification = new \Notification('Image(s) successfully uploaded', 'success');
+			    	$this->notification = new \Model\Notification('Image(s) successfully uploaded', 'success');
 			    }
 			    catch (\exception $exception) {
-			        $this->notification = new \Notification('Could not upload image: ' . $exception->getMessage(), 'error');
+			        $this->notification = new \Model\Notification('Could not upload image: ' . $exception->getMessage(), 'error');
 			    }
 				
 			}
@@ -93,10 +93,10 @@ namespace Controller\Admin {
 				//Change the name of the image
 				try {
 				    $this->urania->changeImageName(intval($_POST['changeImage']), stripslashes($_POST['changeName']));
-				    $this->notification = new \Notification('Name of image successfully changed', 'success');
+				    $this->notification = new \Model\Notification('Name of image successfully changed', 'success');
 				}
 				catch (\exception $exception) {
-				    $this->notification = new \Notification('Could not change image name: ' . $exception->getMessage(), 'error');
+				    $this->notification = new \Model\Notification('Could not change image name: ' . $exception->getMessage(), 'error');
 				}
 			}
 			

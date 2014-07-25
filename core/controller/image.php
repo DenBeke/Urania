@@ -32,7 +32,7 @@ namespace Controller {
 		
 		public function GET($args) {
 			if(isset($args[1])) {
-				$this->image = new \ImageExif($this->urania->getImage($args[1]));
+				$this->image = new \Model\ImageExif($this->urania->getImage($args[1]));
 				$this->image->readExifFromFile();
 			}
 		}
