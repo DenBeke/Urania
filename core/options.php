@@ -36,6 +36,15 @@ class Options {
 		define('SITE_URL', self::get('site_url')); //With slash!!
 		define('COPYRIGHT', self::get('copyright'));
 		
+		$install_dir = explode('/', SITE_URL);
+		$install_dir = array_slice($install_dir, 3);
+		if($install_dir[sizeof($install_dir)-1] == '') {
+			unset($install_dir[sizeof($install_dir)-1]);
+		}
+		$install_dir = '/' . implode('/', $install_dir);
+		
+		define('INSTALL_DIR', $install_dir);
+		
 		//Theme
 		define('THEME_DIR', BASE_DIR . '/theme/' . self::get('theme') );
 		define('THEME_URL', SITE_URL . 'theme/' . self::get('theme') );
