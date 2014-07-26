@@ -92,9 +92,10 @@ class Options {
 	*/
 	static public function set($data) {
 		
+		Config::save($data);
+		
 		foreach ($data as $key => $value) {
 			
-			Config::save([$key => $value]);
 			self::$options[$key] = $value;
 			
 		}
