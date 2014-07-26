@@ -91,6 +91,66 @@ class Theme {
 		
 	}
 	
+	
+	
+	static public function exif(& $image) {
+		
+		
+		$image = new \Model\imageExif($image);
+		$image->readExifFromFile();
+		?>
+		
+		<div id="exif">
+			<ul>
+				<?php 
+				if($image->getCamera() != NULL) {
+				?>
+				<li>
+					<?php echo $image->getCamera(); ?>
+				</li>
+				<?php 
+				}
+				
+				if($image->getIso() != NULL) {
+				?>
+				<li>
+					ISO <?php echo $image->getIso(); ?>
+				</li>
+				
+				<?php 
+				}
+				
+				if($image->getAperture() != NULL) {
+				?>
+				<li>
+					&fnof;/<?php echo $image->getAperture(); ?>
+				</li>
+				<?php
+				}
+				
+				if($image->getShutterSpeed() != NULL) {
+				?>
+				<li>
+					<?php echo $image->getShutterSpeed(); ?>"
+				</li>
+				
+				<?php 
+				}
+				
+				if($image->getFocalLength() != NULL) {
+				?>
+				<li>
+					<?php echo $image->getFocalLength(); ?>
+				</li>
+				<?php } ?>
+			</ul>
+		</div><!-- #exif -->
+		
+		<?php
+		
+	}
+	
+	
 }
 
 

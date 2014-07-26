@@ -31,21 +31,13 @@ if($this->notification != NULL) {
 		
 			<th></th>
 		
-			<th>
-				Album
-			</th>
+			<th>Album</th>
 			
-			<th>
-				Date
-			</th>
+			<th>Date</th>
 			
-			<th>
+			<th></th>
 			
-			</th>
-			
-			<th>
-			
-			</th>
+			<th></th>
 
 		
 		</tr>
@@ -108,23 +100,6 @@ if($this->notification != NULL) {
 				<td class="date">
 					<?php echo date('d-m-Y', $album->getDate()); ?>
 				</td>
-				
-				<!--
-				<td class="pure-hidden-tablet pure-hidden-phone">
-					<form method="post" action="<?php echo SITE_URL; ?>admin/" class="pure-form">
-						<input class="pure-input" type="hidden" name="changeAlbumId" value="<?php echo $album->getId(); ?>">
-						<input type="text" name="changeName" value="" placeholder="Name" />
-						<input class="pure-button pure-button-primary" type="submit" value="Change name">
-					</form>
-				</td>
-				
-				<td class="pure-hidden-tablet pure-hidden-phone">
-					<form method="post" action="<?php echo SITE_URL; ?>admin/">
-						<input type="hidden" name="deleteAlbum" value="<?php echo $id; ?>">
-						<input class="pure-button pure-button-primary" type="submit" value="Delete">
-					</form>
-				</td>
-				-->
 				
 				<td>
 					<a class="pure-button pure-button-primary edit-button"><span class="glyphicon glyphicon-pencil"></span></a>

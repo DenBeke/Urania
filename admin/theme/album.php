@@ -46,26 +46,15 @@ if($this->notification != NULL) {
 	
 		<tr>
 		
-			<th>
-				
-			</th>
+			<th>	</th>
 			
-			<th>
-				Photo
-			</th>
+			<th>	Photo</th>
 			
-			<th>
-				Date
-			</th>
+			<th>	Date</th>
 			
-			<th>
-			
-			</th>
+			<th></th>
 		
-			<th>
-			
-			</th>
-			
+			<th></th>	
 		
 		</tr>
 	
@@ -76,88 +65,29 @@ if($this->notification != NULL) {
 		
 		for ($i = 0; $i < $this->album->getNumberOfImages(); $i++) {
 			
+			$image = $this->album->getImage($i);
+			
 			?>
 			
 			<tr>
 				<td>
-					<a href="<?php echo SITE_URL . $this->album->getImage($i)->getFileName(); ?>" class="lightbox">
-						<img src="<?php echo SITE_URL; ?>core/timthumb.php?src=<?php echo $this->album->getImage($i)->getFileName() . "&h=$imageHeight&w=$imageWidth"; ?>" alt="<?php echo $this->album->getImage($i)->getName(); ?>" />
+					<a href="<?php echo SITE_URL . $image->getFileName(); ?>" class="lightbox">
+						<img src="<?php echo SITE_URL; ?>core/timthumb.php?src=<?php echo $image->getFileName() . "&h=$imageHeight&w=$imageWidth"; ?>" alt="<?php echo $image->getName(); ?>" />
 					</a>
 				</td>
 				<td>
-					<?php 
-					echo $this->album->getImage($i)->getName(); 
-					$image = new \Model\imageExif($this->album->getImage($i));
-					$image->readExifFromFile();
-					?>
 					
-					<div id="exif">
-						<ul>
-							<?php 
-							if($image->getCamera() != NULL) {
-							?>
-							<li>
-								<?php echo $image->getCamera(); ?>
-							</li>
-							<?php 
-							}
-							
-							if($image->getIso() != NULL) {
-							?>
-							<li>
-								ISO <?php echo $image->getIso(); ?>
-							</li>
-							
-							<?php 
-							}
-							
-							if($image->getAperture() != NULL) {
-							?>
-							<li>
-								&fnof;/<?php echo $image->getAperture(); ?>
-							</li>
-							<?php
-							}
-							
-							if($image->getShutterSpeed() != NULL) {
-							?>
-							<li>
-								<?php echo $image->getShutterSpeed(); ?>"
-							</li>
-							
-							<?php 
-							}
-							
-							if($image->getFocalLength() != NULL) {
-							?>
-							<li>
-								<?php echo $image->getFocalLength(); ?>
-							</li>
-							<?php } ?>
-						</ul>
-					</div><!-- #exif -->
+					<h3 class="image-title">
+						<?php echo $image->getName();  ?>
+					</h3>
+					
+					<?php Theme::exif($image); ?>
+					
 				</td>
 				
 				<td class="date">
-					<?php echo date('d-m-Y',$this->album->getImage($i)->getDate()); ?>
+					<?php echo date('d-m-Y',$image->getDate()); ?>
 				</td>
-				
-				<!--
-				<td>
-					<form method="post" action="<?php echo SITE_URL; ?>admin/album/<?php echo $this->album->getId(); ?>" class="pure-form">
-						<input type="hidden" name="changeImage" value="<?php echo $this->album->getImage($i)->getId(); ?>">
-						<input type="text" name="changeName" value=""/>
-						<input class="pure-button pure-button-primary" type="submit" value="Change name">
-					</form>
-				</td>
-				
-				<td>
-					<form method="post" action="<?php echo SITE_URL; ?>admin/album/<?php echo $this->album->getId(); ?>" class="pure-form">
-						<input type="hidden" name="deleteImage" value="<?php echo $this->album->getImage($i)->getId(); ?>">
-						<input class="pure-button pure-button-primary" type="submit" value="Delete">
-					</form>
-				</td>
-				-->
 				
 				
 				<td>
@@ -165,7 +95,7 @@ if($this->notification != NULL) {
 					
 					<div class="edit-box">
 						<form method="post" action="<?php echo SITE_URL; ?>admin/album/<?php echo $this->album->getId(); ?>" class="pure-form">
-							<input type="hidden" name="changeImage" value="<?php echo $this->album->getImage($i)->getId(); ?>">
+							<input type="hidden" name="changeImage" value="<?php echo $image->getId(); ?>">
 							
 							<input type="text" name="changeName" value="" placeholder="New image name" class="pure-u-1" />
 							
@@ -178,7 +108,7 @@ if($this->notification != NULL) {
 						</form>
 						
 						<form method="post" action="<?php echo SITE_URL; ?>admin/album/<?php echo $this->album->getId(); ?>" class="pure-form">
-							<input type="hidden" name="deleteImage" value="<?php echo $this->album->getImage($i)->getId(); ?>">
+							<input type="hidden" name="deleteImage" value="<?php echo $image->getId(); ?>">
 							
 							<div class="button-container right">
 								<input class="pure-button pure-button-warning" type="submit" value="Delete">
@@ -193,7 +123,7 @@ if($this->notification != NULL) {
 				
 				
 				<td>
-					<a href="<?php echo SITE_URL . $this->album->getImage($i)->getFileName(); ?>" download="<?php echo $this->album->getImage($i)->getName(); ?>" class="pure-button pure-button-primary"><span class="glyphicon glyphicon-save"></span></a>
+					<a href="<?php echo SITE_URL . $image->getFileName(); ?>" download="<?php echo $image->getName(); ?>" class="pure-button pure-button-primary"><span class="glyphicon glyphicon-save"></span></a>
 				</td>
 				
 			</tr>

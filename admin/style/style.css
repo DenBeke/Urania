@@ -11,10 +11,6 @@ body {
 	padding-top: 50px;
 }
 
-a.no-link {
-	cursor: default;
-}
-
 
 /* Header *
 **********/
@@ -23,7 +19,6 @@ a.no-link {
 header {
 	color: #ccc;
 	background-color: #222;
-	//overflow: auto;
 	font-weight: lighter;
 	position: fixed;
 	top: 0;
@@ -273,7 +268,6 @@ table#admin-album td:nth-child(1) {
 
 table#admin-albums td:nth-child(4),
 table#admin-album td:nth-child(4) {
-	//width: 327px;
 	padding-right: 4px;
 	text-align: right;
 	position: relative;
@@ -282,7 +276,6 @@ table#admin-album td:nth-child(4) {
 table#admin-albums td:nth-child(5),
 table#admin-album td:nth-child(5) {
 	width: 1px;
-	//padding-top: 9px;
 	padding-left: 4px;
 }
 
@@ -292,7 +285,10 @@ table td.date {
 }
 
 
-
+.image-title {
+	color: #129FEA;
+	margin: 0;
+}
 
 
 
@@ -302,7 +298,6 @@ table td.date {
 	display: none;
 	background-color: #fff;
 	box-shadow: 0px 1px 3px #bbb;
-	//border-radius: 5px;
 	padding: 8px;
 	width: 230px;
 	right: 0;
@@ -358,7 +353,8 @@ span.empty-description {
 }
 
 .album-description {
-	font-weight: 300;
+	font-style: italic;
+	color: #777;
 	font-size: 1em;
 	text-align: justify;
 	border-top: 1px #d5d5d5 solid;
@@ -366,6 +362,22 @@ span.empty-description {
 
 .album-description .pure-button {
 	font-size: 7px;
+}
+
+
+#exif li {
+	display: inline-block;
+	min-width: 10px;
+	padding: 3px 7px;
+	font-weight: normal;
+	font-size: 0.9em;
+	line-height: 1;
+	color: #fff;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: baseline;
+	background-color: #ababab;
+	border-radius: 10px;
 }
 
 
@@ -377,11 +389,17 @@ footer {
 	color: #777;
 	font-size: 14px;
 	text-align: center;
+	padding-bottom: 10px;
 }
 
 
 footer a {
 	color: #777;
+	text-decoration: underline;
+}
+
+footer a:hover {
+	color: #129FEA;
 }
 
 
@@ -393,6 +411,10 @@ footer a {
 a {
     color: #129FEA; /* block-background-text-normal */
     text-decoration: none;
+}
+
+a.no-link {
+	cursor: default;
 }
 
 
@@ -540,6 +562,10 @@ table th[class*="col-"] {
 	box-sizing: border-box;
 }
 
+.album-description-edit-container textarea {
+	font-size: 0.9em;
+}
+
 
 
 /* Form enhancements *
@@ -575,7 +601,6 @@ textarea {
 	border: 1px solid #ddd;
 	background-color: rgb(249, 249, 249);
 	margin: 5%;
-	//border-radius: 5px;
 	overflow: hidden;
 }
 
@@ -610,7 +635,6 @@ textarea {
 	line-height: 36px;
 	padding-left: 4px;
 	padding-right: 4px;
-	//font-weight: lighter;
 	font-size: 1.0em;
 }
 
