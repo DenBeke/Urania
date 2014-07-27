@@ -1,6 +1,6 @@
 <?php
 /*
-Theme part for home page
+Theme part for single image page
 
 Author: Mathias Beke
 Url: http://denbeke.be
@@ -12,7 +12,7 @@ Date: March 2013
 	<a href="<?php echo SITE_URL . $this->image->getFileName(); ?>">
 		<img src="<?php echo SITE_URL . $this->image->getFileName(); ?>" alt="<?php echo $this->image->getName(); ?>" />
 	</a>
-</div>
+</div><!-- #image-photo -->
 
 
 <div class="page" id="image">
@@ -23,54 +23,11 @@ Date: March 2013
 	    <h1><?php echo $this->image->getName(); ?></h1>
 	    <p><?php echo date('d-m-Y', $this->image->getDate()); ?></p>
 	
-	    <!-- TODO efix data -->
-	    <div id="exif">
-	    	<ul>
-	    		<?php 
-	    		if($this->image->getCamera() != NULL) {
-	    		?>
-	    		<li>
-	    			<?php echo $this->image->getCamera(); ?>
-	    		</li>
-	    		<?php 
-	    		}
-	    		
-	    		if($this->image->getIso() != NULL) {
-	    		?>
-	    		<li>
-	    			ISO <?php echo $this->image->getIso(); ?>
-	    		</li>
-	    		
-	    		<?php 
-	    		}
-	    		
-	    		if($this->image->getAperture() != NULL) {
-	    		?>
-	    		<li>
-	    			&fnof;/<?php echo $this->image->getAperture(); ?>
-	    		</li>
-	    		<?php
-	    		}
-	    		
-	    		if($this->image->getShutterSpeed() != NULL) {
-	    		?>
-	    		<li>
-	    			<?php echo $this->image->getShutterSpeed(); ?>"
-	    		</li>
-	    		
-	    		<?php 
-	    		}
-	    		
-	    		if($this->image->getFocalLength() != NULL) {
-	    		?>
-	    		<li>
-	    			<?php echo $this->image->getFocalLength(); ?>
-	    		</li>
-	    		<?php } ?>
-	    	</ul>
-	    </div>
+		<!-- Exif info of image -->
+	    <?php Theme::exif($this->image); ?>
 	    
 	    
+	    <!-- GeoLocation of image -->
 	    <?php 
 	    if($this->image->getGpsLatitude() != NULL and $this->image->getGpsLongitude() != NULL) {
 	    ?>
@@ -83,10 +40,10 @@ Date: March 2013
 	    </script>
 	    
 	    
-	    <?php } ?>
+	    <?php } //endif ?>
 	    
 	    
-	</div><!-- #imageInfo -->
+	</div><!-- #image-info -->
 	
 	
 	
@@ -94,4 +51,4 @@ Date: March 2013
 	
 
 
-</div>
+</div><!-- #image -->

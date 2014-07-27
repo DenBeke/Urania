@@ -23,6 +23,8 @@ require BASE_DIR . '/core/database/database.php';
 //Include options
 require BASE_DIR . '/core/options.php';
 
+//Include Theme functions
+require BASE_DIR . '/core/theme_functions.php';
 
 
 $u = new Urania;

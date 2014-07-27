@@ -95,9 +95,14 @@ class Theme {
 	
 	static public function exif(& $image) {
 		
+		if(get_class($image) != 'Model\imageExif') {
+			
+			$image = new \Model\imageExif($image);
+			$image->readExifFromFile();
+			
+		}
 		
-		$image = new \Model\imageExif($image);
-		$image->readExifFromFile();
+		
 		?>
 		
 		<div id="exif">
