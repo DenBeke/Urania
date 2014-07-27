@@ -24,7 +24,7 @@ Installation
 * Apache mod_rewrite
 * MySQL PDO
 * GD Library
-* *Urania must have write access to the `upload` and `cache` folder. Your webserver must have write permission for the `core/config.php` file.*
+* *Urania must have write access to the `upload` and `cache` folder. Your webserver must have write permission to the `core/config.php` file.*
 
 
 ### Install Script ###
@@ -52,7 +52,7 @@ can be done in the admin control pannel: `yoursite.com/admin`.
 	
 * Your admin password is encrypted with a SHA512 hash and a Salt.
 
-* **Remove the `Install` folder after installation!**
+* **Remove the `install` folder after installation!**
 
 
 
@@ -115,7 +115,7 @@ You can change your password in the (very simple) user control panel.
 
 
 Todo's for the next version
-=========================
+===========================
 
 * Make it possible to add a caption to images
 * Image  tags and/or categories
