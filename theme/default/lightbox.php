@@ -9,7 +9,7 @@ Date: March 2013
 ?>
 
 <!--Lightbox elements-->
-<div id="overlay">
+<div id="overlay" class="">
 	<div id="lightboxContent">	
 		
 		
@@ -36,6 +36,10 @@ Date: March 2013
 				
 				<!-- Div that will contain the geolocation map -->
 				<div id="lightboxMap"></div>
+				
+				
+				<a id="close-lightbox">X</a>
+				
 			</div>
 			
 		</div>

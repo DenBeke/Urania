@@ -29,6 +29,7 @@ $(document).ready(function() {
 	    //Check if the screen is large enough to display the lightbox, else go directly to the image
 	    var windowHeight = $(window).height();
 	    var windowWidth = $(window).width();
+	    var bodyHeight = $('body').outerHeight(false);
 	    
 	    if(windowHeight > 620 && windowWidth > 820 || true) {
 	    
@@ -107,8 +108,9 @@ $(document).ready(function() {
 		    
 		    
 		    $('#overlay').fadeIn();
-		    $('#overlay').css('display', 'table-cell');
-		  
+		  	$('#overlay').toggleClass('open');
+		  	$('#overlay').css('height', windowHeight);
+		  	
 		    
 		    //stop refreshing to the page given in
 		    return false;
@@ -120,15 +122,40 @@ $(document).ready(function() {
 	
 	$('#overlay').click(function(e) {
 	
+		//closeLightbox();
+		//$('#overlay').toggleClass('open');
+		//destroyMap('lightboxMap');
+		
+	}
+	);
+	
+	$('#lightboxContent').click(function(e) {
+	
 		closeLightbox();
+		$('#overlay').toggleClass('open');
 		destroyMap('lightboxMap');
+		
 	}
 	);
 	
 	
 	
+	$('#close-lightbox').click(function(e) {
+	
+		closeLightbox();
+		$('#overlay').toggleClass('open');
+		destroyMap('lightboxMap');
+		
+	}
+	);
+
+	
+	
+	
+	
 	//Close lightbox
 	function closeLightbox() {
+		
 	    //Hide overlay and place loader images back
 	    $('#overlay').fadeOut(0);	
 	    $('#overlay img#photo').fadeOut(0);
@@ -145,12 +172,13 @@ $(document).ready(function() {
 	    $('body').css('overflow', 'auto');
 	    $('#overlay .loading').addClass('active');
 	    
+	    
 	}
 	
 	
 	//Prevent lightbox from closing
 	$(function() {
-		$("#lightboxContent").on("click", function(e) {
+		$("#lightboxWrapper").on("click", function(e) {
 			e.stopPropagation();
 		});
 	});
