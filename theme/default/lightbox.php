@@ -11,7 +11,7 @@ Date: March 2013
 <!--Lightbox elements-->
 <div id="overlay">
 	<div id="lightboxContent">	
-		<h1></h1>
+		
 		
 		<div id="lightboxWrapper">
 		
@@ -25,6 +25,9 @@ Date: March 2013
 			
 			
 			<div id="meta">
+				
+				<h1></h1>
+				
 				<span class="date"></span>
 				
 				<ul class="exif">

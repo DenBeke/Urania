@@ -340,6 +340,55 @@ header {
 
 
 
+
+/* Lightbox */
+
+
+#lightboxContent h1 {
+	font-family: 'Open Sans';
+	font-weight: 300;
+	color: #444;
+	font-size: 1.5em;
+}
+
+
+#lightboxContent #meta {
+}
+
+
+#lightboxContent #meta .date {
+	color: #777;
+	font-family: 'Open Sans';
+	font-weight: 300;
+	font-size: 1.1em;
+	font-style: italic;
+}
+
+ul.exif {
+	margin: 20px 0;
+	padding: 0 15px;
+	text-align: center !important;
+}
+
+ul.exif li {
+	display: inline-block;
+	min-width: 10px;
+	padding: 3px 7px;
+	font-weight: normal;
+	font-size: 0.9em;
+	line-height: 1;
+	color: #fff;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: baseline;
+	background-color: #999;
+	border-radius: 10px;
+	margin: 2px;
+}
+
+
+
+
 /* Footer *
 **********/
 
