@@ -87,6 +87,7 @@ Date: September 2013
     width: auto;
     height: auto;
     max-height: 90vh;
+    max-width: calc(100vw - 310px);
     margin: 0;
     
 }
