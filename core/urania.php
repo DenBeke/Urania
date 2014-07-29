@@ -8,8 +8,6 @@ Date: September 2013
 */
 
 require_once( __DIR__ . '/error_handler.php');
-require_once( __DIR__ . '/database.php');
-
 
 
 /**
