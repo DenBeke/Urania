@@ -248,10 +248,7 @@ class Urania {
             }
            
             //Delete album in the database
-            $id = $this->database->escape($id);
-            $albums = $this->database->escape($this->db_table_albums);
-            $query = "DELETE FROM `$albums` WHERE `$albums`.`id` = $id";
-            $this->database->doQuery($query);
+            \Database\Album::delete($id);
             
             //Delete album directory
             $dir = opendir( __DIR__ . '/../' . $this->uploadDir . '/' . $this->simplifyFileName($album->getName()));

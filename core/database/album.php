@@ -259,6 +259,19 @@ class Album {
 	
 	
 	
+	/**
+	Delete the album with the given id
+	
+	@param id
+	*/
+	static public function delete($id) {
+	
+		$query = BUILDER::table(self::ALBUMS)->where('id', '=', $id);
+		$result = $query->delete();
+	
+	}
+	
+	
 	
 	/**
 	Convert the database result to an instance of Album
