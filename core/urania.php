@@ -31,9 +31,9 @@ class Urania {
     @pre there is no album with the given name
     @pre album name cannot be empty
     */
-    public function addAlbum($albumName) {
+    static public function addAlbum($albumName) {
     
-	    	if($this->albumNameExists($albumName)) {
+	    	if(self::albumNameExists($albumName)) {
 	    		throw new Exception("There is already an album with the name '$albumName'");
 	    	}
 	    	if($albumName == '') {
@@ -45,7 +45,7 @@ class Urania {
 	        Database\Album::addAlbum($albumName, time());
 	        
 	        //Add new directory to the upload folder
-	        mkdir( __DIR__ . '/../' . UPLOAD_DIR . '/' . $this->simplifyFileName($albumName));
+	        mkdir( __DIR__ . '/../' . UPLOAD_DIR . '/' . self::simplifyFileName($albumName));
 	        
 	    }
         
@@ -57,7 +57,7 @@ class Urania {
     
     @param image
     */
-    public function addImage($image) {
+    static public function addImage($image) {
     
         \Database\Image::addImage($image);
     
@@ -69,7 +69,7 @@ class Urania {
     
     @return albums (with only the latest image included)
     */
-    public function getAllAlbums() {
+    static public function getAllAlbums() {
         
     		return Database\Album::getAllAlbums();
         
@@ -85,7 +85,7 @@ class Urania {
     
     @pre id exists
     */
-    public function getAlbum($id) {
+    static public function getAlbum($id) {
         
         return Database\Album::getAlbum($id);
         
@@ -100,7 +100,7 @@ class Urania {
     
     @pre image exists
     */
-    public function getImage($id) {
+    static public function getImage($id) {
         
         return Database\Image::getImageById($id);
         
@@ -116,7 +116,7 @@ class Urania {
     
     @pre count is greater than, or equal to zero
     */
-    public function getLatestImages($count) {
+    static public function getLatestImages($count) {
     
 	    	return Database\Image::getLatestImages($count);
     
@@ -134,7 +134,7 @@ class Urania {
     @pre image exists
     @pre new image name not empty
     */
-    public function changeImageName($id, $imageName) {
+    static public function changeImageName($id, $imageName) {
             
     		Database\Image::changeImageName($id, $imageName);
             
@@ -152,11 +152,11 @@ class Urania {
     @pre there is no album with the new name
     @pre new album name not empty
     */
-    public function changeAlbumName($id, $albumName) {
-        if(!$this->albumExists($id)) {
+    static public function changeAlbumName($id, $albumName) {
+        if(!self::albumExists($id)) {
             throw new Exception("There is no album with the id $id");
         }
-        elseif($this->albumNameExists($albumName)) {
+        elseif(self::albumNameExists($albumName)) {
         		throw new Exception("There is already an album with the new name '$albumName'");
         }
         elseif($albumName == '') {
@@ -164,7 +164,7 @@ class Urania {
         }
         else {
 	        	//Get the old album name
-	        	$oldAlbum = $this->getAlbumName($id);
+	        	$oldAlbum = self::getAlbumName($id);
 	        	
 	        	//Check if name is not the same, if so, we can return immediately
 	        	if ($oldAlbum == $albumName) {
@@ -173,7 +173,7 @@ class Urania {
         
             Database\Album::changeAlbumName($id, $albumName);
 
-            rename( __DIR__ . '/../' . UPLOAD_DIR . '/' . $this->simplifyFileName($oldAlbum), __DIR__ . '/../' . UPLOAD_DIR . '/' . $this->simplifyFileName($albumName));
+            rename( __DIR__ . '/../' . UPLOAD_DIR . '/' . self::simplifyFileName($oldAlbum), __DIR__ . '/../' . UPLOAD_DIR . '/' . self::simplifyFileName($albumName));
             
         }
     }
@@ -186,8 +186,8 @@ class Urania {
     @param id   
     @pre image exists
     */
-    public function deleteImage($id) {
-        if(!$this->imageExists($id)) {
+    static public function deleteImage($id) {
+        if(!self::imageExists($id)) {
             throw new Exception("There is no image with the id $id");
         }
         else {
@@ -212,33 +212,33 @@ class Urania {
     @param id   
     @pre album exists
     */
-    public function deleteAlbum($id) {
-        if(!$this->albumExists($id)) {
+    static public function deleteAlbum($id) {
+        if(!self::albumExists($id)) {
             throw new Exception("There is no album with the id $id");
         }
         else {
             //Get the album
-            $album = $this->getAlbum($id);
+            $album = self::getAlbum($id);
             
             //Delete all images
             for ($i = 0; $i < $album->getNumberOfImages(); $i++) {
-            		$this->deleteImage($album->getImage($i)->getId());
+            		self::deleteImage($album->getImage($i)->getId());
             }
            
             //Delete album in the database
             \Database\Album::delete($id);
             
             //Delete album directory
-            $dir = opendir( __DIR__ . '/../' . UPLOAD_DIR . '/' . $this->simplifyFileName($album->getName()));
+            $dir = opendir( __DIR__ . '/../' . UPLOAD_DIR . '/' . self::simplifyFileName($album->getName()));
             //do whatever you need
             closedir($dir);
-            rmdir( __DIR__ . '/../' . UPLOAD_DIR . '/' . $this->simplifyFileName($album->getName()));
+            rmdir( __DIR__ . '/../' . UPLOAD_DIR . '/' . self::simplifyFileName($album->getName()));
         }
     }
     
     
     
-    private function albumExists($id) {
+    static private function albumExists($id) {
         
         return Database\Album::albumExists($id);       
     }
@@ -255,7 +255,7 @@ class Urania {
     
     @pre Album with given albumId exists
     */
-    public function uploadImage($imageName, $tempFile, $albumId) {
+    static public function uploadImage($imageName, $tempFile, $albumId) {
 	    	//Check if upload file is image
 	    	$info = getimagesize($tempFile);
 	    	if ($info == FALSE) {
@@ -268,21 +268,21 @@ class Urania {
 	    	- date
 	    	- album name
 	    	*/
-	    	$imageTitle = $this->removeExtension($imageName);
-	    	$albumName = $this->simplifyFileName($this->getAlbumName($albumId));
+	    	$imageTitle = self::removeExtension($imageName);
+	    	$albumName = self::simplifyFileName(self::getAlbumName($albumId));
 	    	$imageDate = time();
 	    	
 	    	//Get the filename of the image
-	    	$fileName = $this->simplifyFileName($imageName);
+	    	$fileName = self::simplifyFileName($imageName);
 	
 			//Check if this file name is unique
 			//If it exists, we add a suffix to it and check again if it's unique    	
-	    	if($this->fileNameExists($fileName)) {
+	    	if(self::fileNameExists($fileName)) {
 	    		$suffix = 2;
-	    		while ($this->fileNameExists($this->addSuffix($fileName, "-" . $suffix))) {
+	    		while (self::fileNameExists(self::addSuffix($fileName, "-" . $suffix))) {
 	    			$suffix++;
 	    		}
-	    		$fileName = $this->addSuffix($fileName, "-" . $suffix);
+	    		$fileName = self::addSuffix($fileName, "-" . $suffix);
 	    	}
 	    	
 	    	//Upload the file
@@ -305,7 +305,7 @@ class Urania {
 	    	
 	    	//Insert the image in the database
 	    	$image = new \Model\Image(0, $fileName, $imageTitle, $imageDate, $albumId);
-	    	$this->addImage($image);
+	    	self::addImage($image);
     	
     	
     }
@@ -320,7 +320,7 @@ class Urania {
     @return album  name
     @pre albume exists
     */
-    private function getAlbumName($id) {
+    static private function getAlbumName($id) {
     
     		return Database\Album::getAlbumName($id);
         	
@@ -400,7 +400,7 @@ class Urania {
     @param file name
     @return true/false
     */
-    private function fileNameExists($fileName) {
+    static private function fileNameExists($fileName) {
 	    
     		return file_exists( __DIR__ . '/../' . UPLOAD_DIR . '/' . $fileName);
     		
@@ -435,7 +435,7 @@ class Urania {
     @param id
     @return exists
     */
-    private function imageExists($id) {
+    static private function imageExists($id) {
         
         return Database\Image::imageExists($id);
         
@@ -448,14 +448,14 @@ class Urania {
     @param id
     @return exists
     */
-    private function albumNameExists($albumName) {
+    static private function albumNameExists($albumName) {
 	    	
 	    return Database\Album::albumNameExists($albumName);
     	
     }
     
     
-    private function getImagesFromAlbum($albumId) {
+    static private function getImagesFromAlbum($albumId) {
         
         return Database\Album::getImagesFromAlbum($albumId);
         
@@ -471,7 +471,7 @@ class Urania {
     
     @pre album exists
     */
-    private function getLatestImage($id) {
+    static private function getLatestImage($id) {
         
         return Database\Image::getLatestImage($id);
         

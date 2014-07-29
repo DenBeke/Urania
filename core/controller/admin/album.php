@@ -37,7 +37,7 @@ namespace Controller\Admin {
 			}
 			
 			$id = intval($args[1]);
-			$this->album = $this->urania->getAlbum($id);
+			$this->album = \Urania::getAlbum($id);
 			$this->pageTitle = $this->album->getName() . ' - ' . SITE_TITLE;
 			
 			
@@ -55,7 +55,7 @@ namespace Controller\Admin {
 				
 				
 				//Fetch the album again (with updated data)
-				$this->album = $this->urania->getAlbum($id);
+				$this->album = \Urania::getAlbum($id);
 				
 			}
 		}	
@@ -64,7 +64,7 @@ namespace Controller\Admin {
 			
 			if (isset($_POST['deleteImage'])) {
 			    try {	
-				    $this->urania->deleteImage(intval($_POST['deleteImage']));
+				    \Urania::deleteImage(intval($_POST['deleteImage']));
 				    $this->notification = new \Model\Notification('Image successfully deleted', 'success');
 				}
 				catch (\exception $exception) {
@@ -75,7 +75,7 @@ namespace Controller\Admin {
 			elseif (isset($_POST['albumId'])) {
 			    try {
 			    	for ($i = 0; $i <  count($_FILES['file']['name']); $i++) {
-			    		$this->urania->uploadImage($_FILES['file']['name'][$i], $_FILES['file']['tmp_name'][$i], $_POST['albumId']);
+			    		\Urania::uploadImage($_FILES['file']['name'][$i], $_FILES['file']['tmp_name'][$i], $_POST['albumId']);
 			    	}
 			    	$this->notification = new \Model\Notification('Image(s) successfully uploaded', 'success');
 			    }
@@ -87,7 +87,7 @@ namespace Controller\Admin {
 			elseif (isset($_POST['changeName'])) {
 				//Change the name of the image
 				try {
-				    $this->urania->changeImageName(intval($_POST['changeImage']), stripslashes($_POST['changeName']));
+				    \Urania::changeImageName(intval($_POST['changeImage']), stripslashes($_POST['changeName']));
 				    $this->notification = new \Model\Notification('Name of image successfully changed', 'success');
 				}
 				catch (\exception $exception) {
@@ -96,7 +96,7 @@ namespace Controller\Admin {
 			}
 			
 		
-			$this->album = $this->urania->getAlbum($this->album->getId()); //Update album after post
+			$this->album = \Urania::getAlbum($this->album->getId()); //Update album after post
 		
 		}
 		

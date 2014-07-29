@@ -27,7 +27,7 @@ namespace Controller {
 		
 		public function GET($args) {
 			$id = intval($args[1]);
-			$this->album = $this->urania->getAlbum($id);
+			$this->album = \Urania::getAlbum($id);
 			$this->pageTitle = $this->album->getName() . ' - ' . SITE_TITLE;
 		}
 			

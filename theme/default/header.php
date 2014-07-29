@@ -61,10 +61,10 @@ Date: March 2013
 			<nav id="album-nav">
 				<ul>
 					<?php
-					foreach ($u->getAllAlbums() as $album) {
+					foreach (Urania::getAllAlbums() as $album) {
 						$navId = $album->getId();
 						$name = $album->getName();
-						$simpleName = $u->simplifyFileName($name);
+						$simpleName = Urania::simplifyFileName($name);
 						echo '<li><a href="' . SITE_URL . "album/$navId/$simpleName\">$name</a></li>";
 					}
 					?>

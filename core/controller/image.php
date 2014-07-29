@@ -27,7 +27,7 @@ namespace Controller {
 		
 		public function GET($args) {
 			if(isset($args[1])) {
-				$this->image = new \Model\ImageExif($this->urania->getImage($args[1]));
+				$this->image = new \Model\ImageExif(\Urania::getImage($args[1]));
 				$this->image->readExifFromFile();
 				$this->pageTitle = $this->image->getName() . ' - ' . SITE_TITLE;
 			}

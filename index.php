@@ -27,8 +27,6 @@ require BASE_DIR . '/core/options.php';
 require BASE_DIR . '/core/theme_functions.php';
 
 
-$u = new Urania;
-
 
 //URL handling
 

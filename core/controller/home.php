@@ -23,7 +23,7 @@ namespace Controller {
 			parent::__construct();
 			$this->theme = 'home.php';
 			$this->pageTitle = SITE_TITLE;
-			$this->albums = $this->urania->getAllAlbums();
+			$this->albums = \Urania::getAllAlbums();
 		}
 			
 	
