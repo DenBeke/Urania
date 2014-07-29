@@ -184,6 +184,23 @@ class Image {
 	
 	
 	
+	/**
+	Get the latest n uploaded images
+	
+	@param count
+	@return image
+	*/
+	static public function getLatestImages($count) {
+		
+		$query = BUILDER::table(self::IMAGES)->orderBy('date', 'DESC')->limit($count);
+		$result = $query->get();
+
+		return Image::resultToImage($result);	
+		
+	}
+	
+	
+	
 	
 	/**
 	Convert the database result to an instance of Image
