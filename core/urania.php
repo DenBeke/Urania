@@ -23,28 +23,6 @@ This class takes care of:
 class Urania {
     
     private $debug = false;
-    private $database;
-    private $db_table_albums;
-    private $db_table_images;
-    private $uploadDir;
-    private $siteTitle;
-    private $siteUrl;
-    private $copyright;
-    
-    /**
-    Constructor
-    
-    @param path to config file
-    */
-    public function __construct() {
-        $this->db_table_albums = DB_TABLE_ALBUMS;
-        $this->db_table_images = DB_TABLE_IMAGES;
-        $this->database = new Database(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE, __DIR__ .'/../cache/');
-        $this->uploadDir = UPLOAD_DIR;
-        $this->siteTitle = SITE_TITLE;
-        $this->siteUrl = SITE_URL;
-        $this->copyright = COPYRIGHT;
-    }
      
     
     /**
@@ -67,7 +45,7 @@ class Urania {
 	        Database\Album::addAlbum($albumName, time());
 	        
 	        //Add new directory to the upload folder
-	        mkdir( __DIR__ . '/../' . $this->uploadDir . '/' . $this->simplifyFileName($albumName));
+	        mkdir( __DIR__ . '/../' . UPLOAD_DIR . '/' . $this->simplifyFileName($albumName));
 	        
 	    }
         
@@ -195,7 +173,7 @@ class Urania {
         
             Database\Album::changeAlbumName($id, $albumName);
 
-            rename( __DIR__ . '/../' . $this->uploadDir . '/' . $this->simplifyFileName($oldAlbum), __DIR__ . '/../' . $this->uploadDir . '/' . $this->simplifyFileName($albumName));
+            rename( __DIR__ . '/../' . UPLOAD_DIR . '/' . $this->simplifyFileName($oldAlbum), __DIR__ . '/../' . UPLOAD_DIR . '/' . $this->simplifyFileName($albumName));
             
         }
     }
@@ -251,10 +229,10 @@ class Urania {
             \Database\Album::delete($id);
             
             //Delete album directory
-            $dir = opendir( __DIR__ . '/../' . $this->uploadDir . '/' . $this->simplifyFileName($album->getName()));
+            $dir = opendir( __DIR__ . '/../' . UPLOAD_DIR . '/' . $this->simplifyFileName($album->getName()));
             //do whatever you need
             closedir($dir);
-            rmdir( __DIR__ . '/../' . $this->uploadDir . '/' . $this->simplifyFileName($album->getName()));
+            rmdir( __DIR__ . '/../' . UPLOAD_DIR . '/' . $this->simplifyFileName($album->getName()));
         }
     }
     
@@ -308,13 +286,13 @@ class Urania {
 	    	}
 	    	
 	    	//Upload the file
-	    	move_uploaded_file($tempFile, __DIR__ . '/../' . $this->uploadDir . '/' . $albumName . '/' . $fileName);
+	    	move_uploaded_file($tempFile, __DIR__ . '/../' . UPLOAD_DIR . '/' . $albumName . '/' . $fileName);
 	    	
 	    	//Get image date from efix date
 	    	//If it couldn't read the efix date, the current time will be used
 	    	try {
-		    	if(function_exists("exif_read_data") && exif_read_data( __DIR__ . '/../' . $this->uploadDir . '/' . $albumName . '/' . $fileName)){ 
-					$efix = exif_read_data( __DIR__ . '/../' . $this->uploadDir . '/' . $albumName . '/' . $fileName);
+		    	if(function_exists("exif_read_data") && exif_read_data( __DIR__ . '/../' . UPLOAD_DIR . '/' . $albumName . '/' . $fileName)){ 
+					$efix = exif_read_data( __DIR__ . '/../' . UPLOAD_DIR . '/' . $albumName . '/' . $fileName);
 					$imageDate = strtotime($efix['DateTimeOriginal']);
 					if ($imageDate == 0) {
 						$imageDate = time();
@@ -424,7 +402,7 @@ class Urania {
     */
     private function fileNameExists($fileName) {
 	    
-    		return file_exists( __DIR__ . '/../' . $this->uploadDir . '/' . $fileName);
+    		return file_exists( __DIR__ . '/../' . UPLOAD_DIR . '/' . $fileName);
     		
     }
     
