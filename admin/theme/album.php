@@ -72,7 +72,7 @@ if($this->notification != NULL) {
 			<tr>
 				<td>
 					<a href="<?php echo SITE_URL . $image->getFileName(); ?>" class="lightbox">
-						<img src="<?php echo SITE_URL; ?>core/timthumb.php?src=<?php echo $image->getFileName() . "&h=$imageHeight&w=$imageWidth"; ?>" alt="<?php echo $image->getName(); ?>" />
+						<img src="<?php echo SITE_URL; ?>core/timthumb.php?src=<?php echo $image->getFileName() . "&h=$imageHeight&w=$imageWidth"; ?>" alt="<?php echo $image->getName(); ?>" width="<?php echo $imageWidth; ?>px" height="<?php echo $imageHeight; ?>px" />
 					</a>
 				</td>
 				<td>
