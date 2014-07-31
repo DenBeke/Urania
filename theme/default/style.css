@@ -166,7 +166,7 @@ header {
 	box-shadow: 0 0 1px rgba(0,0,0,0.3) inset;
 	transition: opacity 0.2s;
 	text-align: center;
-	background-size: cover;
+	background-size: contain;
 }
 
 #home li a:hover div.home-album-image-container {
