@@ -35,7 +35,7 @@ try {
 		<li>
 			<a href="<?php echo SITE_URL . 'image/' . $this->album->getImage($i)->getId() . '/' . $this->urania->simplifyFileName($this->album->getImage($i)->getName()); ?>" class="lightbox" title="<?php echo $this->album->getImage($i)->getName(); ?>" data-json="<?php echo SITE_URL . 'ajax/image.php?image=' . $this->album->getImage($i)->getId(); ?>">
 			
-				<img src="<?php echo SITE_URL; ?>core/timthumb.php?src=<?php echo $this->album->getImage($i)->getFileName() . "&amp;h=$imageHeight&amp;w=$imageWidth"; ?>" alt="<?php echo $this->album->getImage($i)->getName(); ?>" title="<?php echo $this->album->getImage($i)->getName(); ?>" />
+				<img src="<?php echo SITE_URL; ?>core/timthumb.php?src=<?php echo $this->album->getImage($i)->getFileName() . "&amp;h=". 2 * $imageHeight . "&amp;w=" . 2 * $imageWidth; ?>" alt="<?php echo $this->album->getImage($i)->getName(); ?>" title="<?php echo $this->album->getImage($i)->getName(); ?>" width="<?php echo $imageWidth; ?>" height="<?php echo $imageHeight; ?>" />
 				
 			</a>
 		</li>
