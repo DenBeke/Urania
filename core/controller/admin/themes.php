@@ -32,8 +32,20 @@ namespace Controller\Admin {
 				$theme_name = explode('/', $dir);
 				$theme_name = $theme_name[sizeof($theme_name) - 1];
 				
-				$this->themes[$theme_name] = json_decode( file_get_contents($dir . '/theme.json') );
-				$this->themes[$theme_name]->dir = $dir;
+				/*
+				if( !file_exists($dir . '/theme.json') ) {
+					continue;
+				}
+				*/
+				
+				try {
+					$this->themes[$theme_name] = json_decode( file_get_contents($dir . '/theme.json') );
+					$this->themes[$theme_name]->dir = $dir;
+				}
+				catch (\exception $e) {
+					continue;
+				}
+				
 			}
 			
 		}
