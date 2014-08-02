@@ -27,7 +27,7 @@ namespace Controller\Admin {
 			$this->pageTitle = 'Themes - ' . SITE_TITLE;
 					
 			
-			$themes = __DIR__ . '/../../../theme/*';			
+			$themes = THEME_DIR . '/../*';		
 			foreach (glob( $themes ) as $dir) {
 				$theme_name = explode('/', $dir);
 				$theme_name = $theme_name[sizeof($theme_name) - 1];

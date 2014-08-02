@@ -25,7 +25,7 @@ Date: May 2014
 			<!-- Theme preview image -->
 			<div class="theme-image-container">
 				
-				<img src="<?php echo SITE_URL . 'theme/' . $theme_name . '/screenshot.png'; ?>" class="theme-image">
+				<img src="<?php echo SITE_URL . 'themes/' . $theme_name . '/screenshot.png'; ?>" class="theme-image">
 				
 			</div>
 			

@@ -46,8 +46,8 @@ class Options {
 		define('INSTALL_DIR', $install_dir);
 		
 		//Theme
-		define('THEME_DIR', BASE_DIR . '/theme/' . self::get('theme') );
-		define('THEME_URL', SITE_URL . 'theme/' . self::get('theme') );
+		define('THEME_DIR', BASE_DIR . '/themes/' . self::get('theme') );
+		define('THEME_URL', SITE_URL . 'themes/' . self::get('theme') );
 		define('THEME', self::get('theme'));
 		
 		//Analytics
