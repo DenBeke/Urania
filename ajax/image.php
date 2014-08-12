@@ -23,8 +23,6 @@ require_once( __DIR__ . '/../core/database/database.php');
 require_once BASE_DIR .'/core/options.php';
 
 
-require_once( __DIR__ . '/json.php' );
-
 $output = array();
 
 
@@ -69,10 +67,10 @@ try {
 	
 	$output['error'] = false;
 	
-	$out = json_encode($output);
+	$out = json_encode($output, JSON_PRETTY_PRINT);
 	if($debug) {
 		echo '<pre>';
-		echo formatJson($out);
+		echo $out;
 		echo '</pre>';
 	}
 	else {

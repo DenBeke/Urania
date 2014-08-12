@@ -8,7 +8,6 @@ Date: September 2013
 */
 
 require_once( __DIR__ . '/../core/urania.php' );
-require_once( __DIR__ . '/json.php' );
 
 $output = array();
 
@@ -46,12 +45,12 @@ try {
 	}
 	
 	
-	$out = json_encode($output);
+	$out = json_encode($output, JSON_PRETTY_PRINT);
 	
 	
 	if($debug) {
 		echo '<pre>';
-		echo formatJson($out);
+		echo $out;
 		echo '</pre>';
 	}
 	else {
