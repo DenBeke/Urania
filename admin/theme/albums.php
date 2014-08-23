@@ -110,7 +110,7 @@ if($this->notification != NULL) {
 						<form method="post" action="<?php echo SITE_URL; ?>admin/" class="pure-form">
 							<input class="pure-input" type="hidden" name="changeAlbumId" value="<?php echo $album->getId(); ?>">
 							
-							<input type="text" name="changeName" value="" placeholder="New album name" class="pure-u-1" />
+							<input type="text" name="changeName" placeholder="New album name" class="pure-u-1" value="<?php echo $album->getName(); ?>" />
 							
 							
 							<div class="button-container left">
