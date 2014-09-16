@@ -18,10 +18,10 @@ require_once(__DIR__ . '/../pixie/includes.php');
 //Create a new query builder object
 $config = array(
 	'driver'    => 'mysql', // Db driver
-	'host'      => 'localhost',
-	'database'  => 'Urania',
-	'username'  => 'root',
-	'password'  => 'root',
+	'host'      => DB_HOST,
+	'database'  => DB_DATABASE,
+	'username'  => DB_USER,
+	'password'  => DB_PASSWORD,
 );
 
 new \Pixie\Connection('mysql', $config, '\Database\BUILDER');
