@@ -25,6 +25,7 @@ class Install {
 		  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id of the album',
 		  `name` text NOT NULL COMMENT 'Name of the album',
 		  `date` int(11) NOT NULL COMMENT 'Creation date',
+		  `description` MEDIUMTEXT NULL COMMENT 'Optional album description',
 		  PRIMARY KEY (`id`)
 		)",
 		
@@ -163,6 +164,7 @@ class Install {
 	static public function user() {
 		
 		$success = false;
+		$url = '';
 		$parameters = [
 			'user' => 'Please provide admin username',
 			'password' => 'Please provide admin user password',
@@ -192,7 +194,13 @@ class Install {
 				require __DIR__ . self::$config_file;
 				require __DIR__ . '/../core/database/database.php';
 				require __DIR__ . '/../core/autoloader.php';
-				require __DIR__ . '/../core/options.php';
+				
+				try {
+					require __DIR__ . '/../core/options.php';	
+				}
+				catch (exception $e) {
+					
+				}
 				
 				//Save options to database
 				Options::set($options);
@@ -211,6 +219,7 @@ class Install {
 				
 				
 				$success = true;
+				$url = $options['site_url'];
 				
 			
 			}
@@ -224,7 +233,7 @@ class Install {
 		
 		if($success) {
 			//Next step...
-			header('Location: ' . SITE_URL);
+			header('Location: ' . $url . '/admin/');
 		}
 		else {
 			//Theme file
