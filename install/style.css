@@ -49,3 +49,19 @@ p.notice.ok {
 p.notice.error {
 	background-color: rgb(202, 60, 60);
 }
+
+
+
+td {
+	vertical-align: top;
+}
+
+td:first-child {
+	padding-right: 4px;
+}
+
+p.check-error {
+	color: gray;
+	margin-top: 0;
+	font-style: italic;
+}

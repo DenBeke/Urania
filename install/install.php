@@ -17,7 +17,11 @@ class Install {
 
 	static private $link;
 	
-	static private $config_file = '/../core/config.php';
+	static private $config_file = '../core/config.php';
+	
+	static private $upload_dir = '../upload/';
+	
+	static private $cache_dir = '../cache/';
 	
 	static private $tables = [
 		
@@ -73,6 +77,8 @@ class Install {
 	
 	];
 	
+	
+	static public $checks;
 
 	/**
 	Initializer.
@@ -80,7 +86,7 @@ class Install {
 	*/
 	static public function init() {
 	
-		$default = 'database';
+		$default = 'checks';
 	
 		if(isset($_GET['step'])) {
 			$func = $_GET['step'];
@@ -91,6 +97,46 @@ class Install {
 	
 		@call_user_func('self::' . $func);
 	
+	}
+	
+	
+	/**
+	Check for valid installation.
+	- PHP version
+	- read/write access
+	- ...
+	*/
+	static public function checks() {
+
+		self::$checks = [];
+
+		if(self::checkVersion()) {
+			self::$checks['PHP version >= 5.5'] = true;
+		} else {
+			self::$checks['PHP version >= 5.5'] = 'PHP version >= 5.5.0 required';
+		}
+		
+		if(self::checkConfigFile()) {
+			self::$checks['Config file'] = true;
+		} else {
+			self::$checks['Config file'] = "Couldn't write to core/config.php. Please fix the file permissions.";
+		}
+		
+		if(self::checkUploadDir()) {
+			self::$checks['Upload directory'] = true;
+		} else {
+			self::$checks['Upload directory'] = "Couldn't write to upload/ directory. Please fix the directory permissions.";
+		}
+		
+		if(self::checkCacheDir()) {
+			self::$checks['Cache directory'] = true;
+		} else {
+			self::$checks['Cache directory'] = "Couldn't write to cache/ directory. Please fix the directory permissions.";
+		}
+
+
+		self::$form = __DIR__ . '/forms/checks.php';
+
 	}
 	
 	
@@ -371,6 +417,36 @@ class Install {
 		* https://mysite.com
 		*/
 		return $protocol . $host . $directory;
+	}
+	
+	
+	static private function checkVersion() {
+		if(version_compare(phpversion(), '5.5', '<')) {
+			return false;
+		}
+		else {
+			return true;
+		}
+	}
+	
+	static private function checkConfigFile() {
+		if(file_exists(self::$config_file)) {
+			// file exists
+			// check if it's writable
+			return is_writable(self::$config_file);
+		}
+		else{
+			// check if we can create the file in the directory
+			return is_writable(dirname(self::$config_file));
+		}
+	}
+	
+	static private function checkUploadDir() {
+		return is_writable(self::$upload_dir);
+	}
+	
+	static private function checkCacheDir() {
+		return is_writable(self::$cache_dir);
 	}
 
 

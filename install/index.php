@@ -26,6 +26,7 @@ Install::init();
 	
 	<link rel="stylesheet" type="text/css" href="style.css" />
 	<link rel="stylesheet" type="text/css" href="pure.css" />
+	<link rel="stylesheet" type="text/css" href="../admin/style/glyphicons.css" />
 	
 </head>
 <body>
