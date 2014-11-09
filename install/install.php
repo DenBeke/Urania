@@ -115,28 +115,42 @@ class Install {
 		if(self::checkVersion()) {
 			self::$checks['PHP version >= 5.5'] = true;
 		} else {
-			self::$checks['PHP version >= 5.5'] = 'PHP version >= 5.5.0 required';
+			self::$checks['PHP version >= 5.5'] = 'PHP version >= 5.5.0 required.';
 			self::$everything_ok = false;
 		}
 		
 		if(self::checkConfigFile()) {
-			self::$checks['Config file'] = true;
+			self::$checks['Config file writable'] = true;
 		} else {
-			self::$checks['Config file'] = "Couldn't write to core/config.php. Please fix the file permissions.";
+			self::$checks['Config file writable'] = "Couldn't write to core/config.php. Please fix the file permissions.";
 			self::$everything_ok = false;
 		}
 		
 		if(self::checkUploadDir()) {
-			self::$checks['Upload directory'] = true;
+			self::$checks['Upload directory writable'] = true;
 		} else {
-			self::$checks['Upload directory'] = "Couldn't write to upload/ directory. Please fix the directory permissions.";
+			self::$checks['Upload directory writable'] = "Couldn't write to upload/ directory. Please fix the directory permissions.";
 			self::$everything_ok = false;
 		}
 		
 		if(self::checkCacheDir()) {
-			self::$checks['Cache directory'] = true;
+			self::$checks['Cache directory writable'] = true;
 		} else {
-			self::$checks['Cache directory'] = "Couldn't write to cache/ directory. Please fix the directory permissions.";
+			self::$checks['Cache directory writable'] = "Couldn't write to cache/ directory. Please fix the directory permissions.";
+			self::$everything_ok = false;
+		}
+		
+		if(extension_loaded('gd')) {
+			self::$checks['GD support'] = true;
+		} else {
+			self::$checks['GD enabled'] = "GD library not loaded.";
+			self::$everything_ok = false;
+		}
+		
+		if(extension_loaded('pdo_mysql')) {
+			self::$checks['PDO MySQL support'] = true;
+		} else {
+			self::$checks['PDO MySQL support'] = "pdo_mysql library not loaded.";
 			self::$everything_ok = false;
 		}
 
