@@ -78,7 +78,9 @@ class Install {
 	];
 	
 	
-	static public $checks;
+	static public $checks = [];
+	
+	static public $everything_ok = true;
 
 	/**
 	Initializer.
@@ -108,30 +110,34 @@ class Install {
 	*/
 	static public function checks() {
 
-		self::$checks = [];
+		self::$everything_ok;
 
 		if(self::checkVersion()) {
 			self::$checks['PHP version >= 5.5'] = true;
 		} else {
 			self::$checks['PHP version >= 5.5'] = 'PHP version >= 5.5.0 required';
+			self::$everything_ok = false;
 		}
 		
 		if(self::checkConfigFile()) {
 			self::$checks['Config file'] = true;
 		} else {
 			self::$checks['Config file'] = "Couldn't write to core/config.php. Please fix the file permissions.";
+			self::$everything_ok = false;
 		}
 		
 		if(self::checkUploadDir()) {
 			self::$checks['Upload directory'] = true;
 		} else {
 			self::$checks['Upload directory'] = "Couldn't write to upload/ directory. Please fix the directory permissions.";
+			self::$everything_ok = false;
 		}
 		
 		if(self::checkCacheDir()) {
 			self::$checks['Cache directory'] = true;
 		} else {
 			self::$checks['Cache directory'] = "Couldn't write to cache/ directory. Please fix the directory permissions.";
+			self::$everything_ok = false;
 		}
 
 

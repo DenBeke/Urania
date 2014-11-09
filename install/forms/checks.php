@@ -40,6 +40,19 @@
     <p></p>
     
     
-    <a href="./index.php?step=database" class="pure-button pure-input-1-2 pure-button-primary">Next</a>
+    <?php if(Install::$everything_ok): ?>
+    
+        <a href="./index.php?step=checks" class="pure-button pure-input-1-2 pure-button-primary"><span class="glyphicon glyphicon-refresh"></span></a>
+    
+        <a href="./index.php?step=database" class="pure-button pure-input-1-2 pure-button-primary">Install <span class="glyphicon glyphicon-chevron-right"></span></a>
+    
+    <?php else: ?>
+        
+        <a href="./index.php?step=checks" class="pure-button pure-input-1-2 pure-button-primary"><span class="glyphicon glyphicon-refresh"></span></a>
+        
+        <a class="pure-button pure-input-1-2 pure-button pure-button-disabled">Install <span class="glyphicon glyphicon-chevron-right"></span></a>
+        
+    <?php endif; ?>
+    
 
 </div>
