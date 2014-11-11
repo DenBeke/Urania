@@ -1,7 +1,7 @@
 Urania
 ======
 
-￼![Urania Logo](http://denbeke.be/urania/img/logo.png)
+￼![Urania Logo](http://denbeke.be/fotografie/img/logo.png)
 
 Urania is a simple CMS for Photo Albums.  
 Urania, makes it really easy to have your own digital portfolio.
