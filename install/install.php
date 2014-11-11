@@ -195,6 +195,7 @@ class Install {
 				self::$config_defines['DB_USER'] = "'$db_user'";
 				self::$config_defines['DB_PASSWORD'] = "'$db_password'";
 				self::$config_defines['DB_DATABASE'] = "'$db_database'";
+				self::$config_defines['INSTALLED'] = "true";
 				
 				//Write the file
 				self::save_config_file();

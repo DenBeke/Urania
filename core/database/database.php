@@ -12,6 +12,10 @@ Date: June 2014
 */
 namespace Database;
 
+if(INSTALLED === false) {
+	die("<h2>Urania not installed</h2>");
+}
+
 require_once(__DIR__ . '/../pixie/includes.php');
 
 
