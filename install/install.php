@@ -17,11 +17,11 @@ class Install {
 
 	static private $link;
 	
-	static private $config_file = '../core/config.php';
+	static private $config_file = '/../core/config.php'; //relative to install dir
 	
-	static private $upload_dir = '../upload/';
+	static private $upload_dir = '/../upload/';
 	
-	static private $cache_dir = '../cache/';
+	static private $cache_dir = '/../cache/';
 	
 	static private $tables = [
 		
@@ -113,9 +113,9 @@ class Install {
 		self::$everything_ok;
 
 		if(self::checkVersion()) {
-			self::$checks['PHP version >= 5.5'] = true;
+			self::$checks['PHP version >= 5.4'] = true;
 		} else {
-			self::$checks['PHP version >= 5.5'] = 'PHP version >= 5.5.0 required.';
+			self::$checks['PHP version >= 5.4'] = 'PHP version >= 5.5.0 required.';
 			self::$everything_ok = false;
 		}
 		
@@ -299,7 +299,7 @@ class Install {
 		
 		if($success) {
 			//Next step...
-			header('Location: ' . $url . '/admin/');
+			header('Location: ' . $url . 'admin/');
 		}
 		else {
 			//Theme file
@@ -441,7 +441,7 @@ class Install {
 	
 	
 	static private function checkVersion() {
-		if(version_compare(phpversion(), '5.5', '<')) {
+		if(version_compare(phpversion(), '5.4', '<')) {
 			return false;
 		}
 		else {
@@ -450,10 +450,10 @@ class Install {
 	}
 	
 	static private function checkConfigFile() {
-		if(file_exists(self::$config_file)) {
+		if(file_exists(dirname(__FILE__) . self::$config_file)) {
 			// file exists
 			// check if it's writable
-			return is_writable(self::$config_file);
+			return is_writable(dirname(__FILE__) . self::$config_file);
 		}
 		else{
 			// check if we can create the file in the directory
@@ -462,11 +462,11 @@ class Install {
 	}
 	
 	static private function checkUploadDir() {
-		return is_writable(self::$upload_dir);
+		return is_writable(dirname(__FILE__) . self::$upload_dir);
 	}
 	
 	static private function checkCacheDir() {
-		return is_writable(self::$cache_dir);
+		return is_writable(dirname(__FILE__) .self::$cache_dir);
 	}
 
 
