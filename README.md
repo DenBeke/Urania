@@ -24,7 +24,7 @@ Installation
 * Apache mod_rewrite
 * MySQL PDO
 * GD Library
-* *Urania must have write access to the `upload` and `cache` folder. Your webserver must have write permission to the `core/config.php` file.*
+* *Your webserver must have write access to the `upload` and `cache` folder. Your webserver must have write permission to the `core/config.php` file.*
 
 
 ### Install Script ###
